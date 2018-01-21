@@ -360,15 +360,33 @@
       
         
           
+            <ul>
+<li>安装界面,如果无法看到按钮,可以用tab解决.<br><img src="006e839d-4c42-4170-bfaf-6495be4f0df4.png" alt=""></li>
+<li>安装过程提示重启,不要傻等,赶紧按回车</li>
+<li>设置软件源 软件中心-&gt;软件源-&gt;other-&gt;选择最佳 一般选阿里云<br><img src="4249704b-4515-497d-a817-b869842428dc.jpg" alt=""></li>
+<li><p>设置根用户密码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> $ sudo passwd root</span><br><span class="line">Enter new UNIX password:</span><br><span class="line">Retype new UNIX password:</span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装vmware-tool</p>
+</li>
+<li><p>安装软件:</p>
+<ul>
+<li>右键打开终端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nautilus-open-terminal //安装</span><br><span class="line">nautilus -q //重新加载文件管理器</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>下载工具列表:</p>
+<ul>
+<li>vscode</li>
+<li>vim</li>
+<li>git</li>
+</ul>
+</li>
+<li><p>安装java环境</p>
+</li>
+</ul>
+
           
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/21/ubuntu-setup-note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -486,15 +504,9 @@
       
         
           
+            <p><img src="TIM截图20180121204239.png" alt=""></p>
+
           
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/21/image-test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -612,15 +624,22 @@
       
         
           
+            <h2 id="创建新博客"><a href="#创建新博客" class="headerlink" title="创建新博客"></a>创建新博客</h2><ul>
+<li>在博客文件夹内运行<code>hexo new post &quot;test&quot;</code> 即可创建test.md文件</li>
+<li>用编辑器编辑保存</li>
+<li>运行: <code>hexo d -g</code><h2 id="修改标签"><a href="#修改标签" class="headerlink" title="修改标签"></a>修改标签</h2>在每篇博客的编辑状态下,修改顶端内容如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hexo常用命令</span><br><span class="line">date: 2018-01-21 20:18:18</span><br><span class="line">tags: [hexo,command]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>tags后面有一个空格,标签与标签间以逗号隔开.</p>
+<h2 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h2><ul>
+<li>修改<code>_config.yml</code>文件<code>post_asset_folder</code>为<code>true</code></li>
+<li>此后,每次运行<code>hexo new ,title</code>时都会在<code>_post</code>文件夹下生成同名文件夹.</li>
+<li>如果需要插入图片,直接插入<code>![](图片名称)</code>即可,无需键入文件夹名称</li>
+</ul>
+<h2 id="上传报错"><a href="#上传报错" class="headerlink" title="上传报错"></a>上传报错</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Connection reset by 192.30.255.112 port 22</span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: Connection reset by 192.30.255.112 port 22</span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\blog\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at emitTwo (events.js:126:13)</span><br><span class="line">    at ChildProcess.emit (events.js:214:7)</span><br><span class="line">    at ChildProcess.cp.emit (D:\blog\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:925:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:346:11)</span><br><span class="line">    at emitOne (events.js:116:13)</span><br><span class="line">    at Socket.emit (events.js:211:7)</span><br><span class="line">    at Pipe._handle.close [as _onclose] (net.js:554:12)</span><br></pre></td></tr></table></figure>
+<p>原因:连接超时,等待网络更好时尝试.</p>
+
           
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/21/hexo-command/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
