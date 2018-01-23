@@ -259,6 +259,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/23/java-command-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="也 - 良">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/23/java-command-note/" itemprop="url">java常见命令总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T18:04:17+08:00">
+                2018-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="获取参数列表"><a href="#获取参数列表" class="headerlink" title="获取参数列表"></a>获取参数列表</h1><ul>
+<li>java<br>得到基本参数列表</li>
+<li>java -X<br>得到扩展参数列表</li>
+</ul>
+<h1 id="运行格式"><a href="#运行格式" class="headerlink" title="运行格式"></a>运行格式</h1><ul>
+<li>java [选项] &lt;主类&gt; [参数]<br>用于执行类</li>
+<li>java [选项] -jar <jar文件> [参数]<br>用于执行jar文件</jar文件></li>
+<li>java [选项] -m &lt;模块&gt;[主类] [参数]<br>用于执行模块中的主类 (其中-m可以换成–moudle)</li>
+</ul>
+<p>参数全部传递到主类.</p>
+<h2 id="java-cp"><a href="#java-cp" class="headerlink" title="java -cp"></a>java -cp</h2><ul>
+<li>等同 -classpath  或者  –class-path</li>
+<li>用于告知jvm搜索目录名,jar名,zip文档名,之间用<code>;</code>分割.<br>格式 : java -cp &lt;目录和zip/jar文件的类搜索路径&gt;</li>
+<li>使用此选项后,jvm不再使用<code>CLASSPATH</code>中的类搜索路径.如果都没有设置,则jvm使用当前路径<code>.</code>来作为类搜索路径.也就是常用的 <code>java test.java</code>.</li>
+<li>推荐使用此参数设置的路径,而不使用<code>CLASSPATH</code>提供的路径,避免多个项目同时使用<code>CLASSPATH</code>时存在的冲突.因为jvm在搜索到第一个指定的类就会停止搜索.</li>
+</ul>
+<p>例如,我开发了一个test.jar包,当我想调用其中的类时,就需要用java -cp test.jar  注意要使用完整路径.  如果没有找到则会抛出<code>java.lang.NoClassDefFoundError</code>异常.<br>代码中可以用<code>System.getProperty(&quot;java.class.path&quot;)</code>得到jvm查找类的路径.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/22/doc-graph-dfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1053,7 +1211,7 @@
 <li>此后,每次运行<code>hexo new ,title</code>时都会在<code>_post</code>文件夹下生成同名文件夹.</li>
 <li>如果需要插入图片,直接插入<code>![](图片名称)</code>即可,无需键入文件夹名称</li>
 </ul>
-<h2 id="上传报错"><a href="#上传报错" class="headerlink" title="上传报错"></a>上传报错</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Connection reset by <span class="number">192</span>.<span class="number">30</span>.<span class="number">255</span>.<span class="number">112</span> port <span class="number">22</span></span><br><span class="line"><span class="function">fatal: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">FATAL</span> <span class="title">Something</span>'<span class="title">s</span> <span class="title">wrong</span>. <span class="title">Maybe</span> <span class="title">you</span> <span class="title">can</span> <span class="title">find</span> <span class="title">the</span> <span class="title">solution</span> <span class="title">here</span>: <span class="title">http</span>://<span class="title">hexo.io</span>/<span class="title">docs</span>/<span class="title">troubleshooting.html</span></span></span><br><span class="line"><span class="function"><span class="title">Error</span>: <span class="title">Connection</span> <span class="title">reset</span> <span class="title">by</span> 192.30.255.112 <span class="title">port</span> 22</span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess</span>.&lt;<span class="title">anonymous</span>&gt; (<span class="title">D</span>:\<span class="title">blog</span>\<span class="title">node_modules</span>\<span class="title">hexo</span>-<span class="title">util</span>\<span class="title">lib</span>\<span class="title">spawn.js</span>:37:17)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">emitTwo</span> (<span class="title">events.js</span>:126:13)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess.emit</span> (<span class="title">events.js</span>:214:7)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess.cp.emit</span> (<span class="title">D</span>:\<span class="title">blog</span>\<span class="title">node_modules</span>\<span class="title">cross</span>-<span class="title">spawn</span>\<span class="title">lib</span>\<span class="title">enoent.js</span>:40:29)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">maybeClose</span> (<span class="title">internal</span>/<span class="title">child_process.js</span>:925:16)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Socket.stream.socket.on</span> (<span class="title">internal</span>/<span class="title">child_process.js</span>:346:11)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">emitOne</span> (<span class="title">events.js</span>:116:13)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Socket.emit</span> (<span class="title">events.js</span>:211:7)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Pipe._handle.close</span> [<span class="title">as</span> <span class="title">_onclose</span>] (<span class="title">net.js</span>:554:12)</span></span><br></pre></td></tr></table></figure>
+<h2 id="上传报错"><a href="#上传报错" class="headerlink" title="上传报错"></a>上传报错</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Connection reset by <span class="number">192</span>.<span class="number">30</span>.<span class="number">255</span>.<span class="number">112</span> port <span class="number">22</span></span><br><span class="line"><span class="function">fatal: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">FATAL</span> <span class="title">Something</span>'<span class="title">s</span> <span class="title">wrong</span>. <span class="title">Maybe</span> <span class="title">you</span> <span class="title">can</span> <span class="title">find</span> <span class="title">the</span> <span class="title">solution</span> <span class="title">here</span>: <span class="title">http</span>://<span class="title">hexo.io</span>/<span class="title">docs</span>/<span class="title">troubleshooting.html</span></span></span><br><span class="line"><span class="function"><span class="title">Error</span>: <span class="title">Connection</span> <span class="title">reset</span> <span class="title">by</span> 192.30.255.112 <span class="title">port</span> 22</span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"><span class="title">fatal</span>: <span class="title">The</span> <span class="title">remote</span> <span class="title">end</span> <span class="title">hung</span> <span class="title">up</span> <span class="title">unexpectedly</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess</span>.&lt;<span class="title">anonymous</span>&gt; (<span class="title">D</span>:\<span class="title">blog</span>\<span class="title">node_modules</span>\<span class="title">hexo</span>-<span class="title">util</span>\<span class="title">lib</span>\<span class="title">spawn.js</span>:37:17)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">emitTwo</span> (<span class="title">events.js</span>:126:13)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess.emit</span> (<span class="title">events.js</span>:214:7)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">ChildProcess.cp.emit</span> (<span class="title">D</span>:\<span class="title">blog</span>\<span class="title">node_modules</span>\<span class="title">cross</span>-<span class="title">spawn</span>\<span class="title">lib</span>\<span class="title">enoent.js</span>:40:29)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">maybeClose</span> (<span class="title">internal</span>/<span class="title">child_process.js</span>:925:16)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Socket.stream.socket.on</span> (<span class="title">internal</span>/<span class="title">child_process.js</span>:346:11)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">emitOne</span> (<span class="title">events.js</span>:116:13)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Socket.emit</span> (<span class="title">events.js</span>:211:7)</span></span><br><span class="line"><span class="function">    <span class="title">at</span> <span class="title">Pipe._handle.close</span> [<span class="title">as</span> _onclose] (<span class="title">net.js</span>:554:12)</span></span><br></pre></td></tr></table></figure>
 <p>原因:连接超时,等待网络更好时尝试.</p>
 
           
@@ -1136,7 +1294,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
