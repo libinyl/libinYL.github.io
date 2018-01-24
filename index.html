@@ -259,6 +259,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/24/javaweb-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/24/javaweb-note/" itemprop="url">Java Web 回顾与总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T22:29:14+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><ul>
+<li><strong>JSP规范</strong>   <a href="https://jcp.org/aboutJava/communityprocess/mrel/jsr245/index.html" target="_blank" rel="noopener">JavaServer Pages (JSP) Specification, Version 2.2</a>,包含脚本规范,标签规范等</li>
+<li><strong>Servlet规范</strong><a href="http://jcp.org/aboutJava/communityprocess/mrel/jsr315/[http://jcp.org/aboutJava/communityprocess/mrel/jsr315/" target="_blank" rel="noopener">Servlet API Specification, Version 3.0</a>,包含web应用目录结构和部署,url映射,<code>web.xml</code>(容器描述符)语法等</li>
+</ul>
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p><strong>CATALINA_HOME</strong> : tomcat安装根目录<br><strong>CATALINA_BASE</strong> : 如果存在多个tomcat实例,那么用此代表每个实例各自的根目录.没有多个实例的话,与<strong>CATALINA_HOME</strong>相同.</p>
+<p>只有重启tomcat,设置文件才能生效.</p>
+<h2 id="web应用-Web-ARchive-WAR-file-部署结构"><a href="#web应用-Web-ARchive-WAR-file-部署结构" class="headerlink" title="web应用(Web ARchive,WAR file)部署结构"></a>web应用(Web ARchive,WAR file)部署结构</h2><p>参考自<a href="https://tomcat.apache.org/tomcat-7.0-doc/appdev/deployment.html" target="_blank" rel="noopener">tomcat7介绍</a></p>
+<p><strong>document root</strong> : 根目录,放置HTML文件和JSP页面,来组成用户界面<br><strong>context path</strong> : 管理员分配的路径,映射为document路径.例如,如果<strong>conext path</strong>被分配为<code>/catalog</code>,那么一个到<code>/catalog/index.html</code>的请求将被映射至<code>document root/index.html</code></p>
+<h2 id="标准目录结构"><a href="#标准目录结构" class="headerlink" title="标准目录结构"></a>标准目录结构</h2><ul>
+<li><strong>CATALINA_HOME/lib</strong>所有web应用+tomcat共享的jar文件都放这.是JDBC驱动放置的好地方.</li>
+<li><strong>/*.html</strong>,<strong>*.jsp</strong>等浏览器可见文件(如css,js,图片文件等).这些文件或者分类放置,或者统一放在根目录下.</li>
+<li><strong>/WEB-INF/web.xml</strong>部署描述符</li>
+<li><strong>/WEB-INF/classes/</strong></li>
+<li><strong>/WEB-INF/lib/</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_HOME</span><br><span class="line">├─lib</span><br><span class="line">└─webapps</span><br><span class="line">    └─root</span><br><span class="line">        └─WEB-INF</span><br><span class="line">            ├─classes</span><br><span class="line">            └─lib</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/23/java-command-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1294,7 +1450,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1316,7 +1472,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
