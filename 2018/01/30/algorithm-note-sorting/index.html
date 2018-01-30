@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="生活方式," />
+  <meta name="keywords" content="数据结构与算法," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="常听音乐 醒来后立刻坐起，赖床的代价无比巨大。尝试恐惧赖床。 每天适当护肤。热敷面部，洗净。 饭后刷牙。 尝试恐惧甜食。 视野内不可以出现未洗的袜子或内衣。 每天写下日记，为自己的生活打log。日记里要有自拍，记录生活状态。 每天要出汗。 睡前在电水壶中盛满水，方便晨起洗漱。 用自定义铃声做闹钟。内容为录音，自己叫醒自己。 睡前手机放远。">
-<meta name="keywords" content="生活方式">
+<meta name="description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
+<meta name="keywords" content="数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自律使我自由">
-<meta property="og:url" content="http://libinyl.github.io/2018/01/26/self-discipline/index.html">
+<meta property="og:title" content="算法笔记 - 排序篇">
+<meta property="og:url" content="http://libinyl.github.io/2018/01/30/algorithm-note-sorting/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="常听音乐 醒来后立刻坐起，赖床的代价无比巨大。尝试恐惧赖床。 每天适当护肤。热敷面部，洗净。 饭后刷牙。 尝试恐惧甜食。 视野内不可以出现未洗的袜子或内衣。 每天写下日记，为自己的生活打log。日记里要有自拍，记录生活状态。 每天要出汗。 睡前在电水壶中盛满水，方便晨起洗漱。 用自定义铃声做闹钟。内容为录音，自己叫醒自己。 睡前手机放远。">
+<meta property="og:description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-29T09:47:28.492Z">
+<meta property="og:updated_time" content="2018-01-30T11:54:43.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自律使我自由">
-<meta name="twitter:description" content="常听音乐 醒来后立刻坐起，赖床的代价无比巨大。尝试恐惧赖床。 每天适当护肤。热敷面部，洗净。 饭后刷牙。 尝试恐惧甜食。 视野内不可以出现未洗的袜子或内衣。 每天写下日记，为自己的生活打log。日记里要有自拍，记录生活状态。 每天要出汗。 睡前在电水壶中盛满水，方便晨起洗漱。 用自定义铃声做闹钟。内容为录音，自己叫醒自己。 睡前手机放远。">
+<meta name="twitter:title" content="算法笔记 - 排序篇">
+<meta name="twitter:description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/01/26/self-discipline/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/01/30/algorithm-note-sorting/"/>
 
 
 
 
 
-  <title>自律使我自由 | 李斌 - LBYL</title>
+  <title>算法笔记 - 排序篇 | 李斌 - LBYL</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/26/self-discipline/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/30/algorithm-note-sorting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自律使我自由</h1>
+          <h1 class="post-title" itemprop="name headline">算法笔记 - 排序篇</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T17:20:07+08:00">
-                2018-01-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T18:14:42+08:00">
+                2018-01-30
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生·活/" itemprop="url" rel="index">
-                    <span itemprop="name">生·活</span>
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
                   </a>
                 </span>
 
@@ -352,18 +352,18 @@
       
 
       
-        <p>常听音乐</p>
-<p>醒来后立刻坐起，赖床的代价无比巨大。尝试恐惧赖床。</p>
-<p>每天适当护肤。热敷面部，洗净。</p>
-<p>饭后刷牙。</p>
-<p>尝试恐惧甜食。</p>
-<p>视野内不可以出现未洗的袜子或内衣。</p>
-<p>每天写下日记，为自己的生活打log。日记里要有自拍，记录生活状态。</p>
-<p>每天要出汗。</p>
-<p>睡前在电水壶中盛满水，方便晨起洗漱。</p>
-<p>用自定义铃声做闹钟。内容为录音，自己叫醒自己。</p>
-<p>睡前手机放远。</p>
-
+        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p><strong>思想</strong>：两两比较，逐步向前。保证末序，减 i 减1.</p>
+<p><strong>时间复杂度</strong>：O(n<sup>2</sup>)</p>
+<p><strong>空间复杂度</strong>：O(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i∈[0,N-1)               //循环N-1遍</span><br><span class="line">j∈[0,N-1-i)           //每遍循环要处理的无序部分</span><br><span class="line">    swap(j,j+1)          //两两排序（升序/降序）</span><br></pre></td></tr></table></figure>
+<p>java实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &gt; array[j]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = array[i];</span><br><span class="line">                array[i] = array[j];</span><br><span class="line">                array[j] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p><strong>思想</strong>：选好放前，选j换i。</p>
+<p><strong>时间复杂度</strong>：O(n<sup>2</sup>)</p>
+<p><strong>空间复杂度</strong>：O(1)</p>
+<p><strong>优点</strong>：原地排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; array.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isBiggerThan(array, i, j)) &#123;</span><br><span class="line">                exchange(array, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1>
       
     </div>
     
@@ -380,7 +380,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/生活方式/" rel="tag"># 生活方式</a>
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
           
         </div>
       
@@ -393,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/25/english-study/" rel="next" title="计算机英语单词短语总结">
-                <i class="fa fa-chevron-left"></i> 计算机英语单词短语总结
+              <a href="/2018/01/30/coding-everyday-1/" rel="next" title="每日算法 No.1">
+                <i class="fa fa-chevron-left"></i> 每日算法 No.1
               </a>
             
           </div>
@@ -402,10 +402,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/28/english-translate-note/" rel="prev" title="英文翻译要点总结">
-                英文翻译要点总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +453,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -540,6 +545,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">3.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
