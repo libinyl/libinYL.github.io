@@ -452,7 +452,12 @@
 </li>
 </ol>
 <h3 id="Filter与RequestDispatcher"><a href="#Filter与RequestDispatcher" class="headerlink" title="Filter与RequestDispatcher"></a>Filter与RequestDispatcher</h3><p>参阅规范,<code>&lt;RequestDispatcher&gt;</code>标签来指定在何种情况下应用<code>Filter</code>.可能的情况有<em>REQUEST</em>,<em>FORWARD</em>,<em>INCLUDE</em>,<em>ERROR</em>,<em>ASYNC</em>.</p>
-
+<h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><p>由于HTTP协议是无状态的(stateless),而每个客户端的请求必须彼此有相关性.<code>HttpSession</code>接口由此而生.它可以让容器用几种方式来跟踪用户的会话(session).</p>
+<h3 id="会话-Session-跟踪机制"><a href="#会话-Session-跟踪机制" class="headerlink" title="会话(Session)跟踪机制"></a>会话(Session)跟踪机制</h3><h4 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h4><p>最常用的会话跟踪机制.</p>
+<p>容器向客户端发送cookie.<br>客户端在每次后续请求时都返回该cookie,表示这些请求相关联.用于跟踪会话的cookie的名字必须是<em>JSESSIONID</em>.</p>
+<h4 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h4><p>会话跟踪的最低标准.当客户端不接受 cookie 时，服务器可使用 URL 重写作为会话跟踪的基<br>础。 URL 重写涉及添加数据、会话 ID、容器解析 URL 路径从而请求与会话相关联.如</p>
+<p><a href="http://www.myserver.com/catalog/index.html;jsessionid=1234" target="_blank" rel="noopener">http://www.myserver.com/catalog/index.html;jsessionid=1234</a></p>
+<h2 id="Dispatching-Requests"><a href="#Dispatching-Requests" class="headerlink" title="Dispatching Requests"></a>Dispatching Requests</h2>
           
         
       
