@@ -83,11 +83,11 @@
 <meta name="keywords" content="java,tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Web 回顾与总结">
-<meta property="og:url" content="http://libinyl.github.io/2018/01/24/javaweb-note/index.html">
+<meta property="og:url" content="http://libinyl.github.io/2018/01/24/note-javaweb/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="JSP JSP规范   JavaServer Pages (JSP) Specification, Version 2.2,包含脚本规范,标签规范等 Servlet规范Servlet API Specification, Version 3.0,包含web应用目录结构和部署,url映射,web.xml(容器描述符)语法等  TomcatCATALINA_HOME : tomcat安装根目录CATA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-19T16:19:41.271Z">
+<meta property="og:updated_time" content="2018-02-24T07:52:59.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Web 回顾与总结">
 <meta name="twitter:description" content="JSP JSP规范   JavaServer Pages (JSP) Specification, Version 2.2,包含脚本规范,标签规范等 Servlet规范Servlet API Specification, Version 3.0,包含web应用目录结构和部署,url映射,web.xml(容器描述符)语法等  TomcatCATALINA_HOME : tomcat安装根目录CATA">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/01/24/javaweb-note/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/01/24/note-javaweb/"/>
 
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/24/javaweb-note/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/24/note-javaweb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -457,7 +457,50 @@
 <p>容器向客户端发送cookie.<br>客户端在每次后续请求时都返回该cookie,表示这些请求相关联.用于跟踪会话的cookie的名字必须是<em>JSESSIONID</em>.</p>
 <h4 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h4><p>会话跟踪的最低标准.当客户端不接受 cookie 时，服务器可使用 URL 重写作为会话跟踪的基<br>础。 URL 重写涉及添加数据、会话 ID、容器解析 URL 路径从而请求与会话相关联.如</p>
 <p><a href="http://www.myserver.com/catalog/index.html;jsessionid=1234" target="_blank" rel="noopener">http://www.myserver.com/catalog/index.html;jsessionid=1234</a></p>
-<h2 id="Dispatching-Requests"><a href="#Dispatching-Requests" class="headerlink" title="Dispatching Requests"></a>Dispatching Requests</h2>
+<h2 id="Dispatching-Requests"><a href="#Dispatching-Requests" class="headerlink" title="Dispatching Requests"></a>Dispatching Requests</h2><h2 id="web应用"><a href="#web应用" class="headerlink" title="web应用"></a>web应用</h2><h3 id="部署描述符-web-xml"><a href="#部署描述符-web-xml" class="headerlink" title="部署描述符(web.xml)"></a>部署描述符(web.xml)</h3><p><welcome-file-list><br>定义一个文件列表,当请求的uri不可用时,尝试在其uri下寻找此列表中的文件.<br>例如,定义</welcome-file-list></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;welcome-file-list&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;</span><br><span class="line">&lt;/welcome-file-list&gt;</span><br></pre></td></tr></table></figure>
+<p>而实际文件静态内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/foo/index.html</span><br><span class="line">/foo/default.jsp</span><br><span class="line">/foo/orderform.html</span><br><span class="line">/foo/home.gif</span><br><span class="line">/catalog/default.jsp</span><br><span class="line">/catalog/products/shop.jsp</span><br><span class="line">/catalog/products/register.jsp</span><br></pre></td></tr></table></figure></p>
+<p>那么请求URI和对应结果为</p>
+<table>
+<thead>
+<tr>
+<th>请求URI</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/foo</td>
+<td>重定向到 /foo/</td>
+</tr>
+<tr>
+<td>/foo/</td>
+<td>返回 /foo/index.html</td>
+</tr>
+<tr>
+<td>/catalog</td>
+<td>重定向到 /catalog/</td>
+</tr>
+<tr>
+<td>/catalog/</td>
+<td>返回 /catalog/default.jsp</td>
+</tr>
+<tr>
+<td>/catalog/index.html</td>
+<td>404</td>
+</tr>
+<tr>
+<td>/catalog/products</td>
+<td>重定向到 /catalog/products/</td>
+</tr>
+<tr>
+<td>/catalog/products/</td>
+<td>传递给”默认”servlet,或者</td>
+</tr>
+</tbody>
+</table>
+<p>```</p>
+
       
     </div>
     
@@ -655,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">1.</span> <span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat"><span class="nav-number">2.</span> <span class="nav-text">Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web应用-Web-ARchive-WAR-file-部署结构"><span class="nav-number">2.1.</span> <span class="nav-text">web应用(Web ARchive,WAR file)部署结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准目录结构"><span class="nav-number">2.2.</span> <span class="nav-text">标准目录结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">3.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet接口"><span class="nav-number">3.1.</span> <span class="nav-text">Servlet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求的处理方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">请求的处理方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">3.2.</span> <span class="nav-text">Servlet生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载和实例化"><span class="nav-number">3.2.1.</span> <span class="nav-text">加载和实例化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">3.2.2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求处理"><span class="nav-number">3.2.3.</span> <span class="nav-text">请求处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止服务"><span class="nav-number">3.2.4.</span> <span class="nav-text">终止服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet-Context"><span class="nav-number">3.3.</span> <span class="nav-text">Servlet Context</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">3.3.1.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number">3.4.</span> <span class="nav-text">Request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于请求路径"><span class="nav-number">3.4.1.</span> <span class="nav-text">关于请求路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response"><span class="nav-number">3.5.</span> <span class="nav-text">Response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter"><span class="nav-number">3.6.</span> <span class="nav-text">Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置过滤器环境"><span class="nav-number">3.6.1.</span> <span class="nav-text">配置过滤器环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要-生命周期"><span class="nav-number">3.6.2.</span> <span class="nav-text">(主要)生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filter与RequestDispatcher"><span class="nav-number">3.6.3.</span> <span class="nav-text">Filter与RequestDispatcher</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sessions"><span class="nav-number">3.7.</span> <span class="nav-text">Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#会话-Session-跟踪机制"><span class="nav-number">3.7.1.</span> <span class="nav-text">会话(Session)跟踪机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookies"><span class="nav-number">3.7.1.1.</span> <span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL重写"><span class="nav-number">3.7.1.2.</span> <span class="nav-text">URL重写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatching-Requests"><span class="nav-number">3.8.</span> <span class="nav-text">Dispatching Requests</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP"><span class="nav-number">1.</span> <span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat"><span class="nav-number">2.</span> <span class="nav-text">Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web应用-Web-ARchive-WAR-file-部署结构"><span class="nav-number">2.1.</span> <span class="nav-text">web应用(Web ARchive,WAR file)部署结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准目录结构"><span class="nav-number">2.2.</span> <span class="nav-text">标准目录结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet"><span class="nav-number">3.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet接口"><span class="nav-number">3.1.</span> <span class="nav-text">Servlet接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求的处理方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">请求的处理方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet生命周期"><span class="nav-number">3.2.</span> <span class="nav-text">Servlet生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载和实例化"><span class="nav-number">3.2.1.</span> <span class="nav-text">加载和实例化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">3.2.2.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求处理"><span class="nav-number">3.2.3.</span> <span class="nav-text">请求处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止服务"><span class="nav-number">3.2.4.</span> <span class="nav-text">终止服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet-Context"><span class="nav-number">3.3.</span> <span class="nav-text">Servlet Context</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">3.3.1.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request"><span class="nav-number">3.4.</span> <span class="nav-text">Request</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于请求路径"><span class="nav-number">3.4.1.</span> <span class="nav-text">关于请求路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Response"><span class="nav-number">3.5.</span> <span class="nav-text">Response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter"><span class="nav-number">3.6.</span> <span class="nav-text">Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置过滤器环境"><span class="nav-number">3.6.1.</span> <span class="nav-text">配置过滤器环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要-生命周期"><span class="nav-number">3.6.2.</span> <span class="nav-text">(主要)生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filter与RequestDispatcher"><span class="nav-number">3.6.3.</span> <span class="nav-text">Filter与RequestDispatcher</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sessions"><span class="nav-number">3.7.</span> <span class="nav-text">Sessions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#会话-Session-跟踪机制"><span class="nav-number">3.7.1.</span> <span class="nav-text">会话(Session)跟踪机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookies"><span class="nav-number">3.7.1.1.</span> <span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL重写"><span class="nav-number">3.7.1.2.</span> <span class="nav-text">URL重写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatching-Requests"><span class="nav-number">3.8.</span> <span class="nav-text">Dispatching Requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web应用"><span class="nav-number">3.9.</span> <span class="nav-text">web应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署描述符-web-xml"><span class="nav-number">3.9.1.</span> <span class="nav-text">部署描述符(web.xml)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
