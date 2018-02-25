@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式更新后个体速度 = 惯性权重 \* 更新前个体速度 + 个体认知系数 \* 0到1的随机数 \* ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新前个体位">
+<meta name="description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式全局版本更新后个体速度 = 惯性权重 * 更新前个体速度 + 个体认知系数 * 0到1的随机数 * ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 更新前全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="粒子群优化（PSO）算法学习笔记">
 <meta property="og:url" content="http://libinyl.github.io/2018/02/24/note-pso/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式更新后个体速度 = 惯性权重 \* 更新前个体速度 + 个体认知系数 \* 0到1的随机数 \* ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新前个体位">
+<meta property="og:description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式全局版本更新后个体速度 = 惯性权重 * 更新前个体速度 + 个体认知系数 * 0到1的随机数 * ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 更新前全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T05:50:20.035Z">
+<meta property="og:updated_time" content="2018-02-25T09:51:45.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="粒子群优化（PSO）算法学习笔记">
-<meta name="twitter:description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式更新后个体速度 = 惯性权重 \* 更新前个体速度 + 个体认知系数 \* 0到1的随机数 \* ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新前个体位">
+<meta name="twitter:description" content="基本信息PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。 公式全局版本更新后个体速度 = 惯性权重 * 更新前个体速度 + 个体认知系数 * 0到1的随机数 * ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 更新前全局最优位置 - 更新前个体位置 )  更新后个体位置 = 更新">
 
 
 
@@ -352,10 +352,10 @@
 
       
         <h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>PSO：Particle Swarm Optimization，1995年由Eberhart博士和Kennedy博士一起提出。</p>
-<h1 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h1><pre><code>更新后个体速度 = 惯性权重 \* 更新前个体速度 + 个体认知系数 \* 0到1的随机数 \* ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 全局最优位置 - 更新前个体位置 )
+<h1 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h1><h2 id="全局版本"><a href="#全局版本" class="headerlink" title="全局版本"></a>全局版本</h2><pre><code>更新后个体速度 = 惯性权重 * 更新前个体速度 + 个体认知系数 * 0到1的随机数 * ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 更新前全局最优位置 - 更新前个体位置 )
 
 更新后个体位置 = 更新前个体位置 + 约束因子 * 更新后个体速度
-</code></pre><h1 id="初步形象理解"><a href="#初步形象理解" class="headerlink" title="初步形象理解"></a>初步形象理解</h1><p>一群鸟儿期望寻找一片玉米地。它们都知道自己距离玉米地的距离，但都不知道确切位置。它们相互传递信息，最终所有的鸟都将知道最近的距离。</p>
+</code></pre><h2 id="局部版本"><a href="#局部版本" class="headerlink" title="局部版本"></a>局部版本</h2><h1 id="初步形象理解"><a href="#初步形象理解" class="headerlink" title="初步形象理解"></a>初步形象理解</h1><p>一群鸟儿期望寻找一片玉米地。它们都知道自己距离玉米地的距离，但都不知道确切位置。它们相互传递信息，最终所有的鸟都将知道最近的距离。</p>
 <h1 id="精细理解"><a href="#精细理解" class="headerlink" title="精细理解"></a>精细理解</h1><p>具体到算法中，上述的“鸟”抽象为无质量的例子，仅具有两个属性：位置和速度。每个粒子在搜索空间中搜寻最优解，标记为当前个体的极值，并将其与其他粒子共享，最终找到最优的个体极值作为<strong>当前</strong>全局最优解，所有粒子根据当前个体极值和当前全局最优解来调整速度和位置。</p>
 <p>算法思想步骤如下：</p>
 <ol>
@@ -555,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公式"><span class="nav-number">2.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初步形象理解"><span class="nav-number">3.</span> <span class="nav-text">初步形象理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精细理解"><span class="nav-number">4.</span> <span class="nav-text">精细理解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本信息"><span class="nav-number">1.</span> <span class="nav-text">基本信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公式"><span class="nav-number">2.</span> <span class="nav-text">公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局版本"><span class="nav-number">2.1.</span> <span class="nav-text">全局版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部版本"><span class="nav-number">2.2.</span> <span class="nav-text">局部版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初步形象理解"><span class="nav-number">3.</span> <span class="nav-text">初步形象理解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精细理解"><span class="nav-number">4.</span> <span class="nav-text">精细理解</span></a></li></ol></div>
             
 
           </div>
