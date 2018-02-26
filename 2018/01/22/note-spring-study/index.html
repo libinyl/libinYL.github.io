@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="spring," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="资源spring源码发布在：http://repo.spring.io/release/org/springframework/spring/ spring文档发布在：https://spring.io/docs/reference 或 https://docs.spring.io/spring/docs/ 资源直达： springframework 3.0.0 参考 此版本在web mvc上有很">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring学习笔记">
+<meta property="og:url" content="http://libinyl.github.io/2018/01/22/note-spring-study/index.html">
+<meta property="og:site_name" content="李斌 - LBYL">
+<meta property="og:description" content="资源spring源码发布在：http://repo.spring.io/release/org/springframework/spring/ spring文档发布在：https://spring.io/docs/reference 或 https://docs.spring.io/spring/docs/ 资源直达： springframework 3.0.0 参考 此版本在web mvc上有很">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/webmvcworkflow.png">
+<meta property="og:updated_time" content="2018-02-26T12:21:28.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring学习笔记">
+<meta name="twitter:description" content="资源spring源码发布在：http://repo.spring.io/release/org/springframework/spring/ spring文档发布在：https://spring.io/docs/reference 或 https://docs.spring.io/spring/docs/ 资源直达： springframework 3.0.0 参考 此版本在web mvc上有很">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/webmvcworkflow.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://libinyl.github.io/2018/01/22/note-spring-study/"/>
+
+
+
+
+
+  <title>spring学习笔记 | 李斌 - LBYL</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李斌 - LBYL</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/22/note-spring-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T19:38:47+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p>spring源码发布在：<a href="http://repo.spring.io/release/org/springframework/spring/" target="_blank" rel="noopener">http://repo.spring.io/release/org/springframework/spring/</a></p>
+<p>spring文档发布在：<a href="https://spring.io/docs/reference" target="_blank" rel="noopener">https://spring.io/docs/reference</a> 或 <a href="https://docs.spring.io/spring/docs/" target="_blank" rel="noopener">https://docs.spring.io/spring/docs/</a></p>
+<p>资源直达：</p>
+<p><a href="https://docs.spring.io/spring/docs/3.0.0.RELEASE/reference/pdf/spring-framework-reference.pdf" target="_blank" rel="noopener">springframework 3.0.0 参考</a> 此版本在web mvc上有很大改动，延续至今。</p>
+<h1 id="Springframework文档重点解析"><a href="#Springframework文档重点解析" class="headerlink" title="Springframework文档重点解析"></a>Springframework文档重点解析</h1><h1 id="Bean作用域"><a href="#Bean作用域" class="headerlink" title="Bean作用域"></a>Bean作用域</h1><p>作用域即是指实例化方式。包括<strong>singleton</strong>，<strong>prototype</strong>，<strong>request</strong>等。</p>
+<h2 id="Spring-Web-MVC"><a href="#Spring-Web-MVC" class="headerlink" title="Spring Web MVC"></a>Spring Web MVC</h2><p>singleton，</p>
+<h3 id="quick-start"><a href="#quick-start" class="headerlink" title="quick start"></a>quick start</h3><ol>
+<li>在<code>xml</code>文件中配置<code>Dispatcher Servlet</code></li>
+<li>在<code>WEB-INF</code>文件夹中创建<code>[servlet-name]-servlet.xml</code>格式命名的文件，其中<code>servlet-name</code>即是步骤1中配置的<code>Servlet</code>。</li>
+<li></li>
+</ol>
+<h3 id="Dispatcher-Servlet"><a href="#Dispatcher-Servlet" class="headerlink" title="Dispatcher Servlet"></a>Dispatcher Servlet</h3><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/webmvcworkflow.png" alt=""></p>
+<blockquote>
+<p>The request processing workflow of the Spring Web MVC DispatcherServlet is illustrated in the<br>following diagram. The pattern-savvy reader will recognize that the DispatcherServlet is an<br>expression of the “Front Controller” design pattern (this is a pattern that Spring Web MVC shares with<br>many other leading web frameworks).</p>
+</blockquote>
+<p>在Spring Web MVC框架中，<code>DispatcherServlet</code>的地位举足轻重。在MVC设计模式中，它起到<strong>前端控制器</strong>(Front Controller)的作用,用来分发请求。</p>
+<blockquote>
+<p>The DispatcherServlet is an actual Servlet (it inherits from the HttpServlet base class),<br>and as such is declared in the web.xml of your web application. You need to map requests that you want<br>the DispatcherServlet to handle, by using a URL mapping in the same web.xml file. This is<br>standard J2EE servlet configuration…</p>
+</blockquote>
+<p>事实上，<code>DispatcherServlet</code>本身就是一个<code>Servlet</code>。在使用时，需要像其他<code>Servlet</code>一样配置映射url。如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>example<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>example<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.form<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么所有以<code>.form</code>结尾的请求将被<code>example DispatcherServlet</code>处理。这也是安装spring Web MVC的第一步。</p>
+<blockquote>
+<p>ApplicationContext instances in Spring can be scoped. In the Web MVC framework, each<br>DispatcherServlet has its own WebApplicationContext, which inherits all the beans already<br>defined in the root WebApplicationContext. These inherited beans can be overridden in the<br>servlet-specific scope, and you can define new scope-specific beans local to a given servlet instance.</p>
+</blockquote>
+<p>结合图示，每个<code>DispatcherServlet</code>都有自己的<code>WebApplicationContext</code>，都继承自根<code>WebApplicationContext</code>，也继承了它所有的bean。根<code>WebApplicationContext</code>包含<code>controller</code>，<code>view resolver</code>等其他与web相关的bean。</p>
+<blockquote>
+<p>Upon initialization of a DispatcherServlet, the framework looks for a file named<br>[servlet-name]-servlet.xml in the WEB-INF directory of your web application and creates the<br>beans defined there, overriding the definitions of any beans defined with the same name in the global<br>scope.</p>
+</blockquote>
+<p>接下来，配置文件<code>[servlet-name]-servlet.xml</code>将覆盖全局域中所有同名bean定义。如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>golfing<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>golfing<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/golfing/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>With the above servlet configuration in place, you will need to have a file called<br>/WEB-INF/golfing-servlet.xml in your application; this file will contain all of your Spring Web<br>MVC-specific components (beans). You can change the exact location of this configuration file through a<br>servlet initialization parameter (see below for details).</p>
+</blockquote>
+<p>相应的，需要配置<code>/WEB-INF/golfing-servlet.xml</code>文件。这个文件包含了所有spring web mvc框架的组件（component，也是bean）。此文件的路径是可配置的。</p>
+<p><strong>请求处理流程</strong>：</p>
+<blockquote>
+<p>After you set up a DispatcherServlet, and a request comes in for that specific<br>DispatcherServlet, the DispatcherServlet starts processing the request as follows:</p>
+<ol>
+<li>The WebApplicationContext is searched for and bound in the request as an attribute that the controller and other elements in the process can use. It is bound by default under the key DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE.</li>
+<li>The locale resolver is bound to the request to enable elements in the process to resolve the locale to use when processing the request (rendering the view, preparing data, and so on). If you do not need locale resolving, you do not need it.</li>
+<li>The theme resolver is bound to the request to let elements such as views determine which heme to use. If you do not use themes, you can ignore it.</li>
+<li>If you specify a multipart file resolver, the request is inspected for multiparts; if multiparts are found,the request is wrapped in a MultipartHttpServletRequest for further processing by other elements in the process. (See the section called “Using the MultipartResolver” for further information about multipart handling).</li>
+<li>An appropriate handler is searched for. If a handler is found, the execution chain associated with the handler (preprocessors, postprocessors, and controllers) is executed in order to prepare a model or rendering.</li>
+<li>If a model is returned, the view is rendered. If no model is returned, (may be due to a preprocessor or postprocessor intercepting the request, perhaps for security reasons), no view is rendered, because the request could already have been fulfilled.</li>
+</ol>
+</blockquote>
+<p>当<code>DispatcherServlet</code>接收到与其配置的url相匹配的请求时，作出以下处理：<br>的</p>
+<ol>
+<li>寻找<code>WebApplicationContext</code>，并将其绑定为controller等可用web组件的属性。默认键为<code>DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE</code>。</li>
+<li>国际化相关处理。</li>
+<li>主题相关处理。</li>
+<li>文件相关处理。</li>
+<li>寻找合适的<code>handler</code>。一旦找到，则开始准备<code>model</code>和<code>rendering</code>（对<code>view</code>进行渲染）。</li>
+<li>如果返回了<code>model</code>，说明<code>view</code>已经渲染完毕。如果没有返回，则有可能是安全或其他原因，没有渲染。</li>
+</ol>
+<p><code>@ResponseBody</code>:参考3.0文档p429，如果一个方法注解为<code>@ResponseBody</code>，那么它的返回值将被写入<code>response</code>的<code>HTTP body</code>中。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/22/note-spring-study-v0-9-env/" rel="next" title="spring0.9学习（一） 环境准备">
+                <i class="fa fa-chevron-left"></i> spring0.9学习（一） 环境准备
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/22/note-graph-dfs/" rel="prev" title="图的深度优先遍历项目说明文档">
+                图的深度优先遍历项目说明文档 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李斌</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/libinYL" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:libinworkspace@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://shop114363118.taobao.com" target="_blank" title="TaobaoShop">
+                      
+                        <i class="fa fa-fw fa-taobao"></i>TaobaoShop</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#资源"><span class="nav-number">1.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Springframework文档重点解析"><span class="nav-number">2.</span> <span class="nav-text">Springframework文档重点解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bean作用域"><span class="nav-number">3.</span> <span class="nav-text">Bean作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Web-MVC"><span class="nav-number">3.1.</span> <span class="nav-text">Spring Web MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-start"><span class="nav-number">3.1.1.</span> <span class="nav-text">quick start</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dispatcher-Servlet"><span class="nav-number">3.1.2.</span> <span class="nav-text">Dispatcher Servlet</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李斌</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
