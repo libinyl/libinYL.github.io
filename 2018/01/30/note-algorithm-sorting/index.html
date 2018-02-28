@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
+<meta name="description" content="冒泡排序原理： 比较相邻的元素，如果第一个比第二个大，那么就交换。 对每一对相邻元素都重复第1步，从开始到结尾。这样一来，最后的元素会变成最大的元素。 针对所有元素重复进行1和2，除了最后一个。 持续对越来越少的元素重复以上步骤，直到没有任何一对数字需要比较。  针对以上步骤写伪代码：  第一步  12if (array[i] &amp;gt; array[i+1])    swap(array[i],">
 <meta name="keywords" content="数据结构与算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法笔记 - 排序篇">
 <meta property="og:url" content="http://libinyl.github.io/2018/01/30/note-algorithm-sorting/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
+<meta property="og:description" content="冒泡排序原理： 比较相邻的元素，如果第一个比第二个大，那么就交换。 对每一对相邻元素都重复第1步，从开始到结尾。这样一来，最后的元素会变成最大的元素。 针对所有元素重复进行1和2，除了最后一个。 持续对越来越少的元素重复以上步骤，直到没有任何一对数字需要比较。  针对以上步骤写伪代码：  第一步  12if (array[i] &amp;gt; array[i+1])    swap(array[i],">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-30T11:54:43.825Z">
+<meta property="og:updated_time" content="2018-02-28T08:59:51.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法笔记 - 排序篇">
-<meta name="twitter:description" content="冒泡排序思想：两两比较，逐步向前。保证末序，减 i 减1. 时间复杂度：O(n2) 空间复杂度：O(1) 123i∈[0,N-1)               //循环N-1遍j∈[0,N-1-i)           //每遍循环要处理的无序部分    swap(j,j+1)          //两两排序（升序/降序） java实现： 1234567891011public static vo">
+<meta name="twitter:description" content="冒泡排序原理： 比较相邻的元素，如果第一个比第二个大，那么就交换。 对每一对相邻元素都重复第1步，从开始到结尾。这样一来，最后的元素会变成最大的元素。 针对所有元素重复进行1和2，除了最后一个。 持续对越来越少的元素重复以上步骤，直到没有任何一对数字需要比较。  针对以上步骤写伪代码：  第一步  12if (array[i] &amp;gt; array[i+1])    swap(array[i],">
 
 
 
@@ -352,12 +352,29 @@
       
 
       
-        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p><strong>思想</strong>：两两比较，逐步向前。保证末序，减 i 减1.</p>
+        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><ol>
+<li>比较相邻的元素，如果第一个比第二个大，那么就交换。</li>
+<li>对每一对相邻元素都重复第1步，从开始到结尾。这样一来，最后的元素会变成最大的元素。</li>
+<li>针对所有元素重复进行1和2，除了最后一个。</li>
+<li>持续对越来越少的元素重复以上步骤，直到没有任何一对数字需要比较。</li>
+</ol>
+<p>针对以上步骤写伪代码：</p>
+<ol>
+<li>第一步</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">array</span>[i] &gt; <span class="built_in">array</span>[i+<span class="number">1</span>])</span><br><span class="line">    swap(<span class="built_in">array</span>[i], <span class="built_in">array</span>[i+<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<ol>
+<li>第二步</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i from <span class="number">0</span> to length<span class="number">-1</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">array</span>[i] &gt; <span class="built_in">array</span>[i+<span class="number">1</span>])</span><br><span class="line">        swap(<span class="built_in">array</span>[i], <span class="built_in">array</span>[i+<span class="number">1</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>第三、四步</li>
+</ol>
+<p>问题在于“最后一个”如何定义。由于<strong>已遍历次数=末端已经排序的元素数量</strong>，故<strong>末端除去已经排序好的元素</strong>的长度为<strong>数组长度-末端已经排序的元素数量</strong>，此时<strong>最后一个元素</strong>的<strong>下标</strong>应为<strong>数组长度-末端已经排序的元素数量-1=数组长度-1-遍历次数=数组长度-1-（当前遍历次数-1）=数组长度-当前遍历次数</strong>，而当前遍历次数=外循环变量+1。反应到代码中遍历的终点，应当是<strong>数组长度-外循环变量-1</strong>。</p>
+<p>java实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &gt; array[j+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = array[j+<span class="number">1</span>];</span><br><span class="line">                array[j+<span class="number">1</span>] = array[j];</span><br><span class="line">                array[j] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>时间复杂度</strong>：O(n<sup>2</sup>)</p>
 <p><strong>空间复杂度</strong>：O(1)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i∈[0,N-1)               //循环N-1遍</span><br><span class="line">j∈[0,N-1-i)           //每遍循环要处理的无序部分</span><br><span class="line">    swap(j,j+1)          //两两排序（升序/降序）</span><br></pre></td></tr></table></figure>
-<p>java实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &gt; array[j]) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = array[i];</span><br><span class="line">                array[i] = array[j];</span><br><span class="line">                array[j] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p><strong>思想</strong>：选好放前，选j换i。</p>
 <p><strong>时间复杂度</strong>：O(n<sup>2</sup>)</p>
 <p><strong>空间复杂度</strong>：O(1)</p>
@@ -559,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">3.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理："><span class="nav-number">1.1.</span> <span class="nav-text">原理：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择排序"><span class="nav-number"></span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number"></span> <span class="nav-text">快速排序</span></a></div>
             
 
           </div>

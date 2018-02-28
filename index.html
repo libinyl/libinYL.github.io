@@ -380,13 +380,11 @@
 </table>
 <p>三者的关系：T(n)=O(f(n))</p>
 <h2 id="不等式"><a href="#不等式" class="headerlink" title="不等式"></a>不等式</h2><p>T(n)&lt;=cO(n) c为常数</p>
-<h2 id="计算时间复杂度"><a href="#计算时间复杂度" class="headerlink" title="计算时间复杂度"></a>计算时间复杂度</h2><ol>
-<li><p>设运行次数为t，判断终止条件。比如</p>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        i=i*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 设执行次数为t，则终止条件为 t^2=n，则t=log2n。时间复杂度为O(log2n)</p>
-</li>
-</ol>
-<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>节点的度（degree）：</strong> 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）<br><strong>树的度：</strong> 树的节点中，度数最大的节点，的度数。<br><strong>节点的深度：</strong> 从根节点向下，累加值<br><strong>节点的高度：</strong> 从叶节点向上，累加值<br><strong>树的高度（深度）：</strong> 树中节点最大层数<br><strong>完全二叉树：</strong> 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。</p>
+<h2 id="计算时间复杂度"><a href="#计算时间复杂度" class="headerlink" title="计算时间复杂度"></a>计算时间复杂度</h2><p>设运行次数为t，判断终止条件。比如</p>
+<pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        i=i*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+设执行次数为t，则终止条件为 t^2=n，则t=log2n。时间复杂度为O(log2n)
+</code></pre><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>节点的度（degree）：</strong> 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）<br><strong>树的度：</strong> 树的节点中，度数最大的节点，的度数。<br><strong>节点的深度：</strong> 从根节点向下，累加值<br><strong>节点的高度：</strong> 从叶节点向上，累加值<br><strong>树的高度（深度）：</strong> 树中节点最大层数<br><strong>完全二叉树：</strong> 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。</p>
 <h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><ul>
 <li>树的所有的节点个数=所有节点的度数和 + 1<br>  解释：所有节点的度数和=所有节点数-1（根节点）</li>
 <li>度为m的树中第i层上至多有m^(i-1)个节点，i&gt;=1</li>
