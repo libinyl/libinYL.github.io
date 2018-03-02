@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据结构与算法," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
+<meta name="description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
+<meta name="keywords" content="数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决递归！">
+<meta property="og:title" content="算法学习记录">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/02/note-algorithm-tricks/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
+<meta property="og:description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T08:55:35.030Z">
+<meta property="og:updated_time" content="2018-03-02T08:58:52.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决递归！">
-<meta name="twitter:description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
+<meta name="twitter:title" content="算法学习记录">
+<meta name="twitter:description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>解决递归！ | 李斌 - LBYL</title>
+  <title>算法学习记录 | 李斌 - LBYL</title>
   
 
 
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">解决递归！</h1>
+          <h1 class="post-title" itemprop="name headline">算法学习记录</h1>
         
 
         <div class="post-meta">
@@ -351,8 +352,7 @@
       
 
       
-        <p>参考回答：</p>
-<p>python中的<em>汉诺塔</em>递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎<br><a href="https://www.zhihu.com/question/37152936/answer/149521436" target="_blank" rel="noopener">https://www.zhihu.com/question/37152936/answer/149521436</a></p>
+        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>参考</p>
 <p>作者：半岛<br>链接：<a href="https://www.zhihu.com/question/37152936/answer/149521436" target="_blank" rel="noopener">https://www.zhihu.com/question/37152936/answer/149521436</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <p>重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。</p>
 <p>#1</p>
@@ -406,6 +406,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构与算法/" rel="tag"># 数据结构与算法</a>
+          
+        </div>
       
 
       
@@ -476,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -559,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
