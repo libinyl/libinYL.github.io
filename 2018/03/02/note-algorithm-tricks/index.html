@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="maven," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="servlet  123456&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;javax.servlet-api&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.1.0&amp;lt;/version&amp;gt;    &amp;lt;scope&amp;gt;pro">
-<meta name="keywords" content="maven">
+<meta name="description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven常用依赖快捷查询">
-<meta property="og:url" content="http://libinyl.github.io/2018/02/24/quick-maven-dependency/index.html">
+<meta property="og:title" content="解决递归！">
+<meta property="og:url" content="http://libinyl.github.io/2018/03/02/note-algorithm-tricks/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="servlet  123456&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;javax.servlet-api&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.1.0&amp;lt;/version&amp;gt;    &amp;lt;scope&amp;gt;pro">
+<meta property="og:description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T12:23:45.115Z">
+<meta property="og:updated_time" content="2018-03-02T08:48:42.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven常用依赖快捷查询">
-<meta name="twitter:description" content="servlet  123456&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;javax.servlet&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;javax.servlet-api&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;3.1.0&amp;lt;/version&amp;gt;    &amp;lt;scope&amp;gt;pro">
+<meta name="twitter:title" content="解决递归！">
+<meta name="twitter:description" content="参考回答： python中的汉诺塔递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎https://www.zhihu.com/question/37152936/answer/149521436 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/02/24/quick-maven-dependency/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/03/02/note-algorithm-tricks/"/>
 
 
 
 
 
-  <title>maven常用依赖快捷查询 | 李斌 - LBYL</title>
+  <title>解决递归！ | 李斌 - LBYL</title>
   
 
 
@@ -263,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/24/quick-maven-dependency/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/02/note-algorithm-tricks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -280,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">maven常用依赖快捷查询</h1>
+          <h1 class="post-title" itemprop="name headline">解决递归！</h1>
         
 
         <div class="post-meta">
@@ -292,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T14:24:55+08:00">
-                2018-02-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:44:17+08:00">
+                2018-03-02
               </time>
             
 
@@ -352,14 +351,48 @@
       
 
       
-        <ul>
-<li>servlet</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>mysql/jdbc</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.45<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>参考回答：</p>
+<p>python中的<em>汉诺塔</em>递归算法的具体运算过程是怎样的？ - 半岛的回答 - 知乎<br><a href="https://www.zhihu.com/question/37152936/answer/149521436" target="_blank" rel="noopener">https://www.zhihu.com/question/37152936/answer/149521436</a></p>
+<p>作者：半岛<br>链接：<a href="https://www.zhihu.com/question/37152936/answer/149521436" target="_blank" rel="noopener">https://www.zhihu.com/question/37152936/answer/149521436</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。</p>
+<p>#1</p>
+<p>比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成一个功能：把n个盘子利用缓冲区，从起点运送到终点，期间严格遵守汉诺塔规则。</p>
+<p>这里你暂时不需要去了解每一个步是如何实现的。</p>
+<blockquote>
+<p>move(N,起点，缓冲区，终点）<br>N: 盘子的个数。</p>
+</blockquote>
+<p>#2</p>
+<p>现在有个n个盘子，a,b,c三个塔。</p>
+<p>把n个盘子抽象成两个盘子，n-1 和 底下最大的1</p>
+<blockquote>
+<p>n = (n-1) + 1</p>
+</blockquote>
+<p>这个最简单的玩法如何实现呢</p>
+<p>首先：把n-1 移到 缓冲区             ——-过程1</p>
+<p>然后：把1 移到 终点                    ——-过程2</p>
+<p>最后：把缓冲区的n-1 移到 终点  ——-过程3</p>
+<p>#3</p>
+<p>过程1 如何实现？</p>
+<p>还是召唤神器吧。</p>
+<blockquote>
+<p>move(N,起点，缓冲区，终点）</p>
+</blockquote>
+<p>此时，我们的起点是a,终点是b ,N=n-1,缓冲区只能是c了</p>
+<blockquote>
+<p>move(n-1,a,c,b)</p>
+</blockquote>
+<p>过程2呢？</p>
+<blockquote>
+<p>move(1,a,b,c)</p>
+</blockquote>
+<p>过程3呢？</p>
+<p>move(n-1,b,a,c)</p>
+<p>#4</p>
+<p>哦哦 神器的力量太大，止不住咋办。。</p>
+<blockquote>
+<p>if (N == 1):             a -&gt; c #此时我已经不需要缓冲区了</p>
+</blockquote>
+
       
     </div>
     
@@ -374,12 +407,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/maven/" rel="tag"># maven</a>
-          
-        </div>
-      
 
       
       
@@ -389,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/24/diary180224/" rel="next" title="加油干~">
-                <i class="fa fa-chevron-left"></i> 加油干~
+              <a href="/2018/03/02/diary180302/" rel="next" title="多重任务">
+                <i class="fa fa-chevron-left"></i> 多重任务
               </a>
             
           </div>
@@ -398,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/24/quick-maven-config/" rel="prev" title="maven常用模板与设置">
-                maven常用模板与设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
