@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="T(n)与O(n)   名称 含义     n 问题规模   T(n) 时间复杂度   f(n) 基本运算的频度   O(n) 时间复杂度的数量级    三者的关系：T(n)=O(f(n)) 不等式T(n)&amp;lt;=cO(n) c为常数 计算时间复杂度设运行次数为t，判断终止条件。比如 12345678void fun(int n)&amp;#123;    int i=1;    while(i&amp;lt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T08:55:51.996Z">
+<meta property="og:updated_time" content="2018-03-03T10:26:47.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构总结复习">
 <meta name="twitter:description" content="T(n)与O(n)   名称 含义     n 问题规模   T(n) 时间复杂度   f(n) 基本运算的频度   O(n) 时间复杂度的数量级    三者的关系：T(n)=O(f(n)) 不等式T(n)&amp;lt;=cO(n) c为常数 计算时间复杂度设运行次数为t，判断终止条件。比如 12345678void fun(int n)&amp;#123;    int i=1;    while(i&amp;lt;">
@@ -422,7 +422,19 @@
 </tbody>
 </table>
 <pre><code>即 n = 2^h-1 或 h = log2(n+1)
-</code></pre><h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>“乡”字型遍历。根左右。</p>
+</code></pre><h3 id="各种树的辨析"><a href="#各种树的辨析" class="headerlink" title="各种树的辨析"></a>各种树的辨析</h3><ul>
+<li>二叉树<ul>
+<li>完全二叉树 对于一颗二叉树，假设其深度为d（d&gt;1）。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树；<ul>
+<li>满二叉树 所有叶节点都在最底层的完全二叉树；</li>
+</ul>
+</li>
+<li>平衡二叉树（AVL树）当且仅当任何节点的两棵子树的高度差不大于1的二叉树；</li>
+<li>排序二叉树（二叉查找树，BST）</li>
+<li>B树</li>
+</ul>
+</li>
+</ul>
+<h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>“乡”字型遍历。根左右。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderTraversal</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对root进行操作</span></span><br><span class="line">    <span class="comment">// doSth(root);</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    preOrderTraversal(root.leftNode);</span><br><span class="line">    preOrderTraversal(root.rightNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>左根右</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderTraversal</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    preOrderTraversal(root.leftNode);</span><br><span class="line">    <span class="comment">//对root进行操作</span></span><br><span class="line">    <span class="comment">// doSth(root);</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    preOrderTraversal(root.rightNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -547,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -624,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T-n-与O-n"><span class="nav-number">1.</span> <span class="nav-text">T(n)与O(n)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式"><span class="nav-number">2.</span> <span class="nav-text">不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算时间复杂度"><span class="nav-number">3.</span> <span class="nav-text">计算时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">4.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算"><span class="nav-number">4.2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的遍历"><span class="nav-number">4.3.</span> <span class="nav-text">二叉树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先序遍历"><span class="nav-number">4.3.1.</span> <span class="nav-text">先序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中序遍历"><span class="nav-number">4.3.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后序遍历"><span class="nav-number">4.3.3.</span> <span class="nav-text">后序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层序遍历（广度优先遍历）"><span class="nav-number">4.3.4.</span> <span class="nav-text">层序遍历（广度优先遍历）</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T-n-与O-n"><span class="nav-number">1.</span> <span class="nav-text">T(n)与O(n)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不等式"><span class="nav-number">2.</span> <span class="nav-text">不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算时间复杂度"><span class="nav-number">3.</span> <span class="nav-text">计算时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">4.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算"><span class="nav-number">4.2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各种树的辨析"><span class="nav-number">4.3.</span> <span class="nav-text">各种树的辨析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的遍历"><span class="nav-number">4.4.</span> <span class="nav-text">二叉树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先序遍历"><span class="nav-number">4.4.1.</span> <span class="nav-text">先序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中序遍历"><span class="nav-number">4.4.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后序遍历"><span class="nav-number">4.4.3.</span> <span class="nav-text">后序遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层序遍历（广度优先遍历）"><span class="nav-number">4.4.4.</span> <span class="nav-text">层序遍历（广度优先遍历）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
