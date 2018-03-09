@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="什么是哈希？柯林斯词典中[1]对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？">
+<meta name="description" content="什么是哈希？柯林斯词典中对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？对比来看，要想从数组中查找元素，只需确定元">
 <meta name="keywords" content="数据结构,hashmap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈希表 Q &amp; A">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/09/note-adt-hash/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="什么是哈希？柯林斯词典中[1]对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？">
+<meta property="og:description" content="什么是哈希？柯林斯词典中对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？对比来看，要想从数组中查找元素，只需确定元">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T07:25:30.279Z">
+<meta property="og:updated_time" content="2018-03-09T08:16:25.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哈希表 Q &amp; A">
-<meta name="twitter:description" content="什么是哈希？柯林斯词典中[1]对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？">
+<meta name="twitter:description" content="什么是哈希？柯林斯词典中对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？对比来看，要想从数组中查找元素，只需确定元">
 
 
 
@@ -352,7 +352,7 @@
       
 
       
-        <h2 id="什么是哈希？"><a href="#什么是哈希？" class="headerlink" title="什么是哈希？"></a>什么是哈希？</h2><p>柯林斯词典中<a href="https://www.collinsdictionary.com/dictionary/english/hash" title="柯林斯词典对 hash 的解释" target="_blank" rel="noopener">[1]</a>对hash一词的解释是切碎或剁碎的意思：</p>
+        <h2 id="什么是哈希？"><a href="#什么是哈希？" class="headerlink" title="什么是哈希？"></a>什么是哈希？</h2><p>柯林斯词典中对hash一词的<a href="https://www.collinsdictionary.com/dictionary/english/hash" target="_blank" rel="noopener">解释</a>是切碎或剁碎的意思：</p>
 <blockquote>
 <p>to chop into small pieces.</p>
 </blockquote>
@@ -361,7 +361,34 @@
 <p>PHRASE If you make a hash of a job or task, you do it very badly.</p>
 </blockquote>
 <p>因此，在计算机科学中，<strong>hash</strong>成为<strong>散列</strong>的代名词。</p>
-<h2 id="什么是散列？"><a href="#什么是散列？" class="headerlink" title="什么是散列？"></a>什么是散列？</h2>
+<h2 id="什么是散列？"><a href="#什么是散列？" class="headerlink" title="什么是散列？"></a>什么是散列？</h2><p>对比来看，要想从数组中查找元素，只需确定元素的索引，无需涉及其他数组元素。</p>
+<p>散列也是如此，无需查找（遍历），只需根据<strong>键</strong>来确定元素索引，即可找到对应的元素。数组是散列的一种，是<strong>散列表</strong>。</p>
+<h2 id="什么是散列函数？"><a href="#什么是散列函数？" class="headerlink" title="什么是散列函数？"></a>什么是散列函数？</h2><p>散列函数的作用是转化。从<strong>键</strong>到<strong>索引值</strong>的转化过程，就是散列函数处理的。键可能是数字，可能是字符串，需要通过散列函数处理。</p>
+<h2 id="理想的散列是什么样子的？"><a href="#理想的散列是什么样子的？" class="headerlink" title="理想的散列是什么样子的？"></a>理想的散列是什么样子的？</h2><p>理想情况下，散列函数将每个<strong>键</strong>都映射到散列表（或称之为哈希表）中的唯一一个元素。比如键的范围是从0000到9999，散列函数产生从0到9999的整数，每个键对应唯一一个整数，也就对应相应的元素。此时的散列函数称为完美的散列函数。</p>
+<h2 id="实际情况下的散列是什么样子的？"><a href="#实际情况下的散列是什么样子的？" class="headerlink" title="实际情况下的散列是什么样子的？"></a>实际情况下的散列是什么样子的？</h2><p>实际情况下，不是每个键都会派上用场。比如上例，键的范围是0000到9999，可实际用到的可能仅仅只有少数。比如，电话号码的范围是0000到9999，而实际拥有电话的人可能只有几百人。那么散列表就可能会是稀疏的，浪费了大量空间。</p>
+<h2 id="典型的散列函数？"><a href="#典型的散列函数？" class="headerlink" title="典型的散列函数？"></a>典型的散列函数？</h2><p>典型的散列函数需要进行下列两个步骤：</p>
+<ol>
+<li>将查找键转换为一个称为<strong>散列码</strong>(hash code)的整数；</li>
+<li>将散列码<strong>压缩</strong>到散列表的索引范围。</li>
+</ol>
+<p>如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回含tableSize个位置的数组的一个索引</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = num的最后四位数字;</span><br><span class="line">    <span class="keyword">return</span> i % tableSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于tableSize小于查找键的数量，所以某些键可能会映射到相同的索引，这一现象称为<strong>冲突</strong>。为了解决这一问题，需要<strong>处理冲突</strong>。</p>
+<h2 id="较好的散列函数？"><a href="#较好的散列函数？" class="headerlink" title="较好的散列函数？"></a>较好的散列函数？</h2><p>散列函数只需产生适合的整数，而解决冲突需要一定代价。这说明较好的散列函数应该：</p>
+<ol>
+<li>使冲突最少</li>
+<li>计算快</li>
+</ol>
+<p>为了减少冲突的几率，散列函数应当使元素尽量均匀地分布在散列表中。</p>
+<h2 id="计算散列码"><a href="#计算散列码" class="headerlink" title="计算散列码"></a>计算散列码</h2><p>刚刚提到，典型的散列函数的第一步是将键转换为散列码。不仅是数字和字符串，任何类型的对象都可以作为键。在Java中，每个Object都有一个<code>hashCode</code>方法，用于产生散列码。</p>
+<p>但是，这个默认的散列码不适合用于散列，因为对于两个 equal 的对象，它将产生不同的散列码。因此，应当自定义<code>hashCode</code>方法。准则如下：</p>
+<ol>
+<li>如果一个类覆盖了方法<code>equals</code>方法，则应该覆盖<code>hashCode</code>方法。</li>
+<li>如果<code>equals</code>方法认为两个对象相等，那么<code>hashCode</code>方法对它们必须返回相同的散列码。</li>
+<li>如果在同一程序中对一个对象调用多次<code>hashCode</code>方法，且它们没有改变，必须返回相同的散列码。</li>
+<li>在同一程序的两次执行过程中，对象的散列码可以不同。</li>
+</ol>
+
       
     </div>
     
@@ -555,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是哈希？"><span class="nav-number">1.</span> <span class="nav-text">什么是哈希？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列？"><span class="nav-number">2.</span> <span class="nav-text">什么是散列？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是哈希？"><span class="nav-number">1.</span> <span class="nav-text">什么是哈希？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列？"><span class="nav-number">2.</span> <span class="nav-text">什么是散列？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列函数？"><span class="nav-number">3.</span> <span class="nav-text">什么是散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理想的散列是什么样子的？"><span class="nav-number">4.</span> <span class="nav-text">理想的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际情况下的散列是什么样子的？"><span class="nav-number">5.</span> <span class="nav-text">实际情况下的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型的散列函数？"><span class="nav-number">6.</span> <span class="nav-text">典型的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#较好的散列函数？"><span class="nav-number">7.</span> <span class="nav-text">较好的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算散列码"><span class="nav-number">8.</span> <span class="nav-text">计算散列码</span></a></li></ol></div>
             
 
           </div>
