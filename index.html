@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/note-adt-hash/" itemprop="url">哈希表 Q & A</a></h1>
+                <a class="post-title-link" href="/2018/03/09/note-adt-hash/" itemprop="url">哈希·学习记录</a></h1>
         
 
         <div class="post-meta">
@@ -363,7 +363,7 @@
 <p>因此，在计算机科学中，<strong>hash</strong>成为<strong>散列</strong>的代名词。</p>
 <h2 id="什么是散列？"><a href="#什么是散列？" class="headerlink" title="什么是散列？"></a>什么是散列？</h2><p>对比来看，要想从数组中查找元素，只需确定元素的索引，无需涉及其他数组元素。</p>
 <p>散列也是如此，无需查找（遍历），只需根据<strong>键</strong>来确定元素索引，即可找到对应的元素。数组是散列的一种，是<strong>散列表</strong>。</p>
-<h2 id="什么是散列函数？"><a href="#什么是散列函数？" class="headerlink" title="什么是散列函数？"></a>什么是散列函数？</h2><p>散列函数的作用是转化。从<strong>键</strong>到<strong>索引值</strong>的转化过程，就是散列函数处理的。键可能是数字，可能是字符串，需要通过散列函数处理。</p>
+<h2 id="什么是散列函数？"><a href="#什么是散列函数？" class="headerlink" title="什么是散列函数？"></a>什么是散列函数？</h2><p>散列函数的作用是转化。从<strong>键</strong>到<strong>索引值</strong>的转化过程，就是散列函数处理的。键可能是数字，可能是字符串，需要通过散列函数处理，转化为整数。</p>
 <h2 id="理想的散列是什么样子的？"><a href="#理想的散列是什么样子的？" class="headerlink" title="理想的散列是什么样子的？"></a>理想的散列是什么样子的？</h2><p>理想情况下，散列函数将每个<strong>键</strong>都映射到散列表（或称之为哈希表）中的唯一一个元素。比如键的范围是从0000到9999，散列函数产生从0到9999的整数，每个键对应唯一一个整数，也就对应相应的元素。此时的散列函数称为完美的散列函数。</p>
 <h2 id="实际情况下的散列是什么样子的？"><a href="#实际情况下的散列是什么样子的？" class="headerlink" title="实际情况下的散列是什么样子的？"></a>实际情况下的散列是什么样子的？</h2><p>实际情况下，不是每个键都会派上用场。比如上例，键的范围是0000到9999，可实际用到的可能仅仅只有少数。比如，电话号码的范围是0000到9999，而实际拥有电话的人可能只有几百人。那么散列表就可能会是稀疏的，浪费了大量空间。</p>
 <h2 id="典型的散列函数？"><a href="#典型的散列函数？" class="headerlink" title="典型的散列函数？"></a>典型的散列函数？</h2><p>典型的散列函数需要进行下列两个步骤：</p>
@@ -410,7 +410,14 @@ hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
 <p>另外，hashCode可能会返回负值。范围是1-n到0，令结果加上n即可。</p>
 <p>因此，我们可以有如下实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(K key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hashIndex = key.hashCode() % hashTable.length;</span><br><span class="line">    <span class="keyword">if</span>(hashIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        hashIndex = hashIndex + hashTable.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hashIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h2><p>处理冲突有两种选择：</p>
+<ol>
+<li>使用散列表中的另一个位置。</li>
+<li>修改散列表的结构，让每个数组位置可以表示多个值。</li>
+</ol>
+<p>前者称为<strong>开放定址</strong>（open addressing），暂且不谈。</p>
+<h3 id="链地址"><a href="#链地址" class="headerlink" title="链地址"></a>链地址</h3><p>每个数组的位置可以表示不知一个值，这样的位置被称为<strong>捅</strong>。而一旦涉及数组，则会有大量的内存消耗。而用链表实现桶是合理的选择，内存仅在需要时才分配。使用链表构成的桶处理冲突，被称为链地址。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
           
         
       
