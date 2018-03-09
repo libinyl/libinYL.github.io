@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="什么是哈希？柯林斯词典中对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？对比来看，要想从数组中查找元素，只需确定元">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T08:16:25.207Z">
+<meta property="og:updated_time" content="2018-03-09T08:50:17.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="哈希表 Q &amp; A">
 <meta name="twitter:description" content="什么是哈希？柯林斯词典中对hash一词的解释是切碎或剁碎的意思：  to chop into small pieces.  或者是一种习语，把事情搞得一团糟。  PHRASE If you make a hash of a job or task, you do it very badly.  因此，在计算机科学中，hash成为散列的代名词。 什么是散列？对比来看，要想从数组中查找元素，只需确定元">
@@ -380,7 +380,7 @@
 <li>计算快</li>
 </ol>
 <p>为了减少冲突的几率，散列函数应当使元素尽量均匀地分布在散列表中。</p>
-<h2 id="计算散列码"><a href="#计算散列码" class="headerlink" title="计算散列码"></a>计算散列码</h2><p>刚刚提到，典型的散列函数的第一步是将键转换为散列码。不仅是数字和字符串，任何类型的对象都可以作为键。在Java中，每个Object都有一个<code>hashCode</code>方法，用于产生散列码。</p>
+<h2 id="计算散列码"><a href="#计算散列码" class="headerlink" title="计算散列码"></a>计算散列码</h2><h3 id="类类型的散列码"><a href="#类类型的散列码" class="headerlink" title="类类型的散列码"></a>类类型的散列码</h3><p>刚刚提到，典型的散列函数的第一步是将键转换为散列码。不仅是数字和字符串，任何类型的对象都可以作为键。在Java中，每个Object都有一个<code>hashCode</code>方法，用于产生散列码。</p>
 <p>但是，这个默认的散列码不适合用于散列，因为对于两个 equal 的对象，它将产生不同的散列码。因此，应当自定义<code>hashCode</code>方法。准则如下：</p>
 <ol>
 <li>如果一个类覆盖了方法<code>equals</code>方法，则应该覆盖<code>hashCode</code>方法。</li>
@@ -388,6 +388,19 @@
 <li>如果在同一程序中对一个对象调用多次<code>hashCode</code>方法，且它们没有改变，必须返回相同的散列码。</li>
 <li>在同一程序的两次执行过程中，对象的散列码可以不同。</li>
 </ol>
+<p>注：一般情况下，虽然相等的对象有相同的散列码，但是<strong>不相等的对象也有可能有相同的散列码</strong>，此时产生冲突，应竭力避免。</p>
+<h3 id="字符串的散列码"><a href="#字符串的散列码" class="headerlink" title="字符串的散列码"></a>字符串的散列码</h3><p>容易想到的方式有，为A~Z每个字母分配一个整数，或者用Unicode代替，散列函数取每个字符串开头的几个字母对应的整数。然而如果开头字母相同，则散列码相同。事实上，任何使用特定的字母的散列函数都无法将字符串均匀地分布在散列中。因为<strong>现实世界的数据不是均匀的</strong>。</p>
+<h4 id="更好的字符串散列码"><a href="#更好的字符串散列码" class="headerlink" title="更好的字符串散列码"></a>更好的字符串散列码</h4><p>Horner法：每个字符的Unicode值乘以与这个字符位置有关的因子，散列码就是这些乘积之和。对于字符串s，设g为某一常数，u(0)到u(n-1)为每个字符，有</p>
+<pre><code>s = u(0)u(1)……u(n-1)
+hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
+</code></pre><p>在某一版本的Java中，String类实现的<code>hashCode</code>方法是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = s.getLength();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">    hash = g * hash + s.charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基本类型的散列码"><a href="#基本类型的散列码" class="headerlink" title="基本类型的散列码"></a>基本类型的散列码</h3><p>对于<code>int</code>，<code>short</code>，<code>char</code>，<code>byte</code>的基本类型，可以将他们转化为<code>int</code>，直接作为散列码。</p>
+<p>对于其他基本类型，可以用内部的二进制表示。如果是<code>long</code>类型，则含有64位，如果简单的转换为<code>int</code>，或者将其对2^32取模，则会丢失前32位。结果是，所有只在前32位不同的键将有相同的散列码。这是我们不希望的。所以，我们要<strong>考虑到整个键，不要忽略它的一部分</strong>。</p>
+<p>对于<code>long</code>类型对象，一种方法是，将它分开成若干部分，用各种位操作将这些部分结合起来。这称为<strong>折叠</strong>。</p>
+<p>Java中的做法是</p>
+<pre><code>(int)(key^(key&gt;&gt;32))
+</code></pre><p>即，将key右移32位，并与它原本的值取位或运算。右移的步骤丢弃了高32位，位或的步骤将高低32位结合。最后转化为<code>int</code>，丢弃高32位。这样有效的利用了key的高低32位，也就是考虑了全部的元素。</p>
 
       
     </div>
@@ -582,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是哈希？"><span class="nav-number">1.</span> <span class="nav-text">什么是哈希？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列？"><span class="nav-number">2.</span> <span class="nav-text">什么是散列？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列函数？"><span class="nav-number">3.</span> <span class="nav-text">什么是散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理想的散列是什么样子的？"><span class="nav-number">4.</span> <span class="nav-text">理想的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际情况下的散列是什么样子的？"><span class="nav-number">5.</span> <span class="nav-text">实际情况下的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型的散列函数？"><span class="nav-number">6.</span> <span class="nav-text">典型的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#较好的散列函数？"><span class="nav-number">7.</span> <span class="nav-text">较好的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算散列码"><span class="nav-number">8.</span> <span class="nav-text">计算散列码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是哈希？"><span class="nav-number">1.</span> <span class="nav-text">什么是哈希？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列？"><span class="nav-number">2.</span> <span class="nav-text">什么是散列？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是散列函数？"><span class="nav-number">3.</span> <span class="nav-text">什么是散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理想的散列是什么样子的？"><span class="nav-number">4.</span> <span class="nav-text">理想的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际情况下的散列是什么样子的？"><span class="nav-number">5.</span> <span class="nav-text">实际情况下的散列是什么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型的散列函数？"><span class="nav-number">6.</span> <span class="nav-text">典型的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#较好的散列函数？"><span class="nav-number">7.</span> <span class="nav-text">较好的散列函数？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算散列码"><span class="nav-number">8.</span> <span class="nav-text">计算散列码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类类型的散列码"><span class="nav-number">8.1.</span> <span class="nav-text">类类型的散列码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的散列码"><span class="nav-number">8.2.</span> <span class="nav-text">字符串的散列码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更好的字符串散列码"><span class="nav-number">8.2.1.</span> <span class="nav-text">更好的字符串散列码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型的散列码"><span class="nav-number">8.3.</span> <span class="nav-text">基本类型的散列码</span></a></li></ol></li></ol></div>
             
 
           </div>
