@@ -401,6 +401,15 @@ hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
 <p>Java中的做法是</p>
 <pre><code>(int)(key^(key&gt;&gt;32))
 </code></pre><p>即，将key右移32位，并与它原本的值取位或运算。右移的步骤丢弃了高32位，位或的步骤将高低32位结合。最后转化为<code>int</code>，丢弃高32位。这样有效的利用了key的高低32位，也就是考虑了全部的元素。</p>
+<p>对于<code>double</code>类型的操作是类似的，但需要借助<code>Double.doubleToLongBits</code>方法来获取key的位组合。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> bits = Double.doubleToLongBits(key);</span><br><span class="line"><span class="keyword">int</span> hashCode = (<span class="keyword">int</span>)(bits^(bits&gt;&gt;<span class="number">32</span>))</span><br></pre></td></tr></table></figure>
+<p>对于float，散列码可以就是它的32位，通过调用<code>Float.floatToIntBits(key)</code>得到。</p>
+<p>事实上，以上基本类型的散列计算已经包含在相应包装类的<code>hashCode</code>方法实现中。</p>
+<h2 id="将散列码压缩为散列表的索引"><a href="#将散列码压缩为散列表的索引" class="headerlink" title="将散列码压缩为散列表的索引"></a>将散列码压缩为散列表的索引</h2><p>将一个整数缩小至指定范围，最常用的就是取模运算。但是这不是理想的。考虑到一个特性：一个数在<strong>对偶数取模</strong>之后，<strong>奇偶性</strong>不会变化。而（例如）<strong>基于内存地址的散列码通常是偶数</strong>，索引可能不再均匀分布，而偏向偶数。因此，散列表长度只能是奇数。</p>
+<p>当n为素数时，c % n 将等于0到n-1均匀分布值。</p>
+<p>另外，hashCode可能会返回负值。范围是1-n到0，令结果加上n即可。</p>
+<p>因此，我们可以有如下实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(K key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hashIndex = key.hashCode() % hashTable.length;</span><br><span class="line">    <span class="keyword">if</span>(hashIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        hashIndex = hashIndex + hashTable.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hashIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
