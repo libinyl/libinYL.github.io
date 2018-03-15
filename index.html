@@ -397,11 +397,13 @@
 </ul>
 </li>
 <li>平衡二叉树（AVL树）当且仅当任何节点的两棵子树的高度差不大于1的二叉树；</li>
-<li>排序二叉树（二叉查找树，BST）</li>
+<li>二叉排序树=二叉查找树=二叉搜索树=BST（二叉查找树，BST）</li>
 <li>B树</li>
 </ul>
 </li>
 </ul>
+<h3 id="各种二叉树的特点"><a href="#各种二叉树的特点" class="headerlink" title="各种二叉树的特点"></a>各种二叉树的特点</h3><h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h4><p>特点：每个节点都满足，左孩子上所有节点 &lt; 该节点 &lt; 右孩子上所有节点。</p>
+<p>事实上，对二叉查找树进行中序遍历，会升序输出。</p>
 <h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>“乡”字型遍历。根左右。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrderTraversal</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//对root进行操作</span></span><br><span class="line">    <span class="comment">// doSth(root);</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    preOrderTraversal(root.leftNode);</span><br><span class="line">    preOrderTraversal(root.rightNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h4><p>左根右</p>
