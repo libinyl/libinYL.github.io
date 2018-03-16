@@ -259,6 +259,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/diary20180316/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/diary20180316/" itemprop="url">diary20180316</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T12:29:33+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>12:29:50</code> 来到凯李咖啡。果然和在家非常不一样。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/quick-adt-useful/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -519,20 +661,78 @@
 </tbody>
 </table>
 <pre><code>即 n = 2^h-1 或 h = log2(n+1)
-</code></pre><h1 id="各种树的辨析"><a href="#各种树的辨析" class="headerlink" title="各种树的辨析"></a>各种树的辨析</h1><ul>
-<li>二叉树<ul>
-<li>完全二叉树 对于一颗二叉树，假设其深度为d（d&gt;1）。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树；<ul>
-<li>满二叉树 所有叶节点都在最底层的完全二叉树；</li>
-</ul>
-</li>
-<li>平衡二叉树（AVL树）当且仅当任何节点的两棵子树的高度差不大于1的二叉树；</li>
-<li>二叉排序树=二叉查找树=二叉搜索树=BST（二叉查找树，BST）</li>
-<li>B树</li>
-</ul>
-</li>
-</ul>
-<h1 id="各种二叉树的特点"><a href="#各种二叉树的特点" class="headerlink" title="各种二叉树的特点"></a>各种二叉树的特点</h1><h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p>特点：每个节点都满足，左孩子上所有节点 &lt; 该节点 &lt; 右孩子上所有节点。</p>
+</code></pre><h1 id="数据结构的发展"><a href="#数据结构的发展" class="headerlink" title="数据结构的发展"></a>数据结构的发展</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">数据结构</th>
+<th style="text-align:center">优势</th>
+<th style="text-align:center">限制</th>
+<th style="text-align:center">劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数组</td>
+<td style="text-align:center">下标寻址迅速</td>
+<td style="text-align:center">计算机内存有限，数组长度有限；查找最坏情况需要遍历整个数组</td>
+<td style="text-align:center">查找复杂度过高；插入和删除都比较复杂</td>
+</tr>
+<tr>
+<td style="text-align:center">链表</td>
+<td style="text-align:center">增删方便</td>
+<td style="text-align:center">结构复杂</td>
+<td style="text-align:center">查找耗时</td>
+</tr>
+<tr>
+<td style="text-align:center">二叉查找树</td>
+<td style="text-align:center">最好情况下查找复杂度较低</td>
+<td style="text-align:center">可能退化成链表</td>
+<td style="text-align:center">最坏情况下=链表</td>
+</tr>
+<tr>
+<td style="text-align:center">哈希表</td>
+<td style="text-align:center">数组和链表的折中</td>
+<td style="text-align:center">依赖散列函数的设计，数组不能无现场，链表不适合查找</td>
+<td style="text-align:center">不适合大规模查找</td>
+</tr>
+<tr>
+<td style="text-align:center">AVL树</td>
+<td style="text-align:center">查找稳定在O(logN)</td>
+<td style="text-align:center">旋转复杂</td>
+<td style="text-align:center">插入和删除较慢</td>
+</tr>
+<tr>
+<td style="text-align:center">红黑树</td>
+<td style="text-align:center">插入效率较高</td>
+<td style="text-align:center">平衡树与AVL树的折中</td>
+<td style="text-align:center">不易实现</td>
+</tr>
+</tbody>
+</table>
+<h1 id="各种二叉树的特点"><a href="#各种二叉树的特点" class="headerlink" title="各种二叉树的特点"></a>各种二叉树的特点</h1><h2 id="二叉搜索树（Binary-Search-Tree，BST）"><a href="#二叉搜索树（Binary-Search-Tree，BST）" class="headerlink" title="二叉搜索树（Binary Search Tree，BST）"></a>二叉搜索树（Binary Search Tree，BST）</h2><p>特点：每个节点都满足，左孩子上所有节点 &lt; 该节点 &lt; 右孩子上所有节点。</p>
 <p>事实上，对二叉查找树进行中序（左根右）遍历，会升序输出。</p>
+<p>优势：中序遍历可以快速检索</p>
+<p>劣势：如果插入的节点本身是有序（如插入 [1,2,3,4,5,6]）时，成为单链表，查找效率大大下降。</p>
+<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>特点：左右两个子树高度差的绝对值不超过1.</p>
+<h2 id="平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）"><a href="#平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）" class="headerlink" title="平衡二叉搜索树（Adelson-Velskii and Landis，AVL）"></a>平衡二叉搜索树（Adelson-Velskii and Landis，AVL）</h2><p>特点：带有平衡条件的二叉查找树。</p>
+<p>作用：很好的解决了二叉查找树退化成链表的问题。把插入、查找、删除的时间复杂度维持在O(log2N).</p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>特点：</p>
+<ol>
+<li>不是严格的平衡二叉树，放松了平衡二叉树的某些要求，提升了性能。</li>
+<li>算法时间复杂度与AVL树相同，但统计性能比AVL树要高。</li>
+</ol>
+<p>优势：</p>
+<ol>
+<li>能够以O(log2N)的时间复杂度进行搜索、插入、删除操作。</li>
+<li>任何不平衡都会在3次旋转内解决。</li>
+<li>最坏情况依然是高效的。</li>
+</ol>
+<p>劣势：</p>
+<ol>
+<li>查找性能比AVL树稍差</li>
+<li>插入和删除都需要一定的维护</li>
+</ol>
+<p>实现：TreeMap</p>
 
           
         
@@ -1657,158 +1857,6 @@ hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/09/diary180309/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/diary180309/" itemprop="url">自作多情的终局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T11:44:51+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>11:46:12</code> 去卫生站拿了化验报告，疫苗生效。</p>
-<p>与老爸的恶搞，哈哈哈哈</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/diary180309-1.png" alt=""></p>
-<p>阳光正好哇。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/diary180309-2.jpg" alt=""></p>
-<p>下载了小米云同步助手。</p>
-<p><code>21:30:16</code> 身体异样记录：晚上不宜喝酒。喝酒接近困倦，浪费一堆时间。</p>
-<p><code>21:44:26</code> 无论何时的疲惫，只要换个话题，新鲜的，或者许久未提的，总能打气精神。</p>
-<p>用上了wox，非常好用。</p>
-<p><code>23:27:54</code> 编程不能马虎的地方 1. 忘记终止条件的return  2. 比较对象从<code>array[i]&lt;array[j]</code>写成<code>i&lt;j</code></p>
-<p><code>1:39:56</code> 删除了所有留言。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1859,7 +1907,7 @@ hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

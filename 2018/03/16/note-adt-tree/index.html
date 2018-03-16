@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="定义节点的度（degree）： 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）树的度： 树的节点中，度数最大的节点，的度数。节点的深度： 从根节点向下，累加值节点的高度： 从叶节点向上，累加值树的高度（深度）： 树中节点最大层数完全二叉树： 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。 计算 树的所有的节点个数=所有节点的度数和 + 1  解释：所有节点的度数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T17:27:09.521Z">
+<meta property="og:updated_time" content="2018-03-16T05:31:38.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树的概念与辨析">
 <meta name="twitter:description" content="定义节点的度（degree）： 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）树的度： 树的节点中，度数最大的节点，的度数。节点的深度： 从根节点向下，累加值节点的高度： 从叶节点向上，累加值树的高度（深度）： 树中节点最大层数完全二叉树： 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。 计算 树的所有的节点个数=所有节点的度数和 + 1  解释：所有节点的度数">
@@ -390,20 +390,78 @@
 </tbody>
 </table>
 <pre><code>即 n = 2^h-1 或 h = log2(n+1)
-</code></pre><h1 id="各种树的辨析"><a href="#各种树的辨析" class="headerlink" title="各种树的辨析"></a>各种树的辨析</h1><ul>
-<li>二叉树<ul>
-<li>完全二叉树 对于一颗二叉树，假设其深度为d（d&gt;1）。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树；<ul>
-<li>满二叉树 所有叶节点都在最底层的完全二叉树；</li>
-</ul>
-</li>
-<li>平衡二叉树（AVL树）当且仅当任何节点的两棵子树的高度差不大于1的二叉树；</li>
-<li>二叉排序树=二叉查找树=二叉搜索树=BST（二叉查找树，BST）</li>
-<li>B树</li>
-</ul>
-</li>
-</ul>
-<h1 id="各种二叉树的特点"><a href="#各种二叉树的特点" class="headerlink" title="各种二叉树的特点"></a>各种二叉树的特点</h1><h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p>特点：每个节点都满足，左孩子上所有节点 &lt; 该节点 &lt; 右孩子上所有节点。</p>
+</code></pre><h1 id="数据结构的发展"><a href="#数据结构的发展" class="headerlink" title="数据结构的发展"></a>数据结构的发展</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">数据结构</th>
+<th style="text-align:center">优势</th>
+<th style="text-align:center">限制</th>
+<th style="text-align:center">劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数组</td>
+<td style="text-align:center">下标寻址迅速</td>
+<td style="text-align:center">计算机内存有限，数组长度有限；查找最坏情况需要遍历整个数组</td>
+<td style="text-align:center">查找复杂度过高；插入和删除都比较复杂</td>
+</tr>
+<tr>
+<td style="text-align:center">链表</td>
+<td style="text-align:center">增删方便</td>
+<td style="text-align:center">结构复杂</td>
+<td style="text-align:center">查找耗时</td>
+</tr>
+<tr>
+<td style="text-align:center">二叉查找树</td>
+<td style="text-align:center">最好情况下查找复杂度较低</td>
+<td style="text-align:center">可能退化成链表</td>
+<td style="text-align:center">最坏情况下=链表</td>
+</tr>
+<tr>
+<td style="text-align:center">哈希表</td>
+<td style="text-align:center">数组和链表的折中</td>
+<td style="text-align:center">依赖散列函数的设计，数组不能无现场，链表不适合查找</td>
+<td style="text-align:center">不适合大规模查找</td>
+</tr>
+<tr>
+<td style="text-align:center">AVL树</td>
+<td style="text-align:center">查找稳定在O(logN)</td>
+<td style="text-align:center">旋转复杂</td>
+<td style="text-align:center">插入和删除较慢</td>
+</tr>
+<tr>
+<td style="text-align:center">红黑树</td>
+<td style="text-align:center">插入效率较高</td>
+<td style="text-align:center">平衡树与AVL树的折中</td>
+<td style="text-align:center">不易实现</td>
+</tr>
+</tbody>
+</table>
+<h1 id="各种二叉树的特点"><a href="#各种二叉树的特点" class="headerlink" title="各种二叉树的特点"></a>各种二叉树的特点</h1><h2 id="二叉搜索树（Binary-Search-Tree，BST）"><a href="#二叉搜索树（Binary-Search-Tree，BST）" class="headerlink" title="二叉搜索树（Binary Search Tree，BST）"></a>二叉搜索树（Binary Search Tree，BST）</h2><p>特点：每个节点都满足，左孩子上所有节点 &lt; 该节点 &lt; 右孩子上所有节点。</p>
 <p>事实上，对二叉查找树进行中序（左根右）遍历，会升序输出。</p>
+<p>优势：中序遍历可以快速检索</p>
+<p>劣势：如果插入的节点本身是有序（如插入 [1,2,3,4,5,6]）时，成为单链表，查找效率大大下降。</p>
+<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>特点：左右两个子树高度差的绝对值不超过1.</p>
+<h2 id="平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）"><a href="#平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）" class="headerlink" title="平衡二叉搜索树（Adelson-Velskii and Landis，AVL）"></a>平衡二叉搜索树（Adelson-Velskii and Landis，AVL）</h2><p>特点：带有平衡条件的二叉查找树。</p>
+<p>作用：很好的解决了二叉查找树退化成链表的问题。把插入、查找、删除的时间复杂度维持在O(log2N).</p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>特点：</p>
+<ol>
+<li>不是严格的平衡二叉树，放松了平衡二叉树的某些要求，提升了性能。</li>
+<li>算法时间复杂度与AVL树相同，但统计性能比AVL树要高。</li>
+</ol>
+<p>优势：</p>
+<ol>
+<li>能够以O(log2N)的时间复杂度进行搜索、插入、删除操作。</li>
+<li>任何不平衡都会在3次旋转内解决。</li>
+<li>最坏情况依然是高效的。</li>
+</ol>
+<p>劣势：</p>
+<ol>
+<li>查找性能比AVL树稍差</li>
+<li>插入和删除都需要一定的维护</li>
+</ol>
+<p>实现：TreeMap</p>
 
       
     </div>
@@ -525,7 +583,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算"><span class="nav-number">2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种树的辨析"><span class="nav-number">3.</span> <span class="nav-text">各种树的辨析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种二叉树的特点"><span class="nav-number">4.</span> <span class="nav-text">各种二叉树的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉查找树"><span class="nav-number">4.1.</span> <span class="nav-text">二叉查找树</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算"><span class="nav-number">2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构的发展"><span class="nav-number">3.</span> <span class="nav-text">数据结构的发展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种二叉树的特点"><span class="nav-number">4.</span> <span class="nav-text">各种二叉树的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树（Binary-Search-Tree，BST）"><span class="nav-number">4.1.</span> <span class="nav-text">二叉搜索树（Binary Search Tree，BST）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">4.2.</span> <span class="nav-text">平衡二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）"><span class="nav-number">4.3.</span> <span class="nav-text">平衡二叉搜索树（Adelson-Velskii and Landis，AVL）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树"><span class="nav-number">4.4.</span> <span class="nav-text">红黑树</span></a></li></ol></li></ol></div>
             
 
           </div>
