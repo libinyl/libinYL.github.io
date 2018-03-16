@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
+<meta name="description" content="首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。 接下来看HashMap。首先要明白Hash的概念。 Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap Q &amp; A">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/16/qa-java-hashmap/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
+<meta property="og:description" content="首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。 接下来看HashMap。首先要明白Hash的概念。 Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-03-16T09:55:11.593Z">
+<meta property="og:updated_time" content="2018-03-16T18:22:00.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap Q &amp; A">
-<meta name="twitter:description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
+<meta name="twitter:description" content="首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。 接下来看HashMap。首先要明白Hash的概念。 Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，">
 <meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
 
 
@@ -354,7 +354,47 @@
 
       
         <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
-<h1 id="Q：HashMap的数据结构？"><a href="#Q：HashMap的数据结构？" class="headerlink" title="Q：HashMap的数据结构？"></a>Q：HashMap的数据结构？</h1><p>A：</p>
+<p>首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。</p>
+<p>接下来看HashMap。首先要明白Hash的概念。</p>
+<p>Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，hash有两个步骤：第一步，将想要存储的对象（也就是key）转换为一个整数（也就是散列码）；第二步，将这个整数压缩至数组长度内合理的索引值。</p>
+<p>从这里引出五个主要问题：</p>
+<ol>
+<li>如何获取对象的散列码？</li>
+<li>如何获取元素索引值？</li>
+<li>如何维护数组的长度？</li>
+<li>如何解决哈希碰撞？</li>
+</ol>
+<h1 id="Q：如何获取对象的散列码？"><a href="#Q：如何获取对象的散列码？" class="headerlink" title="Q：如何获取对象的散列码？"></a>Q：如何获取对象的散列码？</h1><p>对象分为三类来看：类类型，字符串，基本类型。</p>
+<ul>
+<li><p>对于类类型，由于每个类都是Object的子类，都有一个hashCode方法。这个方法可以返回根据这个对象内存地址的一个int值，直接作为散列码。</p>
+</li>
+<li><p>对于字符串，想象空间很大，可以取Unicode值来进行计算，但是要考虑到现实世界中字符的分布不是均匀的。有种比较理想的方法称为Horner法：</p>
+<p>  取质数g，遍历此字符串中每个字符，每遍历一个就增加（这个字符Unicode值 <em> g </em> 索引值），最终的和就是散列码。</p>
+<p>  在String类中，这个因子等于31。原因是  n * 31 = n &lt;&lt; 5 - n ，在JVM中会被优化的非常快。</p>
+</li>
+<li><p>对于基本类型：</p>
+<p>  <strong>对于int类型</strong>，可以直接用其本身作为散列码。如果是其他基本类型，可以利用其内部的二进制表示。</p>
+<p>  <strong>如果是long类型</strong>，它含有64位二进制数据，而int含有32位，如果直接转换为int会丢失前32位，所有只在前32位有区别的数据都将产生冲突。在java中的解决方案是，将这64位的二进制数据，与其右移32位的结果做位与运算。这样就把前后32位都利用了。代码：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(<span class="keyword">long</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(value ^ (value &gt;&gt;&gt; <span class="number">32</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <strong>对于double和float</strong>，都可以以类似的方法处理。</p>
+</li>
+</ul>
+<h1 id="Q：如何确定索引值？"><a href="#Q：如何确定索引值？" class="headerlink" title="Q：如何确定索引值？"></a>Q：如何确定索引值？</h1><p>事实上这一步才是hash的典型操作。此时的散列码是一个int类型的值，从 -2<sup>32</sup> 到 -2<sup>32</sup> ，而数组容量往往远小于此。因此需要进行压缩。</p>
+<p>一般情况下将散列码对范围值取模即可，结果就比较均匀，但是假如key值成等差数列分布，就会使冲突率大大增加。Java对此进行了优化，<strong>将散列码进行了二次处理</strong>。请参考下一个问题。</p>
+<h1 id="Q：如何维护数组长度？"><a href="#Q：如何维护数组长度？" class="headerlink" title="Q：如何维护数组长度？"></a>Q：如何维护数组长度？</h1><p>数组长度的维护，主要以性能为目标。从以下角度考虑数组的长度维护问题：</p>
+<ol>
+<li>确定索引值时的取模操作性能</li>
+<li>扩容性能</li>
+</ol>
+<ul>
+<li><p><strong>考虑取模操作的性能：</strong> 在获取索引值时，需要将散列码对数组长度取模。注意到，如果length的值为2的n次方，那么 hashcode % length = hashcode &amp; (length -1) 。很容易发现后者的位操作是效率很高的。为此，有必要<strong>将数组长度维护为2的n次方</strong>。在Java中，HashMap维护了几个变量来确保数组长度保持是2的n次方：</p>
+<p>  但是，假如给定的key成等差数列，那么这些key的散列码有可能后几位全部相同，冲突率大大增加。而事实上hashcode &amp; (length -1)是忽略了hashcode的高位的。为了解决这一问题，需要将hashcode的高位也利用起来。类似刚刚long类型取散列码的方法，此时的散列码是int类型，为了将其高16位也利用起来，可以<strong>将散列码与其右移16位的结果取位与，得到新的散列码。此时即可避免等差数列的漏洞</strong>。这就是上文提到的二次处理的散列码。在Java中的源码是：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  为了将</p>
+</li>
+<li><strong>考虑扩容时的性能：</strong> </li>
+</ul>
+<h1 id="Q：如何"><a href="#Q：如何" class="headerlink" title="Q：如何"></a>Q：如何</h1><h1 id="Q：HashMap的数据结构？"><a href="#Q：HashMap的数据结构？" class="headerlink" title="Q：HashMap的数据结构？"></a>Q：HashMap的数据结构？</h1><p>A：散列表。hashmap维护着一个Node类型数组，每个Node本质上是Map的内部接口Entry的实现，</p>
 <ol>
 <li><p><strong>考察Map接口</strong>：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。</p>
 </li>
@@ -558,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：HashMap的数据结构？"><span class="nav-number">1.</span> <span class="nav-text">Q：HashMap的数据结构？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何获取对象的散列码？"><span class="nav-number">1.</span> <span class="nav-text">Q：如何获取对象的散列码？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何确定索引值？"><span class="nav-number">2.</span> <span class="nav-text">Q：如何确定索引值？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何维护数组长度？"><span class="nav-number">3.</span> <span class="nav-text">Q：如何维护数组长度？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何"><span class="nav-number">4.</span> <span class="nav-text">Q：如何</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：HashMap的数据结构？"><span class="nav-number">5.</span> <span class="nav-text">Q：HashMap的数据结构？</span></a></li></ol></div>
             
 
           </div>
