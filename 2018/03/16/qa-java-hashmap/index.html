@@ -79,13 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="李斌 - LBYL">
-<meta property="og:url" content="http://libinyl.github.io/tags/mysql/index.html">
+<meta name="description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap Q &amp; A">
+<meta property="og:url" content="http://libinyl.github.io/2018/03/16/qa-java-hashmap/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
+<meta property="og:description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-03-16T09:55:11.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李斌 - LBYL">
+<meta name="twitter:title" content="HashMap Q &amp; A">
+<meta name="twitter:description" content="Q：HashMap的数据结构？A：  考察Map接口：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/tags/mysql/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/03/16/qa-java-hashmap/"/>
 
 
 
 
 
-  <title>标签: mysql | 李斌 - LBYL</title>
+  <title>HashMap Q & A | 李斌 - LBYL</title>
   
 
 
@@ -140,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,54 +250,181 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>mysql<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/qa-java-hashmap/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/02/25/quick-mysql-command/" itemprop="url">
-              
-                <span itemprop="name">mysql常用命令速查</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">HashMap Q & A</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-25T18:10:19+08:00"
-              content="2018-02-25" >
-          02-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T15:06:22+08:00">
+                2018-03-16
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
+<h1 id="Q：HashMap的数据结构？"><a href="#Q：HashMap的数据结构？" class="headerlink" title="Q：HashMap的数据结构？"></a>Q：HashMap的数据结构？</h1><p>A：</p>
+<ol>
+<li><p><strong>考察Map接口</strong>：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。</p>
+</li>
+<li><p><strong>考察构造方式：</strong> 所有的构造函数都是对几个重要参数的初始化：initialCapacity（初始容量），loadFactor（加载因子）。</p>
+</li>
+<li><p><strong>考察容器存储方式：</strong> <code>HashMap</code>维护着一个<code>Node&lt;K,V&gt;[]</code>数组，用于存储键值。通过<code>resize()</code>方法来进行<code>Node</code>数组的初始化或者扩容。维护了<code>threshold</code>来计算下次扩容时的大小：</p>
+<p> threshold = capacity * loadfactor</p>
+</li>
+<li><p><strong>考察put方法：</strong>put方法实际调用的是putVal方法.此方法省方法声明需要的主要参数有：哈希值、键、值。其中哈希值就是在存储数组中的索引。</p>
+</li>
+<li><p><strong>考察容器初始化方法：</strong></p>
+</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/16/diary20180316/" rel="next" title="diary20180316">
+                <i class="fa fa-chevron-left"></i> diary20180316
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/16/note-java-hashmap/" rel="prev" title="HashMap全解析">
+                HashMap全解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -299,6 +432,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -319,8 +456,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -402,6 +548,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：HashMap的数据结构？"><span class="nav-number">1.</span> <span class="nav-text">Q：HashMap的数据结构？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -542,6 +704,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

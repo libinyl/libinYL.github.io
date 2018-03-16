@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="李斌 - LBYL">
-<meta property="og:url" content="http://libinyl.github.io/tags/mysql/index.html">
+<meta name="description" content="什么是Map？ java.util.Map接口定义了一个Map类应该实现的方法。Map维护了Entry接口，每个Entry存储一个键值对，每个Map存储多个Entry。 HashMap 存储形式： 散列表。需要索引来定位位置，达到一定容量后需要扩容。当索引相同时发生冲突。 每个键值对的容器：Node。实现了Map.Entry接口。 创建Node主要需要这个Node的Hash值，要存储的键，值。 如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap全解析">
+<meta property="og:url" content="http://libinyl.github.io/2018/03/16/note-java-hashmap/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
+<meta property="og:description" content="什么是Map？ java.util.Map接口定义了一个Map类应该实现的方法。Map维护了Entry接口，每个Entry存储一个键值对，每个Map存储多个Entry。 HashMap 存储形式： 散列表。需要索引来定位位置，达到一定容量后需要扩容。当索引相同时发生冲突。 每个键值对的容器：Node。实现了Map.Entry接口。 创建Node主要需要这个Node的Hash值，要存储的键，值。 如">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-16T09:52:56.889Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李斌 - LBYL">
+<meta name="twitter:title" content="HashMap全解析">
+<meta name="twitter:description" content="什么是Map？ java.util.Map接口定义了一个Map类应该实现的方法。Map维护了Entry接口，每个Entry存储一个键值对，每个Map存储多个Entry。 HashMap 存储形式： 散列表。需要索引来定位位置，达到一定容量后需要扩容。当索引相同时发生冲突。 每个键值对的容器：Node。实现了Map.Entry接口。 创建Node主要需要这个Node的Hash值，要存储的键，值。 如">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/tags/mysql/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/03/16/note-java-hashmap/"/>
 
 
 
 
 
-  <title>标签: mysql | 李斌 - LBYL</title>
+  <title>HashMap全解析 | 李斌 - LBYL</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,54 +248,185 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>mysql<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/note-java-hashmap/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/02/25/quick-mysql-command/" itemprop="url">
-              
-                <span itemprop="name">mysql常用命令速查</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">HashMap全解析</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-25T18:10:19+08:00"
-              content="2018-02-25" >
-          02-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T16:54:34+08:00">
+                2018-03-16
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <p>什么是Map？</p>
+<p>java.util.Map接口定义了一个Map类应该实现的方法。Map维护了Entry接口，每个Entry存储一个键值对，每个Map存储多个Entry。</p>
+<p>HashMap</p>
+<p>存储形式：</p>
+<p>散列表。需要索引来定位位置，达到一定容量后需要扩容。当索引相同时发生冲突。</p>
+<p>每个键值对的容器：Node。实现了Map.Entry接口。</p>
+<p>创建Node主要需要这个Node的Hash值，要存储的键，值。</p>
+<p>如何增加数据？</p>
+<p>首先要得到这个值在散列表中的索引。</p>
+<p>如何得到一个对象的索引？</p>
+<p>常规方法：直接取这个对象的哈希值对数组长度的模。</p>
+<p>有没有更好的方法？</p>
+<p>存在这样的事实：一个值a，对一个长度为2的n次方的数b取模，等同于这个值a与（b-1）做位与运算。</p>
+<p>而位与运算比取模运算要快非常多。</p>
+<p>所以更好的方法是，用这个对象的哈希值与数组长度-1做与运算，作为最后的索引。</p>
+<p>一旦采取这种方案，在数组初始化、扩容时候，都必须令数组长度为2的n次方。</p>
+<p>那么数组初始化的大小应当为大于给定值的第一个大小是2的n次方的值。</p>
+<h1 id="何时扩容？"><a href="#何时扩容？" class="headerlink" title="何时扩容？"></a>何时扩容？</h1><p>可以等数组满了再扩容。</p>
+<p>但是：随着数组逐渐被填满，冲突的概率越来越高。如果等数组元素的数量等于数组长度再扩容，此时很可能已经发生了大量冲突，影响性能。而扩容也有很大开销，所以也不能太早扩容。</p>
+<p>因此，变量loadFactor的作用显现出来。每次传入新的元素，都会检查元素个数与临界值（threshold=capacity*loadfactor）的大小。如果大于临界值，则需要进行扩容。</p>
+<h1 id="如何扩容？"><a href="#如何扩容？" class="headerlink" title="如何扩容？"></a>如何扩容？</h1><p>扩容时需要考虑：是否超过了int最大值？如果扩容会不会超过int最大值？最重要的是，扩容后需要把原数组的数据复制到新的扩容后的数组中。</p>
+<p>最大容量 MAXIMUM_CAPACITY</p>
+<p>默认容量 DEFAULT_INITIAL_CAPACITY</p>
+<h1 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/16/qa-java-hashmap/" rel="next" title="HashMap Q & A">
+                <i class="fa fa-chevron-left"></i> HashMap Q & A
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -299,6 +434,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -319,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -402,6 +550,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#何时扩容？"><span class="nav-number">1.</span> <span class="nav-text">何时扩容？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何扩容？"><span class="nav-number">2.</span> <span class="nav-text">如何扩容？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决冲突"><span class="nav-number">3.</span> <span class="nav-text">解决冲突</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -542,6 +706,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
