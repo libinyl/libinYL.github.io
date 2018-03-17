@@ -88,7 +88,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png">
-<meta property="og:updated_time" content="2018-03-16T19:07:35.738Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png">
+<meta property="og:updated_time" content="2018-03-17T07:31:54.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap Q &amp; A">
 <meta name="twitter:description" content="首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。 接下来看HashMap。首先要明白Hash的概念。 Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，">
@@ -365,17 +366,17 @@
 <li>如何维护数组的长度？</li>
 <li>如何解决哈希碰撞？</li>
 </ol>
-<h1 id="Q：如何获取对象的散列码？"><a href="#Q：如何获取对象的散列码？" class="headerlink" title="Q：如何获取对象的散列码？"></a>Q：如何获取对象的散列码？</h1><p>A：对象分为三类来看：类类型，字符串，基本类型。</p>
+<h1 id="Q：如何获取对象的散列码？"><a href="#Q：如何获取对象的散列码？" class="headerlink" title="Q：如何获取对象的散列码？"></a>Q：如何获取对象的散列码？</h1><p><strong>A：</strong> 对象分为三类来看：类类型，字符串，基本类型。</p>
 <ul>
-<li><p>对于类类型，由于每个类都是Object的子类，都有一个hashCode方法。这个方法可以返回根据这个对象内存地址的一个int值，直接作为散列码。</p>
+<li><p><strong>对于类类型</strong>，由于每个类都是Object的子类，都有一个hashCode方法。这个方法可以返回根据这个对象内存地址的一个int值，直接作为散列码。</p>
 </li>
-<li><p>对于字符串，想象空间很大，可以取Unicode值来进行计算，但是要考虑到现实世界中字符的分布不是均匀的。有种比较理想的方法称为Horner法：</p>
+<li><p><strong>对于字符串</strong>，想象空间很大，可以取Unicode值来进行计算，但是要考虑到现实世界中字符的分布不是均匀的。有种比较理想的方法称为Horner法：</p>
 <blockquote>
 <p>取质数g，遍历此字符串中每个字符，每遍历一个就增加（这个字符Unicode值 <em> g </em> 索引值），最终的和就是散列码。</p>
 </blockquote>
 <p>  在String类中，这个因子等于31。原因是  n * 31 = n &lt;&lt; 5 - n ，在JVM中会被优化的非常快。</p>
 </li>
-<li><p>对于基本类型：</p>
+<li><p><strong>对于基本类型</strong>：</p>
 <p>  <strong>对于int类型</strong>，可以直接用其本身作为散列码。如果是其他基本类型，可以利用其内部的二进制表示。</p>
 <p>  <strong>如果是long类型</strong>，它含有64位二进制数据，而int含有32位，如果直接转换为int会丢失前32位，所有只在前32位有区别的数据都将产生冲突。在java中的解决方案是，将这64位的二进制数据，与其右移32位的结果做位与运算。这样就把前后32位都利用了。代码：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(<span class="keyword">long</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(value ^ (value &gt;&gt;&gt; <span class="number">32</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -384,7 +385,7 @@
 </ul>
 <h1 id="Q：如何确定索引值？"><a href="#Q：如何确定索引值？" class="headerlink" title="Q：如何确定索引值？"></a>Q：如何确定索引值？</h1><p>事实上这一步才是hash的典型操作。此时的散列码是一个int类型的值，从 -2<sup>32</sup> 到 -2<sup>32</sup> ，而数组容量往往远小于此。因此需要进行压缩。</p>
 <p>一般情况下将散列码对范围值取模即可，结果就比较均匀，但是假如key值成等差数列分布，就会使冲突率大大增加。Java对此进行了优化，<strong>将散列码进行了二次处理</strong>，取模方式也做了优化。请参考下一个问题。</p>
-<h1 id="Q：如何维护数组长度？"><a href="#Q：如何维护数组长度？" class="headerlink" title="Q：如何维护数组长度？"></a>Q：如何维护数组长度？</h1><p>A：数组长度的维护，主要以性能为目标。从以下角度考虑数组的长度维护问题：</p>
+<h1 id="Q：如何维护数组长度？"><a href="#Q：如何维护数组长度？" class="headerlink" title="Q：如何维护数组长度？"></a>Q：如何维护数组长度？</h1><p><strong>A：</strong> 数组长度的维护，主要以性能为目标。从以下角度考虑数组的长度维护问题：</p>
 <ol>
 <li>确定索引值时的取模操作性能</li>
 <li>扩容问题</li>
@@ -400,23 +401,32 @@
 <p>  在JDK7中，一旦扩容，就需要对所有元素rehash。而且旧链表迁移到新链表时,如果在新表的索引位置相同，链表元素会倒置。</p>
 <p>  而在JDK8中，神奇的事情发生了。因为数组长度总是保持在2的n次方，扩容之后，数组长度的二进制表示就是原有数值左移一位，length-1的二进制表示的最高位的左边一位置1。看下图可以明白这句话的意思，n为table的长度，图（a）表示扩容前的key1和key2两种key确定索引位置的示例，图（b）表示扩容后key1和key2两种key确定索引位置的示例，其中hash1是key1对应的哈希与高位运算结果。</p>
 <p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png" alt=""></p>
-<p>  这样一来，</p>
+<p>  此时获取索引的计算 hashcode &amp; (length -1) 变成了 原索引+oldCap，性能获得提升。这就是JDK8中<strong>对resize的优化</strong>。</p>
+<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png" alt=""></p>
 </li>
 </ul>
-<h1 id="Q：如何"><a href="#Q：如何" class="headerlink" title="Q：如何"></a>Q：如何</h1><h1 id="Q：HashMap的数据结构？"><a href="#Q：HashMap的数据结构？" class="headerlink" title="Q：HashMap的数据结构？"></a>Q：HashMap的数据结构？</h1><p>A：散列表。hashmap维护着一个Node类型数组，每个Node本质上是Map的内部接口Entry的实现，</p>
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="Q：get方法的流程是怎样的？"><a href="#Q：get方法的流程是怎样的？" class="headerlink" title="Q：get方法的流程是怎样的？"></a>Q：get方法的流程是怎样的？</h2><p><strong>A：</strong> </p>
 <ol>
-<li><p><strong>考察Map接口</strong>：首先，HashMap实现了Map接口，主要方法有get，put，remove，containsKey，replace，isEmpty等。Map接口内部维护着一个Entry接口，它才是真正存储键值的地方。也就是说每个Map实际上是包含了两个部分，一是通过Entry来存储键值，二是对此存储进行的操作。Map对外提供了对Entry的操作和视角。</p>
-</li>
-<li><p><strong>考察构造方式：</strong> 所有的构造函数都是对几个重要参数的初始化：initialCapacity（初始容量），loadFactor（加载因子）。</p>
-</li>
-<li><p><strong>考察容器存储方式：</strong> <code>HashMap</code>维护着一个<code>Node&lt;K,V&gt;[]</code>数组，用于存储键值。通过<code>resize()</code>方法来进行<code>Node</code>数组的初始化或者扩容。维护了<code>threshold</code>来计算下次扩容时的大小：</p>
-<p> threshold = capacity * loadfactor</p>
-</li>
-<li><p><strong>考察put方法：</strong>put方法实际调用的是putVal方法.此方法省方法声明需要的主要参数有：哈希值、键、值。其中哈希值就是在存储数组中的索引。</p>
-</li>
-<li><p><strong>考察容器初始化方法：</strong></p>
-</li>
+<li>调用key的hashcode方法获取hash值</li>
+<li>对hash值做高位运算处理</li>
+<li>将处理后的hash值对数组长度取模，得到索引</li>
+<li>遍历链表，用key的equals方法与每个元素比较，匹配成功则返回。</li>
 </ol>
+<h2 id="Q：怎样优化HashMap的性能？"><a href="#Q：怎样优化HashMap的性能？" class="headerlink" title="Q：怎样优化HashMap的性能？"></a>Q：怎样优化HashMap的性能？</h2><p><strong>A：</strong> </p>
+<ul>
+<li><strong>使用包装类作为key</strong>。此类wrapper类是final类型的，已经重写了equals和hashCode方法，碰撞的几率更小，散列更为高效。</li>
+</ul>
+<h2 id="Q：并发会导致什么问题？"><a href="#Q：并发会导致什么问题？" class="headerlink" title="Q：并发会导致什么问题？"></a>Q：并发会导致什么问题？</h2><p><strong>A：</strong> </p>
+<ul>
+<li><p><strong>多线程操作可能导致死循环。</strong> HashMap是非线程安全的。一般来说，链表出现死循环很可能是因为出现环形链表。所以可以从这个角度考虑问题。</p>
+<p>  具体来讲，向HashMap中添加元素时，在resize的时候，需要调整原有的元素到新的位置，即transfer方法。在此方法中，对于某个特定索引的链表，如果多个线程切换执行此方法，由于每个线程对next进行重复操作，导致形成环状链表。</p>
+<p>  <strong>解决方案：</strong> </p>
+<ol>
+<li>使用Collections.synchronizedMap(Mao<k,v> m)方法把HashMap变成一个线程安全的Map。</k,v></li>
+<li>使用ConcurrentHashMap。</li>
+</ol>
+</li>
+</ul>
 <p>参考：<a href="https://tech.meituan.com/java-hashmap.html" target="_blank" rel="noopener">Java 8系列之重新认识HashMap</a></p>
 
       
@@ -531,7 +541,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何获取对象的散列码？"><span class="nav-number">1.</span> <span class="nav-text">Q：如何获取对象的散列码？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何确定索引值？"><span class="nav-number">2.</span> <span class="nav-text">Q：如何确定索引值？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何维护数组长度？"><span class="nav-number">3.</span> <span class="nav-text">Q：如何维护数组长度？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何"><span class="nav-number">4.</span> <span class="nav-text">Q：如何</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：HashMap的数据结构？"><span class="nav-number">5.</span> <span class="nav-text">Q：HashMap的数据结构？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何获取对象的散列码？"><span class="nav-number">1.</span> <span class="nav-text">Q：如何获取对象的散列码？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何确定索引值？"><span class="nav-number">2.</span> <span class="nav-text">Q：如何确定索引值？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何维护数组长度？"><span class="nav-number">3.</span> <span class="nav-text">Q：如何维护数组长度？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他问题"><span class="nav-number">4.</span> <span class="nav-text">其他问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：get方法的流程是怎样的？"><span class="nav-number">4.1.</span> <span class="nav-text">Q：get方法的流程是怎样的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：怎样优化HashMap的性能？"><span class="nav-number">4.2.</span> <span class="nav-text">Q：怎样优化HashMap的性能？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：并发会导致什么问题？"><span class="nav-number">4.3.</span> <span class="nav-text">Q：并发会导致什么问题？</span></a></li></ol></li></ol></div>
             
 
           </div>
