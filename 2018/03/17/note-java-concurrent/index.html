@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="Q：如何创建一个线程？A：   实现Runnable接口，实现run()方法。实例化Thread对象，将实现Runnable接口的对象传入。// 常用 继承Thread类，重写run()方法。// 一个类一般仅在需要被加强或修改时才被继承，故一般不采用。 实现Callable接口，重写call()方法。// 1.提供返回值 2.可以抛出异常 3.可以进行异步计算  Q：线程的状态有哪些？生命周期是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-17T09:04:50.271Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png">
+<meta property="og:updated_time" content="2018-03-18T13:21:47.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程学习记录">
 <meta name="twitter:description" content="Q：如何创建一个线程？A：   实现Runnable接口，实现run()方法。实例化Thread对象，将实现Runnable接口的对象传入。// 常用 继承Thread类，重写run()方法。// 一个类一般仅在需要被加强或修改时才被继承，故一般不采用。 实现Callable接口，重写call()方法。// 1.提供返回值 2.可以抛出异常 3.可以进行异步计算  Q：线程的状态有哪些？生命周期是">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png">
 
 
 
@@ -367,6 +369,30 @@
 <li><strong>TIMED_WAITING</strong> 等待另一个线程执行完指定时间的动作。</li>
 <li><strong>TERMINATED</strong> 已退出。</li>
 </ul>
+<h1 id="Q：如何终止线程？"><a href="#Q：如何终止线程？" class="headerlink" title="Q：如何终止线程？"></a>Q：如何终止线程？</h1><p><strong>A：</strong> interrupt()方法。</p>
+<h1 id="Q：sleep-、yield-、wait-、join-的区别和联系是什么？"><a href="#Q：sleep-、yield-、wait-、join-的区别和联系是什么？" class="headerlink" title="Q：sleep()、yield()、wait()、join()的区别和联系是什么？"></a>Q：sleep()、yield()、wait()、join()的区别和联系是什么？</h1><p><strong>A：</strong> 它们都会通知JVM这个线程可以释放CPU了。但JVM不保证遵循yield()的通知。通常yield()方法只做调试使用，用来复现与静态条件相关的bug。</p>
+<h1 id="Q：Java的对象模型是怎样的？与线程有什么关系？"><a href="#Q：Java的对象模型是怎样的？与线程有什么关系？" class="headerlink" title="Q：Java的对象模型是怎样的？与线程有什么关系？"></a>Q：Java的对象模型是怎样的？与线程有什么关系？</h1><p><strong>A：</strong> </p>
+<p>Java的对象存储在堆内存中。一个Java对象包含三部分：对象头，实例数据和元数据，以C++代码的形式存在。</p>
+<p>其中对象头是很关键的部分，其中包含一些运行时数据，和与多线程相关的锁是信息，包括<strong>锁状态标志</strong>、<strong>线程持有的锁</strong>等标志。</p>
+<p>Java在内存中的表示，最方便的方式是直接对应一个C++类。但是HotSpot没有这么做，因为HotSpot JVM的设计者不想让每个对象都含有一个虚函数表（vtable）。那么怎样表示呢？答案是<strong>OOP-klass Model</strong>。</p>
+<p>对象头在HotSpot中的<a href="https://github.com/openjdk-mirror/jdk7u-hotspot/blob/50bdefc3afe944ca74c3093e7448d6b889cd20d1/src/share/vm/oops/markOop.hpp" target="_blank" rel="noopener">markOop.hpp</a>中表示。关键代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> &#123; age_bits                 = <span class="number">4</span>,</span><br><span class="line">       lock_bits                = <span class="number">2</span>,</span><br><span class="line">       biased_lock_bits         = <span class="number">1</span>,</span><br><span class="line">       max_hash_bits            = BitsPerWord - age_bits - lock_bits - biased_lock_bits,</span><br><span class="line">       hash_bits                = max_hash_bits &gt; <span class="number">31</span> ? <span class="number">31</span> : max_hash_bits,</span><br><span class="line">       cms_bits                 = LP64_ONLY(<span class="number">1</span>) NOT_LP64(<span class="number">0</span>),</span><br><span class="line">       epoch_bits               = <span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从上面的枚举定义中可以看出，对象头中主要包含了GC分代年龄、锁状态标记、哈希码、epoch等信息。</p>
+<p>对象头最重要的部分是mark word。它非常像协议报文头。</p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png" alt=""></p>
+<p>从上图中可以看出，对象的状态一共有五种，分别是无锁态、轻量级锁、重量级锁、GC标记和偏向锁。在32位的虚拟机中有两个Bits是用来存储锁的标记为的，但是我们都知道，两个bits最多只能表示四种状态：00、01、10、11，那么第五种状态如何表示呢 ，就要额外依赖1Bit的空间，使用0和1来区分。</p>
+<blockquote>
+<p>在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word的32个Bits空间中的25Bits用于存储对象哈希码(HashCode)，4Bits用于存储对象分代年龄，2Bits用于存储锁标志位，1Bit固定为0，表示非偏向锁。</p>
+</blockquote>
+<p><a href="https://github.com/openjdk-mirror/jdk7u-hotspot/blob/50bdefc3afe944ca74c3093e7448d6b889cd20d1/src/share/vm/oops/markOop.hpp" target="_blank" rel="noopener">markOop.hpp</a>类中有关于对象状态的定义：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> &#123; locked_value             = <span class="number">0</span>,</span><br><span class="line">       unlocked_value           = <span class="number">1</span>,</span><br><span class="line">       monitor_value            = <span class="number">2</span>,</span><br><span class="line">       marked_value             = <span class="number">3</span>,</span><br><span class="line">       biased_lock_pattern      = <span class="number">5</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">locked_value(00) = 0</span><br><span class="line">unlocked_value(01) = 1</span><br><span class="line">monitor_value(10) = 2</span><br><span class="line">marked_value(11) = 3</span><br><span class="line">biased_lock_pattern(101) = 5</span><br></pre></td></tr></table></figure>
+<h1 id="Q：什么是锁，它是怎样实现的？"><a href="#Q：什么是锁，它是怎样实现的？" class="headerlink" title="Q：什么是锁，它是怎样实现的？"></a>Q：什么是锁，它是怎样实现的？</h1><p><strong>A：</strong> </p>
+<p>参考文章：</p>
+<p><a href="http://www.hollischuang.com/archives/1910" target="_blank" rel="noopener">http://www.hollischuang.com/archives/1910</a></p>
+<p><a href="http://www.hollischuang.com/archives/1953" target="_blank" rel="noopener">http://www.hollischuang.com/archives/1953</a></p>
+<p><a href="http://www.hollischuang.com/archives/2030" target="_blank" rel="noopener">http://www.hollischuang.com/archives/2030</a></p>
 
       
     </div>
@@ -408,6 +434,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/18/diary20180318/" rel="prev" title="diary20180318">
+                diary20180318 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -506,7 +536,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -561,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何创建一个线程？"><span class="nav-number">1.</span> <span class="nav-text">Q：如何创建一个线程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：线程的状态有哪些？生命周期是怎样的？"><span class="nav-number">2.</span> <span class="nav-text">Q：线程的状态有哪些？生命周期是怎样的？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何创建一个线程？"><span class="nav-number">1.</span> <span class="nav-text">Q：如何创建一个线程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：线程的状态有哪些？生命周期是怎样的？"><span class="nav-number">2.</span> <span class="nav-text">Q：线程的状态有哪些？生命周期是怎样的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：如何终止线程？"><span class="nav-number">3.</span> <span class="nav-text">Q：如何终止线程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：sleep-、yield-、wait-、join-的区别和联系是什么？"><span class="nav-number">4.</span> <span class="nav-text">Q：sleep()、yield()、wait()、join()的区别和联系是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：Java的对象模型是怎样的？与线程有什么关系？"><span class="nav-number">5.</span> <span class="nav-text">Q：Java的对象模型是怎样的？与线程有什么关系？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：什么是锁，它是怎样实现的？"><span class="nav-number">6.</span> <span class="nav-text">Q：什么是锁，它是怎样实现的？</span></a></li></ol></div>
             
 
           </div>
