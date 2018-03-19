@@ -842,6 +842,52 @@
 <li>使用并行回收器（ParrellOldGC）代替串行回收器:</li>
 <li>升级虚拟机版本</li>
 </ul>
+<h1 id="类加载系统"><a href="#类加载系统" class="headerlink" title="类加载系统"></a>类加载系统</h1><h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ol>
+<li>加载</li>
+<li>连接</li>
+<li>初始化</li>
+</ol>
+<p>其中连接又分为：</p>
+<ol>
+<li>验证</li>
+<li>准备</li>
+<li>解析</li>
+</ol>
+<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p><strong>作用：</strong> 通过各种方式将Class信息的二进制数据读入系统，教给Java虚拟机进行连接、初始化。</p>
+<h3 id="ClassLoader分类"><a href="#ClassLoader分类" class="headerlink" title="ClassLoader分类"></a>ClassLoader分类</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">加载目录</th>
+<th style="text-align:center">使用权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">BootStrap ClassLoader</td>
+<td style="text-align:center">（启动类加载器）</td>
+<td style="text-align:center">JRE_HOME/lib如rt.jar</td>
+<td style="text-align:center">无Java实例，开发者无法使用</td>
+</tr>
+<tr>
+<td style="text-align:center">Extension ClassLoader</td>
+<td style="text-align:center">（扩展类加载器）</td>
+<td style="text-align:center">JRE_HOME/lib/ext</td>
+<td style="text-align:center">开发者可以直接使用</td>
+</tr>
+<tr>
+<td style="text-align:center">App ClassLoader</td>
+<td style="text-align:center">（应用类加载器，系统类加载器）</td>
+<td style="text-align:center">CLASSPATH 开发者可以直接使用</td>
+</tr>
+</tbody>
+</table>
+<p>启动类加载器是系统级实现，完全由C实现，没有Java实例，无法获得实例。</p>
+<h3 id="双亲委托模型"><a href="#双亲委托模型" class="headerlink" title="双亲委托模型"></a>双亲委托模型</h3><p><strong>描述：</strong> 某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</p>
+<p><strong>意义：</strong> 防止内存中出现多份同样的字节码。首选用BootStrap尝试加载。</p>
+<p><strong>弊端：</strong> 顶层的ClassLoader无法访问底层ClassLoader加载的类，即系统类访问应用类会出问题。</p>
+<p>- </p>
 
           
         
@@ -1914,7 +1960,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
