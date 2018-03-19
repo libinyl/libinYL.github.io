@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="树的相关概念节点的度（degree）： 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）树的度： 树的节点中，度数最大的节点，的度数。节点的深度： 从根节点向下，累加值节点的高度： 从叶节点向上，累加值树的高度（深度）： 树中节点最大层数完全二叉树： 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。 计算 树的所有的节点个数=所有节点的度数和 + 1  解释：所有节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T16:37:55.095Z">
+<meta property="og:updated_time" content="2018-03-19T05:57:54.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树的概念与辨析">
 <meta name="twitter:description" content="树的相关概念节点的度（degree）： 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）树的度： 树的节点中，度数最大的节点，的度数。节点的深度： 从根节点向下，累加值节点的高度： 从叶节点向上，累加值树的高度（深度）： 树中节点最大层数完全二叉树： 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。 计算 树的所有的节点个数=所有节点的度数和 + 1  解释：所有节">
@@ -500,8 +500,37 @@
 </ol>
 <p>实现：TreeMap</p>
 <h2 id="B树系列"><a href="#B树系列" class="headerlink" title="B树系列"></a>B树系列</h2><p>参考 <a href="https://www.cnblogs.com/gym333/p/6877023.html" target="_blank" rel="noopener">https://www.cnblogs.com/gym333/p/6877023.html</a></p>
-<p>B-tree 一般用于数据库的索引，综合效率较高，其查找节点个数的渐进复杂度为O(log<sub>d</sub>N),其中d为大于1的整数。</p>
-<p>B<sup>+</sup>-Tree比B-Tree更适合实现外存储索引结构。</p>
+<p>特点：每个节点包含关键字和指针，关键字就是数据，指针指向下一层的节点。</p>
+<h3 id="B-tree"><a href="#B-tree" class="headerlink" title="B-tree"></a>B-tree</h3><p>特点：叶子节点是失败节点；在非叶子节点命中。</p>
+<p>复杂度：渐进复杂度为O(log<sub>d</sub>N),其中d为大于1的整数。查找等价于在关键字做一次二分查找。</p>
+<p>应用：一般用于数据库的索引，综合效率较高。</p>
+<h3 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+-Tree"></a>B<sup>+</sup>-Tree</h3><p>B<sup>+</sup>-Tree是B-Tree的变形，在文件索引方面更普遍。</p>
+<p>特点：</p>
+<ul>
+<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是有序的；</li>
+<li>不可能在非叶子结点命中；</li>
+<li>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</li>
+<li>更适合文件索引系统</li>
+</ul>
+<p>性能：也等价于二分查找。</p>
+<h3 id="B-Tree-1"><a href="#B-Tree-1" class="headerlink" title="B*-Tree"></a>B<sup>*</sup>-Tree</h3><p>特点：</p>
+<ul>
+<li>是B<sup>+</sup>-Tree的变体，在非根和非叶子节点再增加指向兄弟的指针。</li>
+<li>分配新节点的概率比B<sup>+</sup>-Tree低，空间使用率更高。</li>
+</ul>
+<h2 id="Q：为什么要使用B-Tree和B-Tree作为数据库的索引？"><a href="#Q：为什么要使用B-Tree和B-Tree作为数据库的索引？" class="headerlink" title="Q：为什么要使用B+-Tree和B-Tree作为数据库的索引？"></a>Q：为什么要使用B<sup>+</sup>-Tree和B-Tree作为数据库的索引？</h2><p><strong>A：</strong> </p>
+<p><strong>适合做索引的数据结构评价标准：</strong></p>
+<p> 索引本身也很大，不可能全部存储在内存中，需要以索引文件的形式存储在硬盘上。这意味着查找过程产生I/O消耗，而磁盘I/O要比内存I/O消耗高几个数量级。所以评价一个数据结构作为索引的优劣<strong>最重要的指标就是在查找过程中，磁盘I/O次数的渐进复杂度，或者说尽可能减少I/O次数</strong>。</p>
+<p><strong>磁盘读写原理：</strong></p>
+<p>根据局部性原理，主存与磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+<p><strong>计算：</strong></p>
+<p>B/B<sup>*</sup>-Tree检索一次最多访问节点为：</p>
+<blockquote>
+<p>h = log<sub>m/2</sub>((n+1)/2)+1</p>
+</blockquote>
+<p>数据库将一个节点的大小设为一个页，这样每个节点只需一次I/O即可完全载入，相邻的页即可利用局部性原理。</p>
+<p>B-Tree一次检索最多需要h-1次I/O，渐进复杂度为O(h)=O(log<sub>m</sub>N),实际情况下m非常大，通常超过100，因此h非常小，通常不超过3。</p>
+<p>而红黑树的h明显要深得多。由于逻辑上很近的节点可能物理上很远，无法利用局部性，所以红黑树的I/O渐进如咋读为O(h)，比B-Tree差很多。</p>
 
       
     </div>
@@ -623,7 +652,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树的相关概念"><span class="nav-number">1.</span> <span class="nav-text">树的相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算"><span class="nav-number">2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从数组到树的发展"><span class="nav-number">3.</span> <span class="nav-text">从数组到树的发展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种二叉树的特点"><span class="nav-number">4.</span> <span class="nav-text">各种二叉树的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树（Binary-Search-Tree，BST）"><span class="nav-number">4.1.</span> <span class="nav-text">二叉搜索树（Binary Search Tree，BST）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）"><span class="nav-number">4.2.</span> <span class="nav-text">平衡二叉搜索树（Adelson-Velskii and Landis，AVL）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树"><span class="nav-number">4.3.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树系列"><span class="nav-number">4.4.</span> <span class="nav-text">B树系列</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树的相关概念"><span class="nav-number">1.</span> <span class="nav-text">树的相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算"><span class="nav-number">2.</span> <span class="nav-text">计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从数组到树的发展"><span class="nav-number">3.</span> <span class="nav-text">从数组到树的发展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种二叉树的特点"><span class="nav-number">4.</span> <span class="nav-text">各种二叉树的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树（Binary-Search-Tree，BST）"><span class="nav-number">4.1.</span> <span class="nav-text">二叉搜索树（Binary Search Tree，BST）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉搜索树（Adelson-Velskii-and-Landis，AVL）"><span class="nav-number">4.2.</span> <span class="nav-text">平衡二叉搜索树（Adelson-Velskii and Landis，AVL）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树"><span class="nav-number">4.3.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B树系列"><span class="nav-number">4.4.</span> <span class="nav-text">B树系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-tree"><span class="nav-number">4.4.1.</span> <span class="nav-text">B-tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree"><span class="nav-number">4.4.2.</span> <span class="nav-text">B+-Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree-1"><span class="nav-number">4.4.3.</span> <span class="nav-text">B*-Tree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：为什么要使用B-Tree和B-Tree作为数据库的索引？"><span class="nav-number">4.5.</span> <span class="nav-text">Q：为什么要使用B+-Tree和B-Tree作为数据库的索引？</span></a></li></ol></li></ol></div>
             
 
           </div>
