@@ -661,7 +661,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/18/note-java-jvm-command/" itemprop="url">Java虚拟机优化笔记</a></h1>
+                <a class="post-title-link" href="/2018/03/18/note-java-jvm-command/" itemprop="url">Java虚拟机学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -735,8 +735,7 @@
       
         
           
-            <p>信息查看参数：</p>
-<table>
+            <h1 id="常见信息查看参数："><a href="#常见信息查看参数：" class="headerlink" title="常见信息查看参数："></a>常见信息查看参数：</h1><table>
 <thead>
 <tr>
 <th>参数</th>
@@ -770,7 +769,79 @@
 </tr>
 </tbody>
 </table>
-<p>堆配置参数</p>
+<h1 id="堆内存分布"><a href="#堆内存分布" class="headerlink" title="堆内存分布"></a>堆内存分布</h1><p>|   堆<br>|   eden   |    from    |   to  |</p>
+<h2 id="最大堆和初始堆的配置"><a href="#最大堆和初始堆的配置" class="headerlink" title="最大堆和初始堆的配置"></a>最大堆和初始堆的配置</h2><p>当Java进程启动时，可用参数-Xms指定<strong>初始堆</strong>的大小，虚拟机会尽可能在初始堆空间内运行，扩展上线为<strong>最大堆</strong>空间，由-Xmx指定。</p>
+<p>可以直接用-Xms和-Xmx将初始堆和最大堆设置为相等，减少GC次数，提高程序性能。</p>
+<h2 id="新生代的配置"><a href="#新生代的配置" class="headerlink" title="新生代的配置"></a>新生代的配置</h2><p>可以使用-Xmn设置新生代的大小。新生代过大会减少老年代的大小，对GC有很大影响。新生代大小一般配置为整个堆空间的1/3到1/4。</p>
+<p>参数-XX：SurvivorRatio来设置新生代中eden与from/to空间的比例关系。含义为：<code>-XX:SurvivorRatio=eden/from=eden/to</code></p>
+<h2 id="堆溢出处理"><a href="#堆溢出处理" class="headerlink" title="堆溢出处理"></a>堆溢出处理</h2><p>使用参数-XX:+HeapDumpOnOutOfMemoryError,导出整个堆信息。使用-XX:HeapDumpPath 指定导出堆的存放路径。</p>
+<h1 id="常见回收算法"><a href="#常见回收算法" class="headerlink" title="常见回收算法"></a>常见回收算法</h1><h2 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h2><p>描述：为每个对象分配一个计数器，等于引用它的对象的数量。一旦为0则回收。</p>
+<p>缺点：</p>
+<ul>
+<li>无法解决循环引用</li>
+<li>计数的增加或减少，会影响性能。</li>
+</ul>
+<h2 id="标记清除法"><a href="#标记清除法" class="headerlink" title="标记清除法"></a>标记清除法</h2><p>描述：</p>
+<ol>
+<li>从根节点出发，标记所有从根节点开始的可达对象；</li>
+<li>清除所有未标记的对象。</li>
+</ol>
+<p>优点：解决循环引用</p>
+<p>缺点：回收后空间不连续，再分配时，不连续的内存工作效率降低。</p>
+<h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p>描述：</p>
+<ol>
+<li>将原有的内存空间分为两块，每次只使用其中一块</li>
+<li>垃圾回收时，将正在使用的内存空间中的存活对象复制到未使用的内存块中，清除正在使用的内存块中的所有对象。</li>
+<li>交换角色。</li>
+</ol>
+<p>开销：复制存活的对象（多）、清除垃圾对象（少）</p>
+<p>优点：没有碎片。</p>
+<p>缺点：系统内存折半。</p>
+<p>适合：在存活对象少，垃圾对象多的情况下高效。</p>
+<h2 id="标记压缩法"><a href="#标记压缩法" class="headerlink" title="标记压缩法"></a>标记压缩法</h2><p>或称 标记清楚压缩法</p>
+<p>描述：</p>
+<ol>
+<li>从根节点出发，标记所有从根节点开始的可达对象；</li>
+<li>将所有存活的对象压缩到内存的一端</li>
+<li>清理边际外所有空间</li>
+</ol>
+<p>优点：</p>
+<ul>
+<li>避免了碎片的产生</li>
+<li>不需要两块相同的空间</li>
+<li>性价比较高</li>
+</ul>
+<h2 id="分代算法"><a href="#分代算法" class="headerlink" title="分代算法"></a>分代算法</h2><p><strong>描述：</strong> 将内存区间根据对象的特点分成几块，根据每块内存的特点使用不同的算法。</p>
+<p>具体到Java堆内存：</p>
+<ul>
+<li>新建对象放入新生代，90%会很快回收，适合使用复制算法。</li>
+<li>一个对象经过几次回收后依然存活，放入老年代，是常驻内存的，可以用标记清除/压缩算法。</li>
+</ul>
+<h1 id="重要函数"><a href="#重要函数" class="headerlink" title="重要函数"></a>重要函数</h1><h2 id="finalize-方法："><a href="#finalize-方法：" class="headerlink" title="finalize()方法："></a>finalize()方法：</h2><p><strong>所属对象：</strong> 在Object类中定义，所有类都继承了它。子类可以覆盖它，以整理系统资源或进行其他清理工作。</p>
+<p><strong>调用者：</strong> 垃圾回收器</p>
+<p><strong>调用时机：</strong> 当垃圾回收器发现一个对象没有任何引用时调用它；或者说是在垃圾回收器在删除对象之前调用它的。具体来说，是在Java虚拟机发现去除那些已经被执行了finalize的对象之外，没有任何活动的线程能够引用到该对象的时候调用。</p>
+<p><strong>作用：</strong> </p>
+<ul>
+<li>Object类的finalize方法没有做任何事，只是简单的返回。Object的子类可以重写它。</li>
+<li>可以做任何事，甚至让该对象重新被其他线程引用。</li>
+<li>一般来说，此方法的目的通常是要让该对象在回收之前做一些清理工作，比如代表输入/输入链接的对象在此时中断连接。</li>
+</ul>
+<p><strong>结果：</strong> 一个对象的finalize方法被调用之后，这个对象就不可以被任何活动的线程再次引用了，这个对象也不能再进行任何的操作，包括被那些已经执行finalize方法的对象或者类，直到被Java虚拟机回收。</p>
+<p><strong>调用次数：</strong> 一个特定的对象的finalize方法绝对不会被Java虚拟机调用超过一次。</p>
+<p><strong>不推荐使用的原因：</strong></p>
+<ul>
+<li>有可能发生引用外泄，无意中复活对象</li>
+<li>此方法被系统调用，调用时间不明确，不是好的资源释放方案。</li>
+</ul>
+<p><strong>推荐的资源释放方案：</strong> 在<code>try-catch-finally</code>中进行。</p>
+<h2 id="System-gc"><a href="#System-gc" class="headerlink" title="System.gc()"></a>System.gc()</h2><p><strong>解释：</strong> 建议jvm对那些需要被清楚但尚未调用finalize方法的调用finalize方法。</p>
+<p>与<code>Runtime.getRuntime().runFinalization()</code>等价。</p>
+<h1 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h1><h2 id="串行回收器"><a href="#串行回收器" class="headerlink" title="串行回收器"></a>串行回收器</h2><h2 id="并行回收器"><a href="#并行回收器" class="headerlink" title="并行回收器"></a>并行回收器</h2><h2 id="CMS-Concurrent-Mark-Sweep，并发标记清楚-回收器"><a href="#CMS-Concurrent-Mark-Sweep，并发标记清楚-回收器" class="headerlink" title="CMS(Concurrent Mark Sweep，并发标记清楚)回收器"></a>CMS(Concurrent Mark Sweep，并发标记清楚)回收器</h2><h2 id="G1回收器"><a href="#G1回收器" class="headerlink" title="G1回收器"></a>G1回收器</h2><h1 id="优化方法汇总"><a href="#优化方法汇总" class="headerlink" title="优化方法汇总"></a>优化方法汇总</h1><h2 id="堆参数配置"><a href="#堆参数配置" class="headerlink" title="堆参数配置"></a>堆参数配置</h2><p>基本策略：尽可能将对象预留在新生代，减少老年代GC的次数。</p>
+<ul>
+<li>扩大堆内存，减少 Full GC 。参数：-Mmx</li>
+<li>使用并行回收器（ParrellOldGC）代替串行回收器:</li>
+<li>升级虚拟机版本</li>
+</ul>
 
           
         
