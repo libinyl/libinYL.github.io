@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="计算机网络," />
 
 
 
@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="中午正式从湘浦退房搬离。 15:07:47 在凯李咖啡写论文中。 20:52:48 下午到图书馆借了分布式相关的书，路上觉得天气渐阴就回家了。一个小时后瓢泼大雨。 23:42:25 在家写了几个小时代码，惊奇的发现时间过得挺慢。">
+<meta name="description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
+<meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搬家（下）">
-<meta property="og:url" content="http://libinyl.github.io/2018/03/04/diary180304/index.html">
+<meta property="og:title" content="TCP&#x2F;IP学习笔记">
+<meta property="og:url" content="http://libinyl.github.io/2018/03/20/note-network-tcpip/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="中午正式从湘浦退房搬离。 15:07:47 在凯李咖啡写论文中。 20:52:48 下午到图书馆借了分布式相关的书，路上觉得天气渐阴就回家了。一个小时后瓢泼大雨。 23:42:25 在家写了几个小时代码，惊奇的发现时间过得挺慢。">
+<meta property="og:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-06T07:10:01.294Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif">
+<meta property="og:updated_time" content="2018-03-20T11:05:43.887Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搬家（下）">
-<meta name="twitter:description" content="中午正式从湘浦退房搬离。 15:07:47 在凯李咖啡写论文中。 20:52:48 下午到图书馆借了分布式相关的书，路上觉得天气渐阴就回家了。一个小时后瓢泼大雨。 23:42:25 在家写了几个小时代码，惊奇的发现时间过得挺慢。">
+<meta name="twitter:title" content="TCP&#x2F;IP学习笔记">
+<meta name="twitter:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/03/04/diary180304/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/03/20/note-network-tcpip/"/>
 
 
 
 
 
-  <title>搬家（下） | 李斌 - LBYL</title>
+  <title>TCP/IP学习笔记 | 李斌 - LBYL</title>
   
 
 
@@ -262,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/04/diary180304/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/note-network-tcpip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -279,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">搬家（下）</h1>
+          <h1 class="post-title" itemprop="name headline">TCP/IP学习笔记</h1>
         
 
         <div class="post-meta">
@@ -291,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-04T15:07:34+08:00">
-                2018-03-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T18:27:25+08:00">
+                2018-03-20
               </time>
             
 
@@ -314,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
                   </a>
                 </span>
 
@@ -351,10 +355,65 @@
       
 
       
-        <p>中午正式从湘浦退房搬离。</p>
-<p><code>15:07:47</code> 在凯李咖啡写论文中。</p>
-<p><code>20:52:48</code> 下午到图书馆借了分布式相关的书，路上觉得天气渐阴就回家了。一个小时后瓢泼大雨。</p>
-<p><code>23:42:25</code> 在家写了几个小时代码，惊奇的发现时间过得挺慢。</p>
+        <h1 id="Q：简述OSI七层模型？"><a href="#Q：简述OSI七层模型？" class="headerlink" title="Q：简述OSI七层模型？"></a>Q：简述OSI七层模型？</h1><p><strong>A：</strong> 如下表：</p>
+<table>
+<thead>
+<tr>
+<th>分层</th>
+<th>代表协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>HTTP，FTP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>JPG，MPEG，HTML</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>SQL，ASP，JSP</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP，UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP，ICMP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>802.2</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>IEEE 754（浮点数）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Q：三次挥手的过程？"><a href="#Q：三次挥手的过程？" class="headerlink" title="Q：三次挥手的过程？"></a>Q：三次挥手的过程？</h1><ol>
+<li>客户端-&gt;服务器  SYN=x</li>
+<li>服务器-&gt;客户端  ACK=x+1,SYN=y</li>
+<li>客户端-&gt;服务器  ACK=y+1</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：四次挥手的过程？"><a href="#Q：四次挥手的过程？" class="headerlink" title="Q：四次挥手的过程？"></a>Q：四次挥手的过程？</h1><p><strong>A：</strong> 非常对称的FIN-ACK。</p>
+<ol>
+<li>客户端-&gt;服务器   FIN</li>
+<li>服务器-&gt;客户端   ACK</li>
+<li>服务器-&gt;客户端   FIN</li>
+<li>客户端-&gt;服务器   ACK</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：简述TCP与UDP的区别？"><a href="#Q：简述TCP与UDP的区别？" class="headerlink" title="Q：简述TCP与UDP的区别？"></a>Q：简述TCP与UDP的区别？</h1><p><strong>A：</strong> 首先来看二者的数据格式。</p>
+<p>TCP：</p>
+<table style="text-align: center;"><br><tr><br><th><font color="grey">偏移</font></th><br><th colspan="4" width="12%">位0–3</th><br><th colspan="3" width="8%">4–7</th><br><th colspan="9" width="24%">8–15</th><br><th colspan="16" width="44%">16–31</th><br></tr><br><tr><br><th>0</th><br><td colspan="16">来源连接端口</td><br><td colspan="16">目的连接端口</td><br></tr><br><tr><br><th>32</th><br><td colspan="32">序列号码</td><br></tr><br><tr><br><th>64</th><br><td colspan="32">确认号码</td><br></tr><br><tr><br><th>96</th><br><td colspan="4">报头长度</td><br><td colspan="6">保留</td><br><td colspan="6">标志符</td><br><td colspan="16">窗口大小</td><br></tr><br><tr><br><th>128</th><br><td colspan="16">校验和</td><br><td colspan="16">紧急指针</td><br></tr><br><tr><br><th>160</th><br><td colspan="32">选项字段</td><br></tr><br><tr><br><th>160/192+</th><br><td colspan="32">&#160;<br><br>数据<br><br>&#160;</td><br></tr><br></table>
+
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/lca1826/p/6601327.html" target="_blank" rel="noopener">https://www.cnblogs.com/lca1826/p/6601327.html</a></p>
 
       
     </div>
@@ -370,6 +429,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
 
       
       
@@ -379,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/03/diary180303/" rel="next" title="搬家（上）">
-                <i class="fa fa-chevron-left"></i> 搬家（上）
+              <a href="/2018/03/20/diary20180320/" rel="next" title="diary20180320">
+                <i class="fa fa-chevron-left"></i> diary20180320
               </a>
             
           </div>
@@ -388,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/05/diary180305/" rel="prev" title="真·看戏">
-                真·看戏 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -443,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -526,6 +596,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：简述OSI七层模型？"><span class="nav-number">1.</span> <span class="nav-text">Q：简述OSI七层模型？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：三次挥手的过程？"><span class="nav-number">2.</span> <span class="nav-text">Q：三次挥手的过程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：四次挥手的过程？"><span class="nav-number">3.</span> <span class="nav-text">Q：四次挥手的过程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：简述TCP与UDP的区别？"><span class="nav-number">4.</span> <span class="nav-text">Q：简述TCP与UDP的区别？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

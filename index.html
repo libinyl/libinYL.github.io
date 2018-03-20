@@ -259,6 +259,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/note-network-tcpip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/note-network-tcpip/" itemprop="url">TCP/IP学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T18:27:25+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Q：简述OSI七层模型？"><a href="#Q：简述OSI七层模型？" class="headerlink" title="Q：简述OSI七层模型？"></a>Q：简述OSI七层模型？</h1><p><strong>A：</strong> 如下表：</p>
+<table>
+<thead>
+<tr>
+<th>分层</th>
+<th>代表协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>HTTP，FTP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>JPG，MPEG，HTML</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>SQL，ASP，JSP</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP，UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP，ICMP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>802.2</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>IEEE 754（浮点数）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Q：三次挥手的过程？"><a href="#Q：三次挥手的过程？" class="headerlink" title="Q：三次挥手的过程？"></a>Q：三次挥手的过程？</h1><ol>
+<li>客户端-&gt;服务器  SYN=x</li>
+<li>服务器-&gt;客户端  ACK=x+1,SYN=y</li>
+<li>客户端-&gt;服务器  ACK=y+1</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：四次挥手的过程？"><a href="#Q：四次挥手的过程？" class="headerlink" title="Q：四次挥手的过程？"></a>Q：四次挥手的过程？</h1><p><strong>A：</strong> 非常对称的FIN-ACK。</p>
+<ol>
+<li>客户端-&gt;服务器   FIN</li>
+<li>服务器-&gt;客户端   ACK</li>
+<li>服务器-&gt;客户端   FIN</li>
+<li>客户端-&gt;服务器   ACK</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：简述TCP与UDP的区别？"><a href="#Q：简述TCP与UDP的区别？" class="headerlink" title="Q：简述TCP与UDP的区别？"></a>Q：简述TCP与UDP的区别？</h1><p><strong>A：</strong> 首先来看二者的数据格式。</p>
+<p>TCP：</p>
+<table style="text-align: center;"><br><tr><br><th><font color="grey">偏移</font></th><br><th colspan="4" width="12%">位0–3</th><br><th colspan="3" width="8%">4–7</th><br><th colspan="9" width="24%">8–15</th><br><th colspan="16" width="44%">16–31</th><br></tr><br><tr><br><th>0</th><br><td colspan="16">来源连接端口</td><br><td colspan="16">目的连接端口</td><br></tr><br><tr><br><th>32</th><br><td colspan="32">序列号码</td><br></tr><br><tr><br><th>64</th><br><td colspan="32">确认号码</td><br></tr><br><tr><br><th>96</th><br><td colspan="4">报头长度</td><br><td colspan="6">保留</td><br><td colspan="6">标志符</td><br><td colspan="16">窗口大小</td><br></tr><br><tr><br><th>128</th><br><td colspan="16">校验和</td><br><td colspan="16">紧急指针</td><br></tr><br><tr><br><th>160</th><br><td colspan="32">选项字段</td><br></tr><br><tr><br><th>160/192+</th><br><td colspan="32">&#160;<br><br>数据<br><br>&#160;</td><br></tr><br></table>
+
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/lca1826/p/6601327.html" target="_blank" rel="noopener">https://www.cnblogs.com/lca1826/p/6601327.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/diary20180320/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -632,6 +832,41 @@
 <h2 id="2-HTTP响应报文"><a href="#2-HTTP响应报文" class="headerlink" title="2. HTTP响应报文"></a>2. HTTP响应报文</h2><p>响应报文 = 状态行 + 响应头 + 响应正文</p>
 <h3 id="2-1-状态行"><a href="#2-1-状态行" class="headerlink" title="2.1 状态行"></a>2.1 状态行</h3><p>状态行 = 协议版本 + 状态码 + 状态码描述</p>
 <h3 id="2-2-响应头"><a href="#2-2-响应头" class="headerlink" title="2.2 响应头"></a>2.2 响应头</h3><p><strong>作用：</strong> 以键值对的形式为响应报文添加一些附加信息，如响应正文的类型，是图片还是字符串，响应正文的长度，编码等</p>
+<p>常见响应头：</p>
+<table>
+<thead>
+<tr>
+<th>响应头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server</td>
+<td>服务器应用程序软件的名称和版本</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>响应正文的类型（是图片还是二进制字符串）</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>响应正文长度</td>
+</tr>
+<tr>
+<td>Content-Charset</td>
+<td>响应正文使用的编码</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>响应正文使用的数据压缩格式</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>响应正文使用的语言</td>
+</tr>
+</tbody>
+</table>
 <h3 id="2-4-响应正文"><a href="#2-4-响应正文" class="headerlink" title="2.4 响应正文"></a>2.4 响应正文</h3><p>包含服务器返回的内容个，如HTML数据</p>
 <h1 id="Q：HTTP与HTTPS-的区别于与联系？"><a href="#Q：HTTP与HTTPS-的区别于与联系？" class="headerlink" title="Q：HTTP与HTTPS 的区别于与联系？"></a>Q：HTTP与HTTPS 的区别于与联系？</h1><p>HTTP外面套一层SSL。</p>
 <p><strong>区别：</strong></p>
@@ -706,7 +941,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/19/note-java-nio/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/19/note-java-io/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -725,7 +960,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/19/note-java-nio/" itemprop="url">note-java-nio</a></h1>
+                <a class="post-title-link" href="/2018/03/19/note-java-io/" itemprop="url">note-java-nio</a></h1>
         
 
         <div class="post-meta">
@@ -1816,150 +2051,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/17/diary20180317/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/diary20180317/" itemprop="url">diary20180317</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T12:12:58+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>12:13:39</code> 来到凯李咖啡。不知不觉写日记已经有一个月了。从开始的零零散散，到现在每天几乎只有一句话，好歹也坚持下来了。</p>
-<p><code>21:53:40</code> 第二次泰坤，爽快。以后要带水。</p>
-<p>预定了下周日的环太平洋电影。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2010,7 +2101,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2032,7 +2123,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
