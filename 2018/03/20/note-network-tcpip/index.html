@@ -79,21 +79,22 @@
 
 
 
-<meta name="description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
+<meta name="description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）     Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x">
 <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP&#x2F;IP学习笔记">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/20/note-network-tcpip/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
+<meta property="og:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）     Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/tcpip_model.png">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif">
-<meta property="og:updated_time" content="2018-03-20T11:05:43.887Z">
+<meta property="og:updated_time" content="2018-03-20T11:32:21.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP学习笔记">
-<meta name="twitter:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）    Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x+">
-<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif">
+<meta name="twitter:description" content="Q：简述OSI七层模型？A： 如下表：    分层 代表协议     应用层 HTTP，FTP   表示层 JPG，MPEG，HTML   会话层 SQL，ASP，JSP   传输层 TCP，UDP   网络层 IP，ICMP   数据链路层 802.2   物理层 IEEE 754（浮点数）     Q：三次挥手的过程？ 客户端-&amp;gt;服务器  SYN=x 服务器-&amp;gt;客户端  ACK=x">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/tcpip_model.png">
 
 
 
@@ -394,6 +395,7 @@
 </tr>
 </tbody>
 </table>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/tcpip_model.png" alt=""></p>
 <h1 id="Q：三次挥手的过程？"><a href="#Q：三次挥手的过程？" class="headerlink" title="Q：三次挥手的过程？"></a>Q：三次挥手的过程？</h1><ol>
 <li>客户端-&gt;服务器  SYN=x</li>
 <li>服务器-&gt;客户端  ACK=x+1,SYN=y</li>
@@ -408,12 +410,15 @@
 <li>客户端-&gt;服务器   ACK</li>
 </ol>
 <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif" alt=""></p>
-<h1 id="Q：简述TCP与UDP的区别？"><a href="#Q：简述TCP与UDP的区别？" class="headerlink" title="Q：简述TCP与UDP的区别？"></a>Q：简述TCP与UDP的区别？</h1><p><strong>A：</strong> 首先来看二者的数据格式。</p>
-<p>TCP：</p>
-<table style="text-align: center;"><br><tr><br><th><font color="grey">偏移</font></th><br><th colspan="4" width="12%">位0–3</th><br><th colspan="3" width="8%">4–7</th><br><th colspan="9" width="24%">8–15</th><br><th colspan="16" width="44%">16–31</th><br></tr><br><tr><br><th>0</th><br><td colspan="16">来源连接端口</td><br><td colspan="16">目的连接端口</td><br></tr><br><tr><br><th>32</th><br><td colspan="32">序列号码</td><br></tr><br><tr><br><th>64</th><br><td colspan="32">确认号码</td><br></tr><br><tr><br><th>96</th><br><td colspan="4">报头长度</td><br><td colspan="6">保留</td><br><td colspan="6">标志符</td><br><td colspan="16">窗口大小</td><br></tr><br><tr><br><th>128</th><br><td colspan="16">校验和</td><br><td colspan="16">紧急指针</td><br></tr><br><tr><br><th>160</th><br><td colspan="32">选项字段</td><br></tr><br><tr><br><th>160/192+</th><br><td colspan="32">&#160;<br><br>数据<br><br>&#160;</td><br></tr><br></table>
-
+<h1 id="Q：简述TCP与UDP的区别？"><a href="#Q：简述TCP与UDP的区别？" class="headerlink" title="Q：简述TCP与UDP的区别？"></a>Q：简述TCP与UDP的区别？</h1><p><strong>A：</strong> </p>
+<ul>
+<li><strong>可靠性：</strong> TCP提供面向连接，保证数据正确；UDP非面向连接、不可靠，数据不一定正确。</li>
+<li><strong>侧重点：</strong> TCP注重数据安全，UDP注重速度，但安全性一般。</li>
+<li><strong>流与数据报：</strong> TCP是基于流的，具有缓存机制。UDP基于数据报，接收端必须用与发送端相同的次数读完。</li>
+</ul>
 <p>参考：</p>
 <p><a href="https://www.cnblogs.com/lca1826/p/6601327.html" target="_blank" rel="noopener">https://www.cnblogs.com/lca1826/p/6601327.html</a></p>
+<p><a href="https://www.linuxidc.com/Linux/2014-11/109545.htm" target="_blank" rel="noopener">https://www.linuxidc.com/Linux/2014-11/109545.htm</a></p>
 
       
     </div>
