@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-21T11:23:38+08:00">
-                2018-03-21
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-05T18:46:38+08:00">
+                2018-04-05
               </time>
             
           </span>
@@ -390,6 +390,13 @@
 <p>JDK动态代理：实现InvocationHandler接口，实现其中的invoke方法，在其中定义目标方法定义前后的操作。并接收目标对象。使用时用代理绑定接口实现类，返回目标对象；通过目标对象调用方法，则会一并执行invoke方法中实现的逻辑。</p>
 <p>DK动态代理是通过接口中的方法名，在动态生成的代理类中调用业务实现类的同名方法；</p>
 <p>CGlib动态代理是通过继承业务类，生成的动态代理类是业务类的子类，通过重写业务方法进行代理；</p>
+<h1 id="Bean的作用域有哪些？"><a href="#Bean的作用域有哪些？" class="headerlink" title="Bean的作用域有哪些？"></a>Bean的作用域有哪些？</h1><p><strong>A：</strong> 不同版本有不同的种类。</p>
+<ul>
+<li><p>在<a href="https://docs.spring.io/spring/docs/3.2.18.RELEASE/spring-framework-reference/htmlsingle/#beans-factory-scopes" target="_blank" rel="noopener">spring 3</a>中，有五种。单例，原型；request，session，global session。</p>
+</li>
+<li><p>在<a href="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/#beans-factory-scopes" target="_blank" rel="noopener">spring 4</a>和<a href="https://docs.spring.io/spring/docs/5.0.4.RELEASE/spring-framework-reference/core.html#beans-factory-scopes" target="_blank" rel="noopener">spring 5</a>中，增加了<code>websocket</code>。</p>
+</li>
+</ul>
 <p>参考：</p>
 <ul>
 <li><p>官方文档</p>
