@@ -277,14 +277,14 @@ p {
   margin: 0 0 20px 0;
 }
 a {
-  color: #212121;
+  color: #0684bd;
   text-decoration: none;
   outline: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 a:hover {
-  color: #222;
+  color: #0684bd;
   border-bottom-color: #222;
 }
 blockquote {
@@ -921,7 +921,7 @@ pre .javascript .function {
 }
 .post-body .tabs ul.nav-tabs li.tab.active a {
   cursor: default;
-  color: #212121;
+  color: #0684bd;
 }
 .post-body .tabs .tab-content {
   background-color: #fff;
@@ -1578,11 +1578,11 @@ pre .javascript .function {
   display: block;
   line-height: 25px;
   font-size: 14px;
-  color: #212121;
+  color: #0684bd;
   border-bottom: none;
 }
 .post-nav-item a:hover {
-  color: #222;
+  color: #0684bd;
   border-bottom: none;
 }
 .post-nav-item a:active {
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a3754a;
+  background: #75e488;
 }
 .links-of-blogroll {
   font-size: 13px;
