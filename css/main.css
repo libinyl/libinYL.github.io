@@ -921,7 +921,7 @@ pre .javascript .function {
 }
 .post-body .tabs ul.nav-tabs li.tab.active a {
   cursor: default;
-  color: #0684bd;
+  color: $black;
 }
 .post-body .tabs .tab-content {
   background-color: #fff;
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0fabcf;
+  background: #a1d1ff;
 }
 .links-of-blogroll {
   font-size: 13px;
