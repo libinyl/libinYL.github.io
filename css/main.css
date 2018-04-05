@@ -277,14 +277,14 @@ p {
   margin: 0 0 20px 0;
 }
 a {
-  color: #0684bd;
+  color: #222;
   text-decoration: none;
   outline: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 a:hover {
-  color: #0684bd;
+  color: #222;
   border-bottom-color: #0684bd;
 }
 blockquote {
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #be85b6;
+  background: #75cd01;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1911,8 +1911,8 @@ pre .javascript .function {
   border-bottom-color: #ccc;
 }
 .post-toc ol a:hover {
-  color: #000;
-  border-bottom-color: #000;
+  color: $black;
+  border-bottom-color: $black;
 }
 .post-toc .nav-item {
   overflow: hidden;
