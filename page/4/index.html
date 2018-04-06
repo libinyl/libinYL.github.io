@@ -648,8 +648,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-19T17:36:02+08:00">
-                2018-03-19
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:03:47+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -740,7 +740,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="堆内存分布"><a href="#堆内存分布" class="headerlink" title="堆内存分布"></a>堆内存分布</h1><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/java%E5%A0%86.jpg" alt=""></p>
+<h1 id="堆内存分布"><a href="#堆内存分布" class="headerlink" title="堆内存分布"></a>堆内存分布</h1><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/java%E5%A0%86.jpg" alt=""></p>
 <h2 id="最大堆和初始堆的配置"><a href="#最大堆和初始堆的配置" class="headerlink" title="最大堆和初始堆的配置"></a>最大堆和初始堆的配置</h2><p>当Java进程启动时，可用参数-Xms指定<strong>初始堆</strong>的大小，虚拟机会尽可能在初始堆空间内运行，扩展上线为<strong>最大堆</strong>空间，由-Xmx指定。</p>
 <p>可以直接用-Xms和-Xmx将初始堆和最大堆设置为相等，减少GC次数，提高程序性能。</p>
 <h2 id="新生代的配置"><a href="#新生代的配置" class="headerlink" title="新生代的配置"></a>新生代的配置</h2><p>可以使用-Xmn设置新生代的大小。新生代过大会减少老年代的大小，对GC有很大影响。新生代大小一般配置为整个堆空间的1/3到1/4。</p>
@@ -1107,8 +1107,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T18:28:25+08:00">
-                2018-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:03:02+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -1227,7 +1227,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> &#123; age_bits                 = <span class="number">4</span>,</span><br><span class="line">       lock_bits                = <span class="number">2</span>,</span><br><span class="line">       biased_lock_bits         = <span class="number">1</span>,</span><br><span class="line">       max_hash_bits            = BitsPerWord - age_bits - lock_bits - biased_lock_bits,</span><br><span class="line">       hash_bits                = max_hash_bits &gt; <span class="number">31</span> ? <span class="number">31</span> : max_hash_bits,</span><br><span class="line">       cms_bits                 = LP64_ONLY(<span class="number">1</span>) NOT_LP64(<span class="number">0</span>),</span><br><span class="line">       epoch_bits               = <span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>从上面的枚举定义中可以看出，对象头中主要包含了GC分代年龄、锁状态标记、哈希码、epoch等信息。</p>
 <p>对象头最重要的部分是mark word。它非常像协议报文头。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png" alt=""></p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/ObjectHead.png" alt=""></p>
 <p>从上图中可以看出，对象的状态一共有五种，分别是无锁态、轻量级锁、重量级锁、GC标记和偏向锁。在32位的虚拟机中有两个Bits是用来存储锁的标记为的，但是我们都知道，两个bits最多只能表示四种状态：00、01、10、11，那么第五种状态如何表示呢 ，就要额外依赖1Bit的空间，使用0和1来区分。</p>
 <blockquote>
 <p>在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word的32个Bits空间中的25Bits用于存储对象哈希码(HashCode)，4Bits用于存储对象分代年龄，2Bits用于存储锁标志位，1Bit固定为0，表示非偏向锁。</p>
@@ -1500,8 +1500,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-20T14:37:57+08:00">
-                2018-03-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:06:00+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -1558,7 +1558,7 @@
       
         
           
-            <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
+            <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
 <p>首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。</p>
 <p>接下来看HashMap。首先要明白Hash的概念。</p>
 <p>Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，hash有两个步骤：第一步，将想要存储的对象（也就是key）转换为一个整数（也就是散列码）；第二步，将这个整数压缩至数组长度内合理的索引值。</p>
@@ -1602,9 +1602,9 @@
 <li><p><strong>如何扩容？</strong> 每次扩容令数组长度变化，那么每个元素的位置也会发生变化，原本因冲突而形成链表或红黑树的Node的位置也需要重新计算。下面对比JDK7和JDK8来说明resize机制。</p>
 <p>  在JDK7中，一旦扩容，就需要对所有元素rehash。而且旧链表迁移到新链表时,如果在新表的索引位置相同，链表元素会倒置。</p>
 <p>  而在JDK8中，神奇的事情发生了。因为数组长度总是保持在2的n次方，扩容之后，数组长度的二进制表示就是原有数值左移一位，length-1的二进制表示的最高位的左边一位置1。看下图可以明白这句话的意思，n为table的长度，图（a）表示扩容前的key1和key2两种key确定索引位置的示例，图（b）表示扩容后key1和key2两种key确定索引位置的示例，其中hash1是key1对应的哈希与高位运算结果。</p>
-<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png" alt=""></p>
+<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png" alt=""></p>
 <p>  此时获取索引的计算 hashcode &amp; (length -1) 变成了 原索引+oldCap，性能获得提升。这就是JDK8中<strong>对resize的优化</strong>。</p>
-<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png" alt=""></p>
+<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png" alt=""></p>
 </li>
 </ul>
 <h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="Q：get方法的流程是怎样的？"><a href="#Q：get方法的流程是怎样的？" class="headerlink" title="Q：get方法的流程是怎样的？"></a>Q：get方法的流程是怎样的？</h2><p><strong>A：</strong> </p>
@@ -2369,7 +2369,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

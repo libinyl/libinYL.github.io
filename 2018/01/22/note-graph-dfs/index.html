@@ -94,14 +94,14 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="图的定义 从主函数开始,首先声明一个MGraph的变量:  1MGraph G;  观察MGraph:  123456typedef struct&amp;#123;    VertexType vexs[MAXVEX]; /* 顶点表 */    EdgeType arc[MAXVEX][MAXVEX];/* 邻接矩阵，可看作边表 */    int numVertexes, numEdges; /*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_1.jpg">
-<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_2.png">
-<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_3.png">
-<meta property="og:updated_time" content="2018-02-26T11:57:05.119Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_1.jpg">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_2.png">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_3.png">
+<meta property="og:updated_time" content="2018-04-06T18:02:42.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图的深度优先遍历项目说明文档">
 <meta name="twitter:description" content="图的定义 从主函数开始,首先声明一个MGraph的变量:  1MGraph G;  观察MGraph:  123456typedef struct&amp;#123;    VertexType vexs[MAXVEX]; /* 顶点表 */    EdgeType arc[MAXVEX][MAXVEX];/* 邻接矩阵，可看作边表 */    int numVertexes, numEdges; /*">
-<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_1.jpg">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_1.jpg">
 
 
 
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-26T19:57:05+08:00">
-                2018-02-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:02:42+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -387,7 +387,7 @@
 <li>MGraph定义了图.什么是图?请参考相关博客如 <a href="https://www.cnblogs.com/wangyingli/p/5974508.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/wangyingli/p/5974508.html?utm_source=tuicool&amp;utm_medium=referral</a></li>
 <li>在这个程序中,用到的只是最简单的无向图.比较直观的解释:</li>
 </ul>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_1.jpg" alt=""></p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_1.jpg" alt=""></p>
 <ul>
 <li>以上图为例.每个图都有几个特征:<ul>
 <li>节点的数量</li>
@@ -399,7 +399,7 @@
 <ul>
 <li>首先,要对每个节点编号.比如上图,你可以编程从1到9,也可以编程从A到I.我们将这个编号保存起来,就是刚刚结构体中的属性值<code>vexs[MAXVEX]</code>.</li>
 <li><p>其次,谁跟谁相连?我们这里用一个矩阵表示.谁跟谁相连,就把对应的坐标填充为1.如果没有相连,就填充为正无穷.如果是自己与自己相连,就填为0.如上图,连接关系为:</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_2.png" alt=""></p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_2.png" alt=""></p>
 </li>
 <li><p>此连接关系表示为一个数组,就是结构体中的属性<code>EdgeType arc[MAXVEX][MAXVEX]</code>.这个数组也被称为邻接矩阵.在表格中,每个”1”都可以看做是一个边.每个∞都可以看做是白纸.</p>
 </li>
@@ -449,7 +449,7 @@
 <h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><ul>
 <li>事实上,在遍历的过程中,每遍历一个节点,我们就调用<code>printf(&quot;%c &quot;, G.vexs[i]);</code>方法将结果输出在了控制台上.</li>
 </ul>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/graph_dfs_3.png" alt=""></p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_3.png" alt=""></p>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><ul>
 <li>需求更新: 要求每次选择节点都时随机挑选.</li>
 </ul>
@@ -574,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

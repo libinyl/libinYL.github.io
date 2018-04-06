@@ -94,12 +94,12 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="Q：如何创建一个线程？A：   实现Runnable接口，实现run()方法。实例化Thread对象，将实现Runnable接口的对象传入。// 常用 继承Thread类，重写run()方法。// 一个类一般仅在需要被加强或修改时才被继承，故一般不采用。 实现Callable接口，重写call()方法。// 1.提供返回值 2.可以抛出异常 3.可以进行异步计算  Q：线程的状态有哪些？生命周期是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png">
-<meta property="og:updated_time" content="2018-03-29T10:28:25.000Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/ObjectHead.png">
+<meta property="og:updated_time" content="2018-04-06T18:03:02.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程学习记录">
 <meta name="twitter:description" content="Q：如何创建一个线程？A：   实现Runnable接口，实现run()方法。实例化Thread对象，将实现Runnable接口的对象传入。// 常用 继承Thread类，重写run()方法。// 一个类一般仅在需要被加强或修改时才被继承，故一般不采用。 实现Callable接口，重写call()方法。// 1.提供返回值 2.可以抛出异常 3.可以进行异步计算  Q：线程的状态有哪些？生命周期是">
-<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/ObjectHead.png">
 
 
 
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T18:28:25+08:00">
-                2018-03-29
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:03:02+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -435,7 +435,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> &#123; age_bits                 = <span class="number">4</span>,</span><br><span class="line">       lock_bits                = <span class="number">2</span>,</span><br><span class="line">       biased_lock_bits         = <span class="number">1</span>,</span><br><span class="line">       max_hash_bits            = BitsPerWord - age_bits - lock_bits - biased_lock_bits,</span><br><span class="line">       hash_bits                = max_hash_bits &gt; <span class="number">31</span> ? <span class="number">31</span> : max_hash_bits,</span><br><span class="line">       cms_bits                 = LP64_ONLY(<span class="number">1</span>) NOT_LP64(<span class="number">0</span>),</span><br><span class="line">       epoch_bits               = <span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>从上面的枚举定义中可以看出，对象头中主要包含了GC分代年龄、锁状态标记、哈希码、epoch等信息。</p>
 <p>对象头最重要的部分是mark word。它非常像协议报文头。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/ObjectHead.png" alt=""></p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/ObjectHead.png" alt=""></p>
 <p>从上图中可以看出，对象的状态一共有五种，分别是无锁态、轻量级锁、重量级锁、GC标记和偏向锁。在32位的虚拟机中有两个Bits是用来存储锁的标记为的，但是我们都知道，两个bits最多只能表示四种状态：00、01、10、11，那么第五种状态如何表示呢 ，就要额外依赖1Bit的空间，使用0和1来区分。</p>
 <blockquote>
 <p>在32位的HotSpot虚拟机 中对象未被锁定的状态下，Mark Word的32个Bits空间中的25Bits用于存储对象哈希码(HashCode)，4Bits用于存储对象分代年龄，2Bits用于存储锁标志位，1Bit固定为0，表示非偏向锁。</p>
@@ -578,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
