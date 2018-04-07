@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="Q：数据库事务正确执行的四个基本要素（ACID）是什么？A： ACID对应的含义： A   Atomicity   原子性C   Consistency 一致性I   Isolation   隔离性D   Durability  持久性 Q：隔离级别有什么？不考虑隔离级别的问题： 脏读：在一个事务处理过程读取了另一个未提交的事务中的数据。 不可重复读/幻读：读取了另一条已经提交的事务，前者在于up">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T09:06:52.000Z">
+<meta property="og:updated_time" content="2018-04-07T09:47:02.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql概念汇总">
 <meta name="twitter:description" content="Q：数据库事务正确执行的四个基本要素（ACID）是什么？A： ACID对应的含义： A   Atomicity   原子性C   Consistency 一致性I   Isolation   隔离性D   Durability  持久性 Q：隔离级别有什么？不考虑隔离级别的问题： 脏读：在一个事务处理过程读取了另一个未提交的事务中的数据。 不可重复读/幻读：读取了另一条已经提交的事务，前者在于up">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-01T17:06:52+08:00">
-                2018-04-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T17:47:02+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -383,6 +383,14 @@
 <li>可重复读（默认）</li>
 <li>读已提交</li>
 <li>读未提交</li>
+</ul>
+<p>具体解释：</p>
+<ul>
+<li><strong>没有锁</strong>：两个事务同时写数据，其中一个被另一个覆盖，导致<strong>数据丢失</strong>。</li>
+<li><strong>读取未提交</strong>：写时加上排它锁，直到事务结束；读取时不加锁。读取到其他事务的数据，而其他事务数据回滚，则读取到<strong>脏数据</strong>。</li>
+<li><strong>读取已提交</strong>：写时加上排它锁，直到事务结束；读取读取完毕之后立刻释放共享锁。每次事务中重复读取某一数据，如果读取过程中其他事务对此数据修改了，则两次读取的数据不同，即<strong>不可重复读</strong>。</li>
+<li><strong>可重复读</strong>：写时加上排他锁，直到事务结束；读取时加上共享锁，直到事务结束。可避免重复读的问题。但是批量修改某相同值的数据时，其他事务增加了相同值的数据，则验证时发现存在未修改的数据，即<strong>幻读</strong>。</li>
+<li><strong>可串行化</strong>。串行执行事务，避免了以上问题。</li>
 </ul>
 <h1 id="Q：数据库范式？"><a href="#Q：数据库范式？" class="headerlink" title="Q：数据库范式？"></a>Q：数据库范式？</h1><p><strong>A：</strong> </p>
 <p>1NF：列不能拆分为其他几列，是基本要求。缺点：数据冗余过大。</p>
