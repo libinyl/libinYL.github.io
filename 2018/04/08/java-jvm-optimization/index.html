@@ -89,16 +89,16 @@
 <meta name="description" content="jvm调优过程 定位问题。使用一些工具如jstack，jhat，jps，JMC，btrace 等工具，或者java自带的参数来查看Java进程的状态、是否在等待锁、进程的CPU和内存占用多少，GC状态如何，FULL GC是否频繁，内存是否泄露等。 解决问题。1.理解JVM的工作原理，通过运行参数来验证问题。  能力要求：  常用jvm参数 调优工具 GC原理 理解heap dump  常用工具用于">
 <meta name="keywords" content="jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-jvm-optimization">
+<meta property="og:title" content="JVM性能优化总结">
 <meta property="og:url" content="http://libinyl.github.io/2018/04/08/java-jvm-optimization/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="jvm调优过程 定位问题。使用一些工具如jstack，jhat，jps，JMC，btrace 等工具，或者java自带的参数来查看Java进程的状态、是否在等待锁、进程的CPU和内存占用多少，GC状态如何，FULL GC是否频繁，内存是否泄露等。 解决问题。1.理解JVM的工作原理，通过运行参数来验证问题。  能力要求：  常用jvm参数 调优工具 GC原理 理解heap dump  常用工具用于">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/jconsole%E7%95%8C%E9%9D%A2.png">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/jvisualvm%E7%95%8C%E9%9D%A2.png">
-<meta property="og:updated_time" content="2018-04-08T11:35:58.814Z">
+<meta property="og:updated_time" content="2018-04-08T11:43:44.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-jvm-optimization">
+<meta name="twitter:title" content="JVM性能优化总结">
 <meta name="twitter:description" content="jvm调优过程 定位问题。使用一些工具如jstack，jhat，jps，JMC，btrace 等工具，或者java自带的参数来查看Java进程的状态、是否在等待锁、进程的CPU和内存占用多少，GC状态如何，FULL GC是否频繁，内存是否泄露等。 解决问题。1.理解JVM的工作原理，通过运行参数来验证问题。  能力要求：  常用jvm参数 调优工具 GC原理 理解heap dump  常用工具用于">
 <meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/jconsole%E7%95%8C%E9%9D%A2.png">
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>java-jvm-optimization | 李斌 - LBYL</title>
+  <title>JVM性能优化总结 | 李斌 - LBYL</title>
   
 
 
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java-jvm-optimization</h1>
+          <h1 class="post-title" itemprop="name headline">JVM性能优化总结</h1>
         
 
         <div class="post-meta">
@@ -318,7 +318,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-08T19:35:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-08T19:43:44+08:00">
                 2018-04-08
               </time>
             
@@ -417,11 +417,11 @@
 <li>Bytes：卸载的空间（kB）</li>
 <li><p>Time：加载/卸载的总时间</p>
 <p>例：</p>
+</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -class 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -443,8 +443,7 @@
 </tbody>
 </table>
 <ul>
-<li><p>监视Java堆垃圾回收状况。单位为kB</p>
-<ul>
+<li>监视Java堆垃圾回收状况。单位为kB<ul>
 <li>S0C：当前survivor0区的容量</li>
 <li>S1C：当前survivor1区的容量</li>
 <li>S0U：survivor0区使用量</li>
@@ -452,12 +451,11 @@
 <li>EC：当前Eden区容量</li>
 <li>EU：Eden区使用量</li>
 <li>OC：当前老年代容量</li>
-<li><p>OU：老年代使用量</p>
+<li>OU：老年代使用量</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gc 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -503,8 +501,7 @@
 </tbody>
 </table>
 <ul>
-<li><p>监视Java内存代数和空间容量（kB）</p>
-<ul>
+<li>监视Java内存代数和空间容量（kB）<ul>
 <li>NGCMN：年轻代初始化大小</li>
 <li>NGCMX：年轻代最大容量</li>
 <li>NGC：年轻代当前容量</li>
@@ -522,12 +519,11 @@
 <li>CCSMX：压缩类空间最大容量</li>
 <li>CCSC：压缩类空间的容量</li>
 <li>YGC：年轻代GC次数</li>
-<li><p>FGC：full GC次数</p>
+<li>FGC：full GC次数</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gccapacity 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -575,8 +571,7 @@
 </tbody>
 </table>
 <ul>
-<li><p>垃圾回收数据统计</p>
-<ul>
+<li>垃圾回收数据统计<ul>
 <li>S0：survivor0区占用比例</li>
 <li>S1：survivor1区占用比例</li>
 <li>E：Eden区占用比例</li>
@@ -587,12 +582,11 @@
 <li>YGCT：年轻代垃圾回收消耗时间</li>
 <li>FGC：full GC次数</li>
 <li>FGCT：full GC消耗时间</li>
-<li><p>GCT：垃圾回收总时间</p>
+<li>GCT：垃圾回收总时间</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gcutil 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -626,15 +620,13 @@
 </tbody>
 </table>
 <ul>
-<li><p>在gcutil基础上增加了LGCC和GCC</p>
-<ul>
+<li>在gcutil基础上增加了LGCC和GCC<ul>
 <li>LGCC：最后垃圾回收的原因</li>
-<li><p>GCC：当前垃圾回收的原因</p>
+<li>GCC：当前垃圾回收的原因</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gccause 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -672,8 +664,7 @@
 </tbody>
 </table>
 <ul>
-<li><p>新生代行为统计</p>
-<ul>
+<li>新生代行为统计<ul>
 <li>S0C：当前survivor0容量</li>
 <li>S1C：当前survivor1容量</li>
 <li>S0U：当前survivor0使用量</li>
@@ -684,12 +675,11 @@
 <li>EC：当前Eden区空间容量</li>
 <li>EU：Eden区空间使用量</li>
 <li>YGC：年轻代GC次数</li>
-<li><p>YGCT：年轻代GC消耗时间</p>
+<li>YGCT：年轻代GC消耗时间</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gcnew 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -722,10 +712,9 @@
 </tbody>
 </table>
 <ul>
-<li><p>新生代容量统计</p>
-<p>  <code>PS C:\Users\libin&gt; jstat -gcnewcapacity 31296</code></p>
-</li>
+<li>新生代容量统计</li>
 </ul>
+<p><code>PS C:\Users\libin&gt; jstat -gcnewcapacity 31296</code></p>
 <table>
 <thead>
 <tr>
@@ -759,10 +748,9 @@
 </tbody>
 </table>
 <ul>
-<li><p>老年代和元数据区行为统计</p>
-<p>  <code>PS C:\Users\libin&gt; jstat -gcold 31296</code></p>
-</li>
+<li>老年代和元数据区行为统计</li>
 </ul>
+<p><code>PS C:\Users\libin&gt; jstat -gcold 31296</code></p>
 <table>
 <thead>
 <tr>
@@ -794,10 +782,9 @@
 </tbody>
 </table>
 <ul>
-<li><p>老年代大小统计</p>
-<p>  <code>PS C:\Users\libin&gt; jstat -gcoldcapacity 31296</code></p>
-</li>
+<li>老年代大小统计</li>
 </ul>
+<p><code>PS C:\Users\libin&gt; jstat -gcoldcapacity 31296</code></p>
 <table>
 <thead>
 <tr>
@@ -825,8 +812,7 @@
 </tbody>
 </table>
 <ul>
-<li><p>元数据区大小统计</p>
-<ul>
+<li>元数据区大小统计<ul>
 <li>MCMN：元数据区最小容量</li>
 <li>MCMX：元数据区最大容量</li>
 <li>MC：元数据区当前容量</li>
@@ -835,12 +821,11 @@
 <li>YGC：年轻代垃圾回收次数</li>
 <li>FGC：full GC次数</li>
 <li>FGCT：full GC时间</li>
-<li><p>GCT：垃圾回收总时间</p>
+<li>GCT：垃圾回收总时间</li>
+</ul>
+</li>
+</ul>
 <p><code>PS C:\Users\libin&gt; jstat -gcmetacapacity 31296</code></p>
-</li>
-</ul>
-</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -871,7 +856,8 @@
 </tr>
 </tbody>
 </table>
-<p>参考<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr017.html#BABCDBEA" target="_blank" rel="noopener">官方教程</a></p>
+<p>参考<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr017.html" target="_blank" rel="noopener">官方jstat教程</a></p>
+<h3 id="jms-Java任务控制工具"><a href="#jms-Java任务控制工具" class="headerlink" title="jms Java任务控制工具"></a>jms Java任务控制工具</h3><p>功能：作为一套图形化工具集合，用于配置、监控和诊断。</p>
 
       
     </div>
@@ -1064,7 +1050,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jvm调优过程"><span class="nav-number">1.</span> <span class="nav-text">jvm调优过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用工具"><span class="nav-number">2.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java应用监控工具"><span class="nav-number">2.1.</span> <span class="nav-text">Java应用监控工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jconsole"><span class="nav-number">2.1.1.</span> <span class="nav-text">jconsole</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jvisualvm"><span class="nav-number">2.1.2.</span> <span class="nav-text">jvisualvm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM监控工具"><span class="nav-number">2.2.</span> <span class="nav-text">JVM监控工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jps-虚拟机进程信息查看工具"><span class="nav-number">2.2.1.</span> <span class="nav-text">Jps 虚拟机进程信息查看工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jstat-虚拟机运行状态监控工具"><span class="nav-number">2.2.2.</span> <span class="nav-text">jstat 虚拟机运行状态监控工具</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jvm调优过程"><span class="nav-number">1.</span> <span class="nav-text">jvm调优过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用工具"><span class="nav-number">2.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java应用监控工具"><span class="nav-number">2.1.</span> <span class="nav-text">Java应用监控工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jconsole"><span class="nav-number">2.1.1.</span> <span class="nav-text">jconsole</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jvisualvm"><span class="nav-number">2.1.2.</span> <span class="nav-text">jvisualvm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM监控工具"><span class="nav-number">2.2.</span> <span class="nav-text">JVM监控工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jps-虚拟机进程信息查看工具"><span class="nav-number">2.2.1.</span> <span class="nav-text">Jps 虚拟机进程信息查看工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jstat-虚拟机运行状态监控工具"><span class="nav-number">2.2.2.</span> <span class="nav-text">jstat 虚拟机运行状态监控工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jms-Java任务控制工具"><span class="nav-number">2.2.3.</span> <span class="nav-text">jms Java任务控制工具</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
