@@ -313,7 +313,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-08T18:13:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-08T19:30:20+08:00">
                 2018-04-08
               </time>
             
@@ -421,26 +421,120 @@
 </li>
 </ul>
 <ul>
-<li>监视Java堆状况。<ul>
-<li>S0C：当前survivor0区的容量（kB）</li>
-<li>S1C：当前survivor1区的容量（kB）</li>
-<li>S0U：survivor0区使用量（kB）</li>
-<li>S1U：survivor1区使用量（kB）</li>
-<li>EC：当前Eden区容量（kB）</li>
-<li>EU：Eden区使用量（kB）</li>
-<li>OC：当前老年代容量（kB）</li>
-<li>OU：老年代使用量（kB）</li>
+<li><p>监视Java堆垃圾回收状况。单位为kB</p>
+<ul>
+<li>S0C：当前survivor0区的容量</li>
+<li>S1C：当前survivor1区的容量</li>
+<li>S0U：survivor0区使用量</li>
+<li>S1U：survivor1区使用量</li>
+<li>EC：当前Eden区容量</li>
+<li>EU：Eden区使用量</li>
+<li>OC：当前老年代容量</li>
+<li><p>OU：老年代使用量</p>
+<p>PS C:\Users\libin&gt; jstat -gc 31296</p>
+<p>S0C | S1C | S0U | S1U | EC | EU | OC | OU | MC | MU | CCSC | CCSU | YGC | YGCT | FGC | FGCT | GCT<br>—-|—–|—–|—–|—-|—-|—-|—-|—-|—-|——|——|—–|——|—–|——|—-<br>9216.0 | 10752.0 | 0.0 | 0.0 | 47616.0 | 26950.4 | 107520.0 | 6643.8 | 36560.0 | 30046.2 | 2560.0 | 2304.5 | 8 | 0.034 | 5 | 0.161 | 0.194</p>
+</li>
+</ul>
+</li>
+<li><p>监视Java内存代数和空间容量（kB）</p>
+<ul>
+<li>NGCMN：年轻代初始化大小</li>
+<li>NGCMX：年轻代最大容量</li>
+<li>NGC：年轻代当前容量</li>
+<li>S0C：survivor0的容量</li>
+<li>S1C：survivor1的容量</li>
+<li>EC：Eden的容量</li>
+<li>OGCMN：老年代初始化大小</li>
+<li>OGCMX：老年代最大容量</li>
+<li>OGC：老年代当前新生成的容量</li>
+<li>OC：老年代容量</li>
+<li>MCMN：元数据元的初始化容量</li>
+<li>MCMX：元数据区最大容量</li>
+<li>MC：元数据区当前容量</li>
+<li>CCSMN：压缩类空间最小容量</li>
+<li>CCSMX：压缩类空间最大容量</li>
+<li>CCSC：压缩类空间的容量</li>
+<li>YGC：年轻代GC次数</li>
+<li><p>FGC：full GC次数</p>
+<p>PS C:\Users\libin&gt; jstat -gccapacity 31296</p>
+<p>NGCMN | NGCMX | NGC | S0C | S1C | EC | OGCMN | OGCMX | OGC | OC | MCMN | MCMX | MC | CCSMN | CCSMX | CCSC | YGC | FGC<br>——-|——-|—–|—–|—–|—-|——-|——-|—–|—-|——|——|—-|——-|——-|——|—–|—-<br>62464.0 | 1000448.0 | 69120.0 | 9216.0 | 10752.0 | 47616.0 | 125952.0 | 2001920.0 | 107520.0 | 107520.0 | 0.0 | 1083392.0 | 36560.0 | 0.0 | 1048576.0 | 2560.0 | 8 | 5</p>
+</li>
+</ul>
+</li>
+<li><p>垃圾回收数据统计</p>
+<ul>
+<li>S0：survivor0区占用比例</li>
+<li>S1：survivor1区占用比例</li>
+<li>E：Eden区占用比例</li>
+<li>O：老年代占用比例</li>
+<li>M：元数据区占用比例</li>
+<li>CCS：压缩类空间占用比例</li>
+<li>YGC：年轻代垃圾回收次数</li>
+<li>YGCT：年轻代垃圾回收消耗时间</li>
+<li>FGC：full GC次数</li>
+<li>FGCT：full GC消耗时间</li>
+<li><p>GCT：垃圾回收总时间</p>
+<p>PS C:\Users\libin&gt; jstat -gcutil 31296</p>
+<p>S0 | S1 | E | O | M | CCS | YGC | YGCT | FGC | FGCT | GCT<br>—|—-|—|—|—|—–|—–|——|—–|——|—-<br>0.00 | 0.00 | 56.60 | 6.18 | 82.18 | 90.02 | 8 | 0.034 | 5 | 0.161 | 0.194</p>
+</li>
+</ul>
+</li>
+<li><p>在gcutil基础上增加了LGCC和GCC</p>
+<ul>
+<li>LGCC：最后垃圾回收的原因</li>
+<li><p>GCC：当前垃圾回收的原因</p>
+<p>PS C:\Users\libin&gt; jstat -gccause 31296</p>
+<p>S0 | S1 | E | O | M | CCS | YGC | YGCT | FGC | FGCT | GCT | LGCC | GCC<br>—|—-|—|—|—|—–|—–|——|—–|——|—–|——|—-<br>0.00 | 0.00 | 56.60 | 6.18 | 82.18 | 90.02 | 8 | 0.034 | 5 | 0.161 | 0.194 | JvmtiEnv | ForceGarbageCollection No GC</p>
+</li>
+</ul>
+</li>
+<li><p>新生代行为统计</p>
+<ul>
+<li>S0C：当前survivor0容量</li>
+<li>S1C：当前survivor1容量</li>
+<li>S0U：当前survivor0使用量</li>
+<li>S1U：当前survivor1使用量</li>
+<li>TT：持有次数限制</li>
+<li>MTT：最大持有次数</li>
+<li>DSS：期待的survivor大小</li>
+<li>EC：当前Eden区空间容量</li>
+<li>EU：Eden区空间使用量</li>
+<li>YGC：年轻代GC次数</li>
+<li><p>YGCT：年轻代GC消耗时间</p>
+<p>PS C:\Users\libin&gt; jstat -gcnew 31296</p>
+<p>S0C | S1C | S0U | S1U | TT MTT | DSS | EC | EU | YGC | YGCT<br>—-|—–|—–|—–|——–|—–|—-|—-|—–|—–<br>9216.0 | 10752.0 | 0.0 | 0.0 | 9 | 15 | 10752.0 | 47616.0 | 26950.4 | 8 | 0.034</p>
+</li>
+</ul>
+</li>
+<li><p>新生代容量统计</p>
+<p>  PS C:\Users\libin&gt; jstat -gcnewcapacity 31296</p>
+<p>  NGCMN | NGCMX | NGC | S0CMX | S0C | S1CMX | S1C | ECMX | EC | YGC | FGC<br>  ——|——-|—–|——-|—–|——-|—–|——|—-|—–|—-<br>  62464.0 | 1000448.0 | 69120.0 | 333312.0 | 9216.0 | 333312.0 | 10752.0 | 999424.0 | 47616.0 | 8 | 5</p>
+</li>
+<li><p>老年代和元数据区行为统计</p>
+<p>  PS C:\Users\libin&gt; jstat -gcold 31296</p>
+<p>  MC | MU | CCSC | CCSU | OC | OU | YGC | FGC | FGCT | GCT<br>  —|—-|——|——|—-|—-|—–|—–|——|—-<br>  36560.0 | 30046.2 | 2560.0 | 2304.5 | 107520.0 | 6643.8 | 8 | 5 | 0.161 | 0.194</p>
+</li>
+<li><p>老年代大小统计</p>
+<p>  PS C:\Users\libin&gt; jstat -gcoldcapacity 31296</p>
+<p>  OGCMN | OGCMX | OGC | OC | YGC | FGC | FGCT | GCT<br>  ——|——-|—–|—-|—–|—–|——|—-<br>  125952.0 | 2001920.0 | 107520.0 | 107520.0 | 8 | 5 | 0.161 | 0.194</p>
+</li>
+<li><p>元数据区大小统计</p>
+<ul>
+<li>MCMN：元数据区最小容量</li>
+<li>MCMX：元数据区最大容量</li>
+<li>MC：元数据区当前容量</li>
+<li>CCSMN：压缩类空间最小容量</li>
+<li>CCSMX：压缩类空间最大容量</li>
+<li>YGC：年轻代垃圾回收次数</li>
+<li>FGC：full GC次数</li>
+<li>FGCT：full GC时间</li>
+<li><p>GCT：垃圾回收总时间</p>
+<p>PS C:\Users\libin&gt; jstat -gcmetacapacity 31296</p>
+<p>MCMN | MCMX | MC | CCSMN | CCSMX | CCSC | YGC | FGC | FGCT | GCT<br>—–|——|—-|——-|——-|——|—–|—–|——|—-<br>0.0 | 1083392.0 | 36560.0 | 0.0 | 1048576.0 | 2560.0 | 8 | 5 | 0.161 | 0.194</p>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code>PS C:\Users\libin&gt; jstat -gc 31296
-S0C | S1C | S0U | S1U | EC | EU | OC | OU | MC | MU | CCSC | CCSU | YGC | YGCT | FGC | FGCT | GCT
-----|-----|-----|-----|----|----|----|----|----|----|------|------|-----|------|-----|------|----
-9216.0 | 10752.0 | 0.0 | 0.0 | 47616.0 | 26950.4 | 107520.0 | 6643.8 | 36560.0 | 30046.2 | 2560.0 | 2304.5 | 8 | 0.034 | 5 | 0.161 | 0.194
-
-- S0C
-</code></pre><p>PS C:\Users\libin&gt; jstat -gccapacity 31296<br> NGCMN    NGCMX     NGC     S0C   S1C       EC      OGCMN      OGCMX       OGC         OC       MCMN     MCMX      MC     CCSMN    CCSMX     CCSC    YGC    FGC<br> 62464.0 1000448.0  69120.0 9216.0 10752.0  47616.0   125952.0  2001920.0   107520.0   107520.0      0.0 1083392.0  36560.0      0.0 1048576.0   2560.0      8     5<br>PS C:\Users\libin&gt; jstat -gcutil 31296<br>  S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT<br>  0.00   0.00  56.60   6.18  82.18  90.02      8    0.034     5    0.161    0.194<br>PS C:\Users\libin&gt; jstat -gccause 31296<br>  S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT    LGCC                 GCC<br>  0.00   0.00  56.60   6.18  82.18  90.02      8    0.034     5    0.161    0.194 JvmtiEnv ForceGarbageCollection No GC<br>PS C:\Users\libin&gt; jstat -gcnew 31296<br> S0C    S1C    S0U    S1U   TT MTT  DSS      EC       EU     YGC     YGCT<br>9216.0 10752.0    0.0    0.0  9  15 10752.0  47616.0  26950.4      8    0.034<br>PS C:\Users\libin&gt; jstat -gcnewcapacity 31296<br>  NGCMN      NGCMX       NGC      S0CMX     S0C     S1CMX     S1C       ECMX        EC      YGC   FGC<br>   62464.0  1000448.0    69120.0 333312.0   9216.0 333312.0  10752.0   999424.0    47616.0     8     5<br>PS C:\Users\libin&gt; jstat -gcold 31296<br>   MC       MU      CCSC     CCSU       OC          OU       YGC    FGC    FGCT     GCT<br> 36560.0  30046.2   2560.0   2304.5    107520.0      6643.8      8     5    0.161    0.194<br>PS C:\Users\libin&gt; jstat -gcoldcapacity 31296<br>   OGCMN       OGCMX        OGC         OC       YGC   FGC    FGCT     GCT<br>   125952.0   2001920.0    107520.0    107520.0     8     5    0.161    0.194<br>```</p>
-<p>S0  S1  E   O   M   CCS YGC YGCT    FGC FGCT    GCT<br>Survivor0   Survivor1   Eden    Old Permanent   </p>
 <p>参考<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/troubleshoot/tooldescr017.html#BABCDBEA" target="_blank" rel="noopener">官方教程</a></p>
 
           
