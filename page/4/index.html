@@ -1206,7 +1206,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-09T13:52:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-09T14:05:04+08:00">
                 2018-04-09
               </time>
             
@@ -1297,7 +1297,12 @@
 <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/io_4.png" alt=""></p>
 <h2 id="字符流基础类"><a href="#字符流基础类" class="headerlink" title="字符流基础类"></a>字符流基础类</h2><h3 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h3><p>read()系列：读取一个或多个字符的方法</p>
 <h3 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h3><p>write系列：写入一个或多个字符</p>
-<h2 id="对Reader-Writer的继承"><a href="#对Reader-Writer的继承" class="headerlink" title="对Reader/Writer的继承"></a>对Reader/Writer的继承</h2><p>由</p>
+<h2 id="拓展一：对Reader-Writer的继承"><a href="#拓展一：对Reader-Writer的继承" class="headerlink" title="拓展一：对Reader/Writer的继承"></a>拓展一：对Reader/Writer的继承</h2><p>首先InputStreamReader/OutputStreamWriter继承自Reader和Writer。根据不同数据源，字节流类似，存在</p>
+<ul>
+<li>文件读写字符流：FileReader/FileWriter</li>
+<li>字符数组读写字符流:CharArrayReader/CharArrayWriter</li>
+</ul>
+<h2 id="拓展二：对Reader-Writer行为的拓展："><a href="#拓展二：对Reader-Writer行为的拓展：" class="headerlink" title="拓展二：对Reader/Writer行为的拓展："></a>拓展二：对Reader/Writer行为的拓展：</h2><p>类似字节流，也使用了装饰器和责任链模式。</p>
 <p>参考：</p>
 <p><a href="https://www.cnblogs.com/keyi/p/7171664.html" target="_blank" rel="noopener">https://www.cnblogs.com/keyi/p/7171664.html</a></p>
 <p><a href="https://www.jianshu.com/p/c4d3ef8004a7" target="_blank" rel="noopener">https://www.jianshu.com/p/c4d3ef8004a7</a></p>
