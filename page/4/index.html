@@ -1206,7 +1206,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-09T13:43:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-09T13:52:22+08:00">
                 2018-04-09
               </time>
             
@@ -1292,11 +1292,12 @@
 <h2 id="字节流小结"><a href="#字节流小结" class="headerlink" title="字节流小结"></a>字节流小结</h2><p>Java I/O设计者通过装饰模式和责任链模式扩展了I/O的行为，实现这种扩展的基石是<code>FilterOutputStream</code>和<code>FilterInputStream</code>。也正是因为这两种设计模式，让我们写的Java I/O代码变成了下面这样的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = <span class="keyword">new</span> GZIPInputStream(<span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"1.txt"</span>)));</span><br></pre></td></tr></table></figure>
 <p>最里面的<code>FileInputStream</code>是真正的数据来源，而<code>BufferedInputStream</code>和<code>GZIPInputStream</code>都继承了<code>FilterInputStream</code>对I/O的行为进行了改变。</p>
-<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><h2 id="Reader-Writer出现的原因"><a href="#Reader-Writer出现的原因" class="headerlink" title="Reader / Writer出现的原因"></a>Reader / Writer出现的原因</h2><p>字节流面向字节，而人类面向字符。所以Java设计者重新设计了面向字符的IO。</p>
+<h1 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h1><h2 id="Reader-Writer-概览"><a href="#Reader-Writer-概览" class="headerlink" title="Reader / Writer 概览"></a>Reader / Writer 概览</h2><h3 id="出现字符流的原因"><a href="#出现字符流的原因" class="headerlink" title="出现字符流的原因"></a>出现字符流的原因</h3><p>字节流面向字节，而人类面向字符。所以Java设计者重新设计了面向字符的IO。</p>
+<h3 id="字符与字节的转换"><a href="#字符与字节的转换" class="headerlink" title="字符与字节的转换"></a>字符与字节的转换</h3><p>计算机只能识别字节，于是需要设计者将<code>Reader</code>/<code>Writer</code>和<code>InputStream</code>和<code>OutputStream</code>进行打通，于是就有了<code>InputStreamReader</code>和<code>OutputStreamWriter</code>。</p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/io_4.png" alt=""></p>
 <h2 id="字符流基础类"><a href="#字符流基础类" class="headerlink" title="字符流基础类"></a>字符流基础类</h2><h3 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h3><p>read()系列：读取一个或多个字符的方法</p>
 <h3 id="Writer"><a href="#Writer" class="headerlink" title="Writer"></a>Writer</h3><p>write系列：写入一个或多个字符</p>
-<h2 id="字符与字节的转换"><a href="#字符与字节的转换" class="headerlink" title="字符与字节的转换"></a>字符与字节的转换</h2><p>计算机只能识别字节，于是需要终结者将<code>Reader</code>/<code>Writer</code>和<code>InputStream</code>和<code>OutputStream</code>进行打通，于是就有了<code>InputStreamReader</code>和<code>OutputStreamWriter</code>。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/io_4.png" alt=""></p>
+<h2 id="对Reader-Writer的继承"><a href="#对Reader-Writer的继承" class="headerlink" title="对Reader/Writer的继承"></a>对Reader/Writer的继承</h2><p>由</p>
 <p>参考：</p>
 <p><a href="https://www.cnblogs.com/keyi/p/7171664.html" target="_blank" rel="noopener">https://www.cnblogs.com/keyi/p/7171664.html</a></p>
 <p><a href="https://www.jianshu.com/p/c4d3ef8004a7" target="_blank" rel="noopener">https://www.jianshu.com/p/c4d3ef8004a7</a></p>
