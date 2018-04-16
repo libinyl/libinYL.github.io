@@ -266,6 +266,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/09/note-adt-hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/note-adt-hash/" itemprop="url">哈希·学习记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T14:49:05+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-09T17:26:11+08:00">
+                2018-03-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是哈希？"><a href="#什么是哈希？" class="headerlink" title="什么是哈希？"></a>什么是哈希？</h2><p>柯林斯词典中对hash一词的<a href="https://www.collinsdictionary.com/dictionary/english/hash" target="_blank" rel="noopener">解释</a>是切碎或剁碎的意思：</p>
+<blockquote>
+<p>to chop into small pieces.</p>
+</blockquote>
+<p>或者是一种习语，把事情搞得一团糟。</p>
+<blockquote>
+<p>PHRASE If you make a hash of a job or task, you do it very badly.</p>
+</blockquote>
+<p>因此，在计算机科学中，<strong>hash</strong>成为<strong>散列</strong>的代名词。</p>
+<h2 id="什么是散列？"><a href="#什么是散列？" class="headerlink" title="什么是散列？"></a>什么是散列？</h2><p>对比来看，要想从数组中查找元素，只需确定元素的索引，无需涉及其他数组元素。</p>
+<p>散列也是如此，无需查找（遍历），只需根据<strong>键</strong>来确定元素索引，即可找到对应的元素。数组是散列的一种，是<strong>散列表</strong>。</p>
+<h2 id="什么是散列函数？"><a href="#什么是散列函数？" class="headerlink" title="什么是散列函数？"></a>什么是散列函数？</h2><p>散列函数的作用是转化。从<strong>键</strong>到<strong>索引值</strong>的转化过程，就是散列函数处理的。键可能是数字，可能是字符串，需要通过散列函数处理，转化为整数。</p>
+<h2 id="理想的散列是什么样子的？"><a href="#理想的散列是什么样子的？" class="headerlink" title="理想的散列是什么样子的？"></a>理想的散列是什么样子的？</h2><p>理想情况下，散列函数将每个<strong>键</strong>都映射到散列表（或称之为哈希表）中的唯一一个元素。比如键的范围是从0000到9999，散列函数产生从0到9999的整数，每个键对应唯一一个整数，也就对应相应的元素。此时的散列函数称为完美的散列函数。</p>
+<h2 id="实际情况下的散列是什么样子的？"><a href="#实际情况下的散列是什么样子的？" class="headerlink" title="实际情况下的散列是什么样子的？"></a>实际情况下的散列是什么样子的？</h2><p>实际情况下，不是每个键都会派上用场。比如上例，键的范围是0000到9999，可实际用到的可能仅仅只有少数。比如，电话号码的范围是0000到9999，而实际拥有电话的人可能只有几百人。那么散列表就可能会是稀疏的，浪费了大量空间。</p>
+<h2 id="典型的散列函数？"><a href="#典型的散列函数？" class="headerlink" title="典型的散列函数？"></a>典型的散列函数？</h2><p>典型的散列函数需要进行下列两个步骤：</p>
+<ol>
+<li>将查找键转换为一个称为<strong>散列码</strong>(hash code)的整数；</li>
+<li>将散列码<strong>压缩</strong>到散列表的索引范围。</li>
+</ol>
+<p>如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回含tableSize个位置的数组的一个索引</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = num的最后四位数字;</span><br><span class="line">    <span class="keyword">return</span> i % tableSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于tableSize小于查找键的数量，所以某些键可能会映射到相同的索引，这一现象称为<strong>冲突</strong>。为了解决这一问题，需要<strong>处理冲突</strong>。</p>
+<h2 id="较好的散列函数？"><a href="#较好的散列函数？" class="headerlink" title="较好的散列函数？"></a>较好的散列函数？</h2><p>散列函数只需产生适合的整数，而解决冲突需要一定代价。这说明较好的散列函数应该：</p>
+<ol>
+<li>使冲突最少</li>
+<li>计算快</li>
+</ol>
+<p>为了减少冲突的几率，散列函数应当使元素尽量均匀地分布在散列表中。</p>
+<h2 id="计算散列码"><a href="#计算散列码" class="headerlink" title="计算散列码"></a>计算散列码</h2><h3 id="类类型的散列码"><a href="#类类型的散列码" class="headerlink" title="类类型的散列码"></a>类类型的散列码</h3><p>刚刚提到，典型的散列函数的第一步是将键转换为散列码。不仅是数字和字符串，任何类型的对象都可以作为键。在Java中，每个Object都有一个<code>hashCode</code>方法，用于产生散列码。</p>
+<p>但是，这个默认的散列码不适合用于散列，因为对于两个 equal 的对象，它将产生不同的散列码。因此，应当自定义<code>hashCode</code>方法。准则如下：</p>
+<ol>
+<li>如果一个类覆盖了方法<code>equals</code>方法，则应该覆盖<code>hashCode</code>方法。</li>
+<li>如果<code>equals</code>方法认为两个对象相等，那么<code>hashCode</code>方法对它们必须返回相同的散列码。</li>
+<li>如果在同一程序中对一个对象调用多次<code>hashCode</code>方法，且它们没有改变，必须返回相同的散列码。</li>
+<li>在同一程序的两次执行过程中，对象的散列码可以不同。</li>
+</ol>
+<p>注：一般情况下，虽然相等的对象有相同的散列码，但是<strong>不相等的对象也有可能有相同的散列码</strong>，此时产生冲突，应竭力避免。</p>
+<h3 id="字符串的散列码"><a href="#字符串的散列码" class="headerlink" title="字符串的散列码"></a>字符串的散列码</h3><p>容易想到的方式有，为A~Z每个字母分配一个整数，或者用Unicode代替，散列函数取每个字符串开头的几个字母对应的整数。然而如果开头字母相同，则散列码相同。事实上，任何使用特定的字母的散列函数都无法将字符串均匀地分布在散列中。因为<strong>现实世界的数据不是均匀的</strong>。</p>
+<h4 id="更好的字符串散列码"><a href="#更好的字符串散列码" class="headerlink" title="更好的字符串散列码"></a>更好的字符串散列码</h4><p>Horner法：每个字符的Unicode值乘以与这个字符位置有关的因子，散列码就是这些乘积之和。对于字符串s，设g为某一常数，u(0)到u(n-1)为每个字符，有</p>
+<pre><code>s = u(0)u(1)……u(n-1)
+hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
+</code></pre><p>在某一版本的Java中，String类实现的<code>hashCode</code>方法是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = s.getLength();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">    hash = g * hash + s.charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基本类型的散列码"><a href="#基本类型的散列码" class="headerlink" title="基本类型的散列码"></a>基本类型的散列码</h3><p>对于<code>int</code>，<code>short</code>，<code>char</code>，<code>byte</code>的基本类型，可以将他们转化为<code>int</code>，直接作为散列码。</p>
+<p>对于其他基本类型，可以用内部的二进制表示。如果是<code>long</code>类型，则含有64位，如果简单的转换为<code>int</code>，或者将其对2^32取模，则会丢失前32位。结果是，所有只在前32位不同的键将有相同的散列码。这是我们不希望的。所以，我们要<strong>考虑到整个键，不要忽略它的一部分</strong>。</p>
+<p>对于<code>long</code>类型对象，一种方法是，将它分开成若干部分，用各种位操作将这些部分结合起来。这称为<strong>折叠</strong>。</p>
+<p>Java中的做法是</p>
+<pre><code>(int)(key^(key&gt;&gt;32))
+</code></pre><p>即，将key右移32位，并与它原本的值取位或运算。右移的步骤丢弃了高32位，位或的步骤将高低32位结合。最后转化为<code>int</code>，丢弃高32位。这样有效的利用了key的高低32位，也就是考虑了全部的元素。</p>
+<p>对于<code>double</code>类型的操作是类似的，但需要借助<code>Double.doubleToLongBits</code>方法来获取key的位组合。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> bits = Double.doubleToLongBits(key);</span><br><span class="line"><span class="keyword">int</span> hashCode = (<span class="keyword">int</span>)(bits^(bits&gt;&gt;<span class="number">32</span>))</span><br></pre></td></tr></table></figure>
+<p>对于float，散列码可以就是它的32位，通过调用<code>Float.floatToIntBits(key)</code>得到。</p>
+<p>事实上，以上基本类型的散列计算已经包含在相应包装类的<code>hashCode</code>方法实现中。</p>
+<h2 id="将散列码压缩为散列表的索引"><a href="#将散列码压缩为散列表的索引" class="headerlink" title="将散列码压缩为散列表的索引"></a>将散列码压缩为散列表的索引</h2><p>将一个整数缩小至指定范围，最常用的就是取模运算。但是这不是理想的。考虑到一个特性：一个数在<strong>对偶数取模</strong>之后，<strong>奇偶性</strong>不会变化。而（例如）<strong>基于内存地址的散列码通常是偶数</strong>，索引可能不再均匀分布，而偏向偶数。因此，散列表长度只能是奇数。</p>
+<p>当n为素数时，c % n 将等于0到n-1均匀分布值。</p>
+<p>另外，hashCode可能会返回负值。范围是1-n到0，令结果加上n即可。</p>
+<p>因此，我们可以有如下实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(K key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hashIndex = key.hashCode() % hashTable.length;</span><br><span class="line">    <span class="keyword">if</span>(hashIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        hashIndex = hashIndex + hashTable.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hashIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h2><p>处理冲突有两种选择：</p>
+<ol>
+<li>使用散列表中的另一个位置。</li>
+<li>修改散列表的结构，让每个数组位置可以表示多个值。</li>
+</ol>
+<p>前者称为<strong>开放定址</strong>（open addressing），暂且不谈。</p>
+<h3 id="链地址"><a href="#链地址" class="headerlink" title="链地址"></a>链地址</h3><p>每个数组的位置可以表示不知一个值，这样的位置被称为<strong>捅</strong>。而一旦涉及数组，则会有大量的内存消耗。而用链表实现桶是合理的选择，内存仅在需要时才分配。使用链表构成的桶处理冲突，被称为链地址。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/09/diary20180309/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1767,178 +1985,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/02/diary20180302/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/diary20180302/" itemprop="url">多重任务</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T09:52:18+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-06T15:10:32+08:00">
-                2018-03-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>9:55:15 来到库克咖啡，身心愉快。</p>
-<p>事情有点多。</p>
-<ul>
-<li>毕设<ul>
-<li>安装aspen</li>
-<li>调研报告</li>
-</ul>
-</li>
-<li>数据结构刷题</li>
-<li>并发项目</li>
-<li>淘淘商城项目</li>
-<li>jvm视频</li>
-</ul>
-<p><code>10:56:58</code> 感受到上午，下午，晚上心境的不同。上午总想着玩，就算是强制自己学东西也容易分心；下午自动认真起来；下午4点一直到睡前注意力都会自动集中。由此看来，上午适合学新知识，下午适合复习和钻研。</p>
-<p><code>13:17:15</code> 开始学习谷歌ai公开课，Jupyter ，Colaboratory,真乃神器也！</p>
-<p><code>16:35:03</code> 终于不怕递归了！之前做递归的算法出错率居高不下，今天看了这个回答，豁然开朗！迅速刷起牛客递归算法题，百战百胜！</p>
-<p><code>18:08:30</code> 来套图书馆咖啡店。还是抑制不住欣喜呀！</p>
-<p><code>23:10:00</code> 计划从湘浦家庭旅馆搬到温馨旅馆。网速即是生活质量啊。</p>
-<p><code>2:04:14</code> 核查了学分，一分不差，虚惊一场。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1989,7 +2035,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

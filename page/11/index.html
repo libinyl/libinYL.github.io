@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/22/note-spring-study-v0-9-env/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/22/note-graph-dfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -285,7 +285,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/22/note-spring-study-v0-9-env/" itemprop="url">spring0.9学习（一） 环境准备</a></h1>
+                <a class="post-title-link" href="/2018/01/22/note-graph-dfs/" itemprop="url">图的深度优先遍历项目说明文档</a></h1>
         
 
         <div class="post-meta">
@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T19:38:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T19:41:47+08:00">
                 2018-01-22
               </time>
             
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-30T07:00:19+08:00">
-                2018-01-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:02:42+08:00">
+                2018-04-07
               </time>
             
           </span>
@@ -371,19 +371,85 @@
       
         
           
-            <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
-<li>在<a href="https://spring.io/blog" target="_blank" rel="noopener">spring官方博客</a>的<a href="https://spring.io/blog/2004/03/02/spring-framework-1-0-release-candidate-2-released" target="_blank" rel="noopener">最后一页</a>可以获知,spring所有的代码都储存在<a href="https://sourceforge.net/projects/springframework/files/" target="_blank" rel="noopener">sourceforge</a>上,最早的版本为<a href="https://sourceforge.net/projects/springframework/files/springframework/0.9/" target="_blank" rel="noopener">0.9</a>.</li>
-<li><a href="https://sourceforge.net/projects/springframework/files/springframework/0.9/spring-framework-0.9.zip/download" target="_blank" rel="noopener">下载</a><code>spring-framework-0.9.zip</code>,查看<code>readme</code>.</li>
+            <h2 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h2><ul>
+<li>从主函数开始,首先声明一个<code>MGraph</code>的变量:</li>
 </ul>
-<h1 id="0-9版本的的readme"><a href="#0-9版本的的readme" class="headerlink" title="0.9版本的的readme"></a>0.9版本的的readme</h1><p>从readme中可以获取的,关于代码的信息:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MGraph G;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>“src”包含Java源文件;</li>
-<li>“dist”包含各种Spring Jar文件;</li>
-<li>“lib”包含最重要的第三方库;</li>
-<li>“doc”包含一般和API文档;</li>
-<li>“samples”包含demo和骨架。</li>
+<li>观察MGraph:</li>
 </ul>
-
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    VertexType vexs[MAXVEX]; <span class="comment">/* 顶点表 */</span></span><br><span class="line">    EdgeType arc[MAXVEX][MAXVEX];<span class="comment">/* 邻接矩阵，可看作边表 */</span></span><br><span class="line">    <span class="keyword">int</span> numVertexes, numEdges; <span class="comment">/* 图中当前的顶点数和边数 */</span> </span><br><span class="line">&#125;MGraph;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>MGraph定义了图.什么是图?请参考相关博客如 <a href="https://www.cnblogs.com/wangyingli/p/5974508.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/wangyingli/p/5974508.html?utm_source=tuicool&amp;utm_medium=referral</a></li>
+<li>在这个程序中,用到的只是最简单的无向图.比较直观的解释:</li>
+</ul>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_1.jpg" alt=""></p>
+<ul>
+<li>以上图为例.每个图都有几个特征:<ul>
+<li>节点的数量</li>
+<li>边的数量</li>
+<li>节点与边的连接关系</li>
+</ul>
+</li>
+<li><p>怎样表示哪个点与哪条边连接呢?</p>
+<ul>
+<li>首先,要对每个节点编号.比如上图,你可以编程从1到9,也可以编程从A到I.我们将这个编号保存起来,就是刚刚结构体中的属性值<code>vexs[MAXVEX]</code>.</li>
+<li><p>其次,谁跟谁相连?我们这里用一个矩阵表示.谁跟谁相连,就把对应的坐标填充为1.如果没有相连,就填充为正无穷.如果是自己与自己相连,就填为0.如上图,连接关系为:</p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_2.png" alt=""></p>
+</li>
+<li><p>此连接关系表示为一个数组,就是结构体中的属性<code>EdgeType arc[MAXVEX][MAXVEX]</code>.这个数组也被称为邻接矩阵.在表格中,每个”1”都可以看做是一个边.每个∞都可以看做是白纸.</p>
+</li>
+<li>再者由于程序要用到,这里也定义了节点和边的数量:<code>int numVertexes, numEdges;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="图的初始化"><a href="#图的初始化" class="headerlink" title="图的初始化"></a>图的初始化</h2><ul>
+<li>下一句代码:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CreateMGraph(&amp;G);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这部分代码比较简单.首先赋值边的数量和节点的数量:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G-&gt;numEdges=<span class="number">15</span>;</span><br><span class="line">G-&gt;numVertexes=<span class="number">9</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后给每个节点编号:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">G-&gt;vexs[<span class="number">0</span>]=<span class="string">'A'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">1</span>]=<span class="string">'B'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">2</span>]=<span class="string">'C'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">3</span>]=<span class="string">'D'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">4</span>]=<span class="string">'E'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">5</span>]=<span class="string">'F'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">6</span>]=<span class="string">'G'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">7</span>]=<span class="string">'H'</span>;</span><br><span class="line">G-&gt;vexs[<span class="number">8</span>]=<span class="string">'I'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再然后,根据刚才所画的表,把保存着连接状态的数组初始化:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先全部为0</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; G-&gt;numVertexes; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        G-&gt;arc[i][j]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//根据表赋值,由于表格是对称的,所以只赋值一半即可</span></span><br><span class="line">G-&gt;arc[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">0</span>][<span class="number">5</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">1</span>][<span class="number">8</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">1</span>][<span class="number">6</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">2</span>][<span class="number">3</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">2</span>][<span class="number">8</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">3</span>][<span class="number">4</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">3</span>][<span class="number">7</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">3</span>][<span class="number">6</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">3</span>][<span class="number">8</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">4</span>][<span class="number">5</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">4</span>][<span class="number">7</span>]=<span class="number">1</span>;</span><br><span class="line">G-&gt;arc[<span class="number">5</span>][<span class="number">6</span>]=<span class="number">1</span>; </span><br><span class="line">G-&gt;arc[<span class="number">6</span>][<span class="number">7</span>]=<span class="number">1</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">//赋值另一半</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; G-&gt;numVertexes; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(j = i; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        G-&gt;arc[j][i] =G-&gt;arc[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图的深度优先遍历"><a href="#图的深度优先遍历" class="headerlink" title="图的深度优先遍历"></a>图的深度优先遍历</h2><h3 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h3><ul>
+<li>观察深度优先遍历方法:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DFSTraverse(G);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>什么是深度优先遍历呢?二叉树的深度优先遍历比较直观.图的深度优先遍历四路是:<ul>
+<li>使用一个数组来保存遍历每个节点的遍历状态.初始状态下,每个节点的遍历状态都是<code>FALSE</code>.</li>
+<li>按照编号开始遍历,如果这个节点没有被遍历过,就使用<strong>DFS</strong>函数从它开始遍历.</li>
+</ul>
+</li>
+<li>这也就是<code>DFSTraverse</code>函数的内容.</li>
+</ul>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><ul>
+<li>观察<code>DFS</code>函数:</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(MGraph G, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">     visited[i] = TRUE;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"%c "</span>, G.vexs[i]);<span class="comment">/* 打印顶点，也可以其它操作 */</span></span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; G.numVertexes; j++)</span><br><span class="line">        <span class="keyword">if</span>(G.arc[i][j] == <span class="number">1</span> &amp;&amp; !visited[j])</span><br><span class="line">             DFS(G, j);<span class="comment">/* 对为访问的邻接顶点递归调用 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>代码含义:<ul>
+<li>既然来到这个节点,则标记这个节点为遍历过,即令<code>visited[i] = TRUE;</code>.</li>
+<li>下一步比较关键,含义为:<strong>对于这个节点,对应邻接矩阵,遍历它”邻接”的其他所有点,查看是否相连.如果相连,则继续对下一个点调用DFS.</strong>比如,对应表格,纵向来看,我们把所有竖向的字母,看成是我们关注的节点,横向的字母,看做是我们关注的节点所对应的节点们.比如,第一行,我们关注节点A,目光逐渐向右移动,发现A对应的A为0;对应的B为1,对应的C为∞,对应的D为∞,等等.我们一开始对A进行DFS方法调用,则首先标记它被遍历过,然后,目光向右移动,如果发现<strong>1.它与接下来节点的连接情况为1,2.且接下来的节点没有遍历过</strong>,那么就对接下来的节点调用DFS方法.很明显,这是一个递归操作.</li>
+</ul>
+</li>
+</ul>
+<h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><ul>
+<li>事实上,在遍历的过程中,每遍历一个节点,我们就调用<code>printf(&quot;%c &quot;, G.vexs[i]);</code>方法将结果输出在了控制台上.</li>
+</ul>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/graph_dfs_3.png" alt=""></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><ul>
+<li>需求更新: 要求每次选择节点都时随机挑选.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdlib.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"io.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"math.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"time.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;	<span class="comment">/* Status是函数的类型,其值是函数结果状态代码，如OK等 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Boolean; <span class="comment">/* Boolean是布尔类型,其值是TRUE或FALSE */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> VertexType; <span class="comment">/* 顶点类型应由用户定义 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> EdgeType; <span class="comment">/* 边上的权值类型应由用户定义 */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 9 <span class="comment">/* 存储空间初始分配量 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXEDGE 15</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXVEX 9</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INFINITY 65535</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    VertexType vexs[MAXVEX]; <span class="comment">/* 顶点表 */</span></span><br><span class="line">    EdgeType arc[MAXVEX][MAXVEX];<span class="comment">/* 邻接矩阵，可看作边表 */</span></span><br><span class="line">    <span class="keyword">int</span> numVertexes, numEdges; <span class="comment">/* 图中当前的顶点数和边数 */</span></span><br><span class="line">&#125;MGraph;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateMGraph</span><span class="params">(MGraph *G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">    G-&gt;numEdges=<span class="number">15</span>;</span><br><span class="line">    G-&gt;numVertexes=<span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 读入顶点信息，建立顶点表 */</span></span><br><span class="line">    G-&gt;vexs[<span class="number">0</span>]=<span class="string">'A'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">1</span>]=<span class="string">'B'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">2</span>]=<span class="string">'C'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">3</span>]=<span class="string">'D'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">4</span>]=<span class="string">'E'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">5</span>]=<span class="string">'F'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">6</span>]=<span class="string">'G'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">7</span>]=<span class="string">'H'</span>;</span><br><span class="line">    G-&gt;vexs[<span class="number">8</span>]=<span class="string">'I'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; G-&gt;numVertexes; i++)<span class="comment">/* 初始化图 */</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            G-&gt;arc[i][j]=<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">0</span>][<span class="number">5</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">1</span>][<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">1</span>][<span class="number">8</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">1</span>][<span class="number">6</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">2</span>][<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">2</span>][<span class="number">8</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">3</span>][<span class="number">4</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">3</span>][<span class="number">7</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">3</span>][<span class="number">6</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">3</span>][<span class="number">8</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">4</span>][<span class="number">5</span>]=<span class="number">1</span>;</span><br><span class="line">    G-&gt;arc[<span class="number">4</span>][<span class="number">7</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">5</span>][<span class="number">6</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    G-&gt;arc[<span class="number">6</span>][<span class="number">7</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; G-&gt;numVertexes; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = i; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            G-&gt;arc[j][i] =G-&gt;arc[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Boolean visited[MAXVEX]; <span class="comment">/* 访问标志的数组 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 邻接矩阵的深度优先递归算法 */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(MGraph G, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    visited[i] = TRUE;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c "</span>, G.vexs[i]);<span class="comment">/* 打印顶点，也可以其它操作 */</span></span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = rand() % G.numVertexes;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (G.arc[i][j] == <span class="number">1</span> &amp;&amp; !visited[j])<span class="comment">//相连且未曾访问</span></span><br><span class="line">            DFS(G, j);<span class="comment">/* 对为访问的邻接顶点递归调用 */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isAllEdgeVisted(G, i))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//没有命中的情况:  G.arc[i][j] != 1   ||   visited[j]==true</span></span><br><span class="line">        <span class="comment">//什么情况下停止?</span></span><br><span class="line">        <span class="comment">//凡是G.arc[i][j] == 1的节点都已经访问的情况下截止</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Boolean <span class="title">isAllEdgeVisted</span><span class="params">(MGraph G,<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; k &lt; G.numVertexes; k++)<span class="comment">//如果此行所有连接的节点都已经访问</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (G.arc[i][k] == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!visited[k])</span><br><span class="line">                <span class="keyword">return</span> FALSE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 邻接矩阵的深度遍历操作 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(MGraph G,<span class="keyword">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; G.numVertexes; i++)</span><br><span class="line">        visited[i] = FALSE; <span class="comment">/* 初始所有顶点状态都是未访问过状态 */</span></span><br><span class="line"></span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">    DFS(G, start);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> num = rand() % G.numVertexes;<span class="comment">//产生0到G.numVertexes-1的随机数</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[num]) <span class="comment">/* 对未访问过的顶点调用DFS，若是连通图，只会执行一次 */</span></span><br><span class="line">            DFS(G, num);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isAllVisited(G))</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for (i = j; i &lt; G.numVertexes; i++)</span></span><br><span class="line">    <span class="comment">//    if (!visited[i]) /* 对未访问过的顶点调用DFS，若是连通图，只会执行一次 */</span></span><br><span class="line">    <span class="comment">//        DFS(G, i);</span></span><br><span class="line">    <span class="comment">//for (i = 0; i &lt; j; i++)</span></span><br><span class="line">    <span class="comment">//&#123;</span></span><br><span class="line">    <span class="comment">//    if (!visited[i]) /* 对未访问过的顶点调用DFS，若是连通图，只会执行一次 */</span></span><br><span class="line">    <span class="comment">//        DFS(G, i);</span></span><br><span class="line">    <span class="comment">//&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Boolean <span class="title">isAllVisited</span><span class="params">(MGraph G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; n &lt; G.numVertexes; n++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (visited[n] == FALSE)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> FALSE;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    MGraph G;</span><br><span class="line">    CreateMGraph(&amp;G);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"please specify the start number:\n"</span>);</span><br><span class="line">        <span class="keyword">int</span> num;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;num);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"result:\n"</span>);</span><br><span class="line">        DFSTraverse(G, num);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getchar();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -593,6 +659,171 @@
 <li>如果返回了<code>model</code>，说明<code>view</code>已经渲染完毕。如果没有返回，则有可能是安全或其他原因，没有渲染。</li>
 </ol>
 <p><code>@ResponseBody</code>:参考3.0文档p429，如果一个方法注解为<code>@ResponseBody</code>，那么它的返回值将被写入<code>response</code>的<code>HTTP body</code>中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/22/note-spring-study-v0-9-env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/note-spring-study-v0-9-env/" itemprop="url">spring0.9学习（一） 环境准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T19:38:47+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-30T07:00:19+08:00">
+                2018-01-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
+<li>在<a href="https://spring.io/blog" target="_blank" rel="noopener">spring官方博客</a>的<a href="https://spring.io/blog/2004/03/02/spring-framework-1-0-release-candidate-2-released" target="_blank" rel="noopener">最后一页</a>可以获知,spring所有的代码都储存在<a href="https://sourceforge.net/projects/springframework/files/" target="_blank" rel="noopener">sourceforge</a>上,最早的版本为<a href="https://sourceforge.net/projects/springframework/files/springframework/0.9/" target="_blank" rel="noopener">0.9</a>.</li>
+<li><a href="https://sourceforge.net/projects/springframework/files/springframework/0.9/spring-framework-0.9.zip/download" target="_blank" rel="noopener">下载</a><code>spring-framework-0.9.zip</code>,查看<code>readme</code>.</li>
+</ul>
+<h1 id="0-9版本的的readme"><a href="#0-9版本的的readme" class="headerlink" title="0.9版本的的readme"></a>0.9版本的的readme</h1><p>从readme中可以获取的,关于代码的信息:</p>
+<ul>
+<li>“src”包含Java源文件;</li>
+<li>“dist”包含各种Spring Jar文件;</li>
+<li>“lib”包含最重要的第三方库;</li>
+<li>“doc”包含一般和API文档;</li>
+<li>“samples”包含demo和骨架。</li>
+</ul>
 
           
         
@@ -1200,7 +1431,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
