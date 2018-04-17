@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="第一章 计算机系统漫游Q：编译系统（compilation system）是怎样构成的？一个C语言源文件hell.c是怎样转化为二进制文件的？（chapter 1.2）A： 四个阶段：预处理、编译、汇编、链接。  预处理阶段：预处理器（c preprocessor）根据#开头的命令，直接修改原始C程序。如直接将include的头文件插入到程序文本中。得到新的C程序，一般以.i作为文件名。 编译阶段">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-15T11:11:04.448Z">
+<meta property="og:updated_time" content="2018-04-16T06:18:01.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解计算机系统》读书笔记">
 <meta name="twitter:description" content="第一章 计算机系统漫游Q：编译系统（compilation system）是怎样构成的？一个C语言源文件hell.c是怎样转化为二进制文件的？（chapter 1.2）A： 四个阶段：预处理、编译、汇编、链接。  预处理阶段：预处理器（c preprocessor）根据#开头的命令，直接修改原始C程序。如直接将include的头文件插入到程序文本中。得到新的C程序，一般以.i作为文件名。 编译阶段">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-15T19:11:04+08:00">
-                2018-04-15
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-16T14:18:01+08:00">
+                2018-04-16
               </time>
             
           </span>
@@ -412,11 +412,42 @@
 <p>这就是阿姆达尔定律的<strong>主要观点</strong>：想要显著加速整个系统，必须提升全系统相当大部分的速度。</p>
 <h1 id="第二章-信息的表示和处理"><a href="#第二章-信息的表示和处理" class="headerlink" title="第二章 信息的表示和处理"></a>第二章 信息的表示和处理</h1><h2 id="Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper-2-1-1）"><a href="#Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper-2-1-1）" class="headerlink" title="Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper 2.1.1）"></a>Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper 2.1.1）</h2><p><strong>A：</strong> 一个字节（byte）由八个位（bit）组成，在二进制表示法中，值域为 00000000<sub>2</sub>~11111111<sub>10</sub> 即0~255。二进制表示法冗长，十进制表示法难以与二进制互相转换。十六进制刚好，值域为 00<sub>16</sub>~FF<sub>16</sub>。</p>
 <h2 id="Q：2n怎样转换为十六制？"><a href="#Q：2n怎样转换为十六制？" class="headerlink" title="Q：2n怎样转换为十六制？"></a>Q：2<sup>n</sup>怎样转换为十六制？</h2><p><strong>A：</strong> 对于x = 2<sup>n</sup>，如果想转换为二进制，只需写下1，跟上n个0。如 2<sub>10</sub> = 2<sup>1</sup><sub>10</sub> = 10<sub>2</sub>，1024<sub>10</sub> = 2<sup>10</sup><sub>10</sub> = 0100 0000 0000<sub>2</sub>。则十六进制明显为400<sub>16</sub>。</p>
-<h2 id="Q：字长（word-size）有什么意义？（chapter-2-1-2）"><a href="#Q：字长（word-size）有什么意义？（chapter-2-1-2）" class="headerlink" title="Q：字长（word size）有什么意义？（chapter 2.1.2）"></a>Q：字长（word size）有什么意义？（chapter 2.1.2）</h2><p><strong>A：</strong> 字长决定了指针数据的标准大小（nomainal size），而虚拟地址就是以字长的大小编码的，所以字长决定了虚拟地址的空间的大小。如字长为w位，那么虚拟地址范围为 0~2<sup>w</sup>-1。</p>
+<h2 id="Q：字长（word-size）有什么意义？（chapter-2-1-2）与字节（byte）是什么关系"><a href="#Q：字长（word-size）有什么意义？（chapter-2-1-2）与字节（byte）是什么关系" class="headerlink" title="Q：字长（word size）有什么意义？（chapter 2.1.2）与字节（byte）是什么关系"></a>Q：字长（word size）有什么意义？（chapter 2.1.2）与字节（byte）是什么关系</h2><p><strong>A：</strong> <strong>//本问题暂时搁置</strong></p>
+<p>字长（word size）是CPU的概念，表示CPU一次能并行处理的数据位数。</p>
+<table>
+<thead>
+<tr>
+<th>汉语</th>
+<th>英语</th>
+<th>含义（换算）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字</td>
+<td>word</td>
+<td>处理器处理的基本单位，也是虚拟地址的表示单位，每个虚拟地址都是一个word</td>
+<td></td>
+</tr>
+<tr>
+<td>字长</td>
+<td>word size</td>
+<td>一个word里含有的bit数量，即处理器ALU可同时处理的bit位数</td>
+</tr>
+<tr>
+<td>字节</td>
+<td>byte</td>
+<td>8bit</td>
+</tr>
+</tbody>
+</table>
+<p>对于字长为4的系统，每个虚拟地址（1个word）有4个byte，，所能表示的地址上限是2<sup>32</sup> bit = 4GB。</p>
+<p>字长决定了指针数据的标准大小（nomainal size），而虚拟地址就是以字长的大小编码的，所以字长决定了虚拟地址的空间的大小。如字长为w位，那么虚拟地址范围为 0~2<sup>w</sup>-1。</p>
 <p>对于字长为4的系统，每个虚拟地址有 4个byte，即32个bit，所能表示的地址上限是2<sup>32</sup> bit = 4GB。</p>
+<p>而对于字长为8的系统，每个虚拟地址有8个byte，即64个bit，所能表示的地址上限是2<sup>64</sup> bit = </p>
 <p>数据换算：</p>
 <p>1GB = 2<sup>10</sup>MB = 2<sup>20</sup>KB = 2<sup>30</sup>byte = 2<sup>33</sup>bit</p>
-<p>4GB = 2<sup>2</sup>GB = 2<sup>12</sup>MB = 2<sup>22</sup>KB = 2<sup>32</sup>byte = 2<sup>34</sup>bit</p>
+<p>4GB = 2<sup>2</sup>GB = 2<sup>12</sup>MB = 2<sup>22</sup>KB = 2<sup>32</sup>byte = 2<sup>35</sup>bit</p>
 <p><strong>字长=每个虚拟地址的字节（byte）数 = 一个word包含的byte数</strong></p>
 <h2 id="Q：如何用位向量表示集合？（chapter-2-1-6）"><a href="#Q：如何用位向量表示集合？（chapter-2-1-6）" class="headerlink" title="Q：如何用位向量表示集合？（chapter 2.1.6）"></a>Q：如何用位向量表示集合？（chapter 2.1.6）</h2><p><strong>A：</strong> 以1的位置表示元素（从右向左）。如位向量a=[01101001]表示集合A={0,3,5,6}。</p>
 <p>这样，或和与的操作可以直接用位向量实现。</p>
@@ -541,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -618,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-计算机系统漫游"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机系统漫游</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：编译系统（compilation-system）是怎样构成的？一个C语言源文件hell-c是怎样转化为二进制文件的？（chapter-1-2）"><span class="nav-number">1.1.</span> <span class="nav-text">Q：编译系统（compilation system）是怎样构成的？一个C语言源文件hell.c是怎样转化为二进制文件的？（chapter 1.2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字和字长是什么？（chapter-1-4-1）"><span class="nav-number">1.2.</span> <span class="nav-text">Q：字和字长是什么？（chapter 1.4.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：CPU的基本运行流程是什么？（chapter-1-4-1-4）"><span class="nav-number">1.3.</span> <span class="nav-text">Q：CPU的基本运行流程是什么？（chapter 1.4.1.4）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：虚拟内存是什么，是怎样分布的？（chapter-1-7-3）"><span class="nav-number">1.4.</span> <span class="nav-text">Q：虚拟内存是什么，是怎样分布的？（chapter 1.7.3）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：什么是阿姆达尔（amdahl）定律？"><span class="nav-number">2.</span> <span class="nav-text">Q：什么是阿姆达尔（amdahl）定律？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-信息的表示和处理"><span class="nav-number">3.</span> <span class="nav-text">第二章 信息的表示和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper-2-1-1）"><span class="nav-number">3.1.</span> <span class="nav-text">Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper 2.1.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：2n怎样转换为十六制？"><span class="nav-number">3.2.</span> <span class="nav-text">Q：2n怎样转换为十六制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字长（word-size）有什么意义？（chapter-2-1-2）"><span class="nav-number">3.3.</span> <span class="nav-text">Q：字长（word size）有什么意义？（chapter 2.1.2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：如何用位向量表示集合？（chapter-2-1-6）"><span class="nav-number">3.4.</span> <span class="nav-text">Q：如何用位向量表示集合？（chapter 2.1.6）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-计算机系统漫游"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机系统漫游</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：编译系统（compilation-system）是怎样构成的？一个C语言源文件hell-c是怎样转化为二进制文件的？（chapter-1-2）"><span class="nav-number">1.1.</span> <span class="nav-text">Q：编译系统（compilation system）是怎样构成的？一个C语言源文件hell.c是怎样转化为二进制文件的？（chapter 1.2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字和字长是什么？（chapter-1-4-1）"><span class="nav-number">1.2.</span> <span class="nav-text">Q：字和字长是什么？（chapter 1.4.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：CPU的基本运行流程是什么？（chapter-1-4-1-4）"><span class="nav-number">1.3.</span> <span class="nav-text">Q：CPU的基本运行流程是什么？（chapter 1.4.1.4）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：虚拟内存是什么，是怎样分布的？（chapter-1-7-3）"><span class="nav-number">1.4.</span> <span class="nav-text">Q：虚拟内存是什么，是怎样分布的？（chapter 1.7.3）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q：什么是阿姆达尔（amdahl）定律？"><span class="nav-number">2.</span> <span class="nav-text">Q：什么是阿姆达尔（amdahl）定律？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-信息的表示和处理"><span class="nav-number">3.</span> <span class="nav-text">第二章 信息的表示和处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper-2-1-1）"><span class="nav-number">3.1.</span> <span class="nav-text">Q：字节的格式是怎样的，为什么经常用十六进制表示？（chaper 2.1.1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：2n怎样转换为十六制？"><span class="nav-number">3.2.</span> <span class="nav-text">Q：2n怎样转换为十六制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：字长（word-size）有什么意义？（chapter-2-1-2）与字节（byte）是什么关系"><span class="nav-number">3.3.</span> <span class="nav-text">Q：字长（word size）有什么意义？（chapter 2.1.2）与字节（byte）是什么关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q：如何用位向量表示集合？（chapter-2-1-6）"><span class="nav-number">3.4.</span> <span class="nav-text">Q：如何用位向量表示集合？（chapter 2.1.6）</span></a></li></ol></li></ol></div>
             
 
           </div>
