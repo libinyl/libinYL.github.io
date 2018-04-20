@@ -86,15 +86,18 @@
 
 
 
+<meta name="description" content="Lab 1 系统软件启动过程练习1在此练习中，大家需要通过静态分析代码来了解：  操作系统镜像文件ucore.img是如何一步一步生成的？(需要比较详细地解释Makefile中每一条相关命令和命令参数的含义，以及说明命令导致的结果) 一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？  特殊字符：  $@ –代表目标文件(target)  $^ –代表所有的依赖文件(components)">
 <meta name="keywords" content="操作系统,ucore">
 <meta property="og:type" content="article">
-<meta property="og:title" content="note-os-ucore">
+<meta property="og:title" content="ucore Lab解答">
 <meta property="og:url" content="http://libinyl.github.io/2018/04/17/note-os-ucore/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
+<meta property="og:description" content="Lab 1 系统软件启动过程练习1在此练习中，大家需要通过静态分析代码来了解：  操作系统镜像文件ucore.img是如何一步一步生成的？(需要比较详细地解释Makefile中每一条相关命令和命令参数的含义，以及说明命令导致的结果) 一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？  特殊字符：  $@ –代表目标文件(target)  $^ –代表所有的依赖文件(components)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-17T13:42:55.427Z">
+<meta property="og:updated_time" content="2018-04-19T17:11:21.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="note-os-ucore">
+<meta name="twitter:title" content="ucore Lab解答">
+<meta name="twitter:description" content="Lab 1 系统软件启动过程练习1在此练习中，大家需要通过静态分析代码来了解：  操作系统镜像文件ucore.img是如何一步一步生成的？(需要比较详细地解释Makefile中每一条相关命令和命令参数的含义，以及说明命令导致的结果) 一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？  特殊字符：  $@ –代表目标文件(target)  $^ –代表所有的依赖文件(components)">
 
 
 
@@ -130,7 +133,7 @@
 
 
 
-  <title>note-os-ucore | 李斌 - LBYL</title>
+  <title>ucore Lab解答 | 李斌 - LBYL</title>
   
 
 
@@ -284,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">note-os-ucore</h1>
+          <h1 class="post-title" itemprop="name headline">ucore Lab解答</h1>
         
 
         <div class="post-meta">
@@ -312,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-17T21:42:55+08:00">
-                2018-04-17
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-20T01:11:21+08:00">
+                2018-04-20
               </time>
             
           </span>
@@ -368,7 +371,29 @@
       
 
       
-        
+        <h1 id="Lab-1-系统软件启动过程"><a href="#Lab-1-系统软件启动过程" class="headerlink" title="Lab 1 系统软件启动过程"></a>Lab 1 系统软件启动过程</h1><h2 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h2><p>在此练习中，大家需要通过静态分析代码来了解：</p>
+<ul>
+<li>操作系统镜像文件<code>ucore.img</code>是如何一步一步生成的？(需要比较详细地解释<code>Makefile</code>中每一条相关命令和命令参数的含义，以及说明命令导致的结果)</li>
+<li>一个被系统认为是符合规范的硬盘主引导扇区的特征是什么？</li>
+</ul>
+<p>特殊字符：</p>
+<ul>
+<li><p>$@ –代表目标文件(target)</p>
+</li>
+<li><p>$^ –代表所有的依赖文件(components)</p>
+</li>
+<li><p>$&lt; –代表第一个依赖文件(components中最左边的那个)。</p>
+</li>
+</ul>
+<p>makefile文件解析：</p>
+<h2 id="主干：-UCOREIMG-kernel-bootblock"><a href="#主干：-UCOREIMG-kernel-bootblock" class="headerlink" title="主干：$(UCOREIMG): $(kernel) $(bootblock)"></a>主干：$(UCOREIMG): $(kernel) $(bootblock)</h2><p>178~188行:</p>
+<ol>
+<li>编译最终目标为 /bin/ucore.img，前提是<code>kernel</code>和<code>bootlock</code>。</li>
+<li>为bootblock分配一个10000的块，每块512字节，用于模拟硬盘。</li>
+<li>把kernel写入到“硬盘”中。</li>
+</ol>
+<h2 id="bootblock"><a href="#bootblock" class="headerlink" title="bootblock"></a>bootblock</h2><h2 id="kernel"><a href="#kernel" class="headerlink" title="kernel"></a>kernel</h2><p>120~153行</p>
+
       
     </div>
     
@@ -409,6 +434,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/diary20180418/" rel="prev" title="diary20180418">
+                diary20180418 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -460,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -476,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -543,6 +581,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lab-1-系统软件启动过程"><span class="nav-number">1.</span> <span class="nav-text">Lab 1 系统软件启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习1"><span class="nav-number">1.1.</span> <span class="nav-text">练习1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主干：-UCOREIMG-kernel-bootblock"><span class="nav-number">1.2.</span> <span class="nav-text">主干：$(UCOREIMG): $(kernel) $(bootblock)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bootblock"><span class="nav-number">1.3.</span> <span class="nav-text">bootblock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel"><span class="nav-number">1.4.</span> <span class="nav-text">kernel</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
