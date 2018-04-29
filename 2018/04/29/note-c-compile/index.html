@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int val = sum(array,2);    return val;&amp;#125; 文件2：sum.c">
+<meta name="description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
 <meta name="keywords" content="C,操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从C语言到机器码">
 <meta property="og:url" content="http://libinyl.github.io/2018/04/29/note-c-compile/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int val = sum(array,2);    return val;&amp;#125; 文件2：sum.c">
+<meta property="og:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-29T09:57:04.956Z">
+<meta property="og:updated_time" content="2018-04-29T10:14:37.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从C语言到机器码">
-<meta name="twitter:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int val = sum(array,2);    return val;&amp;#125; 文件2：sum.c">
+<meta name="twitter:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
 
 
 
@@ -116,9 +116,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'DSSWDYRWVY',
+      apiKey: '56d96d745a525ec079a836e1f15f10be',
+      indexName: 'dev_BLOG',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -239,9 +239,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -315,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T17:57:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T18:14:37+08:00">
                 2018-04-29
               </time>
             
@@ -375,20 +413,22 @@
 <ol>
 <li>预处理——从源程序到ASCII码中间文件。</li>
 </ol>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>文件1：main.c</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="从源代码（-c）到汇编文件（-S）"><a href="#从源代码（-c）到汇编文件（-S）" class="headerlink" title="从源代码（.c）到汇编文件（.S）"></a>从源代码（.c）到汇编文件（.S）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Og -S test.c</span><br></pre></td></tr></table></figure>
+<p>## </p>
+<h2 id="从源代码到可执行文件"><a href="#从源代码到可执行文件" class="headerlink" title="从源代码到可执行文件"></a>从源代码到可执行文件</h2><p>文件1：main.c</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">2</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val = sum(<span class="built_in">array</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>文件2：sum.c</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,s = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s+=a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
-<li>使用<code>cpp</code>把它们分别翻译成ASCII码中间文件：</li>
+<li>使用<code>cpp</code>把C代码翻译成ASCII码中间文件：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cpp main.c tmp/main.i</span><br><span class="line">cpp sum.c tmp/sum.i</span><br></pre></td></tr></table></figure>
 <ol>
-<li>使用<code>cc1</code>把它们分别翻译哼ASCII汇编文件：</li>
+<li>使用<code>cc1</code>把ASCII中间文件翻译为ASCII汇编文件：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cc1 tmp/main.i -Og -o tmp/main.s</span><br><span class="line">cc1 tmp/sum.i -Og -o tmp/sum.s</span><br></pre></td></tr></table></figure>
 <ol>
-<li>使用<code>as</code>把它们翻译为<em>可重定位目标文件</em></li>
+<li>使用<code>as</code>把汇编文件翻译为<em>可重定位目标文件</em></li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">as -o tmp/main.o tmp/main.s</span><br><span class="line">as -o tmp/sum.o tmp/sum.s</span><br></pre></td></tr></table></figure>
 <ol>
@@ -591,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理论"><span class="nav-number">1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理论"><span class="nav-number">1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码（-c）到汇编文件（-S）"><span class="nav-number">2.1.</span> <span class="nav-text">从源代码（.c）到汇编文件（.S）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码到可执行文件"><span class="nav-number">2.2.</span> <span class="nav-text">从源代码到可执行文件</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -792,6 +832,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 

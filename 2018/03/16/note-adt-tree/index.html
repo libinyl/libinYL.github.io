@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="树,数据结构," />
+  <meta name="keywords" content="数据结构,树," />
 
 
 
@@ -87,7 +87,7 @@
 
 
 <meta name="description" content="树的相关概念节点的度（degree）： 一个节点的（下一层）子节点个数 （在二叉树中，范围为0~2）树的度： 树的节点中，度数最大的节点，的度数。节点的深度： 从根节点向下，累加值节点的高度： 从叶节点向上，累加值树的高度（深度）： 树中节点最大层数完全二叉树： 除了最后一层外，其余层都含有尽可能多的节点；且最后一层从左向右填满。 计算 树的所有的节点个数=所有节点的度数和 + 1  解释：所有节">
-<meta name="keywords" content="树,数据结构">
+<meta name="keywords" content="数据结构,树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树的概念与辨析">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/16/note-adt-tree/index.html">
@@ -116,9 +116,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'DSSWDYRWVY',
+      apiKey: '56d96d745a525ec079a836e1f15f10be',
+      indexName: 'dev_BLOG',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -239,9 +239,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -568,9 +606,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树/" rel="tag"># 树</a>
-          
             <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/树/" rel="tag"># 树</a>
           
         </div>
       
@@ -950,6 +988,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
 
 
 
