@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
+<meta name="description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——预处理器（cpp，C Preprocessor）把源程序(.c)翻译为ASCII码中间文件(.i)。 编译——编译器（cc1）把ASCII中间码(.i)翻译为ASCII汇编文件(.s)。 汇编——汇编器（as,assembler）把汇编文件翻译为可重定位文件。 链接——连接器（ld，link data）把可重定位文件链接为可执行文件。">
 <meta name="keywords" content="C,操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从C语言到机器码">
 <meta property="og:url" content="http://libinyl.github.io/2018/04/29/note-c-compile/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
+<meta property="og:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——预处理器（cpp，C Preprocessor）把源程序(.c)翻译为ASCII码中间文件(.i)。 编译——编译器（cc1）把ASCII中间码(.i)翻译为ASCII汇编文件(.s)。 汇编——汇编器（as,assembler）把汇编文件翻译为可重定位文件。 链接——连接器（ld，link data）把可重定位文件链接为可执行文件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-29T10:14:37.953Z">
+<meta property="og:updated_time" content="2018-04-29T12:42:28.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从C语言到机器码">
-<meta name="twitter:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——从源程序到ASCII码中间文件。  实例从源代码（.c）到汇编文件（.S）1gcc -Og -S test.c ##  从源代码到可执行文件文件1：main.c 123456789int sum(int *a,int n);int array[2] = &amp;#123;1,2&amp;#125;;int main()&amp;#123;    int v">
+<meta name="twitter:description" content="理论若干C语言文件到一个可执行文件，都经历了什么？  预处理——预处理器（cpp，C Preprocessor）把源程序(.c)翻译为ASCII码中间文件(.i)。 编译——编译器（cc1）把ASCII中间码(.i)翻译为ASCII汇编文件(.s)。 汇编——汇编器（as,assembler）把汇编文件翻译为可重定位文件。 链接——连接器（ld，link data）把可重定位文件链接为可执行文件。">
 
 
 
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T18:14:37+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-29T20:42:28+08:00">
                 2018-04-29
               </time>
             
@@ -407,7 +407,10 @@
       
         <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>若干C语言文件到一个可执行文件，都经历了什么？</p>
 <ol>
-<li>预处理——从源程序到ASCII码中间文件。</li>
+<li>预处理——预处理器（cpp，C Preprocessor）把源程序(.c)翻译为ASCII码中间文件(.i)。</li>
+<li>编译——编译器（cc1）把ASCII中间码(.i)翻译为ASCII汇编文件(.s)。</li>
+<li>汇编——汇编器（as,assembler）把汇编文件翻译为<em>可重定位文件</em>。</li>
+<li>链接——连接器（ld，link data）把<em>可重定位文件</em>链接为<em>可执行文件</em>。</li>
 </ol>
 <h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="从源代码（-c）到汇编文件（-S）"><a href="#从源代码（-c）到汇编文件（-S）" class="headerlink" title="从源代码（.c）到汇编文件（.S）"></a>从源代码（.c）到汇编文件（.S）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -Og -S test.c</span><br></pre></td></tr></table></figure>
 <p>## </p>
@@ -433,7 +436,17 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ld -o prog tmp/main.o tmp/sum.o</span><br></pre></td></tr></table></figure>
 <p>最终的目录结构为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── main.c</span><br><span class="line">├── prog</span><br><span class="line">├── sum.c</span><br><span class="line">└── tmp</span><br><span class="line">    ├── main.i</span><br><span class="line">    ├── main.o</span><br><span class="line">    ├── main.s</span><br><span class="line">    ├── sum.c</span><br><span class="line">    ├── sum.i</span><br><span class="line">    ├── sum.o</span><br><span class="line">    └── sum.s</span><br></pre></td></tr></table></figure>
-
+<h2 id="汇编与反汇编"><a href="#汇编与反汇编" class="headerlink" title="汇编与反汇编"></a>汇编与反汇编</h2><p>对于c文件main.c和mstore.c:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multstore</span><span class="params">(<span class="keyword">long</span>,<span class="keyword">long</span>,<span class="keyword">long</span> *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> d;</span><br><span class="line">    multstore(<span class="number">2</span>,<span class="number">3</span>,&amp;d);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"2 * 3 --&gt; %ld\n"</span>,d);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">mult2</span><span class="params">(<span class="keyword">long</span> a,<span class="keyword">long</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> s =  a*b;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">long mult2(long,long);</span><br><span class="line"></span><br><span class="line">void multstore(long x,long y,long *dest)</span><br><span class="line">&#123;</span><br><span class="line">    long t = mult2(x,y);</span><br><span class="line">    *dest = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译并汇编,得到a.out可执行文件：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c mstore.c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用objdump(文件信息查看器)命令反汇编</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -d a.out</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -474,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/30/diary20180430/" rel="prev" title="diary20180430">
+                diary20180430 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -550,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">122</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理论"><span class="nav-number">1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码（-c）到汇编文件（-S）"><span class="nav-number">2.1.</span> <span class="nav-text">从源代码（.c）到汇编文件（.S）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码到可执行文件"><span class="nav-number">2.2.</span> <span class="nav-text">从源代码到可执行文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理论"><span class="nav-number">1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码（-c）到汇编文件（-S）"><span class="nav-number">2.1.</span> <span class="nav-text">从源代码（.c）到汇编文件（.S）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从源代码到可执行文件"><span class="nav-number">2.2.</span> <span class="nav-text">从源代码到可执行文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇编与反汇编"><span class="nav-number">2.3.</span> <span class="nav-text">汇编与反汇编</span></a></li></ol></li></ol></div>
             
 
           </div>
