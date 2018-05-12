@@ -300,6 +300,347 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/28/note-adt-cal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/note-adt-cal/" itemprop="url">数据结构计算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T12:14:37+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-16T01:28:17+08:00">
+                2018-03-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="T-n-与O-n"><a href="#T-n-与O-n" class="headerlink" title="T(n)与O(n)"></a>T(n)与O(n)</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>问题规模</td>
+</tr>
+<tr>
+<td>T(n)</td>
+<td>时间复杂度</td>
+</tr>
+<tr>
+<td>f(n)</td>
+<td>基本运算的频度</td>
+</tr>
+<tr>
+<td>O(n)</td>
+<td>时间复杂度的数量级</td>
+</tr>
+</tbody>
+</table>
+<p>三者的关系：T(n)=O(f(n))</p>
+<h1 id="不等式"><a href="#不等式" class="headerlink" title="不等式"></a>不等式</h1><p>T(n)&lt;=cO(n) c为常数</p>
+<h2 id="计算时间复杂度"><a href="#计算时间复杂度" class="headerlink" title="计算时间复杂度"></a>计算时间复杂度</h2><p>设运行次数为t，判断终止条件。比如</p>
+<pre><code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)</span><br><span class="line">    &#123;</span><br><span class="line">        i=i*<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+设执行次数为t，则终止条件为 t^2=n，则t=log2n。时间复杂度为O(log2n)
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/28/diary20180228/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/28/diary20180228/" itemprop="url">月末</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T10:46:55+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-06T15:10:50+08:00">
+                2018-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>10:54:00</code> 一个小时之前来到库克咖啡。重装微软的安卓应用，终于能接受一些了。continue的体验很不错。</p>
+<p><code>16:11:03</code> 今天时间利用的不好。</p>
+<p><code>21:10:47</code> 把<strong>递归地遍历二叉树</strong>看成<strong>遍地二叉树</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/27/thought-study-linhaoxiang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -407,13 +748,13 @@
           
             <p>在17年年底给翔少发了一封邮件，意外地收到很认真的回复，很有收获，在此保存。</p>
 <p><strong>Re: 十分感谢！</strong></p>
-<p>发件人：linhaoxiang32 <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x6c;&#x69;&#x6e;&#x68;&#97;&#x6f;&#120;&#105;&#x61;&#110;&#103;&#x33;&#x32;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x6c;&#x69;&#x6e;&#x68;&#97;&#x6f;&#120;&#105;&#x61;&#110;&#103;&#x33;&#x32;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a><br>时   间：2017年12月28日(星期四) 凌晨1:20    纯文本 |<br>收件人：<br>李斌 <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#x31;&#x31;&#x30;&#x32;&#49;&#x30;&#x39;&#x31;&#48;&#x30;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#x31;&#x31;&#x30;&#x32;&#49;&#x30;&#x39;&#x31;&#48;&#x30;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;</a><br>标记：已将此邮件标记为星标邮件。 取消星标</p>
+<p>发件人：linhaoxiang32 <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x6c;&#105;&#x6e;&#104;&#x61;&#111;&#120;&#105;&#97;&#x6e;&#103;&#x33;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x6c;&#105;&#x6e;&#104;&#x61;&#111;&#120;&#105;&#97;&#x6e;&#103;&#x33;&#x32;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a><br>时   间：2017年12月28日(星期四) 凌晨1:20    纯文本 |<br>收件人：<br>李斌 <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#49;&#x31;&#48;&#x32;&#x31;&#x30;&#x39;&#x31;&#x30;&#48;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x31;&#48;&#x32;&#x31;&#x30;&#x39;&#x31;&#x30;&#48;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a><br>标记：已将此邮件标记为星标邮件。 取消星标</p>
 <p>嗯可以的 他们要是有问题也欢迎随时交流</p>
-<p>在 2017年12月27日 下午8:47，李斌 <a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#x31;&#49;&#48;&#x32;&#x31;&#x30;&#57;&#49;&#x30;&#48;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d;">&#x31;&#49;&#48;&#x32;&#x31;&#x30;&#57;&#49;&#x30;&#48;&#x40;&#113;&#x71;&#46;&#99;&#111;&#x6d;</a>写道：</p>
+<p>在 2017年12月27日 下午8:47，李斌 <a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x31;&#x31;&#x30;&#50;&#49;&#x30;&#57;&#x31;&#x30;&#x30;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#x31;&#x31;&#x30;&#50;&#49;&#x30;&#57;&#x31;&#x30;&#x30;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a>写道：</p>
 <blockquote>
 <p>Hi 翔总:<br>邮件已读完，加上今天看了你在知乎上的一些回答，在学习方向/方法上确有恍然大悟之感，我可能就属于跳过基础，直接学框架的这类，结果经常遇到学习瓶颈。今后应再夯实基础；且须多多经历，结合实际才是。我可以把它分享给同学吗？之前不少学弟还向我请教问题，我觉得你说的才更深刻。<br>再次感谢，确实受益颇多！待我有所进步时再向你请教！</p>
 <p>李斌</p>
-<p>—原始邮件—<br>发件人: “Haoxiang Lin”<a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#108;&#105;&#x6e;&#104;&#97;&#x6f;&#120;&#x69;&#x61;&#110;&#103;&#51;&#x32;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#108;&#105;&#x6e;&#104;&#97;&#x6f;&#120;&#x69;&#x61;&#110;&#103;&#51;&#x32;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a><br>发送时间: 2017年12月27日 20:21:26<br>收件人: “李斌”<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#108;&#x69;&#98;&#x69;&#x6e;&#x77;&#x6f;&#x72;&#x6b;&#115;&#x70;&#97;&#99;&#x65;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#108;&#x69;&#98;&#x69;&#x6e;&#x77;&#x6f;&#x72;&#x6b;&#115;&#x70;&#97;&#99;&#x65;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>;<br>主题: Re: 李斌请教问题</p>
+<p>—原始邮件—<br>发件人: “Haoxiang Lin”<a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#x3a;&#108;&#105;&#x6e;&#104;&#97;&#x6f;&#x78;&#105;&#97;&#x6e;&#103;&#51;&#50;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#108;&#105;&#x6e;&#104;&#97;&#x6f;&#x78;&#105;&#97;&#x6e;&#103;&#51;&#50;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a><br>发送时间: 2017年12月27日 20:21:26<br>收件人: “李斌”<a href="&#x6d;&#97;&#x69;&#108;&#x74;&#x6f;&#58;&#108;&#x69;&#x62;&#x69;&#110;&#119;&#111;&#x72;&#107;&#x73;&#112;&#x61;&#x63;&#101;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#108;&#x69;&#x62;&#x69;&#110;&#119;&#111;&#x72;&#107;&#x73;&#112;&#x61;&#x63;&#101;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;</a>;<br>主题: Re: 李斌请教问题</p>
 <p>Hi 李斌：</p>
 <p>蓝杰的简历应该是好几年前的了吧=。= </p>
 <ol>
@@ -426,7 +767,7 @@
 </ol>
 <p>大概就是这样，还有疑问的话欢迎随时交流。</p>
 <p>Thanks,<br>Haoxiang</p>
-<p>在 2017年12月27日 下午3:09，李斌 <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#108;&#105;&#98;&#105;&#x6e;&#x77;&#x6f;&#114;&#107;&#x73;&#112;&#97;&#99;&#101;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#108;&#105;&#98;&#105;&#x6e;&#x77;&#x6f;&#114;&#107;&#x73;&#112;&#97;&#99;&#101;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a>写道：</p>
+<p>在 2017年12月27日 下午3:09，李斌 <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x6c;&#x69;&#x62;&#x69;&#110;&#x77;&#x6f;&#114;&#x6b;&#x73;&#112;&#97;&#99;&#101;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#x6c;&#x69;&#x62;&#x69;&#110;&#x77;&#x6f;&#114;&#x6b;&#x73;&#112;&#97;&#99;&#101;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a>写道：</p>
 <blockquote>
 <p>hi翔总:</p>
 <p>上次在蓝杰,看到你的简历, 实在望尘莫及.<br>内心挺感慨,想请教些问题;虽然几次谋面,但仍然觉得邮件请教更为妥当.<br>望翔总空闲时对此些问题回复片语,十分感谢.</p>
@@ -1577,330 +1918,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/24/quick-maven-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/24/quick-maven-config/" itemprop="url">maven常用模板与设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T14:28:49+08:00">
-                2018-02-24
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-24T18:22:53+08:00">
-                2018-02-24
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>空项目配置文件</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        xxx</span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    xxx</span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>常用配置属性</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 文件拷贝时的编码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 编译时的编码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">maven.compiler.encoding</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>常用插件及配置</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--如果已安装jdk1.9,那么可以用1.8版本开发,编译为1.7版本的class文件--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/24/quick-maven-dependency/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/24/quick-maven-dependency/" itemprop="url">maven常用依赖快捷查询</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T14:24:55+08:00">
-                2018-02-24
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-02-26T20:23:45+08:00">
-                2018-02-26
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>servlet</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>mysql/jdbc</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.45<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1951,7 +1968,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">131</span>
+                  <span class="site-state-item-count">133</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
