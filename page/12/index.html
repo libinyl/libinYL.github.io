@@ -300,167 +300,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/25/quick-mysql-command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/25/quick-mysql-command/" itemprop="url">mysql常用命令速查</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-25T18:10:19+08:00">
-                2018-02-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-01T16:49:10+08:00">
-                2018-04-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h1><p>首先要活用<code>help</code>命令。</p>
-<p>例如，键入<code>help CREATE DATABASE</code>，显示：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; help create database</span><br><span class="line">Name: '<span class="keyword">CREATE</span> <span class="keyword">DATABASE</span><span class="string">'</span></span><br><span class="line"><span class="string">Description:</span></span><br><span class="line"><span class="string">Syntax:</span></span><br><span class="line"><span class="string">CREATE &#123;DATABASE | SCHEMA&#125; [IF NOT EXISTS] db_name</span></span><br><span class="line"><span class="string">    [create_specification] ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">create_specification:</span></span><br><span class="line"><span class="string">    [DEFAULT] CHARACTER SET [=] charset_name</span></span><br><span class="line"><span class="string">  | [DEFAULT] COLLATE [=] collation_name</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">CREATE DATABASE creates a database with the given name. To use this</span></span><br><span class="line"><span class="string">statement, you need the CREATE privilege for the database. CREATE</span></span><br><span class="line"><span class="string">SCHEMA is a synonym for CREATE DATABASE.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">URL: http://dev.mysql.com/doc/refman/5.7/en/create-database.html</span></span><br></pre></td></tr></table></figure>
-<p>注意帮助命令语法：用大括号括起来的是必需内容，用方括号括起来的是可选内容。<code>|</code>表示“或”。</p>
-<h1 id="选中-查看数据库相关"><a href="#选中-查看数据库相关" class="headerlink" title="选中/查看数据库相关"></a>选中/查看数据库相关</h1><h2 id="选中数据库"><a href="#选中数据库" class="headerlink" title="选中数据库"></a>选中数据库</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> db1;</span><br><span class="line">SELECT COUNT(*) FROM mytable;   # selects from db1.mytable</span><br><span class="line"><span class="keyword">USE</span> db2;</span><br><span class="line">SELECT COUNT(*) FROM mytable;   # selects from db2.mytable</span><br></pre></td></tr></table></figure>
-<h2 id="查看当前选中的数据库"><a href="#查看当前选中的数据库" class="headerlink" title="查看当前选中的数据库"></a>查看当前选中的数据库</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();</span><br></pre></td></tr></table></figure>
-<h1 id="查看数据库引擎相关"><a href="#查看数据库引擎相关" class="headerlink" title="查看数据库引擎相关"></a>查看数据库引擎相关</h1><h2 id="查看支持的引擎"><a href="#查看支持的引擎" class="headerlink" title="查看支持的引擎"></a>查看支持的引擎</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">engines</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="查看当前默认的存储引擎"><a href="#查看当前默认的存储引擎" class="headerlink" title="查看当前默认的存储引擎"></a>查看当前默认的存储引擎</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%storage_engine%'</span>;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/25/diary20180225/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1879,6 +1718,168 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/18/diary20180219/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/18/diary20180219/" itemprop="url">做自己的教官</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-18T23:40:06+08:00">
+                2018-02-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-02-19T22:46:28+08:00">
+                2018-02-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>晨记：</p>
+<p>已不知多少次，梦中闯下大祸，惊醒后发现并非真实，心中不由得暗暗长吁一口气……</p>
+<p>昨夜梦回高中课堂，老庞讲数学课（几何），我借找老师之名到室外上体育课；操场是小学样子的，却看到了胡伟治一起上课；看到某个不听话的学生被军官狠训，我偷偷穿上军官的衣服，免遭一劫；直到听到下课铃声，我默默脱下军服，正想着如何向老师解释，突然惊醒。刚刚才意识到，这铃声可能就是我昨天设置的闹铃！原来现实世界真的可以影响梦境的~</p>
+<p>正犹豫要不要起床，突然像教官一样把自己被子掀开。是个好办法！迷糊的大脑逐渐就清醒了。新的一天开始~</p>
+<p>做自己的教官吧！</p>
+<hr>
+<p>晚记:</p>
+<p>下午去奶奶家，姑父依然颐指气使，唯钱是图。几句嘲讽老姑的话让奶奶和老姑气不打一处来，老妈更是以牙还牙，姑父仍然看着电视嘴里不停。妈是女强人，看不惯老姑的嘴脸，几个人虽然挤在不到十平米的小屋子里，刚刚也都从饭桌上下来，现在却几乎要围着电视大吵起来。想来姑父这让人反感的说辞也保持了快十年了，每年回家都会闹些不愉快，很不愉快的不愉快。<br>我去安慰老姑。老姑一说就停不下来，直至泣不成声。我握着她的手，一遍遍的说着情况没有那么糟，也尝试让她换个思路想想，让他们从破裂的边缘回来。悦悦玩了会手机，也受不了他爸爸的粗鲁，一直找我抱。我让老姑从内心坚强起来，勇敢的面对他，用温柔代替对抗，尝试以柔克刚，让老姑父转变过来。老姑不像妈妈那般斩钉截铁，难以用嗓门和威胁来为自己争取利益，也许这种方式能让她好受些吧。老姑很激动，很欣喜，不住的谢我，我心疼无比。</p>
+<p>晚上回家，跟妈谈起前两天的争吵。想来我也是有些可笑，都二十几岁的人了还有青春期的叛逆。老妈的沉默十分有力量，接着开始一如预期的讲道理。我以前想，妈实在话太多了，有时几个是或否足以说明的问题，非要一遍遍重复，我又不能反驳更不能离开，只能边听边点头，边听边同意地笑笑，然后原地挣扎几分钟等她说完离开。今天聊了几句，突然感觉，也许这就是母亲，注定不能像父子般干脆利落，她表达关心的方式就是一遍遍的说啊说啊，也不管你听得进去听不进去。也许这就是最好的状态，就算是我的生母，甚至都可能不会比这让我轻松，也许我们的母子关系已经要比其他家庭好得多——我确实有些身在福中不知福了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1929,7 +1930,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">136</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
