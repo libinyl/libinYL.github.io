@@ -300,6 +300,392 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/qa-java-hashmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/qa-java-hashmap/" itemprop="url">HashMap Q & A</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T15:06:22+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:06:00+08:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
+<p>首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。</p>
+<p>接下来看HashMap。首先要明白Hash的概念。</p>
+<p>Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，hash有两个步骤：第一步，将想要存储的对象（也就是key）转换为一个整数（也就是散列码）；第二步，将这个整数压缩至数组长度内合理的索引值。</p>
+<p>从这里引出五个主要问题：</p>
+<ol>
+<li>如何获取对象的散列码？</li>
+<li>如何获取元素索引值？</li>
+<li>如何维护数组的长度？</li>
+</ol>
+<h1 id="Q：如何获取对象的散列码？"><a href="#Q：如何获取对象的散列码？" class="headerlink" title="Q：如何获取对象的散列码？"></a>Q：如何获取对象的散列码？</h1><p><strong>A：</strong> 对象分为三类来看：类类型，字符串，基本类型。</p>
+<ul>
+<li><p><strong>对于类类型</strong>，由于每个类都是Object的子类，都有一个hashCode方法。这个方法可以返回根据这个对象内存地址的一个int值，直接作为散列码。</p>
+</li>
+<li><p><strong>对于字符串</strong>，想象空间很大，可以取Unicode值来进行计算，但是要考虑到现实世界中字符的分布不是均匀的。有种比较理想的方法称为Horner法：</p>
+<blockquote>
+<p>取质数g，遍历此字符串中每个字符，每遍历一个就增加（这个字符Unicode值 <em> g </em> 索引值），最终的和就是散列码。</p>
+</blockquote>
+<p>  在String类中，这个因子等于31。原因是  n * 31 = n &lt;&lt; 5 - n ，在JVM中会被优化的非常快。</p>
+</li>
+<li><p><strong>对于基本类型</strong>：</p>
+<p>  <strong>对于int类型</strong>，可以直接用其本身作为散列码。如果是其他基本类型，可以利用其内部的二进制表示。</p>
+<p>  <strong>如果是long类型</strong>，它含有64位二进制数据，而int含有32位，如果直接转换为int会丢失前32位，所有只在前32位有区别的数据都将产生冲突。在java中的解决方案是，将这64位的二进制数据，与其右移32位的结果做位与运算。这样就把前后32位都利用了。代码：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(<span class="keyword">long</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(value ^ (value &gt;&gt;&gt; <span class="number">32</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  <strong>对于double和float</strong>，都可以以类似的方法处理。</p>
+</li>
+</ul>
+<h1 id="Q：如何确定索引值？"><a href="#Q：如何确定索引值？" class="headerlink" title="Q：如何确定索引值？"></a>Q：如何确定索引值？</h1><p>事实上这一步才是hash的典型操作。此时的散列码是一个int类型的值，从 -2<sup>32</sup> 到 -2<sup>32</sup> ，而数组容量往往远小于此。因此需要进行压缩。</p>
+<p>一般情况下将散列码对范围值取模即可，结果就比较均匀，但是假如key值成等差数列分布，就会使冲突率大大增加。Java对此进行了优化，<strong>将散列码进行了二次处理</strong>，取模方式也做了优化。请参考下一个问题。</p>
+<h1 id="Q：如何维护数组长度？"><a href="#Q：如何维护数组长度？" class="headerlink" title="Q：如何维护数组长度？"></a>Q：如何维护数组长度？</h1><p><strong>A：</strong> 数组长度的维护，主要以性能为目标。从以下角度考虑数组的长度维护问题：</p>
+<ol>
+<li>确定索引值时的取模操作性能</li>
+<li>扩容问题</li>
+</ol>
+<ul>
+<li><p><strong>考虑取模操作的性能：</strong> 在获取索引值时，需要将散列码对数组长度取模。注意到，如果length的值为2的n次方，那么 hashcode % length = hashcode &amp; (length -1) 。很容易发现后者的位操作是效率很高的。为此，有必要<strong>将数组长度维护为2的n次方</strong>。在源码中有如下体现：1）数组的默认容量(initialCapacity)的值是16。2）如果初始化的时候指定了数组容量，则程序会寻找不小于给定容量的最接近2的n次方的值。</p>
+<p>  <em>散列码的二次处理</em> 假如给定的key成等差数列，那么这些key的散列码有可能后几位全部相同，冲突率大大增加。而事实上hashcode &amp; (length -1)是忽略了hashcode的高位的。为了解决这一问题，需要将hashcode的高位也利用起来。类似刚刚long类型取散列码的方法，此时的散列码是int类型，为了将其高16位也利用起来，可以<strong>将散列码与其右移16位的结果取位与，得到新的散列码。此时即可避免等差数列的漏洞</strong>。这就是上文提到的二次处理的散列码，即<strong>高位运算</strong>。源码：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>扩容性能对长度的影响：</strong> 随着元素增多，数组逐渐填满，冲突的概率会越来越大，因此不能等到数组满了再扩容；而每次扩容会有一定开销，所以扩容需要在适当的时机。HashMap类维护了几个扩容相关的概念：capcacity，loadfactor，threshold，后者等于前两者的积，代表当前数组中可容纳的最多相同hashcode的Node数。加载因子默认为0.75，也就是当元素个数达到数组长度的0.75时，将进行扩容，即将当前长度 * 2。显然长度仍然是2的n次方。</p>
+</li>
+<li><p><strong>如何扩容？</strong> 每次扩容令数组长度变化，那么每个元素的位置也会发生变化，原本因冲突而形成链表或红黑树的Node的位置也需要重新计算。下面对比JDK7和JDK8来说明resize机制。</p>
+<p>  在JDK7中，一旦扩容，就需要对所有元素rehash。而且旧链表迁移到新链表时,如果在新表的索引位置相同，链表元素会倒置。</p>
+<p>  而在JDK8中，神奇的事情发生了。因为数组长度总是保持在2的n次方，扩容之后，数组长度的二进制表示就是原有数值左移一位，length-1的二进制表示的最高位的左边一位置1。看下图可以明白这句话的意思，n为table的长度，图（a）表示扩容前的key1和key2两种key确定索引位置的示例，图（b）表示扩容后key1和key2两种key确定索引位置的示例，其中hash1是key1对应的哈希与高位运算结果。</p>
+<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png" alt=""></p>
+<p>  此时获取索引的计算 hashcode &amp; (length -1) 变成了 原索引+oldCap，性能获得提升。这就是JDK8中<strong>对resize的优化</strong>。</p>
+<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png" alt=""></p>
+</li>
+</ul>
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="Q：get方法的流程是怎样的？"><a href="#Q：get方法的流程是怎样的？" class="headerlink" title="Q：get方法的流程是怎样的？"></a>Q：get方法的流程是怎样的？</h2><p><strong>A：</strong> </p>
+<ol>
+<li>调用key的hashcode方法获取hash值</li>
+<li>对hash值做高位运算处理</li>
+<li>将处理后的hash值对数组长度取模，得到索引</li>
+<li>遍历链表，用key的equals方法与每个元素比较，匹配成功则返回。</li>
+</ol>
+<h2 id="Q：怎样优化HashMap的性能？"><a href="#Q：怎样优化HashMap的性能？" class="headerlink" title="Q：怎样优化HashMap的性能？"></a>Q：怎样优化HashMap的性能？</h2><p><strong>A：</strong> </p>
+<ul>
+<li><strong>使用包装类作为key</strong>。此类wrapper类是final类型的，已经重写了equals和hashCode方法，碰撞的几率更小，散列更为高效。</li>
+</ul>
+<h2 id="Q：并发会导致什么问题？"><a href="#Q：并发会导致什么问题？" class="headerlink" title="Q：并发会导致什么问题？"></a>Q：并发会导致什么问题？</h2><p><strong>A：</strong> </p>
+<ul>
+<li><p><strong>多线程操作可能导致死循环。</strong> HashMap是非线程安全的。一般来说，链表出现死循环很可能是因为出现环形链表。所以可以从这个角度考虑问题。</p>
+<p>  具体来讲，向HashMap中添加元素时，在resize的时候，需要调整原有的元素到新的位置，即transfer方法。在此方法中，对于某个特定索引的链表，如果多个线程切换执行此方法，由于每个线程对next进行重复操作，导致形成环状链表。</p>
+<p>  <strong>解决方案：</strong> </p>
+<ol>
+<li>使用Collections.synchronizedMap(Mao<k,v> m)方法把HashMap变成一个线程安全的Map。</k,v></li>
+<li>使用ConcurrentHashMap。</li>
+</ol>
+</li>
+</ul>
+<h2 id="Q：与HashSet的区别是什么？"><a href="#Q：与HashSet的区别是什么？" class="headerlink" title="Q：与HashSet的区别是什么？"></a>Q：与HashSet的区别是什么？</h2><p><strong>A：</strong> HashSet仅仅存储对象，而不存储键值对，相对较慢。</p>
+<h2 id="Q：与HashTable的区别？"><a href="#Q：与HashTable的区别？" class="headerlink" title="Q：与HashTable的区别？"></a>Q：与HashTable的区别？</h2><p><strong>A：</strong> HashTable继承了Dictionary接口，线程安全，其中涉及存取的方法都加上了Synchronize关键字。</p>
+<h1 id="ConcurrentHashMap相关问题"><a href="#ConcurrentHashMap相关问题" class="headerlink" title="ConcurrentHashMap相关问题"></a>ConcurrentHashMap相关问题</h1><h2 id="Q：ConcurrentHashMap的数据结构？"><a href="#Q：ConcurrentHashMap的数据结构？" class="headerlink" title="Q：ConcurrentHashMap的数据结构？"></a>Q：ConcurrentHashMap的数据结构？</h2><p><strong>A：</strong> </p>
+<ul>
+<li>实现了ConcurrentHashMap接口。</li>
+<li>与HashMap一大不同是，内部实现了Map.Entry的节点Node其中的next和value是volatile的，避免了Hashmap中的死循环。</li>
+</ul>
+<p>参考：<a href="https://tech.meituan.com/java-hashmap.html" target="_blank" rel="noopener">Java 8系列之重新认识HashMap</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/diary20180316/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/diary20180316/" itemprop="url">diary20180316</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T12:29:33+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-16T12:30:09+08:00">
+                2018-03-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>12:29:50</code> 来到凯李咖啡。果然和在家非常不一样。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/quick-adt-useful/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1735,388 +2121,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/09/note-adt-hash/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/note-adt-hash/" itemprop="url">哈希·学习记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T14:49:05+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-09T17:26:11+08:00">
-                2018-03-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是哈希？"><a href="#什么是哈希？" class="headerlink" title="什么是哈希？"></a>什么是哈希？</h2><p>柯林斯词典中对hash一词的<a href="https://www.collinsdictionary.com/dictionary/english/hash" target="_blank" rel="noopener">解释</a>是切碎或剁碎的意思：</p>
-<blockquote>
-<p>to chop into small pieces.</p>
-</blockquote>
-<p>或者是一种习语，把事情搞得一团糟。</p>
-<blockquote>
-<p>PHRASE If you make a hash of a job or task, you do it very badly.</p>
-</blockquote>
-<p>因此，在计算机科学中，<strong>hash</strong>成为<strong>散列</strong>的代名词。</p>
-<h2 id="什么是散列？"><a href="#什么是散列？" class="headerlink" title="什么是散列？"></a>什么是散列？</h2><p>对比来看，要想从数组中查找元素，只需确定元素的索引，无需涉及其他数组元素。</p>
-<p>散列也是如此，无需查找（遍历），只需根据<strong>键</strong>来确定元素索引，即可找到对应的元素。数组是散列的一种，是<strong>散列表</strong>。</p>
-<h2 id="什么是散列函数？"><a href="#什么是散列函数？" class="headerlink" title="什么是散列函数？"></a>什么是散列函数？</h2><p>散列函数的作用是转化。从<strong>键</strong>到<strong>索引值</strong>的转化过程，就是散列函数处理的。键可能是数字，可能是字符串，需要通过散列函数处理，转化为整数。</p>
-<h2 id="理想的散列是什么样子的？"><a href="#理想的散列是什么样子的？" class="headerlink" title="理想的散列是什么样子的？"></a>理想的散列是什么样子的？</h2><p>理想情况下，散列函数将每个<strong>键</strong>都映射到散列表（或称之为哈希表）中的唯一一个元素。比如键的范围是从0000到9999，散列函数产生从0到9999的整数，每个键对应唯一一个整数，也就对应相应的元素。此时的散列函数称为完美的散列函数。</p>
-<h2 id="实际情况下的散列是什么样子的？"><a href="#实际情况下的散列是什么样子的？" class="headerlink" title="实际情况下的散列是什么样子的？"></a>实际情况下的散列是什么样子的？</h2><p>实际情况下，不是每个键都会派上用场。比如上例，键的范围是0000到9999，可实际用到的可能仅仅只有少数。比如，电话号码的范围是0000到9999，而实际拥有电话的人可能只有几百人。那么散列表就可能会是稀疏的，浪费了大量空间。</p>
-<h2 id="典型的散列函数？"><a href="#典型的散列函数？" class="headerlink" title="典型的散列函数？"></a>典型的散列函数？</h2><p>典型的散列函数需要进行下列两个步骤：</p>
-<ol>
-<li>将查找键转换为一个称为<strong>散列码</strong>(hash code)的整数；</li>
-<li>将散列码<strong>压缩</strong>到散列表的索引范围。</li>
-</ol>
-<p>如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回含tableSize个位置的数组的一个索引</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = num的最后四位数字;</span><br><span class="line">    <span class="keyword">return</span> i % tableSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于tableSize小于查找键的数量，所以某些键可能会映射到相同的索引，这一现象称为<strong>冲突</strong>。为了解决这一问题，需要<strong>处理冲突</strong>。</p>
-<h2 id="较好的散列函数？"><a href="#较好的散列函数？" class="headerlink" title="较好的散列函数？"></a>较好的散列函数？</h2><p>散列函数只需产生适合的整数，而解决冲突需要一定代价。这说明较好的散列函数应该：</p>
-<ol>
-<li>使冲突最少</li>
-<li>计算快</li>
-</ol>
-<p>为了减少冲突的几率，散列函数应当使元素尽量均匀地分布在散列表中。</p>
-<h2 id="计算散列码"><a href="#计算散列码" class="headerlink" title="计算散列码"></a>计算散列码</h2><h3 id="类类型的散列码"><a href="#类类型的散列码" class="headerlink" title="类类型的散列码"></a>类类型的散列码</h3><p>刚刚提到，典型的散列函数的第一步是将键转换为散列码。不仅是数字和字符串，任何类型的对象都可以作为键。在Java中，每个Object都有一个<code>hashCode</code>方法，用于产生散列码。</p>
-<p>但是，这个默认的散列码不适合用于散列，因为对于两个 equal 的对象，它将产生不同的散列码。因此，应当自定义<code>hashCode</code>方法。准则如下：</p>
-<ol>
-<li>如果一个类覆盖了方法<code>equals</code>方法，则应该覆盖<code>hashCode</code>方法。</li>
-<li>如果<code>equals</code>方法认为两个对象相等，那么<code>hashCode</code>方法对它们必须返回相同的散列码。</li>
-<li>如果在同一程序中对一个对象调用多次<code>hashCode</code>方法，且它们没有改变，必须返回相同的散列码。</li>
-<li>在同一程序的两次执行过程中，对象的散列码可以不同。</li>
-</ol>
-<p>注：一般情况下，虽然相等的对象有相同的散列码，但是<strong>不相等的对象也有可能有相同的散列码</strong>，此时产生冲突，应竭力避免。</p>
-<h3 id="字符串的散列码"><a href="#字符串的散列码" class="headerlink" title="字符串的散列码"></a>字符串的散列码</h3><p>容易想到的方式有，为A~Z每个字母分配一个整数，或者用Unicode代替，散列函数取每个字符串开头的几个字母对应的整数。然而如果开头字母相同，则散列码相同。事实上，任何使用特定的字母的散列函数都无法将字符串均匀地分布在散列中。因为<strong>现实世界的数据不是均匀的</strong>。</p>
-<h4 id="更好的字符串散列码"><a href="#更好的字符串散列码" class="headerlink" title="更好的字符串散列码"></a>更好的字符串散列码</h4><p>Horner法：每个字符的Unicode值乘以与这个字符位置有关的因子，散列码就是这些乘积之和。对于字符串s，设g为某一常数，u(0)到u(n-1)为每个字符，有</p>
-<pre><code>s = u(0)u(1)……u(n-1)
-hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
-</code></pre><p>在某一版本的Java中，String类实现的<code>hashCode</code>方法是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = s.getLength();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)&#123;</span><br><span class="line">    hash = g * hash + s.charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="基本类型的散列码"><a href="#基本类型的散列码" class="headerlink" title="基本类型的散列码"></a>基本类型的散列码</h3><p>对于<code>int</code>，<code>short</code>，<code>char</code>，<code>byte</code>的基本类型，可以将他们转化为<code>int</code>，直接作为散列码。</p>
-<p>对于其他基本类型，可以用内部的二进制表示。如果是<code>long</code>类型，则含有64位，如果简单的转换为<code>int</code>，或者将其对2^32取模，则会丢失前32位。结果是，所有只在前32位不同的键将有相同的散列码。这是我们不希望的。所以，我们要<strong>考虑到整个键，不要忽略它的一部分</strong>。</p>
-<p>对于<code>long</code>类型对象，一种方法是，将它分开成若干部分，用各种位操作将这些部分结合起来。这称为<strong>折叠</strong>。</p>
-<p>Java中的做法是</p>
-<pre><code>(int)(key^(key&gt;&gt;32))
-</code></pre><p>即，将key右移32位，并与它原本的值取位或运算。右移的步骤丢弃了高32位，位或的步骤将高低32位结合。最后转化为<code>int</code>，丢弃高32位。这样有效的利用了key的高低32位，也就是考虑了全部的元素。</p>
-<p>对于<code>double</code>类型的操作是类似的，但需要借助<code>Double.doubleToLongBits</code>方法来获取key的位组合。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> bits = Double.doubleToLongBits(key);</span><br><span class="line"><span class="keyword">int</span> hashCode = (<span class="keyword">int</span>)(bits^(bits&gt;&gt;<span class="number">32</span>))</span><br></pre></td></tr></table></figure>
-<p>对于float，散列码可以就是它的32位，通过调用<code>Float.floatToIntBits(key)</code>得到。</p>
-<p>事实上，以上基本类型的散列计算已经包含在相应包装类的<code>hashCode</code>方法实现中。</p>
-<h2 id="将散列码压缩为散列表的索引"><a href="#将散列码压缩为散列表的索引" class="headerlink" title="将散列码压缩为散列表的索引"></a>将散列码压缩为散列表的索引</h2><p>将一个整数缩小至指定范围，最常用的就是取模运算。但是这不是理想的。考虑到一个特性：一个数在<strong>对偶数取模</strong>之后，<strong>奇偶性</strong>不会变化。而（例如）<strong>基于内存地址的散列码通常是偶数</strong>，索引可能不再均匀分布，而偏向偶数。因此，散列表长度只能是奇数。</p>
-<p>当n为素数时，c % n 将等于0到n-1均匀分布值。</p>
-<p>另外，hashCode可能会返回负值。范围是1-n到0，令结果加上n即可。</p>
-<p>因此，我们可以有如下实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getHashIndex</span><span class="params">(K key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hashIndex = key.hashCode() % hashTable.length;</span><br><span class="line">    <span class="keyword">if</span>(hashIndex &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        hashIndex = hashIndex + hashTable.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hashIndex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h2><p>处理冲突有两种选择：</p>
-<ol>
-<li>使用散列表中的另一个位置。</li>
-<li>修改散列表的结构，让每个数组位置可以表示多个值。</li>
-</ol>
-<p>前者称为<strong>开放定址</strong>（open addressing），暂且不谈。</p>
-<h3 id="链地址"><a href="#链地址" class="headerlink" title="链地址"></a>链地址</h3><p>每个数组的位置可以表示不知一个值，这样的位置被称为<strong>捅</strong>。而一旦涉及数组，则会有大量的内存消耗。而用链表实现桶是合理的选择，内存仅在需要时才分配。使用链表构成的桶处理冲突，被称为链地址。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/09/diary20180309/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/diary20180309/" itemprop="url">自作多情的终局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T11:44:51+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T01:56:59+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>11:46:12</code> 去卫生站拿了化验报告，疫苗生效。</p>
-<p>与老爸的恶搞，哈哈哈哈</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary180309-1.png" alt=""></p>
-<p>阳光正好哇。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary180309-2.jpg" alt=""></p>
-<p>下载了小米云同步助手。</p>
-<p><code>21:30:16</code> 身体异样记录：晚上不宜喝酒。喝酒接近困倦，浪费一堆时间。</p>
-<p><code>21:44:26</code> 无论何时的疲惫，只要换个话题，新鲜的，或者许久未提的，总能打气精神。</p>
-<p>用上了wox，非常好用。</p>
-<p><code>23:27:54</code> 编程不能马虎的地方 1. 忘记终止条件的return  2. 比较对象从<code>array[i]&lt;array[j]</code>写成<code>i&lt;j</code></p>
-<p><code>1:39:56</code> 删除了所有留言。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2167,7 +2171,7 @@ hash = u(0)*g^(n-1) + u(1)*g^(n-2)+……+u(n-2)*g+u(n-1)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">146</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
