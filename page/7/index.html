@@ -300,6 +300,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/04/09/java-nio-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/09/java-nio-note/" itemprop="url">java-nio-note</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T11:44:09+08:00">
+                2018-04-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-09T18:07:55+08:00">
+                2018-04-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/nio_1.png" alt=""></p>
+<p>用NIO API编写的应用，分别从服务端和客户端来看。</p>
+<h2 id="服务端框架："><a href="#服务端框架：" class="headerlink" title="服务端框架："></a>服务端框架：</h2><p>使用一个线程处理所有Channel。</p>
+<ul>
+<li>创建Selector：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Selector selector = Selector.open();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建server的channel：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>绑定本地接口，设置为非阻塞模式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serverSocketChannel.socket().bind(<span class="keyword">new</span> InetSocketAddress(listenPort));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将selector注册到服务端channel，设置状态为“准备就绪”</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在（无限）循环的代码中，selector选择信道，返回已经就绪的信道数量。如果为0，应当重新选择。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> keys = selector.select(TimeOut);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回selector选中的信道集合，并进行遍历，对每个信道进行处理。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;SelectionKey&gt; set = selector.selectedKeys();</span><br><span class="line"><span class="keyword">while</span> (keyIter.hasNext()) &#123;</span><br><span class="line">    SelectionKey key = keyIter.next();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当这批信道处理结束之后，移除处理过的键。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keyIter.remove();</span><br></pre></td></tr></table></figure>
+<h2 id="链接处理过程"><a href="#链接处理过程" class="headerlink" title="链接处理过程"></a>链接处理过程</h2><p>对于每个客户端连接，都有其自己的属性：<code>connectable</code>，<code>acceptable</code>，<code>readable</code>，<code>Writable</code>，即连接就绪，接收就绪，读取就绪，写入就绪。事实上，在上述<code>register</code>方法中传入的最后一个参数就是服务端“感兴趣”的方面。</p>
+<ul>
+<li>分别分发：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (key.isAcceptable()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"acceptable"</span>);</span><br><span class="line">        <span class="comment">//该方法在内部，会将interest由OP_ACCEPT改为OP_READ</span></span><br><span class="line">        <span class="comment">//如果不执行下面的语句，则会一直是accept状态（初始时设置为了accept），无法进入后面的两个if语句</span></span><br><span class="line">        <span class="comment">//console一直打印上面的语句</span></span><br><span class="line">        protocol.handleAccept(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (key.isReadable()) &#123;</span><br><span class="line">        <span class="comment">// 从客户端读取数据</span></span><br><span class="line">        System.out.println(<span class="string">"readable"</span>);</span><br><span class="line">        protocol.handleRead(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (key.isValid() &amp;&amp; key.isWritable()) &#123;</span><br><span class="line">        <span class="comment">//客户端连接一次后，N次连续进入该方法</span></span><br><span class="line">        <span class="comment">//System.out.println("writable");//连续输出</span></span><br><span class="line">        protocol.handleWrite(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">    <span class="comment">// 出现IO异常（如客户端断开连接）时移除处理过的键</span></span><br><span class="line">    keyIter.remove();</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分别处理：</li>
+</ul>
+<p>对于“接受就绪”的情况：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleAccept</span><span class="params">(SelectionKey key)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        SocketChannel clientChannel = ((ServerSocketChannel) key.channel()).accept();</span><br><span class="line">        clientChannel.configureBlocking(<span class="keyword">false</span>);</span><br><span class="line">        clientChannel.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(bufferSize));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>对于“读取就绪”的情况</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRead</span><span class="params">(SelectionKey key)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 获得与客户端通信的信道</span></span><br><span class="line">        SocketChannel clientChannel = (SocketChannel) key.channel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 得到并清空缓冲区</span></span><br><span class="line">        ByteBuffer buffer = (ByteBuffer) key.attachment();</span><br><span class="line">        buffer.clear();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取信息获得读取的字节数</span></span><br><span class="line">        <span class="keyword">long</span> bytesRead = clientChannel.read(buffer);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (bytesRead == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 没有读取到内容的情况</span></span><br><span class="line">            clientChannel.close();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 将缓冲区准备为数据传出状态</span></span><br><span class="line">            buffer.flip();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 将字节转化为为UTF-16的字符串</span></span><br><span class="line">            String receivedString = Charset.forName(<span class="string">"UTF-16"</span>).newDecoder().decode(buffer).toString();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 控制台打印出来</span></span><br><span class="line">            System.out.println(<span class="string">"接收到来自"</span> + clientChannel.socket().getRemoteSocketAddress() + <span class="string">"的信息:"</span> + receivedString);</span><br><span class="line"></span><br><span class="line">            SimpleDateFormat format = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-mm-dd HH:mm:ss"</span>);</span><br><span class="line">            String f = format.format(<span class="keyword">new</span> Date());</span><br><span class="line">            <span class="comment">// 准备发送的文本</span></span><br><span class="line">            String sendString = <span class="string">"你好,客户端. @"</span> + f + <span class="string">"，已经收到你的信息:"</span> + receivedString;</span><br><span class="line">            buffer = ByteBuffer.wrap(sendString.getBytes(<span class="string">"UTF-16"</span>));</span><br><span class="line">            clientChannel.write(buffer);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 设置为下一次读取或是写入做准备</span></span><br><span class="line">            key.interestOps(SelectionKey.OP_READ | SelectionKey.OP_WRITE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/04/09/diary20180409/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2200,163 +2395,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/04/02/diary20180402/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/02/diary20180402/" itemprop="url">diary20180402</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T22:03:04+08:00">
-                2018-04-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T14:07:22+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>10:37:36</code> 携小本来到凯李咖啡。</p>
-<p><code>11:31:18</code> feel。</p>
-<p><code>22:08:30</code> 对职业发展的困惑和不安，其实换个角度思考会好很多：你希望你十年之后是什么样子？奔着那个方向努力吧。</p>
-<p>今天毕设检查，没什么值得记录的。下午与胡买了水果喝啤酒吃炸鸡去网吧。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2407,7 +2445,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">157</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
