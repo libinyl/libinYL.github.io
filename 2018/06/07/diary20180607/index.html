@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="软件工程," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,18 +86,14 @@
 
 
 
-<meta name="description" content="一、整理需求列表例：  用户可以通过“客户名称”关键字进行模糊查询 单击“新增”按钮，进入“新增客户”界面，可新增客户基本信息 ……  二、系统设计 分析原始需求，找到涉及的用例（Use Case） 涉及表结构 定义URL规范  三、设计用例如：  查询客户 显示客户列表 创建客户 编辑客户 ……  可用UML图来描述用例。 四、设计表结构   字段名 数据类型 是否非空 字段备注     id">
-<meta name="keywords" content="软件工程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="需求分析与系统设计">
-<meta property="og:url" content="http://libinyl.github.io/2018/05/18/note-software-engineering-requirements-analysis-and-system-design/index.html">
+<meta property="og:title" content="diary20180607">
+<meta property="og:url" content="http://libinyl.github.io/2018/06/07/diary20180607/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="一、整理需求列表例：  用户可以通过“客户名称”关键字进行模糊查询 单击“新增”按钮，进入“新增客户”界面，可新增客户基本信息 ……  二、系统设计 分析原始需求，找到涉及的用例（Use Case） 涉及表结构 定义URL规范  三、设计用例如：  查询客户 显示客户列表 创建客户 编辑客户 ……  可用UML图来描述用例。 四、设计表结构   字段名 数据类型 是否非空 字段备注     id">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T15:28:18.383Z">
+<meta property="og:updated_time" content="2018-06-07T07:45:03.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="需求分析与系统设计">
-<meta name="twitter:description" content="一、整理需求列表例：  用户可以通过“客户名称”关键字进行模糊查询 单击“新增”按钮，进入“新增客户”界面，可新增客户基本信息 ……  二、系统设计 分析原始需求，找到涉及的用例（Use Case） 涉及表结构 定义URL规范  三、设计用例如：  查询客户 显示客户列表 创建客户 编辑客户 ……  可用UML图来描述用例。 四、设计表结构   字段名 数据类型 是否非空 字段备注     id">
+<meta name="twitter:title" content="diary20180607">
 
 
 
@@ -127,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/05/18/note-software-engineering-requirements-analysis-and-system-design/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/06/07/diary20180607/"/>
 
 
 
 
 
-  <title>需求分析与系统设计 | 李斌 - LBYL</title>
+  <title>diary20180607 | 李斌 - LBYL</title>
   
 
 
@@ -304,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/05/18/note-software-engineering-requirements-analysis-and-system-design/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/06/07/diary20180607/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -321,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">需求分析与系统设计</h1>
+          <h1 class="post-title" itemprop="name headline">diary20180607</h1>
         
 
         <div class="post-meta">
@@ -333,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T15:53:44+08:00">
-                2018-05-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-07T15:45:03+08:00">
+                2018-06-07
               </time>
             
 
@@ -349,34 +345,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-18T23:28:18+08:00">
-                2018-05-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-07T15:45:03+08:00">
+                2018-06-07
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -405,110 +379,7 @@
       
 
       
-        <h1 id="一、整理需求列表"><a href="#一、整理需求列表" class="headerlink" title="一、整理需求列表"></a>一、整理需求列表</h1><p>例：</p>
-<ol>
-<li>用户可以通过“客户名称”关键字进行模糊查询</li>
-<li>单击“新增”按钮，进入“新增客户”界面，可新增客户基本信息</li>
-<li>……</li>
-</ol>
-<h1 id="二、系统设计"><a href="#二、系统设计" class="headerlink" title="二、系统设计"></a>二、系统设计</h1><ol>
-<li>分析原始需求，找到涉及的用例（Use Case）</li>
-<li>涉及表结构</li>
-<li>定义URL规范</li>
-</ol>
-<h2 id="三、设计用例"><a href="#三、设计用例" class="headerlink" title="三、设计用例"></a>三、设计用例</h2><p>如：</p>
-<ul>
-<li>查询客户</li>
-<li>显示客户列表</li>
-<li>创建客户</li>
-<li>编辑客户</li>
-<li>……</li>
-</ul>
-<p>可用UML图来描述用例。</p>
-<h2 id="四、设计表结构"><a href="#四、设计表结构" class="headerlink" title="四、设计表结构"></a>四、设计表结构</h2><table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>数据类型</th>
-<th>是否非空</th>
-<th>字段备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>BIGINT</td>
-<td>√</td>
-<td>ID(自增主键)</td>
-</tr>
-<tr>
-<td>name</td>
-<td>VARCHAR(255)</td>
-<td>√</td>
-<td>客户名称</td>
-</tr>
-<tr>
-<td>email</td>
-<td>VARCHAR(255)</td>
-<td>-</td>
-<td>邮箱地址</td>
-</tr>
-</tbody>
-</table>
-<h2 id="五、设计界面原型"><a href="#五、设计界面原型" class="headerlink" title="五、设计界面原型"></a>五、设计界面原型</h2><p>典型管理系统如：</p>
-<h2 id="六、设计URL"><a href="#六、设计URL" class="headerlink" title="六、设计URL"></a>六、设计URL</h2><p>如：</p>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>URL</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>GET:/customer</td>
-<td>进入“客户列表”界面</td>
-</tr>
-<tr>
-<td>2</td>
-<td>POST:/customer_search</td>
-<td>查询客户</td>
-</tr>
-<tr>
-<td>3</td>
-<td>GET:/customer_show?id={id}</td>
-<td>进入“查看客户”界面</td>
-</tr>
-<tr>
-<td>4</td>
-<td>GET:/customer_create</td>
-<td>进入“创建客户”界面</td>
-</tr>
-<tr>
-<td>5</td>
-<td>POST:/customer_create</td>
-<td>创建客户</td>
-</tr>
-<tr>
-<td>6</td>
-<td>GET:/customer_edit?id={id}</td>
-<td>进入“编辑客户”界面</td>
-</tr>
-<tr>
-<td>7</td>
-<td>PUT:/customer_edit?id={id}</td>
-<td>编辑客户</td>
-</tr>
-<tr>
-<td>8</td>
-<td>DELETE:/customer_delete?id={id}</td>
-<td>删除客户</td>
-</tr>
-</tbody>
-</table>
-
+        
       
     </div>
     
@@ -523,12 +394,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/软件工程/" rel="tag"># 软件工程</a>
-          
-        </div>
-      
 
       
       
@@ -538,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/18/diary20180518/" rel="next" title="diary20180518">
-                <i class="fa fa-chevron-left"></i> diary20180518
+              <a href="/2018/06/07/diary20180606/" rel="next" title="diary20180606">
+                <i class="fa fa-chevron-left"></i> diary20180606
               </a>
             
           </div>
@@ -547,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/18/note-java-logger/" rel="prev" title="日志框架学习">
-                日志框架学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,17 +463,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -627,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-count">169</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -649,7 +501,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -694,22 +546,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、整理需求列表"><span class="nav-number">1.</span> <span class="nav-text">一、整理需求列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、系统设计"><span class="nav-number">2.</span> <span class="nav-text">二、系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三、设计用例"><span class="nav-number">2.1.</span> <span class="nav-text">三、设计用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、设计表结构"><span class="nav-number">2.2.</span> <span class="nav-text">四、设计表结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、设计界面原型"><span class="nav-number">2.3.</span> <span class="nav-text">五、设计界面原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、设计URL"><span class="nav-number">2.4.</span> <span class="nav-text">六、设计URL</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
