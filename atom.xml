@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-07T07:45:03.505Z</updated>
+  <updated>2018-06-07T15:51:50.417Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,15 +17,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>常用软件下载地址</title>
+    <link href="http://libinyl.github.io/2018/06/07/thought-favorite-software/"/>
+    <id>http://libinyl.github.io/2018/06/07/thought-favorite-software/</id>
+    <published>2018-06-07T15:50:49.000Z</published>
+    <updated>2018-06-07T15:51:50.417Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>软件</th><th>链接</th></tr></thead><tbody><tr><td>vscode</td><td><a href="https://code.visualstudio.com/docs/?dv=win" target="_blank" rel="noopener">https://code.visualstudio.com/docs/?dv=win</a></td></tr><tr><td>git</td><td><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></td></tr><tr><td>坚果云</td><td><a href="https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe" target="_blank" rel="noopener">https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe</a></td></tr><tr><td>有道词典</td><td><a href="http://cidian.youdao.com/download/YoudaoDict.exe" target="_blank" rel="noopener">http://cidian.youdao.com/download/YoudaoDict.exe</a></td></tr><tr><td>有道云笔记</td><td><a href="http://download.ydstatic.com/notewebsite/downloads/YNote.exe" target="_blank" rel="noopener">http://download.ydstatic.com/notewebsite/downloads/YNote.exe</a></td></tr><tr><td>360</td><td><a href="https://down.360safe.com/inst.exe" target="_blank" rel="noopener">https://down.360safe.com/inst.exe</a></td></tr><tr><td>微信</td><td><a href="http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe" target="_blank" rel="noopener">http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe</a></td></tr><tr><td>potplayer</td><td><a href="http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe" target="_blank" rel="noopener">http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe</a></td></tr><tr><td>XMeters</td><td><a href="https://entropy6.com/xmeters/downloads/XMetersSetup.exe" target="_blank" rel="noopener">https://entropy6.com/xmeters/downloads/XMetersSetup.exe</a></td></tr><tr><td>Everything</td><td><a href="http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe" target="_blank" rel="noopener">http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe</a></td></tr><tr><td>小米云客户端</td><td><a href="https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe" target="_blank" rel="noopener">https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe</a></td></tr><tr><td>TIM</td><td><a href="https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe</a></td></tr><tr><td>QQ</td><td><a href="https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe</a></td></tr><tr><td>360极速浏览器</td><td><a href="http://down.360safe.com/cse/360cse_9.5.0.132.exe" target="_blank" rel="noopener">http://down.360safe.com/cse/360cse_9.5.0.132.exe</a></td></tr><tr><td>搜狗输入法</td><td><a href="http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe" target="_blank" rel="noopener">http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe</a></td></tr><tr><td>minGW-w64</td><td><a href="https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe" target="_blank" rel="noopener">https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe</a></td></tr><tr><td>java</td><td><a href="http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff</a></td></tr><tr><td>intelliJ idea</td><td><a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">https://www.jetbrains.com/idea/download/</a></td></tr><tr><td>Ditto</td><td><a href="https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download" target="_blank" rel="noopener">https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download</a></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;软件&lt;/th&gt;
+&lt;th&gt;链接&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;vscode&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/?dv
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="软件" scheme="http://libinyl.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>diary20180607</title>
     <link href="http://libinyl.github.io/2018/06/07/diary20180607/"/>
     <id>http://libinyl.github.io/2018/06/07/diary20180607/</id>
     <published>2018-06-07T07:45:03.000Z</published>
-    <updated>2018-06-07T07:45:03.505Z</updated>
+    <updated>2018-06-07T16:02:57.500Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>23:54:58</code> 今天白天把电脑重装了，下午到图书馆看了看书。看到文学区，老舍，胡适，丰子恺，史铁生。他们的散文大多是日记或游记，阅读他们的作品，好像在与他们直接对话。</p><p>记录下今天在图书馆的思考。</p><p>刷题，为别人讲解，是最好最快的学习方法。</p><p>通过学信息安全来学操作系统和计算机网络。</p><p>追求三个境界：</p><ol><li>正确写出程序</li><li>快速写出程序</li><li>不断优化性能</li></ol><p>游戏是各种技术的综合。</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;&lt;code&gt;23:54:58&lt;/code&gt; 今天白天把电脑重装了，下午到图书馆看了看书。看到文学区，老舍，胡适，丰子恺，史铁生。他们的散文大多是日记或游记，阅读他们的作品，好像在与他们直接对话。&lt;/p&gt;
+&lt;p&gt;记录下今天在图书馆的思考。&lt;/p&gt;
+&lt;p&gt;刷题，为别人讲解，是最
+      
+    
     </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
     
     
   </entry>
@@ -465,31 +511,6 @@
     
     
       <category term="C" scheme="http://libinyl.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180524</title>
-    <link href="http://libinyl.github.io/2018/05/24/diary20180524/"/>
-    <id>http://libinyl.github.io/2018/05/24/diary20180524/</id>
-    <published>2018-05-24T04:00:20.000Z</published>
-    <updated>2018-05-24T15:32:14.146Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>12:16:44</code> 今天学校体检。</p><p><code>13:13:17</code> 赶紧把参考文献补齐。。</p><p><code>15:19:07</code> 体检完毕。面对同学，我毫无自信站立，每时每刻都想躲开。身上的衣服大概一个月没换了。如果以后谁看到这句话，请不要惊讶。希望我自己在一两年后看到这句话时，不会是同样的感受。</p><p><code>20:49:50</code> 今天明白了一些事情。</p><p>在体检时，我再次体会到那种不安的感觉。我去晚了几分钟，文涛告诉我，由于许莹填她自己的体检表时填错了，而表是不可更改且数目有限的，就用了一张新的，意味着我没有表可用，只能暂时拿着许莹填错的那张表。这没啥。之后看到班里的同学，男生女生，我的头上瞬间像有千斤顶，压得脖子痛。我的自尊已经在心里自暴自弃，像一个打了败仗的将军，屡败屡战，直到绝望，再也没有了士气。</p><p>这当然是因为我的头发，还因为我愈加臃肿的身体，还有身上好久没洗的衣服，还有别人当然轻易闻不到的臭汗。</p><p>大概半小时前终于把毕业论文写完，我突然明白了，一种使命感涌了上来。</p><p>我之前以为我需要用身价、职业、工资来证明自己存在，试图把签约的公司名称当做敌人首级献给我的自尊心。然而我错了，工作确定后我的心情并没有好转，反而变得更加自卑。这种自卑是自然的，少时不知天高地厚到大学见了世面，期待感的提高没有配上自身的进步。我终于意识到，我的自卑，来源于不自信。</p><p>多奇怪的说法，自卑来源于不自信？是的，我不是因为外貌或身价之类的“容易”自卑的事情，而是因为多方面综合引起的“不自信”。我并不从心底热爱编程，只是因为蓝杰这个群体中的牛人太过耀眼，我不想仅仅被照耀而已；另外，我似乎也没有其他路可走。这导致了我到如今仍然会不实际地对比自己与业界大牛的差距，这差距会让我失落。我经常给自己某个理由，为了专注于某件我不喜欢的事情，我可以慵懒或放飞自己，暴食、看片，好像跟我大二时很像？久而久之，我不再敢照镜子，这会让我免受自己的恶心。</p><p>毕业论文结束之后，我再也没有了理由。我在很久以前也会如此，经过任何仪式性的事件之后，我会把自己收拾的精致一些，然后立刻恢复颓废状态。现在看来，那是因为我没有找到生存的意义。</p><p>现在有了，那就是在现实这款开放世界游戏中找到最终的宝藏——我的自信。人生的每一天都是一个关卡，每个关卡都非常相似，只是自问自答的一个小问题：“如果现在发生……，我会自信地面对吗？”如果作出的回答是“是”，恭喜我自己，我今天过关了。如果是否，很遗憾，今天是没有意义的一天。</p><p>如果现在有朋友来到我的房间玩，我会有自信接待他吗？</p><p>如果有朋友约我去游泳池，我会有自信去吗？</p><p>如果现在让我跟班里某个女生做两节课的同桌，我会有自信持续下去吗？</p><p>如果我的女朋友想亲吻我，我会有自信不躲避吗？如果不是亲吻呢？</p><p>可笑的问题！但答案都是否定的，都他妈是否定的。</p><p>这不是散文，不需要有什么完美的结尾。按照这个思路度过接下来的每一天，看看会有什么改变吧。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;12:16:44&lt;/code&gt; 今天学校体检。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;13:13:17&lt;/code&gt; 赶紧把参考文献补齐。。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;15:19:07&lt;/code&gt; 体检完毕。面对同学，我毫无自信站立，每时每刻都想躲开。身上的衣服大概一个月
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
     
   </entry>
   

@@ -302,6 +302,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/05/18/note-se-requirements-analysis-and-system-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/18/note-se-requirements-analysis-and-system-design/" itemprop="url">需求分析与系统设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T15:53:44+08:00">
+                2018-05-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:58:02+08:00">
+                2018-05-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、整理需求列表"><a href="#一、整理需求列表" class="headerlink" title="一、整理需求列表"></a>一、整理需求列表</h1><p>例：</p>
+<ol>
+<li>用户可以通过“客户名称”关键字进行模糊查询</li>
+<li>单击“新增”按钮，进入“新增客户”界面，可新增客户基本信息</li>
+<li>……</li>
+</ol>
+<h1 id="二、系统设计"><a href="#二、系统设计" class="headerlink" title="二、系统设计"></a>二、系统设计</h1><ol>
+<li>分析原始需求，找到涉及的用例（Use Case）</li>
+<li>涉及表结构</li>
+<li>定义URL规范</li>
+</ol>
+<h2 id="三、设计用例"><a href="#三、设计用例" class="headerlink" title="三、设计用例"></a>三、设计用例</h2><p>如：</p>
+<ul>
+<li>查询客户</li>
+<li>显示客户列表</li>
+<li>创建客户</li>
+<li>编辑客户</li>
+<li>……</li>
+</ul>
+<p>可用UML图来描述用例。</p>
+<h2 id="四、设计表结构"><a href="#四、设计表结构" class="headerlink" title="四、设计表结构"></a>四、设计表结构</h2><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>是否非空</th>
+<th>字段备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>BIGINT</td>
+<td>√</td>
+<td>ID(自增主键)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>VARCHAR(255)</td>
+<td>√</td>
+<td>客户名称</td>
+</tr>
+<tr>
+<td>email</td>
+<td>VARCHAR(255)</td>
+<td>-</td>
+<td>邮箱地址</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五、设计界面原型"><a href="#五、设计界面原型" class="headerlink" title="五、设计界面原型"></a>五、设计界面原型</h2><p>典型管理系统如：</p>
+<h2 id="六、设计URL"><a href="#六、设计URL" class="headerlink" title="六、设计URL"></a>六、设计URL</h2><p>如：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>URL</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GET:/customer</td>
+<td>进入“客户列表”界面</td>
+</tr>
+<tr>
+<td>2</td>
+<td>POST:/customer_search</td>
+<td>查询客户</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GET:/customer_show?id={id}</td>
+<td>进入“查看客户”界面</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GET:/customer_create</td>
+<td>进入“创建客户”界面</td>
+</tr>
+<tr>
+<td>5</td>
+<td>POST:/customer_create</td>
+<td>创建客户</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GET:/customer_edit?id={id}</td>
+<td>进入“编辑客户”界面</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PUT:/customer_edit?id={id}</td>
+<td>编辑客户</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DELETE:/customer_delete?id={id}</td>
+<td>删除客户</td>
+</tr>
+</tbody>
+</table>
+<h1 id="用例规约"><a href="#用例规约" class="headerlink" title="用例规约"></a>用例规约</h1><h2 id="用例规约的内容"><a href="#用例规约的内容" class="headerlink" title="用例规约的内容"></a>用例规约的内容</h2><ul>
+<li>前置条件和后置条件</li>
+<li>涉众利益</li>
+<li>基本路径</li>
+<li>扩展路径</li>
+<li>补充约束</li>
+</ul>
+<h2 id="前置条件和后置条件"><a href="#前置条件和后置条件" class="headerlink" title="前置条件和后置条件"></a>前置条件和后置条件</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>前置条件：用例开始前，系统需要满足的约束</p>
+<p>后置条件：用例结束后，系统需要满足的约束</p>
+<p>后置条件分为两种：</p>
+<ul>
+<li>最小后置：用例失败的情况下系统也需要满足的要求</li>
+<li>成功后置：用例成功时系统需要满足的约束</li>
+</ul>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><ol>
+<li>前置条件、后置条件必须系统可以检测到。</li>
+<li>前置条件必须在用例开始前系统就可以检测到。</li>
+<li>前置后置条件是约束，不是动作。</li>
+<li>前置后置条件必须要精确。</li>
+</ol>
+<h2 id="涉众利益"><a href="#涉众利益" class="headerlink" title="涉众利益"></a>涉众利益</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>设计系统时涉及某些角色的利益。</p>
+<h3 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h3><h4 id="如何寻找涉众？"><a href="#如何寻找涉众？" class="headerlink" title="如何寻找涉众？"></a>如何寻找涉众？</h4><p>如果这个系统的用例做不好，谁会遭殃？</p>
+<ul>
+<li>执行者</li>
+<li>上游</li>
+<li>下游</li>
+<li>信息的主人</li>
+</ul>
+<h4 id="给涉众排位"><a href="#给涉众排位" class="headerlink" title="给涉众排位"></a>给涉众排位</h4><h2 id="基本路径"><a href="#基本路径" class="headerlink" title="基本路径"></a>基本路径</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>用户与系统的交互过程</p>
+<h3 id="要点-2"><a href="#要点-2" class="headerlink" title="要点"></a>要点</h3><ul>
+<li>按照交互四部曲<ul>
+<li>（执行者）请求</li>
+<li>（系统）验证</li>
+<li>（系统）改变</li>
+<li>（系统）回应</li>
+</ul>
+</li>
+<li><p>使用主动语句理清责任</p>
+</li>
+<li><p>主语只能是主执行者或系统</p>
+</li>
+<li><p>使用核心域概念</p>
+</li>
+<li><p>不要涉及交互涉及的细节</p>
+</li>
+</ul>
+<h2 id="扩展路径"><a href="#扩展路径" class="headerlink" title="扩展路径"></a>扩展路径</h2><h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>基本路径上系统要处理的意外和分支</p>
+<h3 id="要点-3"><a href="#要点-3" class="headerlink" title="要点"></a>要点</h3><h4 id="经常发生的地方"><a href="#经常发生的地方" class="headerlink" title="经常发生的地方"></a>经常发生的地方</h4><ul>
+<li>执行者的选择</li>
+<li>系统验证</li>
+<li>关键步骤失败</li>
+</ul>
+<h2 id="补充约束"><a href="#补充约束" class="headerlink" title="补充约束"></a>补充约束</h2><h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><p>路径步骤中需要补充的内容，如字段列表或业务规则</p>
+<h3 id="要点-4"><a href="#要点-4" class="headerlink" title="要点"></a>要点</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/05/18/diary20180518/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1713,162 +2022,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/05/08/diary20180508/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/diary20180508/" itemprop="url">diary20180508</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T13:28:00+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-08T14:33:43+08:00">
-                2018-05-08
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>13:29:21</code> 来到梅溪湖的漫咖啡。环境不错。</p>
-<p>中午把新三方寄到华为武汉那边了。</p>
-<p><code>14:33:24</code> 漫咖啡价格不贵，服务</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1919,7 +2072,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">169</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1941,7 +2094,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
