@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-07T15:51:50.417Z</updated>
+  <updated>2018-06-08T12:23:00.367Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,13 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>diary20180608</title>
+    <link href="http://libinyl.github.io/2018/06/08/diary20180608/"/>
+    <id>http://libinyl.github.io/2018/06/08/diary20180608/</id>
+    <published>2018-06-08T04:24:30.000Z</published>
+    <updated>2018-06-08T12:23:00.367Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>12:24:41</code> 这两天高考，一如既往有很多新闻。打算下午再去一次海底捞看看。</p><p><code>12:35:15</code> 我发现自己已经养成了一个技能。每当心情低落，因琐事而难过，都会告诉自己，这是生理上的化学反应。不过是大脑中的那些化学物质，让我本能地逃跑而已。这样想着，就会好很多。</p><p><code>14:55:05</code> 第一次听到乌鸦叫的声音。应该不能说第一次，只是以前没注意过。“呀——呀——”的叫声，真的很难听，很烦人。</p><p><code>19:45:37</code> 去了海底捞！吃的蛮开心。海底捞的服务仍然十分出色，但是这次没人帮忙涮菜。然后赶在5点前付款，340多块钱的优惠了108块！</p><p><code>20:22:53</code> 没人能拯救我 除了我自己</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;12:24:41&lt;/code&gt; 这两天高考，一如既往有很多新闻。打算下午再去一次海底捞看看。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;12:35:15&lt;/code&gt; 我发现自己已经养成了一个技能。每当心情低落，因琐事而难过，都会告诉自己，这是生理上的化学反应。不过是大脑中的那
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>常用软件下载地址</title>
     <link href="http://libinyl.github.io/2018/06/07/thought-favorite-software/"/>
     <id>http://libinyl.github.io/2018/06/07/thought-favorite-software/</id>
     <published>2018-06-07T15:50:49.000Z</published>
-    <updated>2018-06-07T15:51:50.417Z</updated>
+    <updated>2018-06-08T05:31:34.807Z</updated>
     
-    <content type="html"><![CDATA[<table><thead><tr><th>软件</th><th>链接</th></tr></thead><tbody><tr><td>vscode</td><td><a href="https://code.visualstudio.com/docs/?dv=win" target="_blank" rel="noopener">https://code.visualstudio.com/docs/?dv=win</a></td></tr><tr><td>git</td><td><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></td></tr><tr><td>坚果云</td><td><a href="https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe" target="_blank" rel="noopener">https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe</a></td></tr><tr><td>有道词典</td><td><a href="http://cidian.youdao.com/download/YoudaoDict.exe" target="_blank" rel="noopener">http://cidian.youdao.com/download/YoudaoDict.exe</a></td></tr><tr><td>有道云笔记</td><td><a href="http://download.ydstatic.com/notewebsite/downloads/YNote.exe" target="_blank" rel="noopener">http://download.ydstatic.com/notewebsite/downloads/YNote.exe</a></td></tr><tr><td>360</td><td><a href="https://down.360safe.com/inst.exe" target="_blank" rel="noopener">https://down.360safe.com/inst.exe</a></td></tr><tr><td>微信</td><td><a href="http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe" target="_blank" rel="noopener">http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe</a></td></tr><tr><td>potplayer</td><td><a href="http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe" target="_blank" rel="noopener">http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe</a></td></tr><tr><td>XMeters</td><td><a href="https://entropy6.com/xmeters/downloads/XMetersSetup.exe" target="_blank" rel="noopener">https://entropy6.com/xmeters/downloads/XMetersSetup.exe</a></td></tr><tr><td>Everything</td><td><a href="http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe" target="_blank" rel="noopener">http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe</a></td></tr><tr><td>小米云客户端</td><td><a href="https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe" target="_blank" rel="noopener">https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe</a></td></tr><tr><td>TIM</td><td><a href="https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe</a></td></tr><tr><td>QQ</td><td><a href="https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe</a></td></tr><tr><td>360极速浏览器</td><td><a href="http://down.360safe.com/cse/360cse_9.5.0.132.exe" target="_blank" rel="noopener">http://down.360safe.com/cse/360cse_9.5.0.132.exe</a></td></tr><tr><td>搜狗输入法</td><td><a href="http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe" target="_blank" rel="noopener">http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe</a></td></tr><tr><td>minGW-w64</td><td><a href="https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe" target="_blank" rel="noopener">https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe</a></td></tr><tr><td>java</td><td><a href="http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff</a></td></tr><tr><td>intelliJ idea</td><td><a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">https://www.jetbrains.com/idea/download/</a></td></tr><tr><td>Ditto</td><td><a href="https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download" target="_blank" rel="noopener">https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download</a></td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<table><thead><tr><th>软件</th><th>链接</th></tr></thead><tbody><tr><td>vscode</td><td><a href="https://code.visualstudio.com/docs/?dv=win" target="_blank" rel="noopener">https://code.visualstudio.com/docs/?dv=win</a></td></tr><tr><td>git</td><td><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></td></tr><tr><td>坚果云</td><td><a href="https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe" target="_blank" rel="noopener">https://www.jianguoyun.com/static/exe/installer/NutstoreWindowsInstaller.exe</a></td></tr><tr><td>有道词典</td><td><a href="http://cidian.youdao.com/download/YoudaoDict.exe" target="_blank" rel="noopener">http://cidian.youdao.com/download/YoudaoDict.exe</a></td></tr><tr><td>有道云笔记</td><td><a href="http://download.ydstatic.com/notewebsite/downloads/YNote.exe" target="_blank" rel="noopener">http://download.ydstatic.com/notewebsite/downloads/YNote.exe</a></td></tr><tr><td>360</td><td><a href="https://down.360safe.com/inst.exe" target="_blank" rel="noopener">https://down.360safe.com/inst.exe</a></td></tr><tr><td>360解压</td><td><a href="http://dl.360safe.com/360zip_setup_4.0.0.1080.exe" target="_blank" rel="noopener">http://dl.360safe.com/360zip_setup_4.0.0.1080.exe</a></td></tr><tr><td>360极速浏览器</td><td><a href="http://down.360safe.com/cse/360cse_9.5.0.132.exe" target="_blank" rel="noopener">http://down.360safe.com/cse/360cse_9.5.0.132.exe</a></td></tr><tr><td>微信</td><td><a href="http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe" target="_blank" rel="noopener">http://dldir1.qq.com/weixin/Windows/WeChatSetup.exe</a></td></tr><tr><td>福昕阅读器</td><td><a href="http://file.foxitreader.cn/file/Channel/reader/foxit_FoxitReader_CHS_9.2.0.35791.exe" target="_blank" rel="noopener">http://file.foxitreader.cn/file/Channel/reader/foxit_FoxitReader_CHS_9.2.0.35791.exe</a></td><td></td></tr><tr><td>potplayer</td><td><a href="http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe" target="_blank" rel="noopener">http://get.daum.net/PotPlayer64/Version/Latest/PotPlayerSetup64.exe</a></td></tr><tr><td>XMeters</td><td><a href="https://entropy6.com/xmeters/downloads/XMetersSetup.exe" target="_blank" rel="noopener">https://entropy6.com/xmeters/downloads/XMetersSetup.exe</a></td></tr><tr><td>Everything</td><td><a href="http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe" target="_blank" rel="noopener">http://www.voidtools.com/Everything-1.4.1.895.x86-Setup.exe</a></td></tr><tr><td>小米云客户端</td><td><a href="https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe" target="_blank" rel="noopener">https://land.xiaomi.net/res/c37feea8/other/MiCloud%20Setup%200.1.24-ia32.exe</a></td></tr><tr><td>TIM</td><td><a href="https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/TIM2.2.0/23808/TIM2.2.0.exe</a></td></tr><tr><td>QQ</td><td><a href="https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe" target="_blank" rel="noopener">https://dldir1.qq.com/qqfile/qq/QQ9.0.3/23756/QQ9.0.3.exe</a></td></tr><tr><td>搜狗输入法</td><td><a href="http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe" target="_blank" rel="noopener">http://cdn2.ime.sogou.com/afdf66e02f22b0123f7bd1cd23beb5be/5b18c2a2/dl/index/1527229887/sogou_pinyin_90b.exe</a></td></tr><tr><td>minGW-w64</td><td><a href="https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe" target="_blank" rel="noopener">https://cytranet.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe</a></td></tr><tr><td>java</td><td><a href="http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff" target="_blank" rel="noopener">http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-windows-x64.exe?AuthParam=1528351995_4fbe60484aa4b0d97cb6e42021ea07ff</a></td></tr><tr><td>intelliJ idea</td><td><a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">https://www.jetbrains.com/idea/download/</a></td></tr><tr><td>Ditto</td><td><a href="https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download" target="_blank" rel="noopener">https://sourceforge.net/projects/ditto-cp/files/Ditto/3.21.223.0/DittoSetup_64bit_3_21_223_0.exe/download</a></td></tr><tr><td>honeyview</td><td><a href="https://dl.bandisoft.com/honeyview/HONEYVIEW-SETUP.EXE" target="_blank" rel="noopener">https://dl.bandisoft.com/honeyview/HONEYVIEW-SETUP.EXE</a></td></tr></tbody></table>]]></content>
     
     <summary type="html">
     
@@ -493,24 +517,6 @@
     
     
       <category term="编程语言" scheme="http://libinyl.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言环境问题总结</title>
-    <link href="http://libinyl.github.io/2018/05/25/note-c-env/"/>
-    <id>http://libinyl.github.io/2018/05/25/note-c-env/</id>
-    <published>2018-05-24T20:02:31.000Z</published>
-    <updated>2018-05-24T20:03:00.021Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="C" scheme="http://libinyl.github.io/tags/C/"/>
     
   </entry>
   
