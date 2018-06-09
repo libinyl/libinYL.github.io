@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-09T05:06:22.729Z</updated>
+  <updated>2018-06-09T09:23:39.038Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,13 +17,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>thought-body</title>
+    <link href="http://libinyl.github.io/2018/06/09/thought-body/"/>
+    <id>http://libinyl.github.io/2018/06/09/thought-body/</id>
+    <published>2018-06-09T09:22:39.000Z</published>
+    <updated>2018-06-09T09:23:39.038Z</updated>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>column0</th><th>column1</th></tr></thead><tbody><tr><td>2018060810</td><td>138.5</td></tr><tr><td>2018060823</td><td>140.2</td></tr><tr><td>2018060909</td><td>139.5</td></tr><tr><td>2018060913</td><td>139.1</td></tr><tr><td>2018060917</td><td>138.6</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;column0&lt;/th&gt;
+&lt;th&gt;column1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2018060810&lt;/td&gt;
+&lt;td&gt;138.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2018060
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>diary20180609</title>
     <link href="http://libinyl.github.io/2018/06/09/diary20180609/"/>
     <id>http://libinyl.github.io/2018/06/09/diary20180609/</id>
     <published>2018-06-09T00:59:52.000Z</published>
-    <updated>2018-06-09T05:06:22.729Z</updated>
+    <updated>2018-06-09T14:33:21.633Z</updated>
     
-    <content type="html"><![CDATA[<p><code>9:00:06</code> 最近闲暇时间听过，怎样分配时间呢。</p><p><code>13:06:07</code> 些许健了身。哪怕十分钟，这一天都是赚的。</p>]]></content>
+    <content type="html"><![CDATA[<p><code>9:00:06</code> 最近闲暇时间听过，怎样分配时间呢。</p><p><code>13:06:07</code> 些许健了身。哪怕十分钟，这一天都是赚的。</p><p><code>17:21:23</code> 刷了几道简单的leetoode，感觉不错。</p><p><code>22:31:15</code> 晚上与胡去了凯李咖啡。</p><p>我才意识到问题所在。我止不住的焦虑和好强，来自于高中的习惯。“不学习就是犯罪”，我竟早已被衡中洗脑，而且长久以来都没有意识到。这显然不是好事，但也未必是坏事。坏在没有前辈指引，不知道是对是错。</p>]]></content>
     
     <summary type="html">
     
@@ -31,7 +67,7 @@
       
         &lt;p&gt;&lt;code&gt;9:00:06&lt;/code&gt; 最近闲暇时间听过，怎样分配时间呢。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;13:06:07&lt;/code&gt; 些许健了身。哪怕十分钟，这一天都是赚的。&lt;/p&gt;
-
+&lt;p&gt;&lt;code&gt;17:21:23&lt;/code&gt; 刷了几道简单的leetoode，感觉不
       
     
     </summary>
@@ -46,9 +82,9 @@
     <link href="http://libinyl.github.io/2018/06/08/note-leetcode/"/>
     <id>http://libinyl.github.io/2018/06/08/note-leetcode/</id>
     <published>2018-06-08T13:26:57.000Z</published>
-    <updated>2018-06-09T08:48:04.085Z</updated>
+    <updated>2018-06-09T11:32:30.525Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="遇到的子问题："><a href="#遇到的子问题：" class="headerlink" title="遇到的子问题："></a>遇到的子问题：</h1><ol><li>二维数组（矩阵）优雅地按行遍历</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> C = A[<span class="number">0</span>].length;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span>[] row: A)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h1 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h1><ol><li>对于数组问题，经常把数组的内容索引不区分开，如i与a[i]。只要是索引，大多数情况应有符号。</li></ol><h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><ol><li>是否能替换为位运算？</li><li>涉及奇偶，for循环可否变为<code>i+=2</code>？</li></ol><h1 id="无解时的思路"><a href="#无解时的思路" class="headerlink" title="无解时的思路"></a>无解时的思路</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol><li>尝试排序？</li></ol><h1 id="位运算专属题目"><a href="#位运算专属题目" class="headerlink" title="位运算专属题目"></a>位运算专属题目</h1><h2 id="计算一个二进制序列有多少个1"><a href="#计算一个二进制序列有多少个1" class="headerlink" title="计算一个二进制序列有多少个1"></a>计算一个二进制序列有多少个1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    count += (xor &gt;&gt; i) &amp; <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>某位是1，则<code>&amp;1</code>的结果是<code>1</code>。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="遇到的子问题："><a href="#遇到的子问题：" class="headerlink" title="遇到的子问题："></a>遇到的子问题：</h1><ol><li>二维数组（矩阵）优雅地按行遍历</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> C = A[<span class="number">0</span>].length;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span>[] row: A)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h1 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h1><ol><li>对于数组问题，经常把数组的内容索引不区分开，如i与a[i]。只要是索引，大多数情况应有符号。</li></ol><h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><ol><li>是否能替换为位运算？</li><li>涉及奇偶，for循环可否变为<code>i+=2</code>？</li></ol><h1 id="无解时的思路"><a href="#无解时的思路" class="headerlink" title="无解时的思路"></a>无解时的思路</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol><li>尝试排序？</li><li>涉及多个数组，遍历比较短的数组可以防止越界问题。</li><li>如果for循环遍历不方便，不妨试试while。</li></ol><h1 id="位运算专属题目"><a href="#位运算专属题目" class="headerlink" title="位运算专属题目"></a>位运算专属题目</h1><h2 id="计算一个二进制序列有多少个1"><a href="#计算一个二进制序列有多少个1" class="headerlink" title="- 计算一个二进制序列有多少个1"></a>- 计算一个二进制序列有多少个1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    count += (xor &gt;&gt; i) &amp; <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>原理：如何判断某位是1？，则<code>&amp;1</code>的结果是<code>1</code>。</p><p>或者</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (xor != <span class="number">0</span>) &#123;</span><br><span class="line">    xor &amp;= (xor - <span class="number">1</span>);</span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>原理：每次一个<code>xor &amp;= (xor - 1);</code>都消去最后一个1。</p>]]></content>
     
     <summary type="html">
     
@@ -494,31 +530,6 @@
       
       
         &lt;p&gt;&lt;code&gt;12:06:36&lt;/code&gt; 来到凯李咖啡。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180525</title>
-    <link href="http://libinyl.github.io/2018/05/25/diary20180525/"/>
-    <id>http://libinyl.github.io/2018/05/25/diary20180525/</id>
-    <published>2018-05-25T10:52:59.000Z</published>
-    <updated>2018-05-25T17:02:02.094Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>19:02:19</code> 收拾完毕业设计一堆东西。填了华为的报道单。</p><p><code>1:01:41</code> 看了《C Primer Plus》，这书写的真好，翻译的真好。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;19:02:19&lt;/code&gt; 收拾完毕业设计一堆东西。填了华为的报道单。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;1:01:41&lt;/code&gt; 看了《C Primer Plus》，这书写的真好，翻译的真好。&lt;/p&gt;
 
       
     

@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="遇到的子问题： 二维数组（矩阵）优雅地按行遍历  12345int C = A[0].length;for (int[] row: A)    for (int i = 0; i &amp;lt; C; ++i) &amp;#123;        ...    &amp;#125; 易错点 对于数组问题，经常把数组的内容索引不区分开，如i与a[i]。只要是索引，大多数情况应有符号。  算法优化 是否能替换为位运算？ 涉">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T08:48:04.085Z">
+<meta property="og:updated_time" content="2018-06-09T11:32:30.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode刷题学习记录">
 <meta name="twitter:description" content="遇到的子问题： 二维数组（矩阵）优雅地按行遍历  12345int C = A[0].length;for (int[] row: A)    for (int i = 0; i &amp;lt; C; ++i) &amp;#123;        ...    &amp;#125; 易错点 对于数组问题，经常把数组的内容索引不区分开，如i与a[i]。只要是索引，大多数情况应有符号。  算法优化 是否能替换为位运算？ 涉">
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-09T16:48:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-09T19:32:30+08:00">
                 2018-06-09
               </time>
             
@@ -420,9 +420,14 @@
 </ol>
 <h1 id="无解时的思路"><a href="#无解时的思路" class="headerlink" title="无解时的思路"></a>无解时的思路</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
 <li>尝试排序？</li>
+<li>涉及多个数组，遍历比较短的数组可以防止越界问题。</li>
+<li>如果for循环遍历不方便，不妨试试while。</li>
 </ol>
-<h1 id="位运算专属题目"><a href="#位运算专属题目" class="headerlink" title="位运算专属题目"></a>位运算专属题目</h1><h2 id="计算一个二进制序列有多少个1"><a href="#计算一个二进制序列有多少个1" class="headerlink" title="计算一个二进制序列有多少个1"></a>计算一个二进制序列有多少个1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    count += (xor &gt;&gt; i) &amp; <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>某位是1，则<code>&amp;1</code>的结果是<code>1</code>。</p>
+<h1 id="位运算专属题目"><a href="#位运算专属题目" class="headerlink" title="位运算专属题目"></a>位运算专属题目</h1><h2 id="计算一个二进制序列有多少个1"><a href="#计算一个二进制序列有多少个1" class="headerlink" title="- 计算一个二进制序列有多少个1"></a>- 计算一个二进制序列有多少个1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    count += (xor &gt;&gt; i) &amp; <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>原理：如何判断某位是1？，则<code>&amp;1</code>的结果是<code>1</code>。</p>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (xor != <span class="number">0</span>) &#123;</span><br><span class="line">    xor &amp;= (xor - <span class="number">1</span>);</span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：每次一个<code>xor &amp;= (xor - 1);</code>都消去最后一个1。</p>
 
       
     </div>
@@ -542,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">173</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -626,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的子问题："><span class="nav-number">1.</span> <span class="nav-text">遇到的子问题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#易错点"><span class="nav-number">2.</span> <span class="nav-text">易错点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法优化"><span class="nav-number">3.</span> <span class="nav-text">算法优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#无解时的思路"><span class="nav-number">4.</span> <span class="nav-text">无解时的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">4.1.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#位运算专属题目"><span class="nav-number">5.</span> <span class="nav-text">位运算专属题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算一个二进制序列有多少个1"><span class="nav-number">5.1.</span> <span class="nav-text">计算一个二进制序列有多少个1</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的子问题："><span class="nav-number">1.</span> <span class="nav-text">遇到的子问题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#易错点"><span class="nav-number">2.</span> <span class="nav-text">易错点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法优化"><span class="nav-number">3.</span> <span class="nav-text">算法优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#无解时的思路"><span class="nav-number">4.</span> <span class="nav-text">无解时的思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">4.1.</span> <span class="nav-text">数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#位运算专属题目"><span class="nav-number">5.</span> <span class="nav-text">位运算专属题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算一个二进制序列有多少个1"><span class="nav-number">5.1.</span> <span class="nav-text">- 计算一个二进制序列有多少个1</span></a></li></ol></li></ol></div>
             
 
           </div>
