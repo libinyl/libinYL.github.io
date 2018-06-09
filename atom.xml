@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-08T12:23:00.367Z</updated>
+  <updated>2018-06-09T05:06:22.729Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,13 +17,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>diary20180609</title>
+    <link href="http://libinyl.github.io/2018/06/09/diary20180609/"/>
+    <id>http://libinyl.github.io/2018/06/09/diary20180609/</id>
+    <published>2018-06-09T00:59:52.000Z</published>
+    <updated>2018-06-09T05:06:22.729Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>9:00:06</code> 最近闲暇时间听过，怎样分配时间呢。</p><p><code>13:06:07</code> 些许健了身。哪怕十分钟，这一天都是赚的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;9:00:06&lt;/code&gt; 最近闲暇时间听过，怎样分配时间呢。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;13:06:07&lt;/code&gt; 些许健了身。哪怕十分钟，这一天都是赚的。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode刷题学习记录</title>
+    <link href="http://libinyl.github.io/2018/06/08/note-leetcode/"/>
+    <id>http://libinyl.github.io/2018/06/08/note-leetcode/</id>
+    <published>2018-06-08T13:26:57.000Z</published>
+    <updated>2018-06-09T08:48:04.085Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="遇到的子问题："><a href="#遇到的子问题：" class="headerlink" title="遇到的子问题："></a>遇到的子问题：</h1><ol><li>二维数组（矩阵）优雅地按行遍历</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> C = A[<span class="number">0</span>].length;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span>[] row: A)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h1 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h1><ol><li>对于数组问题，经常把数组的内容索引不区分开，如i与a[i]。只要是索引，大多数情况应有符号。</li></ol><h1 id="算法优化"><a href="#算法优化" class="headerlink" title="算法优化"></a>算法优化</h1><ol><li>是否能替换为位运算？</li><li>涉及奇偶，for循环可否变为<code>i+=2</code>？</li></ol><h1 id="无解时的思路"><a href="#无解时的思路" class="headerlink" title="无解时的思路"></a>无解时的思路</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol><li>尝试排序？</li></ol><h1 id="位运算专属题目"><a href="#位运算专属题目" class="headerlink" title="位运算专属题目"></a>位运算专属题目</h1><h2 id="计算一个二进制序列有多少个1"><a href="#计算一个二进制序列有多少个1" class="headerlink" title="计算一个二进制序列有多少个1"></a>计算一个二进制序列有多少个1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)</span><br><span class="line">    count += (xor &gt;&gt; i) &amp; <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>某位是1，则<code>&amp;1</code>的结果是<code>1</code>。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;遇到的子问题：&quot;&gt;&lt;a href=&quot;#遇到的子问题：&quot; class=&quot;headerlink&quot; title=&quot;遇到的子问题：&quot;&gt;&lt;/a&gt;遇到的子问题：&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;二维数组（矩阵）优雅地按行遍历&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;hi
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="数据结构与算法" scheme="http://libinyl.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>diary20180608</title>
     <link href="http://libinyl.github.io/2018/06/08/diary20180608/"/>
     <id>http://libinyl.github.io/2018/06/08/diary20180608/</id>
     <published>2018-06-08T04:24:30.000Z</published>
-    <updated>2018-06-08T12:23:00.367Z</updated>
+    <updated>2018-06-08T15:48:19.427Z</updated>
     
-    <content type="html"><![CDATA[<p><code>12:24:41</code> 这两天高考，一如既往有很多新闻。打算下午再去一次海底捞看看。</p><p><code>12:35:15</code> 我发现自己已经养成了一个技能。每当心情低落，因琐事而难过，都会告诉自己，这是生理上的化学反应。不过是大脑中的那些化学物质，让我本能地逃跑而已。这样想着，就会好很多。</p><p><code>14:55:05</code> 第一次听到乌鸦叫的声音。应该不能说第一次，只是以前没注意过。“呀——呀——”的叫声，真的很难听，很烦人。</p><p><code>19:45:37</code> 去了海底捞！吃的蛮开心。海底捞的服务仍然十分出色，但是这次没人帮忙涮菜。然后赶在5点前付款，340多块钱的优惠了108块！</p><p><code>20:22:53</code> 没人能拯救我 除了我自己</p>]]></content>
+    <content type="html"><![CDATA[<p><code>12:24:41</code> 这两天高考，一如既往有很多新闻。打算下午再去一次海底捞看看。</p><p><code>12:35:15</code> 我发现自己已经养成了一个技能。每当心情低落，因琐事而难过，都会告诉自己，这是生理上的化学反应。不过是大脑中的那些化学物质，让我本能地逃跑而已。这样想着，就会好很多。</p><p><code>14:55:05</code> 第一次听到乌鸦叫的声音。应该不能说第一次，只是以前没注意过。“呀——呀——”的叫声，真的很难听，很烦人。</p><p><code>19:45:37</code> 去了海底捞！吃的蛮开心。海底捞的服务仍然十分出色，但是这次没人帮忙涮菜。然后赶在5点前付款，340多块钱的优惠了108块！</p><p><code>20:22:53</code> 没人能拯救我 除了我自己</p><p><code>23:48:06</code> 明天把毕业论文打印。</p>]]></content>
     
     <summary type="html">
     
@@ -473,50 +526,6 @@
     
       <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统——数据的结构与表示</title>
-    <link href="http://libinyl.github.io/2018/05/25/note-os-data/"/>
-    <id>http://libinyl.github.io/2018/05/25/note-os-data/</id>
-    <published>2018-05-24T20:55:35.000Z</published>
-    <updated>2018-05-24T21:04:51.638Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="无符号数"><a href="#无符号数" class="headerlink" title="无符号数"></a>无符号数</h2><p>首先，操作系统中所有数据本质上以二进制存储。</p><p>每一串二进制值序列都可以通过一定的逻辑看做为一个十进制值。如二进制的0101就是十进制的5。这实际上就是“无符号”（unsigned）编码，其中的计算过程被称为B2U<sub>w</sub>，即Binary to Unsigned,w是长度。</p><p>例如，B2U<sub>4</sub>([1011])=11,即每个数位乘以2的n次方相加，n依次至0.</p><p>易知，无符号数的取值范围为[0,2<sup>w</sup>-1]。</p><h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>补码的英文是“two’s-complement”，意味“二进制的”</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;无符号数&quot;&gt;&lt;a href=&quot;#无符号数&quot; class=&quot;headerlink&quot; title=&quot;无符号数&quot;&gt;&lt;/a&gt;无符号数&lt;/h2&gt;&lt;p&gt;首先，操作系统中所有数据本质上以二进制存储。&lt;/p&gt;
-&lt;p&gt;每一串二进制值序列都可以通过一定的逻辑看做为一个十进制值。如二进
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="操作系统" scheme="http://libinyl.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编程语言概念</title>
-    <link href="http://libinyl.github.io/2018/05/25/note-language-common/"/>
-    <id>http://libinyl.github.io/2018/05/25/note-language-common/</id>
-    <published>2018-05-24T20:32:07.000Z</published>
-    <updated>2018-05-26T05:18:09.502Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="编程语言" scheme="http://libinyl.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
