@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://libinyl.github.io/2018/06/10/diary20180610/</loc>
+    
+    <lastmod>2018-06-10T16:20:29.094Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://libinyl.github.io/2018/06/09/thought-body/</loc>
+    
+    <lastmod>2018-06-10T12:15:21.078Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://libinyl.github.io/2018/06/07/thought-favorite-software/</loc>
+    
+    <lastmod>2018-06-09T16:35:31.853Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://libinyl.github.io/2018/02/24/quick-maven-config/</loc>
+    
+    <lastmod>2018-06-09T14:50:03.131Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://libinyl.github.io/2018/06/09/diary20180609/</loc>
     
     <lastmod>2018-06-09T14:33:21.633Z</lastmod>
@@ -16,23 +44,9 @@
   </url>
   
   <url>
-    <loc>http://libinyl.github.io/2018/06/09/thought-body/</loc>
-    
-    <lastmod>2018-06-09T09:23:39.038Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://libinyl.github.io/2018/06/08/diary20180608/</loc>
     
     <lastmod>2018-06-08T15:48:19.427Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/06/07/thought-favorite-software/</loc>
-    
-    <lastmod>2018-06-08T05:31:34.807Z</lastmod>
     
   </url>
   
@@ -278,13 +292,6 @@
     <loc>http://libinyl.github.io/2018/05/18/diary20180518/</loc>
     
     <lastmod>2018-05-18T07:24:01.648Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/02/24/quick-maven-config/</loc>
-    
-    <lastmod>2018-05-17T17:26:13.254Z</lastmod>
     
   </url>
   
