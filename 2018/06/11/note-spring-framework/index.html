@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java,spring," />
 
 
 
@@ -88,14 +88,20 @@
 
 
 
+<meta name="description" content="总览 org.springframework.beans和org.springframework.context是IOC容器的基础，都依赖于core包。 beans包内的BeanFacotry接口提供基本的配置对象的方法。context包内的ApplicationContext是其子接口之一，增加了实用的配置方法，是前者的超集。 org.springframework.context.Applic">
+<meta name="keywords" content="java,spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="note-spring-framework">
+<meta property="og:title" content="Spring框架学习-Core">
 <meta property="og:url" content="http://libinyl.github.io/2018/06/11/note-spring-framework/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
+<meta property="og:description" content="总览 org.springframework.beans和org.springframework.context是IOC容器的基础，都依赖于core包。 beans包内的BeanFacotry接口提供基本的配置对象的方法。context包内的ApplicationContext是其子接口之一，增加了实用的配置方法，是前者的超集。 org.springframework.context.Applic">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-11T04:25:38.459Z">
+<meta property="og:image" content="https://docs.spring.io/spring/docs/5.0.6.RELEASE/spring-framework-reference/images/container-magic.png">
+<meta property="og:updated_time" content="2018-06-11T14:38:57.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="note-spring-framework">
+<meta name="twitter:title" content="Spring框架学习-Core">
+<meta name="twitter:description" content="总览 org.springframework.beans和org.springframework.context是IOC容器的基础，都依赖于core包。 beans包内的BeanFacotry接口提供基本的配置对象的方法。context包内的ApplicationContext是其子接口之一，增加了实用的配置方法，是前者的超集。 org.springframework.context.Applic">
+<meta name="twitter:image" content="https://docs.spring.io/spring/docs/5.0.6.RELEASE/spring-framework-reference/images/container-magic.png">
 
 
 
@@ -131,7 +137,7 @@
 
 
 
-  <title>note-spring-framework | 李斌 - LBYL</title>
+  <title>Spring框架学习-Core | 李斌 - LBYL</title>
   
 
 
@@ -319,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">note-spring-framework</h1>
+          <h1 class="post-title" itemprop="name headline">Spring框架学习-Core</h1>
         
 
         <div class="post-meta">
@@ -347,12 +353,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-11T12:25:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-11T22:38:57+08:00">
                 2018-06-11
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -381,7 +409,98 @@
       
 
       
-        
+        <h1 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h1><ul>
+<li><code>org.springframework.beans</code>和<code>org.springframework.context</code>是IOC容器的基础，都依赖于core包。</li>
+<li>beans包内的<code>BeanFacotry</code>接口提供基本的配置对象的方法。context包内的<code>ApplicationContext</code>是其子接口之一，增加了实用的配置方法，是前者的超集。</li>
+<li><code>org.springframework.context.ApplicationContext</code>代表了IOC容器，负责实例化、配置、装配bean。它通过读取配置元数据来获取实例化等的方式。元数据可以通过xml，注解，或代码来表示。<code>ApplicationContext</code>的一些实现，如<code>ClassPathXmlApplicationContext</code>，<code>FileSystemXmlApplicationContext</code>等提供了方便的读取方法。</li>
+<li>IOC容器读取元数据，结合POJOS，产生所需的系统。</li>
+</ul>
+<p><img src="https://docs.spring.io/spring/docs/5.0.6.RELEASE/spring-framework-reference/images/container-magic.png" alt=""></p>
+<h2 id="Ioc-container-容器"><a href="#Ioc-container-容器" class="headerlink" title="Ioc container 容器"></a>Ioc container 容器</h2><h3 id="元数据的配置方式"><a href="#元数据的配置方式" class="headerlink" title="元数据的配置方式"></a>元数据的配置方式</h3><ul>
+<li>从Spring 2.5开始支持注解配置方法。</li>
+<li>从Spring 3.0开始支持基于java的方式。（目前看来也像注解？）</li>
+</ul>
+<h3 id="IOC容器的实例化和使用"><a href="#IOC容器的实例化和使用" class="headerlink" title="IOC容器的实例化和使用"></a>IOC容器的实例化和使用</h3><ul>
+<li>只需将配置文件的地址作为<strong>资源</strong>传给容器类。如：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"services.xml"</span>, <span class="string">"daos.xml"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在配置<code>beans.xml</code>等资源文件时，形如“classpath:”的路径是不被推荐的。因为classpath虽然默认是指当前目录，但是也可以配置为其他目录。</p>
+</li>
+<li><p>可以通过容器的<code>getBean</code>方法来获取实例，但没有必要，因为这依赖于Spring的API。应该考虑注解等方式。</p>
+</li>
+</ul>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h2><p>bean的每个属性都映射为一个<code>bean definition</code>。</p>
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>Instantiating beans</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Naming beans</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Bean scopes</td>
+</tr>
+<tr>
+<td>constructor arguments</td>
+<td>Dependency Injection</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>Dependency Injection</td>
+</tr>
+<tr>
+<td>autowiring mode</td>
+<td>Autowiring collaborators</td>
+</tr>
+<tr>
+<td>lazy-initialization mode</td>
+<td>Lazy-initialized beans</td>
+</tr>
+<tr>
+<td>initialization method</td>
+<td>Initialization callbacks</td>
+</tr>
+<tr>
+<td>destruction method</td>
+<td>Destruction callbacks</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>每个bean可以有多个id，多余的id视为别名。</li>
+</ul>
+<h2 id="DI-依赖注入"><a href="#DI-依赖注入" class="headerlink" title="DI 依赖注入"></a>DI 依赖注入</h2><ul>
+<li><p>依赖注入的Spring官方解释：依赖注入是由对象在构造（或从工厂方法返回）之后，仅仅通过构造方法参数、工厂方法参数等定义它们之间依赖关系的过程。容器创造这些bean之后，将对象们依赖的对象注入进去。这个过程从根本上来说是反转的，由bean自己通过构造方法（或Service Locator pattern）来控制依赖对象的实例化或者位置，故也称控制反转。</p>
+</li>
+<li><p>这样的好处是什么？在哪些方面解耦了？</p>
+<ul>
+<li>解耦依赖关系：由于容器帮对象提供了依赖关系，所以对象自己不再去寻找它所依赖的对象，不需要关心其依赖对象的位置或具体类。</li>
+<li>方便测试：当依赖的对象是接口或者抽象类时，可以使用stub或mock来进行单元测试。</li>
+</ul>
+</li>
+<li><p>依赖注入的方式</p>
+<ul>
+<li>基于构造方法注入</li>
+<li>基于Setter方法注入</li>
+</ul>
+</li>
+<li><p>注入方式的比较？</p>
+<ul>
+<li>基于构造方法的注入有强制性。基于Setter的注入方法有可选性（可以通过@Required注解控制可选性）。</li>
+<li>Spring团队主张用基于构造的方法。因为这能防止依赖对象是null。但是当参数过多时，应当考虑重构，将责任分开。</li>
+<li>Setter注入方式需要时刻检查notnull。setter方法使该类的对象可以稍后重新配置或重新注入。因此，通过JMX mbean的管理是setter注入的一个不错的方式。</li>
+<li>当第三方类没有提供任何setter方法，通过构造方法注入是唯一的选择。</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
@@ -395,6 +514,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
+          
+        </div>
       
 
       
@@ -465,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,6 +691,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总览"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ioc-container-容器"><span class="nav-number">1.1.</span> <span class="nav-text">Ioc container 容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元数据的配置方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">元数据的配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOC容器的实例化和使用"><span class="nav-number">1.1.2.</span> <span class="nav-text">IOC容器的实例化和使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">1.2.</span> <span class="nav-text">Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DI-依赖注入"><span class="nav-number">1.3.</span> <span class="nav-text">DI 依赖注入</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
