@@ -871,8 +871,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-30T23:46:56+08:00">
-                2018-03-30
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-19T18:03:16+08:00">
+                2018-06-19
               </time>
             
           </span>
@@ -929,7 +929,21 @@
       
         
           
-            <h1 id="安装之后的设置"><a href="#安装之后的设置" class="headerlink" title="安装之后的设置"></a>安装之后的设置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;libin&quot;</span><br><span class="line">git config --global user.email libinworkspace@qq.com</span><br></pre></td></tr></table></figure>
+            <h1 id="安装之后的设置"><a href="#安装之后的设置" class="headerlink" title="安装之后的设置"></a>安装之后的设置</h1><h2 id="设置用户名"><a href="#设置用户名" class="headerlink" title="设置用户名"></a>设置用户名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;libin&quot;</span><br><span class="line">git config --global user.email libinworkspace@qq.com</span><br></pre></td></tr></table></figure>
+<h2 id="添加ssh-key"><a href="#添加ssh-key" class="headerlink" title="添加ssh key"></a>添加ssh key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<h2 id="加快clone"><a href="#加快clone" class="headerlink" title="加快clone"></a>加快clone</h2><h3 id="1-修改hosts文件"><a href="#1-修改hosts文件" class="headerlink" title="1. 修改hosts文件"></a>1. 修改hosts文件</h3><ul>
+<li>hosts文件目录：<code>C:\Windows\System32\drivers\etc</code></li>
+<li>分别 <code>ping global-ssl.fastly.net</code> 和 <code>ping github.com</code> ,分别获取ip，添加到hosts文件中，如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"># localhost name resolution is handled within DNS itself.</span><br><span class="line">#	127.0.0.1       localhost</span><br><span class="line">#	::1             localhost</span><br><span class="line">151.101.41.194      github.global.ssl.fastly.net</span><br><span class="line">192.30.253.112      github.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>刷新dns：<code>ipconfig /flushdns</code></li>
+</ul>
+<h3 id="2-修改缓冲区"><a href="#2-修改缓冲区" class="headerlink" title="2. 修改缓冲区"></a>2. 修改缓冲区</h3><ul>
+<li><code>git config --global http.postBuffer 524288000</code></li>
+</ul>
+<h2 id="避免文件名过长的error"><a href="#避免文件名过长的error" class="headerlink" title="避免文件名过长的error"></a>避免文件名过长的error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.longpaths true</span><br></pre></td></tr></table></figure>
+
           
         
       

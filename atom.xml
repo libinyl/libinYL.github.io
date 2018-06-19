@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-19T05:12:44.174Z</updated>
+  <updated>2018-06-19T11:31:31.269Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://libinyl.github.io/2018/06/19/diary20180619/"/>
     <id>http://libinyl.github.io/2018/06/19/diary20180619/</id>
     <published>2018-06-19T05:11:21.000Z</published>
-    <updated>2018-06-19T05:12:44.174Z</updated>
+    <updated>2018-06-19T11:31:31.269Z</updated>
     
-    <content type="html"><![CDATA[<p><code>13:12:08</code> 上午打印了论文任务书，给了陈靖。去图书馆把书还了。</p>]]></content>
+    <content type="html"><![CDATA[<p><code>13:12:08</code> 上午打印了论文任务书，给了陈靖。去图书馆把书还了。</p><p><code>19:30:28</code> 尝试开发intellij的插件，发现git clone真是慢。进行一系列修补。胀起来是真疼，物理上自律，真是牛逼。</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;&lt;code&gt;13:12:08&lt;/code&gt; 上午打印了论文任务书，给了陈靖。去图书馆把书还了。&lt;/p&gt;
-
+&lt;p&gt;&lt;code&gt;19:30:28&lt;/code&gt; 尝试开发intellij的插件，发现git clone真是慢。进行一系列修补。胀起来是真疼，物理上自律，真是牛逼。&lt;/p
       
     
     </summary>

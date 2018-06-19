@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://libinyl.github.io/2018/03/21/thought-study-review/</loc>
+    
+    <lastmod>2018-06-19T15:35:52.582Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://libinyl.github.io/2018/06/19/diary20180619/</loc>
     
-    <lastmod>2018-06-19T05:12:44.174Z</lastmod>
+    <lastmod>2018-06-19T11:31:31.269Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://libinyl.github.io/2018/03/30/note-git/</loc>
+    
+    <lastmod>2018-06-19T10:03:16.608Z</lastmod>
     
   </url>
   
@@ -68,13 +82,6 @@
     <loc>http://libinyl.github.io/2018/06/12/note-springmvc/</loc>
     
     <lastmod>2018-06-12T14:42:06.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/03/21/thought-study-review/</loc>
-    
-    <lastmod>2018-06-12T14:06:32.873Z</lastmod>
     
   </url>
   
@@ -964,13 +971,6 @@
     <loc>http://libinyl.github.io/2018/03/30/diary20180330/</loc>
     
     <lastmod>2018-03-30T17:53:22.753Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/03/30/note-git/</loc>
-    
-    <lastmod>2018-03-30T15:46:56.000Z</lastmod>
     
   </url>
   
