@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-17T15:40:56.857Z</updated>
+  <updated>2018-06-19T05:12:44.174Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180619</title>
+    <link href="http://libinyl.github.io/2018/06/19/diary20180619/"/>
+    <id>http://libinyl.github.io/2018/06/19/diary20180619/</id>
+    <published>2018-06-19T05:11:21.000Z</published>
+    <updated>2018-06-19T05:12:44.174Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>13:12:08</code> 上午打印了论文任务书，给了陈靖。去图书馆把书还了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;13:12:08&lt;/code&gt; 上午打印了论文任务书，给了陈靖。去图书馆把书还了。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>intelliJ配置实践</title>
+    <link href="http://libinyl.github.io/2018/06/18/note-intellij-config/"/>
+    <id>http://libinyl.github.io/2018/06/18/note-intellij-config/</id>
+    <published>2018-06-18T09:53:38.000Z</published>
+    <updated>2018-06-18T09:55:49.475Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>原生<code>IntelliJ</code>主题，不要黑色</li><li>字体选择<code>Fira Code</code>，行距为<code>1.2</code></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;原生&lt;code&gt;IntelliJ&lt;/code&gt;主题，不要黑色&lt;/li&gt;
+&lt;li&gt;字体选择&lt;code&gt;Fira Code&lt;/code&gt;，行距为&lt;code&gt;1.2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="intelliJ" scheme="http://libinyl.github.io/tags/intelliJ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180618</title>
+    <link href="http://libinyl.github.io/2018/06/18/diary20180618/"/>
+    <id>http://libinyl.github.io/2018/06/18/diary20180618/</id>
+    <published>2018-06-18T09:02:17.000Z</published>
+    <updated>2018-06-18T09:13:01.550Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>17:12:52</code> 到医院换了药，情况良好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;17:12:52&lt;/code&gt; 到医院换了药，情况良好。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>diary20180617</title>
@@ -453,78 +530,6 @@
       
         &lt;p&gt;&lt;code&gt;13:41:55&lt;/code&gt; 来到久违的库可咖啡，喝了久违的卡布奇诺。&lt;/p&gt;
 &lt;p&gt;今天早晨起来突然就觉醒了。对自己哪里不满意，改就是了。只不过要意识到，自身任何方面的改变、改良，都是一个长期的过程。时间没到，没有看到反馈，自然就会难以坚持。要耐心，要看的远
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180604</title>
-    <link href="http://libinyl.github.io/2018/06/04/diary20180604/"/>
-    <id>http://libinyl.github.io/2018/06/04/diary20180604/</id>
-    <published>2018-06-04T07:30:37.000Z</published>
-    <updated>2018-06-04T07:31:35.208Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>15:31:03</code> 来到书香斋。没有抢到好地方。左肩酸痛。开始制作答辩ppt。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;15:31:03&lt;/code&gt; 来到书香斋。没有抢到好地方。左肩酸痛。开始制作答辩ppt。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180603</title>
-    <link href="http://libinyl.github.io/2018/06/03/diary20180603/"/>
-    <id>http://libinyl.github.io/2018/06/03/diary20180603/</id>
-    <published>2018-06-03T05:28:15.000Z</published>
-    <updated>2018-06-03T16:18:41.368Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>13:28:35</code> 昨天晚上喝了很多，昨晚睡得还不错。但仍然觉得时间过了很久。</p><p><code>0:09:08</code> 下午本来打算去海底捞，到那里发现需要排两小时的队。于是转战佰烧，扶着墙进扶着墙出。晚上回家，跟胡、浩去了网吧。与预期一样，没有什么好玩的。我不爱玩游戏这个毛病看来是改不了了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;13:28:35&lt;/code&gt; 昨天晚上喝了很多，昨晚睡得还不错。但仍然觉得时间过了很久。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;0:09:08&lt;/code&gt; 下午本来打算去海底捞，到那里发现需要排两小时的队。于是转战佰烧，扶着墙进扶着墙出。晚上回家，跟胡、浩去了网吧。与预
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180602</title>
-    <link href="http://libinyl.github.io/2018/06/02/diary20180602/"/>
-    <id>http://libinyl.github.io/2018/06/02/diary20180602/</id>
-    <published>2018-06-02T14:34:38.000Z</published>
-    <updated>2018-06-02T14:35:43.140Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>22:35:10</code> 今天拍了一天的毕业照，晚上跟班里吃烧烤，喝酒，觥筹交错。心病仍存。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;22:35:10&lt;/code&gt; 今天拍了一天的毕业照，晚上跟班里吃烧烤，喝酒，觥筹交错。心病仍存。&lt;/p&gt;
-
       
     
     </summary>
