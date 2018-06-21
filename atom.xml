@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-20T10:36:14.896Z</updated>
+  <updated>2018-06-21T08:24:37.477Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180621</title>
+    <link href="http://libinyl.github.io/2018/06/21/diary20180621/"/>
+    <id>http://libinyl.github.io/2018/06/21/diary20180621/</id>
+    <published>2018-06-21T08:07:03.000Z</published>
+    <updated>2018-06-21T08:24:37.477Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>16:12:53</code> 去河东买药，竟然无意中去了咖啡之翼大厦。好矮的大厦。。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180621%E5%92%96%E5%95%A1%E4%B9%8B%E7%BF%BC%E5%A4%A7%E5%8E%A6.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;16:12:53&lt;/code&gt; 去河东买药，竟然无意中去了咖啡之翼大厦。好矮的大厦。。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>note-maven-basic</title>
@@ -49,9 +73,9 @@
     <link href="http://libinyl.github.io/2018/06/20/diary20180620/"/>
     <id>http://libinyl.github.io/2018/06/20/diary20180620/</id>
     <published>2018-06-20T06:09:30.000Z</published>
-    <updated>2018-06-20T12:35:02.438Z</updated>
+    <updated>2018-06-21T08:03:34.079Z</updated>
     
-    <content type="html"><![CDATA[<p><code>16:21:40</code> 来到久违的凯李，感觉非常好。上午把学士服还了。</p><p><code>18:49:19</code> 看了《maven权威指南》，这才是技术书！看的真tm爽！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620maven.png" alt=""></p><p><code>20:34:49</code> 韩佳政说要请我，已截图</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620%E9%9F%A9%E4%BD%B3%E6%94%BF%E8%AF%B7%E6%88%91.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p><code>16:21:40</code> 来到久违的凯李，感觉非常好。上午把学士服还了。</p><p><code>18:49:19</code> 看了《maven权威指南》，这才是技术书！看的真tm爽！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620maven.png" alt=""></p><p><code>20:34:49</code> 韩佳政说要请我，已截图</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620%E9%9F%A9%E4%BD%B3%E6%94%BF%E8%AF%B7%E6%88%91.png" alt=""></p><p><code>20:34:49</code> 离开凯李。久违的充实。。</p>]]></content>
     
     <summary type="html">
     
@@ -515,31 +539,6 @@
     
     
       <category term="软件" scheme="http://libinyl.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180607</title>
-    <link href="http://libinyl.github.io/2018/06/07/diary20180607/"/>
-    <id>http://libinyl.github.io/2018/06/07/diary20180607/</id>
-    <published>2018-06-07T07:45:03.000Z</published>
-    <updated>2018-06-07T16:02:57.500Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>23:54:58</code> 今天白天把电脑重装了，下午到图书馆看了看书。看到文学区，老舍，胡适，丰子恺，史铁生。他们的散文大多是日记或游记，阅读他们的作品，好像在与他们直接对话。</p><p>记录下今天在图书馆的思考。</p><p>刷题，为别人讲解，是最好最快的学习方法。</p><p>通过学信息安全来学操作系统和计算机网络。</p><p>追求三个境界：</p><ol><li>正确写出程序</li><li>快速写出程序</li><li>不断优化性能</li></ol><p>游戏是各种技术的综合。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;23:54:58&lt;/code&gt; 今天白天把电脑重装了，下午到图书馆看了看书。看到文学区，老舍，胡适，丰子恺，史铁生。他们的散文大多是日记或游记，阅读他们的作品，好像在与他们直接对话。&lt;/p&gt;
-&lt;p&gt;记录下今天在图书馆的思考。&lt;/p&gt;
-&lt;p&gt;刷题，为别人讲解，是最
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
     
   </entry>
   
