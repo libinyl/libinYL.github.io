@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
+<meta name="description" content="位运算   二进制 十进制 位运算     10000…0（1后面n个0） 2n 1&amp;lt;&amp;lt;n   1111…1（n个1） 2n-1 1&amp;lt;&amp;lt;n-1    数据类型取值   数据类型 取值范围 备注     无符号int 0~232-1 32个1   有符号int -231~231-1 最高位符号位，1表负。负数补码为除符号位取反+1。最小为32个1，1个符号31个值，则为2？？">
 <meta name="keywords" content="数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法学习记录">
+<meta property="og:title" content="常用元算法记录">
 <meta property="og:url" content="http://libinyl.github.io/2018/03/02/note-algorithm-tricks/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
+<meta property="og:description" content="位运算   二进制 十进制 位运算     10000…0（1后面n个0） 2n 1&amp;lt;&amp;lt;n   1111…1（n个1） 2n-1 1&amp;lt;&amp;lt;n-1    数据类型取值   数据类型 取值范围 备注     无符号int 0~232-1 32个1   有符号int -231~231-1 最高位符号位，1表负。负数补码为除符号位取反+1。最小为32个1，1个符号31个值，则为2？？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-02T08:58:52.809Z">
+<meta property="og:updated_time" content="2018-06-22T14:09:45.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法学习记录">
-<meta name="twitter:description" content="递归参考 作者：半岛链接：https://www.zhihu.com/question/37152936/answer/149521436来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。 #1 比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成">
+<meta name="twitter:title" content="常用元算法记录">
+<meta name="twitter:description" content="位运算   二进制 十进制 位运算     10000…0（1后面n个0） 2n 1&amp;lt;&amp;lt;n   1111…1（n个1） 2n-1 1&amp;lt;&amp;lt;n-1    数据类型取值   数据类型 取值范围 备注     无符号int 0~232-1 32个1   有符号int -231~231-1 最高位符号位，1表负。负数补码为除符号位取反+1。最小为32个1，1个符号31个值，则为2？？">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>算法学习记录 | 李斌 - LBYL</title>
+  <title>常用元算法记录 | 李斌 - LBYL</title>
   
 
 
@@ -323,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法学习记录</h1>
+          <h1 class="post-title" itemprop="name headline">常用元算法记录</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-02T16:58:52+08:00">
-                2018-03-02
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-22T22:09:45+08:00">
+                2018-06-22
               </time>
             
           </span>
@@ -407,46 +407,48 @@
       
 
       
-        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>参考</p>
-<p>作者：半岛<br>链接：<a href="https://www.zhihu.com/question/37152936/answer/149521436" target="_blank" rel="noopener">https://www.zhihu.com/question/37152936/answer/149521436</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p>重点其实是：不要一开始就关心每一步怎么解决的，你只需要把函数当成一个实现你目的的神器，随时调用。也就是递归。</p>
-<p>#1</p>
-<p>比如说我们有一个万能神器move，只需要给它几个参数，即可自动完成一个功能：把n个盘子利用缓冲区，从起点运送到终点，期间严格遵守汉诺塔规则。</p>
-<p>这里你暂时不需要去了解每一个步是如何实现的。</p>
-<blockquote>
-<p>move(N,起点，缓冲区，终点）<br>N: 盘子的个数。</p>
-</blockquote>
-<p>#2</p>
-<p>现在有个n个盘子，a,b,c三个塔。</p>
-<p>把n个盘子抽象成两个盘子，n-1 和 底下最大的1</p>
-<blockquote>
-<p>n = (n-1) + 1</p>
-</blockquote>
-<p>这个最简单的玩法如何实现呢</p>
-<p>首先：把n-1 移到 缓冲区 ——-过程1</p>
-<p>然后：把1 移到 终点 ——-过程2</p>
-<p>最后：把缓冲区的n-1 移到 终点 ——-过程3</p>
-<p>#3</p>
-<p>过程1 如何实现？</p>
-<p>还是召唤神器吧。</p>
-<blockquote>
-<p>move(N,起点，缓冲区，终点）</p>
-</blockquote>
-<p>此时，我们的起点是a,终点是b ,N=n-1,缓冲区只能是c了</p>
-<blockquote>
-<p>move(n-1,a,c,b)</p>
-</blockquote>
-<p>过程2呢？</p>
-<blockquote>
-<p>move(1,a,b,c)</p>
-</blockquote>
-<p>过程3呢？</p>
-<p>move(n-1,b,a,c)</p>
-<p>#4</p>
-<p>哦哦 神器的力量太大，止不住咋办。。</p>
-<blockquote>
-<p>if (N == 1):             a -&gt; c #此时我已经不需要缓冲区了</p>
-</blockquote>
+        <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><table>
+<thead>
+<tr>
+<th>二进制</th>
+<th>十进制</th>
+<th>位运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10000…0（1后面n个0）</td>
+<td>2<sup>n</sup></td>
+<td>1&lt;&lt;n</td>
+</tr>
+<tr>
+<td>1111…1（n个1）</td>
+<td>2<sup>n</sup>-1</td>
+<td>1&lt;&lt;n-1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据类型取值"><a href="#数据类型取值" class="headerlink" title="数据类型取值"></a>数据类型取值</h1><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>取值范围</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无符号int</td>
+<td>0~2<sup>32</sup>-1</td>
+<td>32个1</td>
+</tr>
+<tr>
+<td>有符号int</td>
+<td>-2<sup>31</sup>~2<sup>31</sup>-1</td>
+<td>最高位符号位，1表负。负数补码为除符号位取反+1。最小为32个1，1个符号31个值，则为2？？</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -566,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">190</span>
+                  <span class="site-state-item-count">193</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#位运算"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型取值"><span class="nav-number">2.</span> <span class="nav-text">数据类型取值</span></a></li></ol></div>
             
 
           </div>
