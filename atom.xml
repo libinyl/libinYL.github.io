@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-25T13:11:13.866Z</updated>
+  <updated>2018-06-26T17:01:04.982Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,20 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>diary20180625</title>
-    <link href="http://libinyl.github.io/2018/06/25/diary20180625/"/>
-    <id>http://libinyl.github.io/2018/06/25/diary20180625/</id>
-    <published>2018-06-25T13:08:07.000Z</published>
-    <updated>2018-06-25T13:11:13.866Z</updated>
+    <title>diary20180626</title>
+    <link href="http://libinyl.github.io/2018/06/27/diary20180626/"/>
+    <id>http://libinyl.github.io/2018/06/27/diary20180626/</id>
+    <published>2018-06-26T17:00:07.000Z</published>
+    <updated>2018-06-26T17:01:04.982Z</updated>
     
-    <content type="html"><![CDATA[<p><code>21:08:23</code> 帮政写了个python的程序，现学python的感觉真爽</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train.csv</span></span><br><span class="line"><span class="keyword">import</span> csv,geohash  </span><br><span class="line"></span><br><span class="line">l = list()</span><br><span class="line"></span><br><span class="line">file2 = open(<span class="string">"target.csv"</span>,<span class="string">"w"</span>,newline=<span class="string">''</span>)</span><br><span class="line">writer = csv.writer(file2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file1 = open(<span class="string">"train.csv"</span>,<span class="string">"rt"</span>)</span><br><span class="line">reader=csv.reader(file1)</span><br><span class="line">next(reader)</span><br><span class="line">writer.writerow([<span class="string">'orderid'</span>,<span class="string">'userid'</span>,<span class="string">'bikeid'</span>,<span class="string">'biketype'</span>,<span class="string">'startdate'</span>,<span class="string">'starttime'</span>,<span class="string">'geohashed_start_loc_long'</span>,<span class="string">'geohashed_start_loc_lat'</span>,<span class="string">'geohashed_end_loc_long'</span>,<span class="string">'geohashed_end_loc_lat'</span>])</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> reader:</span><br><span class="line">    <span class="keyword">for</span> index,data <span class="keyword">in</span> enumerate(line):</span><br><span class="line">        <span class="keyword">if</span>(index&lt;=<span class="number">3</span>):</span><br><span class="line">            l.append(data)</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">4</span>):</span><br><span class="line">            l.append(data.split()[<span class="number">0</span>])</span><br><span class="line">            l.append(data.split()[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">5</span>):</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">0</span>])</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">6</span>):</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">0</span>])</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">1</span>])</span><br><span class="line">    writer.writerow(l)</span><br><span class="line">    l=[]</span><br><span class="line"></span><br><span class="line">file1.close()</span><br><span class="line">file2.close()</span><br></pre></td></tr></table></figure><p>数据内容样式：</p><table><thead><tr><th>orderid</th><th>userid</th><th>bikeid</th><th>biketype</th><th>starttime</th><th>geohashed_start_loc</th><th>geohashed_end_loc</th></tr></thead><tbody><tr><td>1893973</td><td>451147</td><td>210617</td><td>2</td><td>2017/5/14 22:16</td><td>wx4snhx</td><td>wx4snhj</td></tr><tr><td>4657992</td><td>1061133</td><td>465394</td><td>1</td><td>2017/5/14 22:16</td><td>wx4dr59</td><td>wx4dquz</td></tr><tr><td>2965085</td><td>549189</td><td>310572</td><td>1</td><td>2017/5/14 22:16</td><td>wx4fgur</td><td>wx4fu5n</td></tr><tr><td>4548579</td><td>489720</td><td>456688</td><td>1</td><td>2017/5/14 22:16</td><td>wx4d5r5</td><td>wx4d5r4</td></tr><tr><td>3936364</td><td>467449</td><td>403224</td><td>1</td><td>2017/5/14 22:16</td><td>wx4g27p</td><td>wx4g266</td></tr><tr><td>5163705</td><td>917620</td><td>509044</td><td>1</td><td>2017/5/14 22:16</td><td>wx4gd2e</td><td>wx4g6pw</td></tr></tbody></table><p>转化结果样式：</p><table><thead><tr><th>orderid</th><th>userid</th><th>bikeid</th><th>biketype</th><th>startdate</th><th>starttime</th><th>geohashed_start_loc_long</th><th>geohashed_start_loc_lat</th><th>geohashed_end_loc_long</th><th>geohashed_end_loc_lat</th></tr></thead><tbody><tr><td>1893973</td><td>451147</td><td>210617</td><td>2</td><td>2017/5/14</td><td>22:16</td><td>40.1</td><td>116.29</td><td>40.1</td><td>116.29</td></tr><tr><td>4657992</td><td>1061133</td><td>465394</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.79</td><td>116.33</td><td>39.8</td><td>116.32</td></tr><tr><td>2965085</td><td>549189</td><td>310572</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.88</td><td>116.54</td><td>39.88</td><td>116.55</td></tr><tr><td>4548579</td><td>489720</td><td>456688</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.77</td><td>116.16</td><td>39.77</td><td>116.16</td></tr><tr><td>3936364</td><td>467449</td><td>403224</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.96</td><td>116.39</td><td>39.96</td><td>116.38</td></tr><tr><td>5163705</td><td>917620</td><td>509044</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.99</td><td>116.47</td><td>39.99</td><td>116.46</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<p><code>01:00:22</code> 给学弟装了程序，发了我50块的红包，大方的学弟啊。给我政继续写程序。突然对CUDA感兴趣了。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;code&gt;21:08:23&lt;/code&gt; 帮政写了个python的程序，现学python的感觉真爽&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;l
+        &lt;p&gt;&lt;code&gt;01:00:22&lt;/code&gt; 给学弟装了程序，发了我50块的红包，大方的学弟啊。给我政继续写程序。突然对CUDA感兴趣了。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180625</title>
+    <link href="http://libinyl.github.io/2018/06/25/diary20180625/"/>
+    <id>http://libinyl.github.io/2018/06/25/diary20180625/</id>
+    <published>2018-06-25T13:08:07.000Z</published>
+    <updated>2018-06-25T16:33:53.255Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>15:00:00</code> 去遥远的湘雅附近买了弹性绷带。</p><p><code>21:08:23</code> 帮政写了个python的程序，现学python的感觉真爽</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#train.csv</span></span><br><span class="line"><span class="keyword">import</span> csv,geohash  </span><br><span class="line"></span><br><span class="line">l = list()</span><br><span class="line"></span><br><span class="line">file2 = open(<span class="string">"target.csv"</span>,<span class="string">"w"</span>,newline=<span class="string">''</span>)</span><br><span class="line">writer = csv.writer(file2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file1 = open(<span class="string">"train.csv"</span>,<span class="string">"rt"</span>)</span><br><span class="line">reader=csv.reader(file1)</span><br><span class="line">next(reader)</span><br><span class="line">writer.writerow([<span class="string">'orderid'</span>,<span class="string">'userid'</span>,<span class="string">'bikeid'</span>,<span class="string">'biketype'</span>,<span class="string">'startdate'</span>,<span class="string">'starttime'</span>,<span class="string">'geohashed_start_loc_long'</span>,<span class="string">'geohashed_start_loc_lat'</span>,<span class="string">'geohashed_end_loc_long'</span>,<span class="string">'geohashed_end_loc_lat'</span>])</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> reader:</span><br><span class="line">    <span class="keyword">for</span> index,data <span class="keyword">in</span> enumerate(line):</span><br><span class="line">        <span class="keyword">if</span>(index&lt;=<span class="number">3</span>):</span><br><span class="line">            l.append(data)</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">4</span>):</span><br><span class="line">            l.append(data.split()[<span class="number">0</span>])</span><br><span class="line">            l.append(data.split()[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">5</span>):</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">0</span>])</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">6</span>):</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">0</span>])</span><br><span class="line">            l.append(geohash.decode(data)[<span class="number">1</span>])</span><br><span class="line">    writer.writerow(l)</span><br><span class="line">    l=[]</span><br><span class="line"></span><br><span class="line">file1.close()</span><br><span class="line">file2.close()</span><br></pre></td></tr></table></figure><p>数据内容样式：</p><table><thead><tr><th>orderid</th><th>userid</th><th>bikeid</th><th>biketype</th><th>starttime</th><th>geohashed_start_loc</th><th>geohashed_end_loc</th></tr></thead><tbody><tr><td>1893973</td><td>451147</td><td>210617</td><td>2</td><td>2017/5/14 22:16</td><td>wx4snhx</td><td>wx4snhj</td></tr><tr><td>4657992</td><td>1061133</td><td>465394</td><td>1</td><td>2017/5/14 22:16</td><td>wx4dr59</td><td>wx4dquz</td></tr><tr><td>2965085</td><td>549189</td><td>310572</td><td>1</td><td>2017/5/14 22:16</td><td>wx4fgur</td><td>wx4fu5n</td></tr><tr><td>4548579</td><td>489720</td><td>456688</td><td>1</td><td>2017/5/14 22:16</td><td>wx4d5r5</td><td>wx4d5r4</td></tr><tr><td>3936364</td><td>467449</td><td>403224</td><td>1</td><td>2017/5/14 22:16</td><td>wx4g27p</td><td>wx4g266</td></tr><tr><td>5163705</td><td>917620</td><td>509044</td><td>1</td><td>2017/5/14 22:16</td><td>wx4gd2e</td><td>wx4g6pw</td></tr></tbody></table><p>转化结果样式：</p><table><thead><tr><th>orderid</th><th>userid</th><th>bikeid</th><th>biketype</th><th>startdate</th><th>starttime</th><th>geohashed_start_loc_long</th><th>geohashed_start_loc_lat</th><th>geohashed_end_loc_long</th><th>geohashed_end_loc_lat</th></tr></thead><tbody><tr><td>1893973</td><td>451147</td><td>210617</td><td>2</td><td>2017/5/14</td><td>22:16</td><td>40.1</td><td>116.29</td><td>40.1</td><td>116.29</td></tr><tr><td>4657992</td><td>1061133</td><td>465394</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.79</td><td>116.33</td><td>39.8</td><td>116.32</td></tr><tr><td>2965085</td><td>549189</td><td>310572</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.88</td><td>116.54</td><td>39.88</td><td>116.55</td></tr><tr><td>4548579</td><td>489720</td><td>456688</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.77</td><td>116.16</td><td>39.77</td><td>116.16</td></tr><tr><td>3936364</td><td>467449</td><td>403224</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.96</td><td>116.39</td><td>39.96</td><td>116.38</td></tr><tr><td>5163705</td><td>917620</td><td>509044</td><td>1</td><td>2017/5/14</td><td>22:16</td><td>39.99</td><td>116.47</td><td>39.99</td><td>116.46</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;15:00:00&lt;/code&gt; 去遥远的湘雅附近买了弹性绷带。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;21:08:23&lt;/code&gt; 帮政写了个python的程序，现学python的感觉真爽&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;tab
       
     
     </summary>
@@ -218,19 +243,17 @@
     <link href="http://libinyl.github.io/2018/06/18/note-intellij-config/"/>
     <id>http://libinyl.github.io/2018/06/18/note-intellij-config/</id>
     <published>2018-06-18T09:53:38.000Z</published>
-    <updated>2018-06-18T09:55:49.475Z</updated>
+    <updated>2018-06-25T15:13:05.730Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>原生<code>IntelliJ</code>主题，不要黑色</li><li>字体选择<code>Fira Code</code>，行距为<code>1.2</code></li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><ul><li>原生<code>IntelliJ</code>主题，不要黑色</li><li>字体选择<code>Fira Code</code>，行距为<code>1.2</code></li></ul><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><ul><li>GsonFormat</li><li>Translation</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
+        &lt;h1 id=&quot;设置&quot;&gt;&lt;a href=&quot;#设置&quot; class=&quot;headerlink&quot; title=&quot;设置&quot;&gt;&lt;/a&gt;设置&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;原生&lt;code&gt;IntelliJ&lt;/code&gt;主题，不要黑色&lt;/li&gt;
-&lt;li&gt;字体选择&lt;code&gt;Fira Code&lt;/code&gt;，行距为&lt;code&gt;1.2&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;li&gt;字体选择&lt;code&gt;Fira Code&lt;/cod
       
     
     </summary>
@@ -481,42 +504,6 @@
       
         &lt;p&gt;&lt;code&gt;13:13:37&lt;/code&gt; 如果早起不干事，还不如多睡会。早早起来，只把毕设什么的打印了。没做什么好事。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;00:19:08&lt;/code&gt; 今天时间过得挺慢的，看上面一行字都不像今天写的。下载了刺客信条，垃圾的显卡让我无法尽兴。&lt;/p
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>thought-body</title>
-    <link href="http://libinyl.github.io/2018/06/09/thought-body/"/>
-    <id>http://libinyl.github.io/2018/06/09/thought-body/</id>
-    <published>2018-06-09T09:22:39.000Z</published>
-    <updated>2018-06-12T03:23:47.522Z</updated>
-    
-    <content type="html"><![CDATA[<table><thead><tr><th>column0</th><th>column1</th></tr></thead><tbody><tr><td>2018060810</td><td>138.5</td></tr><tr><td>2018060823</td><td>140.2</td></tr><tr><td>2018060909</td><td>139.5</td></tr><tr><td>2018060913</td><td>139.1</td></tr><tr><td>2018060917</td><td>138.6</td></tr><tr><td>2018060923</td><td>140.3</td></tr><tr><td>2018061017</td><td>140.7</td></tr><tr><td>2018061020</td><td>139.9</td></tr><tr><td>2018061109</td><td>138.2</td></tr><tr><td>2018061123</td><td>140.6</td></tr><tr><td>2018061211</td><td>138.9</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;column0&lt;/th&gt;
-&lt;th&gt;column1&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;2018060810&lt;/td&gt;
-&lt;td&gt;138.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2018060
       
     
     </summary>
