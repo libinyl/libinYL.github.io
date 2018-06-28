@@ -302,6 +302,377 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/note-network-tcpip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/note-network-tcpip/" itemprop="url">TCP/IP学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T18:27:25+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:04:45+08:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Q：简述OSI七层模型？"><a href="#Q：简述OSI七层模型？" class="headerlink" title="Q：简述OSI七层模型？"></a>Q：简述OSI七层模型？</h1><p><strong>A：</strong> 如下表：</p>
+<table>
+<thead>
+<tr>
+<th>分层</th>
+<th>代表协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>HTTP，FTP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>JPG，MPEG，HTML</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>SQL，ASP，JSP</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP，UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP，ICMP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>802.2</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>IEEE 754（浮点数）</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/tcpip_model.png" alt=""></p>
+<h1 id="Q：三次挥手的过程？"><a href="#Q：三次挥手的过程？" class="headerlink" title="Q：三次挥手的过程？"></a>Q：三次挥手的过程？</h1><ol>
+<li>客户端-&gt;服务器  SYN=x</li>
+<li>服务器-&gt;客户端  ACK=x+1,SYN=y</li>
+<li>客户端-&gt;服务器  ACK=y+1</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：四次挥手的过程？"><a href="#Q：四次挥手的过程？" class="headerlink" title="Q：四次挥手的过程？"></a>Q：四次挥手的过程？</h1><p><strong>A：</strong> 非常对称的FIN-ACK。</p>
+<ol>
+<li>客户端-&gt;服务器   FIN</li>
+<li>服务器-&gt;客户端   ACK</li>
+<li>服务器-&gt;客户端   FIN</li>
+<li>客户端-&gt;服务器   ACK</li>
+</ol>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.gif" alt=""></p>
+<h1 id="Q：简述TCP与UDP的区别？"><a href="#Q：简述TCP与UDP的区别？" class="headerlink" title="Q：简述TCP与UDP的区别？"></a>Q：简述TCP与UDP的区别？</h1><p><strong>A：</strong> </p>
+<ul>
+<li><strong>可靠性：</strong> TCP提供面向连接，保证数据正确；UDP非面向连接、不可靠，数据不一定正确。</li>
+<li><strong>侧重点：</strong> TCP注重数据安全，UDP注重速度，但安全性一般。</li>
+<li><strong>流与数据报：</strong> TCP是基于流的，具有缓存机制。UDP基于数据报，接收端必须用与发送端相同的次数读完。</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/lca1826/p/6601327.html" target="_blank" rel="noopener">https://www.cnblogs.com/lca1826/p/6601327.html</a></p>
+<p><a href="https://www.linuxidc.com/Linux/2014-11/109545.htm" target="_blank" rel="noopener">https://www.linuxidc.com/Linux/2014-11/109545.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/diary20180320/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/diary20180320/" itemprop="url">diary20180320</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T14:41:02+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-20T22:45:42+08:00">
+                2018-03-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>14:41:18</code> 在凯李咖啡。果然接到面试通知才是效率飞涨的时候。</p>
+<p><code>22:45:20</code> 今天简直是过的飞快。下午在凯李咖啡疯狂复习了很多。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/20/note-network-http/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2048,394 +2419,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/17/diary20180317/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/17/diary20180317/" itemprop="url">diary20180317</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T12:12:58+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-17T21:56:51+08:00">
-                2018-03-17
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>12:13:39</code> 来到凯李咖啡。不知不觉写日记已经有一个月了。从开始的零零散散，到现在每天几乎只有一句话，好歹也坚持下来了。</p>
-<p><code>21:53:40</code> 第二次泰坤，爽快。以后要带水。</p>
-<p>预定了下周日的环太平洋电影。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/16/qa-java-hashmap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/16/qa-java-hashmap/" itemprop="url">HashMap Q & A</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T15:06:22+08:00">
-                2018-03-16
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:06:00+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt=""></p>
-<p>首先要明白Map的概念。通过查看Map接口可以发现Map内部维护着Entry接口，这个Entry才是真正维护着键值对的结构，Map中的其他方法只是提供了一些视角（view），我们知道一个Map中维护着多个键值对，实际上就是维护着多个Entry。</p>
-<p>接下来看HashMap。首先要明白Hash的概念。</p>
-<p>Hash的意思就是散列，抽象的作用是把任意长度的输入转换为指定范围内的输出。从面向对象编程的视角看，hash有两个步骤：第一步，将想要存储的对象（也就是key）转换为一个整数（也就是散列码）；第二步，将这个整数压缩至数组长度内合理的索引值。</p>
-<p>从这里引出五个主要问题：</p>
-<ol>
-<li>如何获取对象的散列码？</li>
-<li>如何获取元素索引值？</li>
-<li>如何维护数组的长度？</li>
-</ol>
-<h1 id="Q：如何获取对象的散列码？"><a href="#Q：如何获取对象的散列码？" class="headerlink" title="Q：如何获取对象的散列码？"></a>Q：如何获取对象的散列码？</h1><p><strong>A：</strong> 对象分为三类来看：类类型，字符串，基本类型。</p>
-<ul>
-<li><p><strong>对于类类型</strong>，由于每个类都是Object的子类，都有一个hashCode方法。这个方法可以返回根据这个对象内存地址的一个int值，直接作为散列码。</p>
-</li>
-<li><p><strong>对于字符串</strong>，想象空间很大，可以取Unicode值来进行计算，但是要考虑到现实世界中字符的分布不是均匀的。有种比较理想的方法称为Horner法：</p>
-<blockquote>
-<p>取质数g，遍历此字符串中每个字符，每遍历一个就增加（这个字符Unicode值 <em> g </em> 索引值），最终的和就是散列码。</p>
-</blockquote>
-<p>  在String类中，这个因子等于31。原因是  n * 31 = n &lt;&lt; 5 - n ，在JVM中会被优化的非常快。</p>
-</li>
-<li><p><strong>对于基本类型</strong>：</p>
-<p>  <strong>对于int类型</strong>，可以直接用其本身作为散列码。如果是其他基本类型，可以利用其内部的二进制表示。</p>
-<p>  <strong>如果是long类型</strong>，它含有64位二进制数据，而int含有32位，如果直接转换为int会丢失前32位，所有只在前32位有区别的数据都将产生冲突。在java中的解决方案是，将这64位的二进制数据，与其右移32位的结果做位与运算。这样就把前后32位都利用了。代码：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">(<span class="keyword">long</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)(value ^ (value &gt;&gt;&gt; <span class="number">32</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  <strong>对于double和float</strong>，都可以以类似的方法处理。</p>
-</li>
-</ul>
-<h1 id="Q：如何确定索引值？"><a href="#Q：如何确定索引值？" class="headerlink" title="Q：如何确定索引值？"></a>Q：如何确定索引值？</h1><p>事实上这一步才是hash的典型操作。此时的散列码是一个int类型的值，从 -2<sup>32</sup> 到 -2<sup>32</sup> ，而数组容量往往远小于此。因此需要进行压缩。</p>
-<p>一般情况下将散列码对范围值取模即可，结果就比较均匀，但是假如key值成等差数列分布，就会使冲突率大大增加。Java对此进行了优化，<strong>将散列码进行了二次处理</strong>，取模方式也做了优化。请参考下一个问题。</p>
-<h1 id="Q：如何维护数组长度？"><a href="#Q：如何维护数组长度？" class="headerlink" title="Q：如何维护数组长度？"></a>Q：如何维护数组长度？</h1><p><strong>A：</strong> 数组长度的维护，主要以性能为目标。从以下角度考虑数组的长度维护问题：</p>
-<ol>
-<li>确定索引值时的取模操作性能</li>
-<li>扩容问题</li>
-</ol>
-<ul>
-<li><p><strong>考虑取模操作的性能：</strong> 在获取索引值时，需要将散列码对数组长度取模。注意到，如果length的值为2的n次方，那么 hashcode % length = hashcode &amp; (length -1) 。很容易发现后者的位操作是效率很高的。为此，有必要<strong>将数组长度维护为2的n次方</strong>。在源码中有如下体现：1）数组的默认容量(initialCapacity)的值是16。2）如果初始化的时候指定了数组容量，则程序会寻找不小于给定容量的最接近2的n次方的值。</p>
-<p>  <em>散列码的二次处理</em> 假如给定的key成等差数列，那么这些key的散列码有可能后几位全部相同，冲突率大大增加。而事实上hashcode &amp; (length -1)是忽略了hashcode的高位的。为了解决这一问题，需要将hashcode的高位也利用起来。类似刚刚long类型取散列码的方法，此时的散列码是int类型，为了将其高16位也利用起来，可以<strong>将散列码与其右移16位的结果取位与，得到新的散列码。此时即可避免等差数列的漏洞</strong>。这就是上文提到的二次处理的散列码，即<strong>高位运算</strong>。源码：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>扩容性能对长度的影响：</strong> 随着元素增多，数组逐渐填满，冲突的概率会越来越大，因此不能等到数组满了再扩容；而每次扩容会有一定开销，所以扩容需要在适当的时机。HashMap类维护了几个扩容相关的概念：capcacity，loadfactor，threshold，后者等于前两者的积，代表当前数组中可容纳的最多相同hashcode的Node数。加载因子默认为0.75，也就是当元素个数达到数组长度的0.75时，将进行扩容，即将当前长度 * 2。显然长度仍然是2的n次方。</p>
-</li>
-<li><p><strong>如何扩容？</strong> 每次扩容令数组长度变化，那么每个元素的位置也会发生变化，原本因冲突而形成链表或红黑树的Node的位置也需要重新计算。下面对比JDK7和JDK8来说明resize机制。</p>
-<p>  在JDK7中，一旦扩容，就需要对所有元素rehash。而且旧链表迁移到新链表时,如果在新表的索引位置相同，链表元素会倒置。</p>
-<p>  而在JDK8中，神奇的事情发生了。因为数组长度总是保持在2的n次方，扩容之后，数组长度的二进制表示就是原有数值左移一位，length-1的二进制表示的最高位的左边一位置1。看下图可以明白这句话的意思，n为table的长度，图（a）表示扩容前的key1和key2两种key确定索引位置的示例，图（b）表示扩容后key1和key2两种key确定索引位置的示例，其中hash1是key1对应的哈希与高位运算结果。</p>
-<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE1.png" alt=""></p>
-<p>  此时获取索引的计算 hashcode &amp; (length -1) 变成了 原索引+oldCap，性能获得提升。这就是JDK8中<strong>对resize的优化</strong>。</p>
-<p>  <img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/hashMap%201.8%20%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE2.png" alt=""></p>
-</li>
-</ul>
-<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h2 id="Q：get方法的流程是怎样的？"><a href="#Q：get方法的流程是怎样的？" class="headerlink" title="Q：get方法的流程是怎样的？"></a>Q：get方法的流程是怎样的？</h2><p><strong>A：</strong> </p>
-<ol>
-<li>调用key的hashcode方法获取hash值</li>
-<li>对hash值做高位运算处理</li>
-<li>将处理后的hash值对数组长度取模，得到索引</li>
-<li>遍历链表，用key的equals方法与每个元素比较，匹配成功则返回。</li>
-</ol>
-<h2 id="Q：怎样优化HashMap的性能？"><a href="#Q：怎样优化HashMap的性能？" class="headerlink" title="Q：怎样优化HashMap的性能？"></a>Q：怎样优化HashMap的性能？</h2><p><strong>A：</strong> </p>
-<ul>
-<li><strong>使用包装类作为key</strong>。此类wrapper类是final类型的，已经重写了equals和hashCode方法，碰撞的几率更小，散列更为高效。</li>
-</ul>
-<h2 id="Q：并发会导致什么问题？"><a href="#Q：并发会导致什么问题？" class="headerlink" title="Q：并发会导致什么问题？"></a>Q：并发会导致什么问题？</h2><p><strong>A：</strong> </p>
-<ul>
-<li><p><strong>多线程操作可能导致死循环。</strong> HashMap是非线程安全的。一般来说，链表出现死循环很可能是因为出现环形链表。所以可以从这个角度考虑问题。</p>
-<p>  具体来讲，向HashMap中添加元素时，在resize的时候，需要调整原有的元素到新的位置，即transfer方法。在此方法中，对于某个特定索引的链表，如果多个线程切换执行此方法，由于每个线程对next进行重复操作，导致形成环状链表。</p>
-<p>  <strong>解决方案：</strong> </p>
-<ol>
-<li>使用Collections.synchronizedMap(Mao<k,v> m)方法把HashMap变成一个线程安全的Map。</k,v></li>
-<li>使用ConcurrentHashMap。</li>
-</ol>
-</li>
-</ul>
-<h2 id="Q：与HashSet的区别是什么？"><a href="#Q：与HashSet的区别是什么？" class="headerlink" title="Q：与HashSet的区别是什么？"></a>Q：与HashSet的区别是什么？</h2><p><strong>A：</strong> HashSet仅仅存储对象，而不存储键值对，相对较慢。</p>
-<h2 id="Q：与HashTable的区别？"><a href="#Q：与HashTable的区别？" class="headerlink" title="Q：与HashTable的区别？"></a>Q：与HashTable的区别？</h2><p><strong>A：</strong> HashTable继承了Dictionary接口，线程安全，其中涉及存取的方法都加上了Synchronize关键字。</p>
-<h1 id="ConcurrentHashMap相关问题"><a href="#ConcurrentHashMap相关问题" class="headerlink" title="ConcurrentHashMap相关问题"></a>ConcurrentHashMap相关问题</h1><h2 id="Q：ConcurrentHashMap的数据结构？"><a href="#Q：ConcurrentHashMap的数据结构？" class="headerlink" title="Q：ConcurrentHashMap的数据结构？"></a>Q：ConcurrentHashMap的数据结构？</h2><p><strong>A：</strong> </p>
-<ul>
-<li>实现了ConcurrentHashMap接口。</li>
-<li>与HashMap一大不同是，内部实现了Map.Entry的节点Node其中的next和value是volatile的，避免了Hashmap中的死循环。</li>
-</ul>
-<p>参考：<a href="https://tech.meituan.com/java-hashmap.html" target="_blank" rel="noopener">Java 8系列之重新认识HashMap</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2486,7 +2469,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">195</span>
+                  <span class="site-state-item-count">197</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2508,7 +2491,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
