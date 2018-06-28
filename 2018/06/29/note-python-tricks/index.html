@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="使用 pip install 安装时： 如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在环境变量下，且">
+<meta name="description" content="安装路径问题使用 pip install 安装时：  如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python安装目录疑难">
-<meta property="og:url" content="http://libinyl.github.io/2018/06/29/note-python-path/index.html">
+<meta property="og:url" content="http://libinyl.github.io/2018/06/29/note-python-tricks/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="使用 pip install 安装时： 如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在环境变量下，且">
+<meta property="og:description" content="安装路径问题使用 pip install 安装时：  如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-28T18:16:29.680Z">
+<meta property="og:updated_time" content="2018-06-28T19:58:37.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python安装目录疑难">
-<meta name="twitter:description" content="使用 pip install 安装时： 如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在环境变量下，且">
+<meta name="twitter:description" content="安装路径问题使用 pip install 安装时：  如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://libinyl.github.io/2018/06/29/note-python-path/"/>
+  <link rel="canonical" href="http://libinyl.github.io/2018/06/29/note-python-tricks/"/>
 
 
 
@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/06/29/note-python-path/">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/06/29/note-python-tricks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李斌">
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T02:16:29+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T03:58:37+08:00">
                 2018-06-29
               </time>
             
@@ -407,12 +407,16 @@
       
 
       
-        <h1 id="使用-pip-install-安装时："><a href="#使用-pip-install-安装时：" class="headerlink" title="使用 pip install 安装时："></a>使用 pip install 安装时：</h1><ul>
+        <h1 id="安装路径问题"><a href="#安装路径问题" class="headerlink" title="安装路径问题"></a>安装路径问题</h1><p>使用 pip install 安装时：</p>
+<ul>
 <li>如果有<code>--user</code>参数时，则安装到<code>:\Users\libin\AppData\Roaming\Python\Python36\site-packages</code></li>
 <li>如果没有<code>--user</code>参数，则安装到<code>C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages</code>下。</li>
 <li>后者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用<code>--user</code>参数。</li>
 </ul>
-
+<h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><ul>
+<li>两行代码，渲染出矢量图：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format = &apos;svg&apos;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -611,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-pip-install-安装时："><span class="nav-number">1.</span> <span class="nav-text">使用 pip install 安装时：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装路径问题"><span class="nav-number">1.</span> <span class="nav-text">安装路径问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jupyter"><span class="nav-number">2.</span> <span class="nav-text">jupyter</span></a></li></ol></div>
             
 
           </div>

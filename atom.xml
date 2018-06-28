@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-28T18:16:29.680Z</updated>
+  <updated>2018-06-28T19:58:37.478Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -18,19 +18,20 @@
   
   <entry>
     <title>python安装目录疑难</title>
-    <link href="http://libinyl.github.io/2018/06/29/note-python-path/"/>
-    <id>http://libinyl.github.io/2018/06/29/note-python-path/</id>
+    <link href="http://libinyl.github.io/2018/06/29/note-python-tricks/"/>
+    <id>http://libinyl.github.io/2018/06/29/note-python-tricks/</id>
     <published>2018-06-28T18:12:50.000Z</published>
-    <updated>2018-06-28T18:16:29.680Z</updated>
+    <updated>2018-06-28T19:58:37.478Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="使用-pip-install-安装时："><a href="#使用-pip-install-安装时：" class="headerlink" title="使用 pip install 安装时："></a>使用 pip install 安装时：</h1><ul><li>如果有<code>--user</code>参数时，则安装到<code>:\Users\libin\AppData\Roaming\Python\Python36\site-packages</code></li><li>如果没有<code>--user</code>参数，则安装到<code>C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages</code>下。</li><li>后者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用<code>--user</code>参数。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="安装路径问题"><a href="#安装路径问题" class="headerlink" title="安装路径问题"></a>安装路径问题</h1><p>使用 pip install 安装时：</p><ul><li>如果有<code>--user</code>参数时，则安装到<code>:\Users\libin\AppData\Roaming\Python\Python36\site-packages</code></li><li>如果没有<code>--user</code>参数，则安装到<code>C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages</code>下。</li><li>后者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用<code>--user</code>参数。</li></ul><h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><ul><li>两行代码，渲染出矢量图：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format = &apos;svg&apos;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;使用-pip-install-安装时：&quot;&gt;&lt;a href=&quot;#使用-pip-install-安装时：&quot; class=&quot;headerlink&quot; title=&quot;使用 pip install 安装时：&quot;&gt;&lt;/a&gt;使用 pip install 安装时：&lt;/h1&gt;&lt;ul&gt;
-
+        &lt;h1 id=&quot;安装路径问题&quot;&gt;&lt;a href=&quot;#安装路径问题&quot; class=&quot;headerlink&quot; title=&quot;安装路径问题&quot;&gt;&lt;/a&gt;安装路径问题&lt;/h1&gt;&lt;p&gt;使用 pip install 安装时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果有&lt;code&gt;--user&lt;/code
       
     
     </summary>
