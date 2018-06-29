@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-29T01:17:58.012Z</updated>
+  <updated>2018-06-29T16:55:49.476Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180629</title>
+    <link href="http://libinyl.github.io/2018/06/30/diary20180629/"/>
+    <id>http://libinyl.github.io/2018/06/30/diary20180629/</id>
+    <published>2018-06-29T16:38:41.000Z</published>
+    <updated>2018-06-29T16:55:49.476Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>00:54:19</code> 与胡、浩去了金釜山吃了好吃，然而，非常不好吃。肉质都是碎的。之后9点半到潇湘看了《动物世界》，很不错的悬疑片。离开的日子越来越近了，天气却越来越热，出去逛逛都没兴致。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;00:54:19&lt;/code&gt; 与胡、浩去了金釜山吃了好吃，然而，非常不好吃。肉质都是碎的。之后9点半到潇湘看了《动物世界》，很不错的悬疑片。离开的日子越来越近了，天气却越来越热，出去逛逛都没兴致。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>python常见问题记录</title>
@@ -484,30 +508,6 @@
     
     
       <category term="Spring" scheme="http://libinyl.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180612</title>
-    <link href="http://libinyl.github.io/2018/06/12/diary20180612/"/>
-    <id>http://libinyl.github.io/2018/06/12/diary20180612/</id>
-    <published>2018-06-12T11:43:13.000Z</published>
-    <updated>2018-06-12T11:45:26.961Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>19:45:11</code> 今天去了湘雅附二。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;19:45:11&lt;/code&gt; 今天去了湘雅附二。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
     
   </entry>
   
