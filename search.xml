@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[python安装目录疑难]]></title>
+    <title><![CDATA[python常见问题记录]]></title>
     <url>%2F2018%2F06%2F29%2Fnote-python-tricks%2F</url>
-    <content type="text"><![CDATA[安装路径问题使用 pip install 安装时： 如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 后者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用--user参数。 jupyter 两行代码，渲染出矢量图： 12%matplotlib inline%config InlineBackend.figure_format = &apos;svg&apos; 保存pdf矢量图： 12plt.savefig(&apos;tmp.pdf&apos;, bbox_inches=&apos;tight&apos;)plt.show()]]></content>
+    <content type="text"><![CDATA[安装路径问题使用 pip install 安装时： 如果有--user参数时，则安装到:\Users\libin\AppData\Roaming\Python\Python36\site-packages 如果没有--user参数，则安装到C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages下。 前者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用--user参数。 jupyter 两行代码，渲染出矢量图： 12%matplotlib inline%config InlineBackend.figure_format = &apos;svg&apos; 保存pdf矢量图： 12plt.savefig(&apos;tmp.pdf&apos;, bbox_inches=&apos;tight&apos;)plt.show()]]></content>
       <categories>
         <category>技·术</category>
       </categories>
