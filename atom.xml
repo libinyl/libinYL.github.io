@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-06-29T16:55:49.476Z</updated>
+  <updated>2018-07-02T06:48:13.587Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180702</title>
+    <link href="http://libinyl.github.io/2018/07/02/diary20180702/"/>
+    <id>http://libinyl.github.io/2018/07/02/diary20180702/</id>
+    <published>2018-07-02T06:41:37.000Z</published>
+    <updated>2018-07-02T06:48:13.587Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>14:42:33</code> 在长沙的最后一天。与胡、浩吃了牛排，去了凯李。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180702%E4%B8%B4%E5%88%AB1.jpg" alt=""></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180702%E4%B8%B4%E5%88%AB2.jpg" alt=""></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180702%E4%B8%B4%E5%88%AB3.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;14:42:33&lt;/code&gt; 在长沙的最后一天。与胡、浩吃了牛排，去了凯李。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diar
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180701</title>
+    <link href="http://libinyl.github.io/2018/07/01/diary20180701/"/>
+    <id>http://libinyl.github.io/2018/07/01/diary20180701/</id>
+    <published>2018-06-30T23:16:42.000Z</published>
+    <updated>2018-06-30T23:16:42.255Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>note-debug</title>
+    <link href="http://libinyl.github.io/2018/06/30/note-debug/"/>
+    <id>http://libinyl.github.io/2018/06/30/note-debug/</id>
+    <published>2018-06-30T15:45:55.000Z</published>
+    <updated>2018-06-30T16:01:24.587Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题类型综述"><a href="#问题类型综述" class="headerlink" title="问题类型综述"></a>问题类型综述</h1><ul><li>卡住：一般是各种死锁。</li></ul><h1 id="定位问题"><a href="#定位问题" class="headerlink" title="定位问题"></a>定位问题</h1><h2 id="定位pid"><a href="#定位pid" class="headerlink" title="定位pid"></a>定位pid</h2><ul><li>使用<code>jps -mv</code>即可获取当前java程序的pid。比如现在<code>IntelliJ</code>卡住了，运行此命令显示：</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">16944 Jps -mv -Denv.class.path=.;D:\SYNC\jianguoyun\ENV\java\jdk1.8.0_172\lib\dt.jar;D:\SYNC\jianguoyun\ENV\java\jdk1.8.0_172\lib\tools.jar; -Dapplication.home=D:\SYNC\jianguoyun\ENV\java\jdk1.8.0_172 -Xms8m</span><br><span class="line">848  -Xms128m -Xmx750m -XX:ReservedCodeCacheSize=240m -XX:+UseConcMarkSweepGC -XX:SoftRefLRUPolicyMSPerMB=50 -ea -Dsun.io.useCanonCaches=false -Djava.net.preferIPv4Stack=true -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -Djb.vmOptionsFile=C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.5\bin\idea64.exe.vmoptions -Didea.jre.check=true -Dide.native.launcher=true -Didea.paths.selector=IntelliJIdea2018.1 -XX:ErrorFile=C:\Users\libin\java_error_in_idea_%p.log -XX:HeapDumpPath=C:\Users\libin\java_error_in_idea.hprof</span><br><span class="line">28636 Launcher C:/Program Files/JetBrains/IntelliJ IDEA 2018.1.5/lib/jps-builders.jar;C:/Program Files/JetBrains/IntelliJ IDEA 2018.1.5/lib/nanoxml-2.2.3.jar;</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>则可以看到第二行开头即是<code>848</code>。</p><h1 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h1><h2 id="dump问题"><a href="#dump问题" class="headerlink" title="dump问题"></a>dump问题</h2><ul><li>使用<code>jstack</code>将指定线程的信息导出。可以<code>jstack -l &lt;PID&gt;</code>，也可<code>jstack -l &lt;PID&gt; &gt; dump.txt</code>转储到文件中，方便查看。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;问题类型综述&quot;&gt;&lt;a href=&quot;#问题类型综述&quot; class=&quot;headerlink&quot; title=&quot;问题类型综述&quot;&gt;&lt;/a&gt;问题类型综述&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;卡住：一般是各种死锁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;定位问题&quot;&gt;&lt;a href=&quot;#定
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="debug" scheme="http://libinyl.github.io/tags/debug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180630</title>
+    <link href="http://libinyl.github.io/2018/06/30/diary20180630/"/>
+    <id>http://libinyl.github.io/2018/06/30/diary20180630/</id>
+    <published>2018-06-30T15:20:39.000Z</published>
+    <updated>2018-06-30T15:46:36.046Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>23:46:08</code> 今天与胡去了沃尔玛买了包腊肉，回来在天马吃了冰。还有一天就回家了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;23:46:08&lt;/code&gt; 今天与胡去了沃尔玛买了包腊肉，回来在天马吃了冰。还有一天就回家了。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>diary20180629</title>
@@ -410,104 +500,6 @@
     
       <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180615</title>
-    <link href="http://libinyl.github.io/2018/06/15/diary20180615/"/>
-    <id>http://libinyl.github.io/2018/06/15/diary20180615/</id>
-    <published>2018-06-15T05:15:21.000Z</published>
-    <updated>2018-06-15T05:44:59.217Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>13:44:25</code> 刷了一堆关于医学、医学生的东西，对医学从业者毕恭毕敬、肃然起敬。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;13:44:25&lt;/code&gt; 刷了一堆关于医学、医学生的东西，对医学从业者毕恭毕敬、肃然起敬。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180614</title>
-    <link href="http://libinyl.github.io/2018/06/14/diary20180614/"/>
-    <id>http://libinyl.github.io/2018/06/14/diary20180614/</id>
-    <published>2018-06-14T13:18:14.000Z</published>
-    <updated>2018-06-14T13:37:55.840Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>21:37:27</code> 手术完成，白天疼了两个小时，基本就没感觉了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;21:37:27&lt;/code&gt; 手术完成，白天疼了两个小时，基本就没感觉了。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180613</title>
-    <link href="http://libinyl.github.io/2018/06/13/diary20180613/"/>
-    <id>http://libinyl.github.io/2018/06/13/diary20180613/</id>
-    <published>2018-06-12T23:25:53.000Z</published>
-    <updated>2018-06-13T12:54:47.045Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>07:26:48</code> 好不容易打了次电话，竟然是以“醒了”为结局，真是浪费感情…</p><p><code>12:41:56</code> 今天上午毕业典礼，拨流苏，合影。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E5%AD%A6%E4%BD%8D%E6%8E%88%E4%BA%881.jpg" alt=""><br><em>中南图书馆</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E5%AD%A6%E4%BD%8D%E6%8E%88%E4%BA%882.jpg" alt=""><br><em>学位授予仪式</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E5%AD%A6%E4%BD%8D%E6%8E%88%E4%BA%883.jpg" alt=""><br><em>快到我啦</em></p><p><code>20:49:55</code> 补一下前几天拍的照片。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/IMG_20180606_173424.jpg" alt=""><br><em>湘江 南</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/IMG_20180606_184621.jpg" alt=""><br><em>湘江 北</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/IMG_20180606_184639.jpg" alt=""><br><em>湘江 黄昏</em></p><p><code>20:53:35</code> 毕设即将结束系列。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E6%AF%95%E8%AE%BE%E7%BB%93%E6%9D%9F1.jpg" alt=""><br><em>胶装的论文</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E6%AF%95%E8%AE%BE%E7%BB%93%E6%9D%9F2.jpg" alt=""><br><em>即将离我而去的资料袋</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180613%E6%AF%95%E8%AE%BE%E7%BB%93%E6%9D%9F3.jpg" alt=""><br><em>跟踪表</em></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;07:26:48&lt;/code&gt; 好不容易打了次电话，竟然是以“醒了”为结局，真是浪费感情…&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;12:41:56&lt;/code&gt; 今天上午毕业典礼，拨流苏，合影。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://yeliang1-12525
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>springMVC学习笔记</title>
-    <link href="http://libinyl.github.io/2018/06/12/note-springmvc/"/>
-    <id>http://libinyl.github.io/2018/06/12/note-springmvc/</id>
-    <published>2018-06-12T11:43:35.000Z</published>
-    <updated>2018-06-12T14:42:06.619Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="依赖关系"><a href="#依赖关系" class="headerlink" title="依赖关系"></a>依赖关系</h1><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/Springmvc%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB.png" alt=""></p><h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p><img src="https://docs.spring.io/spring-framework/docs/4.3.9.RELEASE/spring-framework-reference/html/images/mvc.png" alt=""></p><ul><li><code>Controller</code>一般负责准备一个将一个<strong>view</strong>和<strong>data</strong>映射为一个数据类型为<code>Map</code>的<strong>model</strong>并返回。也可以直接写入数据到返回流中。</li><li>一个<strong>view</strong>反应到代码层面就是一个字符串，对应着视图文件；一个<strong>model</strong>是一个<code>Map</code>，包含着许多键值对，key是某个变量，value是其对应的数据。</li></ul><h1 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h1><p>作为中央Servlet，DispatcherServlet负责分发，由具体的可配置的控件执行实际的工作。</p><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>DispatcherServlet毕竟也是Servlet，也需要在<code>web.xml</code>中配置。在以下例子中，配置了一个<code>DispatcherServlet</code>,配置了其配置文件<code>app-context.xml</code>的路径，配置了<code>DispatcherServlet</code>接收请求的路径<code>/app/*</code>。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/app-context.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span><span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>app<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/app/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure><p>或者用注解的方式：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWebApplicationInitializer</span> <span class="keyword">implements</span> <span class="title">WebApplicationInitializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext servletCxt)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Load Spring web application configuration</span></span><br><span class="line">        AnnotationConfigWebApplicationContext ac = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        ac.register(AppConfig.class);</span><br><span class="line">        ac.refresh();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create and register the DispatcherServlet</span></span><br><span class="line">        DispatcherServlet servlet = <span class="keyword">new</span> DispatcherServlet(ac);</span><br><span class="line">        ServletRegistration.Dynamic registration = servletCxt.addServlet(<span class="string">"app"</span>, servlet);</span><br><span class="line">        registration.setLoadOnStartup(<span class="number">1</span>);</span><br><span class="line">        registration.addMapping(<span class="string">"/app/*"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Context-的层级关系"><a href="#Context-的层级关系" class="headerlink" title="Context 的层级关系"></a>Context 的层级关系</h2><ul><li>在Spring中，<code>ApplicationContext</code>是典型容器。在SpringMVC中，<code>WebApplicationContext</code>作为其拓展，成为web环境的Ioc容器。</li><li><code>WebApplicationContext</code>作为<code>DispatcherServlet</code>的配置，与<code>ServletContext</code>和它所关联的<code>Servlet</code>关联。</li></ul><h2 id="特殊的Bean类型"><a href="#特殊的Bean类型" class="headerlink" title="特殊的Bean类型"></a>特殊的Bean类型</h2><h2 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h2><p><code>DispatcherServlet</code>对请求的处理流程：</p><ol><li>搜索<code>WebApplicationContext</code>，将其作为一个属性，与请求绑定，以便<code>controller</code>等组件可以使用。</li><li>地域解析器（locale resolver）被绑定在请求上，用于处理地域相关的逻辑，如渲染试图，数据准备等。这是可选的。</li><li>主题解析器（theme resolver）被绑定在请求上，以便view等组件可以获知使用哪个主题。这是可选的。</li><li>如果指定了多部件处理器（multipart file resolver），则请求被包装为<code>MultipartHttpServletRequest</code>，以便后续处理。</li><li>搜索一个合适的处理器（handler）。一旦找到，则与该处理器相关的执行链（execution chain）将被执行，用与准备model或者渲染。</li><li>如果返回了model，则渲染视图。如果没返回model，则不渲染视图。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;依赖关系&quot;&gt;&lt;a href=&quot;#依赖关系&quot; class=&quot;headerlink&quot; title=&quot;依赖关系&quot;&gt;&lt;/a&gt;依赖关系&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijing.myqcloud.
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="Spring" scheme="http://libinyl.github.io/tags/Spring/"/>
     
   </entry>
   
