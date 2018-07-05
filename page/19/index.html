@@ -302,6 +302,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/24/note-pso/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/24/note-pso/" itemprop="url">粒子群优化(PSO)算法学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T19:37:54+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-01T17:18:07+08:00">
+                2018-03-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><p>PSO：Particle Swarm Optimization，1995 年由 Eberhart 博士和 Kennedy 博士一起提出。</p>
+<h2 id="初步形象理解"><a href="#初步形象理解" class="headerlink" title="初步形象理解"></a>初步形象理解</h2><p>一群鸟儿期望寻找一片玉米地。它们都知道自己距离玉米地的距离，但都不知道确切位置。它们相互传递信息，最终所有的鸟都将知道最近的距离。</p>
+<h2 id="精细理解"><a href="#精细理解" class="headerlink" title="精细理解"></a>精细理解</h2><p>具体到算法中，上述的“鸟”抽象为无质量的例子，仅具有两个属性：位置和速度。每个粒子在搜索空间中搜寻最优解，标记为当前个体的极值，并将其与其他粒子共享，最终找到最优的个体极值作为<strong>当前</strong>全局最优解，所有粒子根据当前个体极值和当前全局最优解来调整速度和位置。</p>
+<p>算法思想步骤如下：</p>
+<ol>
+<li>初始化粒子群，包括随机的位置和速度；</li>
+<li>评价每个粒子的适应度；</li>
+<li>对于每个粒子，将它的适应值和它经历过的最好的位置<code>pbest</code>比较，如果较好，则将其作为当前的最好位置<code>pbest</code>；</li>
+<li>对每个粒子，将它的适应值和全局所经历的最好位置<code>gbest</code>的作比较，如果较好，则重新设置<code>gbest</code>（的索引）；</li>
+<li>根据公式更新粒子的速度和位置</li>
+<li>如果达到条件（通常为足够好的适应值或者达到一个预设最大数G<sub>max</sub>）,终止计算，否则返回2。</li>
+</ol>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><blockquote>
+<p><em>v<sub>id</sub><sup>k+1</sup> = w ∙ v<sub>id</sub><sup>k</sup> + c<sub>1</sub> ∙ rand() ∙ ( p<sub>id</sub> - x<sub>id</sub> ) + c<sub>2</sub> ∙ Rand() ∙ ( p<sub>gd</sub> - x<sub>id</sub> )</em></p>
+<p><em>x<sub>id</sub><sup>k+1</sup> = x<sub>id</sub><sup>k</sup> + r ∙ v<sub>id</sub></em></p>
+</blockquote>
+<p>参数解释：</p>
+<ul>
+<li>w : 保持原来速度的系数，所以叫做惯性权重</li>
+<li>c<sub>1</sub> : 粒子跟踪自己历史最优值的权重系数，它表示粒子自身的认识，所以叫“认知”。通常设置为2。</li>
+<li>c<sub>2</sub> ：是粒子跟踪群体最优值的权重系数，它表示粒子对整个群体知识的认识，所以叫做“社会知识”，经常叫做“社会”。通常设置为2。</li>
+<li>rand() 是[0,1]区间内均匀分布的随机数。</li>
+<li>r 是对位置更新的时候，在速度前面加的一个系数，这个系数我们叫做<strong>约束因子</strong>。通常设置为1。</li>
+</ul>
+<p>用自然语言理解公式：</p>
+<pre><code>更新后个体速度 = 惯性权重 * 更新前个体速度 + 个体认知系数 * 0到1的随机数 * ( 更新前个体最优位置 - 更新前个体位置 ) + 社会认知系数 * 0到1的随机数 ( 更新前全局最优位置 - 更新前个体位置 )
+
+更新后个体位置 = 更新前个体位置 + 约束因子 * 更新后个体速度
+</code></pre><h2 id="参数理解"><a href="#参数理解" class="headerlink" title="参数理解"></a>参数理解</h2><p>惯性权重系数 w 使微粒保持运动的惯性，使其有扩展搜索空间的趋势，有能力探索新的区域。</p>
+<p>加速常数c1和c2代表将每个微粒推向pbest和gbest位置的统计加速项的权重。低的值允许微粒在被拉回来之前可以在目标区域外徘徊，而高的值导致微粒突然的冲向或者越过目标区域。</p>
+<p>如果没有第一部分，即w = 0，则速度只取决于微粒当前的位置和它们历史最好位置pbest和gbest，速度本身没有记忆性。假设一个微粒位于全局最好位置，它将保持静止。而其它微粒则飞向它本身最好位置pbest和全局最好位置gbest的加权中心。在这种条件下，微粒群将统计的收缩到当前的全局最好位置，更象一个局部算法。</p>
+<p>如果没有后两部分，即c1 = c2 = 0，微粒将一直以当前的速度飞行，直到到达边界。由于它只能搜索有限的区域，将很难找到好的解。</p>
+<p>在加上第一部分后，微粒有扩展搜索空间的趋势，即第一部分有全局搜索的能力。这也使得w的作用为针对不同的搜索问题，调整算法全局和局部搜索能力的平衡。</p>
+<p>如果没有第二部分，即c1 = 0，则微粒没有认知能力，也就是“只有社会（social-only）”的模型。在微粒的相互作用下，有能力到达新的搜索空间。它的收敛速度比标准版本更快，但是对复杂问题，比标准版本更容易陷入局部优值点。</p>
+<p>如果没有第三部分，即c2 = 0，则微粒之间没有社会信息共享，也就是“只有认知（cognition-only）”的模型。因为个体间没有交互，一个规模为m的群体等价于m个单个微粒的运行。因而得到解的几率非常小。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/02/24/quick-maven-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1749,166 +1937,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/01/31/quick-linux-troubleshot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/31/quick-linux-troubleshot/" itemprop="url">linux系统网络相关记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T10:33:16+08:00">
-                2018-01-31
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-18T01:12:56+08:00">
-                2018-05-18
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h1><h2 id="apt-get"><a href="#apt-get" class="headerlink" title="apt-get"></a>apt-get</h2><h3 id="E-Unable-to-locate-package-build-sessential"><a href="#E-Unable-to-locate-package-build-sessential" class="headerlink" title="E: Unable to locate package build-sessential"></a>E: Unable to locate package build-sessential</h3><p>更新源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-<h3 id="E-Could-not-get-lock"><a href="#E-Could-not-get-lock" class="headerlink" title="E: Could not get lock"></a>E: Could not get lock</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep apt</span><br><span class="line"><span class="built_in">kill</span> -9 processnumber</span><br></pre></td></tr></table></figure>
-<p>参考：<a href="https://askubuntu.com/a/315791" target="_blank" rel="noopener">https://askubuntu.com/a/315791</a></p>
-<h1 id="分版本问题"><a href="#分版本问题" class="headerlink" title="分版本问题"></a>分版本问题</h1><h2 id="CentOS-7"><a href="#CentOS-7" class="headerlink" title="CentOS 7"></a>CentOS 7</h2><h3 id="安装系统之后无法访问网络"><a href="#安装系统之后无法访问网络" class="headerlink" title="安装系统之后无法访问网络"></a>安装系统之后无法访问网络</h3><p>修改配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/netword-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
-<p>将<code>ONBOOT</code>改为yes。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1959,7 +1987,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-count">204</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
