@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-05T02:35:06.016Z</updated>
+  <updated>2018-07-05T16:00:33.149Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,20 +17,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Gradle快速参考</title>
+    <link href="http://libinyl.github.io/2018/07/05/quick-gradle/"/>
+    <id>http://libinyl.github.io/2018/07/05/quick-gradle/</id>
+    <published>2018-07-05T15:53:28.000Z</published>
+    <updated>2018-07-05T16:00:33.149Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h1><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    maven &#123;url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span>&#125;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;maven配置&quot;&gt;&lt;a href=&quot;#maven配置&quot; class=&quot;headerlink&quot; title=&quot;maven配置&quot;&gt;&lt;/a&gt;maven配置&lt;/h1&gt;&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="gradle" scheme="http://libinyl.github.io/tags/gradle/"/>
+    
+  </entry>
+  
+  <entry>
     <title>diary20180705</title>
     <link href="http://libinyl.github.io/2018/07/05/diary20180705/"/>
     <id>http://libinyl.github.io/2018/07/05/diary20180705/</id>
     <published>2018-07-05T02:30:46.000Z</published>
-    <updated>2018-07-05T02:35:06.016Z</updated>
+    <updated>2018-07-05T11:08:39.601Z</updated>
     
-    <content type="html"><![CDATA[<p><code>10:34:45</code> 一会就要去跟武老师吃饭，有点手足无措。。</p>]]></content>
+    <content type="html"><![CDATA[<p><code>10:34:45</code> 一会就要去跟武老师吃饭，有点手足无措。。</p><p><code>18:50:54</code> 看来是想多了。跟老师吃饭很愉快，一起的还有她孩子，和三个老师。老师讲了她的故事。</p><p>下午跟朱星禹去贴开锁的小广告，哈哈哈哈</p><p>晚上吃了黄焖鸡，真是我吃过最好吃的黄焖鸡了。肉又多又瘦，全是鸡腿。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180705%E9%BB%84%E7%84%96%E9%B8%A1.jpg" alt=""></p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;&lt;code&gt;10:34:45&lt;/code&gt; 一会就要去跟武老师吃饭，有点手足无措。。&lt;/p&gt;
-
+&lt;p&gt;&lt;code&gt;18:50:54&lt;/code&gt; 看来是想多了。跟老师吃饭很愉快，一起的还有她孩子，和三个老师。老师讲了她的故事。&lt;/p&gt;
+&lt;p&gt;下午跟朱星禹去贴开锁的小广告，哈哈
       
     
     </summary>
@@ -484,33 +510,6 @@
     
       <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>intelliJ配置实践</title>
-    <link href="http://libinyl.github.io/2018/06/18/note-intellij-config/"/>
-    <id>http://libinyl.github.io/2018/06/18/note-intellij-config/</id>
-    <published>2018-06-18T09:53:38.000Z</published>
-    <updated>2018-06-25T15:13:05.730Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><ul><li>原生<code>IntelliJ</code>主题，不要黑色</li><li>字体选择<code>Fira Code</code>，行距为<code>1.2</code></li></ul><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><ul><li>GsonFormat</li><li>Translation</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;设置&quot;&gt;&lt;a href=&quot;#设置&quot; class=&quot;headerlink&quot; title=&quot;设置&quot;&gt;&lt;/a&gt;设置&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;原生&lt;code&gt;IntelliJ&lt;/code&gt;主题，不要黑色&lt;/li&gt;
-&lt;li&gt;字体选择&lt;code&gt;Fira Code&lt;/cod
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="intelliJ" scheme="http://libinyl.github.io/tags/intelliJ/"/>
     
   </entry>
   

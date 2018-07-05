@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="安装之后的设置设置用户名12git config --global user.name &amp;quot;libin&amp;quot;git config --global user.email libinworkspace@qq.com 添加ssh key1ssh-keygen 防止中文乱码问题1git config --global core.quotepath false        // git s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T16:39:40.322Z">
+<meta property="og:updated_time" content="2018-07-05T13:25:53.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git相关记录">
 <meta name="twitter:description" content="安装之后的设置设置用户名12git config --global user.name &amp;quot;libin&amp;quot;git config --global user.email libinworkspace@qq.com 添加ssh key1ssh-keygen 防止中文乱码问题1git config --global core.quotepath false        // git s">
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-05T00:39:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-05T21:25:53+08:00">
                 2018-07-05
               </time>
             
@@ -422,6 +422,19 @@
 <li><code>git config --global http.postBuffer 524288000</code></li>
 </ul>
 <h2 id="避免文件名过长的error"><a href="#避免文件名过长的error" class="headerlink" title="避免文件名过长的error"></a>避免文件名过长的error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.longpaths true</span><br></pre></td></tr></table></figure>
+<h1 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h1><h2 id="关于分支"><a href="#关于分支" class="headerlink" title="关于分支"></a>关于分支</h2><ul>
+<li>星号“*”所在位置即为当前分支。</li>
+<li><code>git merge xxx</code>是将<code>xxx</code>分支合并到当前分支，在当前分支下形成新的节点。而<code>git rebase xxx</code>是将当前节点合并到<code>xxx</code>节点，并将其作为当前分支的最新节点。抛弃开始时的“当前节点”。开始时的“当前节点”已经没有分支。</li>
+</ul>
+<h2 id="HEAD与分支"><a href="#HEAD与分支" class="headerlink" title="HEAD与分支"></a>HEAD与分支</h2><ul>
+<li>HEAD通常指向当前分支，手动对某个提交记录惊醒<code>checkout</code>则指向此提交记录。</li>
+<li>查看HEAD：<code>cat .git/HEAD</code>或<code>git symbolic-ref HEAD</code></li>
+<li><code>git checkout</code>后接分支名或者节点的哈希值。接“HEAD”无效。</li>
+<li><code>git checkout 分支名</code>则一定将head切到指定分支最新处。</li>
+<li><code>git checkout ^</code>将HEAD向上移动一个记录，<code>git checkout ~5</code>将HEAD向上移动5个记录。</li>
+<li><code>git branch 分支名 节点名</code>直接让某个分支处于某个节点。这个节点可以是哈希值，或者HEAD的相对值。</li>
+<li></li>
+</ul>
 
       
     </div>
@@ -546,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">204</span>
+                  <span class="site-state-item-count">205</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -568,7 +581,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -630,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装之后的设置"><span class="nav-number">1.</span> <span class="nav-text">安装之后的设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置用户名"><span class="nav-number">1.1.</span> <span class="nav-text">设置用户名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加ssh-key"><span class="nav-number">1.2.</span> <span class="nav-text">添加ssh key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防止中文乱码问题"><span class="nav-number">1.3.</span> <span class="nav-text">防止中文乱码问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加快克隆"><span class="nav-number">1.4.</span> <span class="nav-text">加快克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-修改hosts文件"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 修改hosts文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-修改缓冲区"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 修改缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免文件名过长的error"><span class="nav-number">1.5.</span> <span class="nav-text">避免文件名过长的error</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装之后的设置"><span class="nav-number">1.</span> <span class="nav-text">安装之后的设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置用户名"><span class="nav-number">1.1.</span> <span class="nav-text">设置用户名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加ssh-key"><span class="nav-number">1.2.</span> <span class="nav-text">添加ssh key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防止中文乱码问题"><span class="nav-number">1.3.</span> <span class="nav-text">防止中文乱码问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加快克隆"><span class="nav-number">1.4.</span> <span class="nav-text">加快克隆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-修改hosts文件"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 修改hosts文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-修改缓冲区"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 修改缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免文件名过长的error"><span class="nav-number">1.5.</span> <span class="nav-text">避免文件名过长的error</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用细节"><span class="nav-number">2.</span> <span class="nav-text">使用细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于分支"><span class="nav-number">2.1.</span> <span class="nav-text">关于分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEAD与分支"><span class="nav-number">2.2.</span> <span class="nav-text">HEAD与分支</span></a></li></ol></li></ol></div>
             
 
           </div>
