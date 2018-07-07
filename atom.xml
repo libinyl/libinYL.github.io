@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-07T11:16:43.706Z</updated>
+  <updated>2018-07-07T17:17:05.971Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180707</title>
+    <link href="http://libinyl.github.io/2018/07/08/diary20180707/"/>
+    <id>http://libinyl.github.io/2018/07/08/diary20180707/</id>
+    <published>2018-07-07T17:14:44.000Z</published>
+    <updated>2018-07-07T17:17:05.971Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>01:14:53</code> 中午去奶奶家，爸已回家。不一会老姑父回来了。</p><p>下午去盛天放家呆着，帮他鼓捣电脑，晚上吃了饸饹面。</p><p><code>01:15:51</code> 看着tomcat源码，有一种朝圣，或者阅读秘籍的感觉。。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180708tomcat源码.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;01:14:53&lt;/code&gt; 中午去奶奶家，爸已回家。不一会老姑父回来了。&lt;/p&gt;
+&lt;p&gt;下午去盛天放家呆着，帮他鼓捣电脑，晚上吃了饸饹面。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;01:15:51&lt;/code&gt; 看着tomcat源码，有一种朝圣，或者阅读秘籍的感觉。。&lt;/
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tomcat源码学习日志</title>
+    <link href="http://libinyl.github.io/2018/07/07/note-tomcat-learn/"/>
+    <id>http://libinyl.github.io/2018/07/07/note-tomcat-learn/</id>
+    <published>2018-07-07T15:32:43.000Z</published>
+    <updated>2018-07-07T17:10:27.461Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h1><ul><li>下载<code>Tomcat7</code><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.90/src/apache-tomcat-7.0.90-src.zip" target="_blank" rel="noopener">源码</a></li><li>配置<code>JDK1.6</code></li><li>配置<code>1.9.x</code>版本的Ant</li><li>将build.xml中的<code>base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;filename=</code>替换为<code>base-apache.loc.1=https://archive.apache.org/dist</code></li><li>在tomcat目录下执行<code>ant</code></li></ul><h1 id="源码阅读日志"><a href="#源码阅读日志" class="headerlink" title="源码阅读日志"></a>源码阅读日志</h1><ul><li>主类/主方法：<code>org.apache.catalina.startup</code>包下的<code>Bootstrap</code>类。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;编译源码&quot;&gt;&lt;a href=&quot;#编译源码&quot; class=&quot;headerlink&quot; title=&quot;编译源码&quot;&gt;&lt;/a&gt;编译源码&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;下载&lt;code&gt;Tomcat7&lt;/code&gt;&lt;a href=&quot;https://mirrors.tuna.tsin
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="tomcat" scheme="http://libinyl.github.io/tags/tomcat/"/>
+    
+      <category term="源码学习" scheme="http://libinyl.github.io/tags/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>diary20180706</title>
@@ -451,59 +504,6 @@
       
         &lt;p&gt;&lt;code&gt;16:12:53&lt;/code&gt; 去河东买药，竟然无意中去了咖啡之翼大厦。好矮的大厦。。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>note-maven-basic</title>
-    <link href="http://libinyl.github.io/2018/06/20/note-maven-basic/"/>
-    <id>http://libinyl.github.io/2018/06/20/note-maven-basic/</id>
-    <published>2018-06-20T10:12:05.000Z</published>
-    <updated>2018-06-20T10:36:14.896Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h1><ul><li>maven有自己的生命周期，从开始执行到结束，依次经过。</li><li>maven的每个插件都有一个目标。</li><li>maven把某个目标绑定在某个生命周期阶段</li></ul><p>这样一来，随着生命周期的执行，不同目标也随之执行。</p><h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>maven有三种周期：</p><ul><li>清洁（clean）</li><li>默认（default）</li><li>站点（site）</li></ul><h2 id="“清洁”的声明周期"><a href="#“清洁”的声明周期" class="headerlink" title="“清洁”的声明周期"></a>“清洁”的声明周期</h2><table><thead><tr><th>具体周期</th><th>作用</th></tr></thead><tbody><tr><td>预清洁（pre-clean）</td><td>执行实际项目清理之前所需的流程</td></tr><tr><td>清洁（clean）</td><td>删除以前构建生成的所有文件</td></tr><tr><td>后清洁（post-clean）</td><td>执行完成项目清理所需的流程</td></tr></tbody></table><h2 id="“默认”的生命周期"><a href="#“默认”的生命周期" class="headerlink" title="“默认”的生命周期"></a>“默认”的生命周期</h2><table><thead><tr><th>具体周期</th><th>作用</th></tr></thead><tbody><tr><td>验证（validate）</td><td>验证项目是正确的，所有必要的信息可用。</td></tr><tr><td>初始化（initialize）</td><td>初始化构建状态，例如设置属性或创建目录。</td></tr><tr><td>产生来源（generate-sources）</td><td>生成包含在编译中的任何源代码。</td></tr><tr><td>流程源（process-sources）</td><td>处理源代码，例如过滤任何值。</td></tr><tr><td>生成资源（generate-resources）</td><td>生成包含在包中的资源。</td></tr><tr><td>流程资源（process-resources）</td><td>将资源复制并处理到目标目录中，准备打包。</td></tr><tr><td>编译（compile）</td><td>编译项目的源代码。</td></tr><tr><td>工艺类（process-classes）</td><td>从编译后处理生成的文件，例如对Java类进行字节码增强。</td></tr><tr><td>生成测试来源（generate-test-sources）</td><td>生成包含在编译中的任何测试源代码。</td></tr><tr><td>流程测试来源（process-test-sources）</td><td>处理测试源代码，例如过滤任何值。</td></tr><tr><td>生成测试资源（generate-test-resources）</td><td>创建测试资源。</td></tr><tr><td>流程测试资源（process-test-resources）</td><td>将资源复制并处理到测试目标目录中。</td></tr><tr><td>测试编译（test-compile）</td><td>将测试源代码编译到测试目标目录中</td></tr><tr><td>流程检验类（process-test-classes）</td><td>从测试编译中处理生成的文件，例如对Java类进行字节码增强。对于Maven 2.0.5及以上版本。</td></tr><tr><td>测试（test）</td><td>使用合适的单元测试框架运行测试。这些测试不应该要求代码被打包或部署。</td></tr><tr><td>制备包（prepare-package）</td><td>在实际包装之前，执行必要的准备包装的操作。这通常会导致打包的处理版本的包。（Maven 2.1及以上）</td></tr><tr><td>打包（package）</td><td>采取编译的代码，并以其可分发的格式（如JAR）进行打包。</td></tr><tr><td>预集成测试（pre-integration-test）</td><td>在执行集成测试之前执行所需的操作。这可能涉及诸如设置所需环境等。</td></tr><tr><td>集成测试（integration-test）</td><td>如果需要，可以将该包过程并部署到可以运行集成测试的环境中。</td></tr><tr><td>整合后的测试（post-integration-test）</td><td>执行集成测试后执行所需的操作。这可能包括清理环境。</td></tr><tr><td>校验（verify）</td><td>运行任何检查以验证包装是否有效并符合质量标准。</td></tr><tr><td>安装（install）</td><td>将软件包安装到本地存储库中，以作为本地其他项目的依赖关系。</td></tr><tr><td>部署（deploy）</td><td>在集成或发布环境中完成，将最终软件包复制到远程存储库，以与其他开发人员和项目共享。</td></tr></tbody></table><h2 id="“站点”生命周期"><a href="#“站点”生命周期" class="headerlink" title="“站点”生命周期"></a>“站点”生命周期</h2><hr><p>具体周期 | 作用<br>预网站（pre-site） | 在实际的项目现场生成之前执行所需的进程<br>网站（site） | 生成项目的站点文档<br>后网站（post-site） | 执行完成站点生成所需的进程，并准备站点部署<br>网站部署（site-deploy） | 将生成的站点文档部署到指定的Web服务器</p><h1 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h1><p>在执行<code>mvn install</code>时，以下插件对应的目标执行：</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/mavenPackage.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;总览&quot;&gt;&lt;a href=&quot;#总览&quot; class=&quot;headerlink&quot; title=&quot;总览&quot;&gt;&lt;/a&gt;总览&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;maven有自己的生命周期，从开始执行到结束，依次经过。&lt;/li&gt;
-&lt;li&gt;maven的每个插件都有一个目标。&lt;/li&gt;
-&lt;li
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="maven" scheme="http://libinyl.github.io/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180620</title>
-    <link href="http://libinyl.github.io/2018/06/20/diary20180620/"/>
-    <id>http://libinyl.github.io/2018/06/20/diary20180620/</id>
-    <published>2018-06-20T06:09:30.000Z</published>
-    <updated>2018-06-21T08:03:34.079Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>16:21:40</code> 来到久违的凯李，感觉非常好。上午把学士服还了。</p><p><code>18:49:19</code> 看了《maven权威指南》，这才是技术书！看的真tm爽！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620maven.png" alt=""></p><p><code>20:34:49</code> 韩佳政说要请我，已截图</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180620%E9%9F%A9%E4%BD%B3%E6%94%BF%E8%AF%B7%E6%88%91.png" alt=""></p><p><code>20:34:49</code> 离开凯李。久违的充实。。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;16:21:40&lt;/code&gt; 来到久违的凯李，感觉非常好。上午把学士服还了。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;18:49:19&lt;/code&gt; 看了《maven权威指南》，这才是技术书！看的真tm爽！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://yeliang1
       
     
     </summary>
