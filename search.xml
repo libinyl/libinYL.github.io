@@ -203,7 +203,7 @@
   <entry>
     <title><![CDATA[intelliJ配置实践]]></title>
     <url>%2F2018%2F06%2F18%2Fnote-intellij-config%2F</url>
-    <content type="text"><![CDATA[设置 原生IntelliJ主题，不要黑色 字体选择Fira Code，行距为1.2 插件 GsonFormat Translation]]></content>
+    <content type="text"><![CDATA[设置 原生IntelliJ主题，不要黑色 字体选择Fira Code，行距为1.2 插件 GsonFormat Translation 一些好用但不常见的快捷键 功能 按键 后退 Ctrl + Alt + &lt;- 前进 Ctrl + Alt + -&gt; 快速查看源码 Ctrl + Shift + I]]></content>
       <categories>
         <category>技·术</category>
       </categories>

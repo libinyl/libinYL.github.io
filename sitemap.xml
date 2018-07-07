@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://libinyl.github.io/2018/06/18/note-intellij-config/</loc>
+    
+    <lastmod>2018-07-07T18:33:38.593Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://libinyl.github.io/2018/07/08/diary20180707/</loc>
     
     <lastmod>2018-07-07T17:17:05.971Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>http://libinyl.github.io/2018/06/25/diary20180625/</loc>
     
     <lastmod>2018-06-25T16:33:53.255Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/06/18/note-intellij-config/</loc>
-    
-    <lastmod>2018-06-25T15:13:05.730Z</lastmod>
     
   </url>
   
