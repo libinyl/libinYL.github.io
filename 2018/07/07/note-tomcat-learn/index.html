@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apache.loc.1=https://archive.apache.org/dist 在tomcat目录下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-07T17:10:27.461Z">
+<meta property="og:updated_time" content="2018-07-08T10:54:53.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat源码学习日志">
 <meta name="twitter:description" content="编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apache.loc.1=https://archive.apache.org/dist 在tomcat目录下">
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T01:10:27+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-08T18:54:53+08:00">
                 2018-07-08
               </time>
             
@@ -416,8 +416,31 @@
 </ul>
 <h1 id="源码阅读日志"><a href="#源码阅读日志" class="headerlink" title="源码阅读日志"></a>源码阅读日志</h1><ul>
 <li>主类/主方法：<code>org.apache.catalina.startup</code>包下的<code>Bootstrap</code>类。</li>
+<li>几个重要的目录（或者说环境变量）：</li>
 </ul>
-
+<table>
+<thead>
+<tr>
+<th>主目录</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{ <strong>$CATALINA_HOME</strong> }</td>
+<td>Tomcat安装目录</td>
+</tr>
+<tr>
+<td>{ <strong>$CATALINA_BASE</strong> }</td>
+<td>每个实例分别的根目录（可选，默认情况等同于{ <strong>$CATALINA_HOME</strong> }）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_HOME</span><br><span class="line">    ├─bin       <span class="comment">// 诸如启动、停止等脚本。</span></span><br><span class="line">    ├─conf      <span class="comment">// 配置文件</span></span><br><span class="line">    ├─logs      <span class="comment">// 默认日志文件路径</span></span><br><span class="line">    └─webapps   <span class="comment">// web应用路径</span></span><br></pre></td></tr></table></figure>
+<h1 id="优美代码"><a href="#优美代码" class="headerlink" title="优美代码"></a>优美代码</h1><p>观察到，一个典型的类中，可以被分成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------------- Static Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------------- Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------- Private Methods</span></span><br><span class="line"><span class="comment">// ----------------------------------------------------------- Main Program</span></span><br></pre></td></tr></table></figure>
+<p>典型的生命周期方法有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(String[] arguments)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopServer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopServer</span><span class="params">(String[] arguments)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -627,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译源码"><span class="nav-number">1.</span> <span class="nav-text">编译源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读日志"><span class="nav-number">2.</span> <span class="nav-text">源码阅读日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编译源码"><span class="nav-number">1.</span> <span class="nav-text">编译源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读日志"><span class="nav-number">2.</span> <span class="nav-text">源码阅读日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优美代码"><span class="nav-number">3.</span> <span class="nav-text">优美代码</span></a></li></ol></div>
             
 
           </div>

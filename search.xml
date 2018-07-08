@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[tomcat源码学习日志]]></title>
     <url>%2F2018%2F07%2F07%2Fnote-tomcat-learn%2F</url>
-    <content type="text"><![CDATA[编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;filename=替换为base-apache.loc.1=https://archive.apache.org/dist 在tomcat目录下执行ant 源码阅读日志 主类/主方法：org.apache.catalina.startup包下的Bootstrap类。]]></content>
+    <content type="text"><![CDATA[编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;filename=替换为base-apache.loc.1=https://archive.apache.org/dist 在tomcat目录下执行ant 源码阅读日志 主类/主方法：org.apache.catalina.startup包下的Bootstrap类。 几个重要的目录（或者说环境变量）： 主目录 含义 { $CATALINA_HOME } Tomcat安装目录 { $CATALINA_BASE } 每个实例分别的根目录（可选，默认情况等同于{ $CATALINA_HOME }） 12345CATALINA_HOME ├─bin // 诸如启动、停止等脚本。 ├─conf // 配置文件 ├─logs // 默认日志文件路径 └─webapps // web应用路径 优美代码观察到，一个典型的类中，可以被分成： 1234// ------------------------------------------------------- Static Variables// -------------------------------------------------------------- Variables// -------------------------------------------------------- Private Methods// ----------------------------------------------------------- Main Program 典型的生命周期方法有： 1234567public void init()public void init(String[] arguments)public void start()public void stop()public void stopServer()public void stopServer(String[] arguments)public void destroy()]]></content>
       <categories>
         <category>技·术</category>
       </categories>
