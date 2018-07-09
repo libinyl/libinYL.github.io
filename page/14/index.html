@@ -302,6 +302,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/28/note-java-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/28/note-java-collection/" itemprop="url">java集合框架概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T21:01:19+08:00">
+                2018-03-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-29T19:38:22+08:00">
+                2018-03-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><ol>
+<li>所有集合类位于java.util包下。集合类主要由两个接口派生而出，Collection和Map，它们描述了基本的功能,如size(),contains(),add(),remove()等。Map接口提供了以Collection查看数据的视角。</li>
+<li>Collection的子接口有三类，List，Set，Queue。</li>
+</ol>
+<ul>
+<li>List是有序集合，维护顺序，元素允许重复</li>
+<li>Set是无序集合，元素不可以重复，访问只能通过本身来访问</li>
+<li>Map是key-value集合，访问时只能根据key来访问value。</li>
+</ul>
+<h1 id="Q：jdk中队列时怎样的？"><a href="#Q：jdk中队列时怎样的？" class="headerlink" title="Q：jdk中队列时怎样的？"></a>Q：jdk中队列时怎样的？</h1><p>在<code>Queue</code>接口中定义了队列的基本方法：</p>
+<ul>
+<li><strong>add，offer</strong> 都是向队列里添加元素。如果队列满了，add抛出unchecked异常，offer后者返回false。</li>
+<li><strong>remove，poll</strong> 都是从队列中删除第一个元素，remove在空集合调用时抛出异常，poll返回null。</li>
+<li><strong>element，peek</strong> 都是在队列的头部查询元素。在队列为空时，element抛出异常，peek返回null。</li>
+</ul>
+<p>在jdk中，队列主要分两组：实现阻塞队列接口的，和没有实现阻塞队列接口的。</p>
+<p>阻塞队列接口：<code>BlockingQueue</code></p>
+<p>参考：<a href="https://www.cnblogs.com/xiaoxi/p/6089984.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoxi/p/6089984.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/28/diary20180328/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1609,8 +1780,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-06T01:40:55+08:00">
-                2018-07-06
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-09T22:18:33+08:00">
+                2018-07-09
               </time>
             
           </span>
@@ -1667,7 +1838,8 @@
       
         
           
-            <h1 id="2018年7月6日"><a href="#2018年7月6日" class="headerlink" title="2018年7月6日"></a>2018年7月6日</h1><p>成长路线图：总结起来：<strong>影响力</strong></p>
+            <h1 id="2018年7月9日"><a href="#2018年7月9日" class="headerlink" title="2018年7月9日"></a>2018年7月9日</h1><p>C语言怎么学？应当去了解一些常用命令的实现，如<code>ls</code>，<code>mkdir</code>等。</p>
+<h1 id="2018年7月6日"><a href="#2018年7月6日" class="headerlink" title="2018年7月6日"></a>2018年7月6日</h1><p>成长路线图：总结起来：<strong>影响力</strong></p>
 <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/%E9%98%BF%E9%87%8C%E7%BA%A7%E5%88%AB%E8%B7%AF%E7%BA%BF.jpg" alt=""></p>
 <p>待考察软件：</p>
 <ul>
@@ -1712,201 +1884,6 @@
 <p>首先，对于HashMap的总结方法是值得借鉴的。把HashMap分成两个部分来分析，先分析Map，再分析Hash。Map在Java中的角色是什么，数据结构是怎样的；Hash是什么，在计算机科学领域的概念是什么；其次从宏观分析Hash的目的和步骤（转化、压缩），再次分析Hash在HashMap内部的实现，各种对象如何转换为散列码，如何压缩为索引值；为什么要多一步高位运算。接下来多线程方面进行引申（即实际中常出现的问题），从源码的角度分析ConcurrentHashMap如何解决了多线程问题。</p>
 <p>事实上简单来说，最佳的叙述思路/记忆思路，确实可以用小黄鸭记忆法来辅助。因为当我的思路是为一个不懂技术的人叙述技术原理时，我会自动按照<strong>背景——需求——宏观解决方案——解决方案细节——子方案——拓展问题</strong>的组织形式进行学习和记忆。</p>
 <p>今天觉得，days review——自小米实习结束之后，我在湘浦旅馆不分昼夜地度过了几天，顿感时光飞逝，遂觉应当建立博客，以实时反思自己的自律方式——是十分必要，实践结果尚佳的。延长主观寿命的方法之一就是早起。当看到清晨的太阳，所有的困倦都会消失，而会对今天的时间充满信心。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/21/note-mysql-common/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/note-mysql-common/" itemprop="url">mysql概念汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T10:29:50+08:00">
-                2018-03-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T17:47:02+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Q：数据库事务正确执行的四个基本要素（ACID）是什么？"><a href="#Q：数据库事务正确执行的四个基本要素（ACID）是什么？" class="headerlink" title="Q：数据库事务正确执行的四个基本要素（ACID）是什么？"></a>Q：数据库事务正确执行的四个基本要素（ACID）是什么？</h1><p><strong>A：</strong> ACID对应的含义：</p>
-<p>A   Atomicity   原子性<br>C   Consistency 一致性<br>I   Isolation   隔离性<br>D   Durability  持久性</p>
-<h1 id="Q：隔离级别有什么？"><a href="#Q：隔离级别有什么？" class="headerlink" title="Q：隔离级别有什么？"></a>Q：隔离级别有什么？</h1><p>不考虑隔离级别的问题：</p>
-<p>脏读：在一个事务处理过程读取了另一个未提交的事务中的数据。</p>
-<p>不可重复读/幻读：读取了另一条已经提交的事务，前者在于update和delete，后者在于insert</p>
-<p>可重复读：</p>
-<p>四中隔离级别：</p>
-<ul>
-<li>串行化</li>
-<li>可重复读（默认）</li>
-<li>读已提交</li>
-<li>读未提交</li>
-</ul>
-<p>具体解释：</p>
-<ul>
-<li><strong>没有锁</strong>：两个事务同时写数据，其中一个被另一个覆盖，导致<strong>数据丢失</strong>。</li>
-<li><strong>读取未提交</strong>：写时加上排它锁，直到事务结束；读取时不加锁。读取到其他事务的数据，而其他事务数据回滚，则读取到<strong>脏数据</strong>。</li>
-<li><strong>读取已提交</strong>：写时加上排它锁，直到事务结束；读取读取完毕之后立刻释放共享锁。每次事务中重复读取某一数据，如果读取过程中其他事务对此数据修改了，则两次读取的数据不同，即<strong>不可重复读</strong>。</li>
-<li><strong>可重复读</strong>：写时加上排他锁，直到事务结束；读取时加上共享锁，直到事务结束。可避免重复读的问题。但是批量修改某相同值的数据时，其他事务增加了相同值的数据，则验证时发现存在未修改的数据，即<strong>幻读</strong>。</li>
-<li><strong>可串行化</strong>。串行执行事务，避免了以上问题。</li>
-</ul>
-<h1 id="Q：数据库范式？"><a href="#Q：数据库范式？" class="headerlink" title="Q：数据库范式？"></a>Q：数据库范式？</h1><p><strong>A：</strong> </p>
-<p>1NF：列不能拆分为其他几列，是基本要求。缺点：数据冗余过大。</p>
-<p>2NF：首先1NF；1. 必须有主键 2.没有包含在主键中的列必须完全依赖于主键，而不能依赖于主键的一部分。</p>
-<p>3NF：首选NF；1. 不能存在传递依赖。</p>
-<h1 id="Q：sql优化？"><a href="#Q：sql优化？" class="headerlink" title="Q：sql优化？"></a>Q：sql优化？</h1><p><strong>A：</strong> </p>
-<ul>
-<li>只返回需要的数据。<ul>
-<li>忌 SELECT * </li>
-<li>尽可能写WHERE</li>
-</ul>
-</li>
-<li>适当建立索引</li>
-<li>避免全表扫描：<ul>
-<li>左模糊查询’%…’</li>
-<li>OR使用不当，两边必须都有索引</li>
-<li>WHERE子句对字段进行表达式操作</li>
-</ul>
-</li>
-</ul>
-<p>参考：</p>
-<p><a href="https://www.cnblogs.com/wmbg/p/6800354.html" target="_blank" rel="noopener">https://www.cnblogs.com/wmbg/p/6800354.html</a></p>
 
           
         
@@ -1992,7 +1969,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">209</span>
+                  <span class="site-state-item-count">210</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
