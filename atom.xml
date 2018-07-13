@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-12T15:10:51.357Z</updated>
+  <updated>2018-07-13T14:16:46.062Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180713</title>
+    <link href="http://libinyl.github.io/2018/07/13/diary20180713/"/>
+    <id>http://libinyl.github.io/2018/07/13/diary20180713/</id>
+    <published>2018-07-13T14:02:30.000Z</published>
+    <updated>2018-07-13T14:16:46.062Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>22:02:48</code> 其实要是每天都这样，加班也值了。可惜日子并不多啊。</p><p>每天酒店会给收拾换洗床铺、打扫洗手间什么的，还送水送饮料。比之前住过的酒店还多了剃须刀（以及泡沫）。</p><p>今天仍是疲惫的一天。上午出发租房子，过午才到环保园附近，最终租了一间，每月两千一。偶然发现公司附近就是海淀北部文化馆。真是比商超更好的地方，待有机会去看。</p><p>在北京的地铁，非常能感受到人们的生活节奏。每个人的步伐都镇定而紧凑。</p><blockquote><p>在知乎上看到，“北京有什么好”的问题，一个回答说，在北京，你不会被看到。不论你是商业大佬，达官显贵，还是前卫的艺术家、青涩的学生，不管你头戴耳机，头发染成五颜六色，或者衣衫褴褛，肤色黝黑，你都不会被看到。这里的人太多太多，什么样子的人都有太多太多，你是一个分子，你是无色透明的。这种自由的感觉，能让人很快定位自己，真正想成为什么。</p></blockquote><p>晚上到商场买了肥皂衣架拖鞋等等。脚掌酸痛，肩膀酸痛。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;22:02:48&lt;/code&gt; 其实要是每天都这样，加班也值了。可惜日子并不多啊。&lt;/p&gt;
+&lt;p&gt;每天酒店会给收拾换洗床铺、打扫洗手间什么的，还送水送饮料。比之前住过的酒店还多了剃须刀（以及泡沫）。&lt;/p&gt;
+&lt;p&gt;今天仍是疲惫的一天。上午出发租房子，过午才到环保
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>diary20180712</title>
@@ -480,30 +505,6 @@
       
         &lt;p&gt;&lt;code&gt;16:45:15&lt;/code&gt; 即将去梅溪湖那边看电影，吃好吃。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;00:31:29&lt;/code&gt; 晚上与胡去了梅溪湖那边吃了烤鱼，然后看《阿飞正传》——竟然是国语！断然离开，立刻买了潇湘的票。结果没太看懂。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180626</title>
-    <link href="http://libinyl.github.io/2018/06/27/diary20180626/"/>
-    <id>http://libinyl.github.io/2018/06/27/diary20180626/</id>
-    <published>2018-06-26T17:00:07.000Z</published>
-    <updated>2018-06-26T17:01:04.982Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>01:00:22</code> 给学弟装了程序，发了我50块的红包，大方的学弟啊。给我政继续写程序。突然对CUDA感兴趣了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;01:00:22&lt;/code&gt; 给学弟装了程序，发了我50块的红包，大方的学弟啊。给我政继续写程序。突然对CUDA感兴趣了。&lt;/p&gt;
 
       
     
