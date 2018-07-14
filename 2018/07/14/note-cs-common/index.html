@@ -97,7 +97,7 @@
 <meta property="og:description" content="关键词将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:  登录 登录名 shell   文件和目录 文件系统 文件名 路径名 工作目录 起始目录   输入和输出 文件描述符 标准输入、标准输出、标准错误 不带缓冲的I/O 标准I/O   程序和进程 程序 进程和进程id 进程控制 线程和线程id   出错处理 用户标识 用户id 组id 附属组id   信号 时间值 系统调用和库函数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png">
-<meta property="og:updated_time" content="2018-07-14T11:02:24.737Z">
+<meta property="og:updated_time" content="2018-07-14T11:05:25.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统核心知识及拓展">
 <meta name="twitter:description" content="关键词将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:  登录 登录名 shell   文件和目录 文件系统 文件名 路径名 工作目录 起始目录   输入和输出 文件描述符 标准输入、标准输出、标准错误 不带缓冲的I/O 标准I/O   程序和进程 程序 进程和进程id 进程控制 线程和线程id   出错处理 用户标识 用户id 组id 附属组id   信号 时间值 系统调用和库函数">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T19:02:24+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T19:05:25+08:00">
                 2018-07-14
               </time>
             
@@ -542,7 +542,11 @@
 <li><strong>不带缓冲的I/O</strong>：都使用文件描述符。<br><code>open()</code>、<code>read()</code>、<code>write()</code>、<code>lseek()</code>、<code>close()</code>函数。</li>
 <li><strong>标准I/O</strong>：为不带缓冲的I/O函数提供带缓冲的接口。</li>
 </ul>
-<h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2>
+<h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2><ul>
+<li>内核使用<code>exec</code>（系列）函数将程序读入内存，并执行<strong>程序（program）</strong>。</li>
+<li><strong>程序的执行实例称为进程（process）。</strong>每个进程都用一个唯一的非负整数作为数字标识符，称为进程ID。（process ID）</li>
+</ul>
+
       
     </div>
     
