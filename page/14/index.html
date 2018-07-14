@@ -302,6 +302,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/04/01/note-mysql-performance-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/01/note-mysql-performance-command/" itemprop="url">mysql性能优化相关命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T16:50:00+08:00">
+                2018-04-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-01T16:50:35+08:00">
+                2018-04-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="explain命令"><a href="#explain命令" class="headerlink" title="explain命令"></a>explain命令</h1><p>（参考：<a href="https://segmentfault.com/a/1190000008131735）" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008131735）</a></p>
+<p>对于脚本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`order_info`</span> (</span><br><span class="line">  <span class="string">`id`</span>           <span class="built_in">BIGINT</span>(<span class="number">20</span>)  <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`user_id`</span>      <span class="built_in">BIGINT</span>(<span class="number">20</span>)           <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`product_name`</span> <span class="built_in">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`productor`</span>    <span class="built_in">VARCHAR</span>(<span class="number">30</span>)          <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`user_product_detail_index`</span> (<span class="string">`user_id`</span>, <span class="string">`product_name`</span>, <span class="string">`productor`</span>)</span><br><span class="line">)</span><br><span class="line">  <span class="keyword">ENGINE</span> = <span class="keyword">InnoDB</span></span><br><span class="line">  <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span> = utf8</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">'p1'</span>, <span class="string">'WHH'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">'p2'</span>, <span class="string">'WL'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">'p1'</span>, <span class="string">'DX'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">'p1'</span>, <span class="string">'WHH'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">'p5'</span>, <span class="string">'WL'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">'p3'</span>, <span class="string">'MA'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="string">'p1'</span>, <span class="string">'WHH'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="string">'p1'</span>, <span class="string">'WHH'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> order_info (user_id, product_name, productor) <span class="keyword">VALUES</span> (<span class="number">9</span>, <span class="string">'p8'</span>, <span class="string">'TE'</span>);</span><br></pre></td></tr></table></figure>
+<p>做explain查询有：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> * <span class="keyword">from</span> user_info <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">2</span>\G</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">*************************** 1. row ***************************</span><br><span class="line">           id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">   partitions: NULL</span><br><span class="line">         type: const</span><br><span class="line">possible_keys: PRIMARY</span><br><span class="line">          key: PRIMARY</span><br><span class="line">      key_len: 8</span><br><span class="line">          ref: const</span><br><span class="line">         rows: 1</span><br><span class="line">     filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li>id：每个select都会自动分配一个唯一标识符。</li>
+<li>select_type:SELECT的类型。<ul>
+<li>SIMPLE：表示此查询不包含UNION查询或子查询</li>
+<li>PRIMARY：表示此查询是最外层的查询。</li>
+<li>UNION, 表示此查询是 UNION 的第二或随后的查询</li>
+<li>DEPENDENT UNION, UNION 中的第二个或后面的查询语句, 取决于外面的查询</li>
+<li>UNION RESULT, UNION 的结果</li>
+<li>SUBQUERY, 子查询中的第一个 SELECT</li>
+<li>DEPENDENT SUBQUERY: 子查询中的第一个 SELECT, 取决于外面的查询. 即子查询依赖于外层查询的结果.</li>
+</ul>
+</li>
+<li>table：查询涉及的表</li>
+<li>partitions: 匹配的分区</li>
+<li><p>type: join 类型，比较重要</p>
+<ul>
+<li>system：表中只有一条数据</li>
+<li>针对主键或唯一索引的等值查询扫描，最多只返回一行数据，速度非常快，因为仅仅读取一次即可。使用主键索引的查询就是const类型的。</li>
+<li>eq_ref：此类型通常出现在多表的 join 查询, 表示对于前表的每一个结果, 都只能匹配到后表的一行结果. 并且查询的比较操作通常是 =, 查询效率较高. 例如:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; EXPLAIN SELECT * FROM user_info, order_info WHERE user_info.id = order_info.user_id\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: order_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: index</span><br><span class="line">possible_keys: user_product_detail_index</span><br><span class="line">          key: user_product_detail_index</span><br><span class="line">      key_len: 314</span><br><span class="line">          ref: NULL</span><br><span class="line">        rows: 9</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: Using where; Using index</span><br><span class="line">*************************** 2. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: eq_ref</span><br><span class="line">possible_keys: PRIMARY</span><br><span class="line">          key: PRIMARY</span><br><span class="line">      key_len: 8</span><br><span class="line">          ref: test.order_info.user_id</span><br><span class="line">        rows: 1</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br><span class="line">2 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ref: 此类型通常出现在多表的 join 查询, 针对于非唯一或非主键索引, 或者是使用了 <strong>最左前缀</strong> 规则索引的查询. 例如</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; EXPLAIN SELECT * FROM user_info, order_info WHERE user_info.id = order_info.user_id AND order_info.user_id = 5\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: const</span><br><span class="line">possible_keys: PRIMARY</span><br><span class="line">          key: PRIMARY</span><br><span class="line">      key_len: 8</span><br><span class="line">          ref: const</span><br><span class="line">        rows: 1</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: NULL</span><br><span class="line">*************************** 2. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: order_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: ref</span><br><span class="line">possible_keys: user_product_detail_index</span><br><span class="line">          key: user_product_detail_index</span><br><span class="line">      key_len: 9</span><br><span class="line">          ref: const</span><br><span class="line">        rows: 1</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: Using index</span><br><span class="line">2 rows in set, 1 warning (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>range: 表示使用索引范围查询, 通过索引字段范围获取表中部分数据记录. 这个类型通常出现在 =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, IN() 操作中.当 type 是 range 时, 那么 EXPLAIN 输出的 ref 字段为 NULL, 并且 key_len 字段是此次查询中使用到的索引的最长的那个.例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; EXPLAIN SELECT *</span><br><span class="line">    -&gt;         FROM user_info</span><br><span class="line">    -&gt;         WHERE id BETWEEN 2 AND 8 \G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: range</span><br><span class="line">possible_keys: PRIMARY</span><br><span class="line">          key: PRIMARY</span><br><span class="line">      key_len: 8</span><br><span class="line">          ref: NULL</span><br><span class="line">        rows: 7</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: Using where</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>index: 表示全索引扫描(full index scan), 和 ALL 类型类似, 只不过 ALL 类型是全表扫描, 而 index 类型则仅仅扫描所有的索引, 而不扫描数据.index 类型通常出现在: 所要查询的数据直接在索引树中就可以获取到, 而不需要扫描数据. 当是这种情况时, Extra 字段 会显示 Using index.例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; EXPLAIN SELECT name FROM  user_info \G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: index</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: name_index</span><br><span class="line">      key_len: 152</span><br><span class="line">          ref: NULL</span><br><span class="line">        rows: 10</span><br><span class="line">    filtered: 100.00</span><br><span class="line">        Extra: Using index</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ALL: 表示全表扫描, 这个类型的查询是性能最差的查询之一. 通常来说, 我们的查询不应该出现 ALL 类型的查询, 因为这样的查询在数据量大的情况下, 对数据库的性能是巨大的灾难. 如一个查询是 ALL 类型查询, 那么一般来说可以对相应的字段添加索引来避免.</p>
+<p>下面是一个全表扫描的例子, 可以看到, 在全表扫描时, possible_keys 和 key 字段都是 NULL, 表示没有使用到索引, 并且 rows 十分巨大, 因此整个查询效率是十分低下的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; EXPLAIN SELECT age FROM  user_info WHERE age = 20 \G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">          id: 1</span><br><span class="line">  select_type: SIMPLE</span><br><span class="line">        table: user_info</span><br><span class="line">  partitions: NULL</span><br><span class="line">        type: ALL</span><br><span class="line">possible_keys: NULL</span><br><span class="line">          key: NULL</span><br><span class="line">      key_len: NULL</span><br><span class="line">          ref: NULL</span><br><span class="line">        rows: 10</span><br><span class="line">    filtered: 10.00</span><br><span class="line">        Extra: Using where</span><br><span class="line">1 row in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>possible_keys: 此次查询中能够用到的索引。但是不表示真正使用到。</li>
+<li>key: 此次查询中确切使用到的索引.</li>
+<li>key_len：表示查询优化器使用量索引的字节数。</li>
+<li>ref: 哪个字段或常数与 key 一起被使用</li>
+<li>rows: 显示此查询一共扫描了多少行. 这个是一个估计值.</li>
+<li>filtered: 表示此查询条件所过滤的数据的百分比</li>
+<li>extra: 额外的信息</li>
+</ul>
+<h2 id="type的比较"><a href="#type的比较" class="headerlink" title="type的比较"></a>type的比较</h2><p>通常来说, 不同的 type 类型的性能关系如下:</p>
+<p>ALL &lt; index &lt; range ~ index_merge &lt; ref &lt; eq_ref &lt; const &lt; system</p>
+<p>ALL 类型因为是全表扫描, 因此在相同的查询条件下, 它是速度最慢的.<br>而 index 类型的查询虽然不是全表扫描, 但是它扫描了所有的索引, 因此比 ALL 类型的稍快.</p>
+<p>后面的几种类型都是利用了索引来查询数据, 因此可以过滤部分或大部分数据, 因此查询效率就比较高了.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/04/01/diary20180401/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1735,162 +1948,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/25/diary20180325/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/25/diary20180325/" itemprop="url">diary20180325</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T14:02:39+08:00">
-                2018-03-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T01:58:54+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>14:07:41</code> 把阿朱给孩子起名的过程<a href="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/record/20180325_%E6%9C%B1%E6%98%9F%E7%A6%B9%E5%AD%A9%E5%AD%90%E8%B5%B7%E5%90%8D.mp3" target="_blank" rel="noopener">记录</a>一下。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/20180325_%E6%9C%B1%E6%98%9F%E7%A6%B9%E5%AD%A9%E5%AD%90%E8%B5%B7%E5%90%8D.png" alt=""></p>
-<p><code>16:07:38</code> 与胡来到西畔咖啡。这氛围过分了。。。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1941,7 +1998,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">215</span>
+                  <span class="site-state-item-count">216</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
