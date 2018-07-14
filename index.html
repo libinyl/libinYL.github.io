@@ -321,7 +321,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/14/note-cs-common/" itemprop="url">note-cs-common</a></h1>
+                <a class="post-title-link" href="/2018/07/14/note-cs-common/" itemprop="url">操作系统核心知识及拓展</a></h1>
         
 
         <div class="post-meta">
@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T17:19:25+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T19:02:24+08:00">
                 2018-07-14
               </time>
             
@@ -407,7 +407,7 @@
       
         
           
-            <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:</p>
+            <h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:</p>
 <ul>
 <li>登录<ol>
 <li>登录名</li>
@@ -449,7 +449,98 @@
 </ul>
 <p><em>操作系统（posix）要点示意图：</em></p>
 <p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png" alt=""></p>
-
+<h1 id="概览（部分）"><a href="#概览（部分）" class="headerlink" title="概览（部分）"></a>概览（部分）</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>系统在<code>/etc/passwd</code>的口令文件中保存账户信息。<code>cat</code>其可得：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>按字段美化为：</p>
+<table>
+<thead>
+<tr>
+<th>登录名</th>
+<th>加密口令</th>
+<th>数字ID</th>
+<th>数字组ID</th>
+<th>注释字段</th>
+<th>起始目录</th>
+<th>shell程序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>root</td>
+<td>x</td>
+<td>0</td>
+<td>0</td>
+<td>root</td>
+<td>/root</td>
+<td>/bin/bash</td>
+</tr>
+<tr>
+<td>daemon</td>
+<td>x</td>
+<td>1</td>
+<td>1</td>
+<td>daemon</td>
+<td>/usr/sbin</td>
+<td>/usr/sbin/nologin</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>x</td>
+<td>2</td>
+<td>2</td>
+<td>bin</td>
+<td>/bin</td>
+<td>/usr/sbin/nologin</td>
+</tr>
+<tr>
+<td>sys</td>
+<td>x</td>
+<td>3</td>
+<td>3</td>
+<td>sys</td>
+<td>/dev</td>
+<td>/usr/sbin/nologin</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>x</td>
+<td>4</td>
+<td>65534</td>
+<td>sync</td>
+<td>/bin</td>
+<td>/bin/sync</td>
+</tr>
+<tr>
+<td>games</td>
+<td>x</td>
+<td>5</td>
+<td>60</td>
+<td>games</td>
+<td>/usr/games</td>
+<td>/usr/sbin/nologin</td>
+</tr>
+<tr>
+<td>man</td>
+<td>x</td>
+<td>6</td>
+<td>12</td>
+<td>man</td>
+<td>/var/cache/man</td>
+<td>/usr/sbin/nologin</td>
+</tr>
+</tbody>
+</table>
+<h2 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h2><ul>
+<li><strong>文件描述符</strong>：本质上是一个非负整数，用来标识一个特定进程访问的文件（引用）。当内核打开一个文件或创建一个新文件时都返回一个文件描述符。</li>
+<li><strong>标准输入输出错误</strong>：按照惯例，每当运行一个新程序时，所有的shell都为其打开3个文件描述符——<em>标准输入</em>、<em>标准输出</em>、<em>标准错误</em>。<ul>
+<li>不做特殊处理则都指向终端。</li>
+<li>大多数shell都可以通过<code>&gt;</code>将描述符重定向到某个文件。</li>
+</ul>
+</li>
+<li><strong>不带缓冲的I/O</strong>：都使用文件描述符。<br><code>open()</code>、<code>read()</code>、<code>write()</code>、<code>lseek()</code>、<code>close()</code>函数。</li>
+<li><strong>标准I/O</strong>：为不带缓冲的I/O函数提供带缓冲的接口。</li>
+</ul>
+<h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2>
           
         
       
