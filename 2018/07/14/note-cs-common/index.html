@@ -91,15 +91,15 @@
 <meta name="description" content="关键词将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:  登录 登录名 shell   文件和目录 文件系统 文件名 路径名 工作目录 起始目录   输入和输出 文件描述符 标准输入、标准输出、标准错误 不带缓冲的I/O 标准I/O   程序和进程 程序 进程和进程id 进程控制 线程和线程id   出错处理 用户标识 用户id 组id 附属组id   信号 时间值 系统调用和库函数">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统核心知识及拓展">
+<meta property="og:title" content="操作系统（posix）核心知识及拓展">
 <meta property="og:url" content="http://libinyl.github.io/2018/07/14/note-cs-common/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
 <meta property="og:description" content="关键词将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:  登录 登录名 shell   文件和目录 文件系统 文件名 路径名 工作目录 起始目录   输入和输出 文件描述符 标准输入、标准输出、标准错误 不带缓冲的I/O 标准I/O   程序和进程 程序 进程和进程id 进程控制 线程和线程id   出错处理 用户标识 用户id 组id 附属组id   信号 时间值 系统调用和库函数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png">
-<meta property="og:updated_time" content="2018-07-14T11:08:13.165Z">
+<meta property="og:updated_time" content="2018-07-14T11:33:24.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作系统核心知识及拓展">
+<meta name="twitter:title" content="操作系统（posix）核心知识及拓展">
 <meta name="twitter:description" content="关键词将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:  登录 登录名 shell   文件和目录 文件系统 文件名 路径名 工作目录 起始目录   输入和输出 文件描述符 标准输入、标准输出、标准错误 不带缓冲的I/O 标准I/O   程序和进程 程序 进程和进程id 进程控制 线程和线程id   出错处理 用户标识 用户id 组id 附属组id   信号 时间值 系统调用和库函数">
 <meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png">
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>操作系统核心知识及拓展 | 李斌 - LBYL</title>
+  <title>操作系统（posix）核心知识及拓展 | 李斌 - LBYL</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">操作系统核心知识及拓展</h1>
+          <h1 class="post-title" itemprop="name headline">操作系统（posix）核心知识及拓展</h1>
         
 
         <div class="post-meta">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T19:08:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T19:33:24+08:00">
                 2018-07-14
               </time>
             
@@ -547,6 +547,35 @@
 <li><strong>程序的执行实例称为进程（process）。</strong>每个进程都用一个唯一的非负整数作为数字标识符，称为进程ID。（process ID）</li>
 <li>通常一个进程只有一个<strong>线程（thread）</strong>。一个进程内所有线程共享同一地址空间、文件描述符、栈和进程相关属性。由于它们访问同一存储区，故需要采取同步措施避免不一致性。<strong>线程ID</strong>只在所属进程内起作用。</li>
 </ul>
+<h2 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h2><ul>
+<li>例如在对某一文件执行<code>open</code>函数时发生诸如文件不存在、权限问题等，则返回负值，如-1，而非正常情况下的非负文件描述符。在文件<code>&lt;errno.h&gt;</code>中对错误进行定义。</li>
+</ul>
+<h2 id="用户标识"><a href="#用户标识" class="headerlink" title="用户标识"></a>用户标识</h2><ul>
+<li><strong>用户ID（user ID）</strong>：用于标识不同用户。每个用户通常有唯一ID。用户不能更改其用户ID。</li>
+<li><strong>权限鉴定：</strong>：内核使用用户ID来检验用户是否有执行某些操作的权限。</li>
+<li><strong>组ID</strong>：组文件将组名映射为数值形式的组ID。组文件为<code>/etc/group</code>。</li>
+</ul>
+<p>文件系统存储着磁盘上每个文件的用户ID和组ID。</p>
+<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p><strong>信号（signal）</strong>：用于通知进程发生了某种情况。例如除数为0，则将名为<code>SIGFPE</code>（浮点异常）的信号发送给进程。进程有3种处理信号的方式：</p>
+<ul>
+<li>忽略</li>
+<li>按系统默认方式处理</li>
+<li>提供一个函数，信号发生时调用该函数。被称为捕捉该信号。</li>
+</ul>
+<p>例如，</p>
+<ul>
+<li>可以从键盘上使用<strong>中断键（interrupt key）</strong> 即 <code>Ctrl+C</code>、<code>Delete</code>或 <strong>退出键（quit key）</strong> 即<code>Ctrl+\</code>，用于中断当前运行的程序。</li>
+<li>调用<code>kill</code>函数。</li>
+</ul>
+<h2 id="时间值"><a href="#时间值" class="headerlink" title="时间值"></a>时间值</h2><p>系统为一个进程维护了3个进程时间值：</p>
+<ul>
+<li><strong>时钟时间</strong>：又称墙上时钟时间（wall clock time），是进程运行的时间总量，与系统中同时运行的进程数有关。</li>
+<li><strong>用户CPU时间</strong>：执行用户指令所用的时间量。</li>
+<li><strong>系统CPU时间</strong>：为该进程执行内核程序经历的时间。</li>
+</ul>
+<p><em>CPU时间 = 用户CPU时间 + 系统CPU时间</em></p>
+<p>使用<code>time</code>命令来获取各类时间。</p>
+<h2 id="系统调用和库函数"><a href="#系统调用和库函数" class="headerlink" title="系统调用和库函数"></a>系统调用和库函数</h2><p><strong>UNIX为每个系统调用在标准C库中设置一个同样名字的函数。</strong></p>
 
       
     </div>
@@ -751,7 +780,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概览（部分）"><span class="nav-number">2.</span> <span class="nav-text">概览（部分）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">2.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入和输出"><span class="nav-number">2.2.</span> <span class="nav-text">输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序和进程"><span class="nav-number">2.3.</span> <span class="nav-text">程序和进程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概览（部分）"><span class="nav-number">2.</span> <span class="nav-text">概览（部分）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">2.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入和输出"><span class="nav-number">2.2.</span> <span class="nav-text">输入和输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序和进程"><span class="nav-number">2.3.</span> <span class="nav-text">程序和进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出错处理"><span class="nav-number">2.4.</span> <span class="nav-text">出错处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户标识"><span class="nav-number">2.5.</span> <span class="nav-text">用户标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号"><span class="nav-number">2.6.</span> <span class="nav-text">信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间值"><span class="nav-number">2.7.</span> <span class="nav-text">时间值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统调用和库函数"><span class="nav-number">2.8.</span> <span class="nav-text">系统调用和库函数</span></a></li></ol></li></ol></div>
             
 
           </div>
