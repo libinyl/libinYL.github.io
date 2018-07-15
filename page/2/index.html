@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:34:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T16:32:22+08:00">
                 2018-07-15
               </time>
             
@@ -407,7 +407,9 @@
       
         
           
-            <h1 id="官方资源汇总"><a href="#官方资源汇总" class="headerlink" title="官方资源汇总"></a>官方资源汇总</h1><ul>
+            <h1 id="Tomcat是什么"><a href="#Tomcat是什么" class="headerlink" title="Tomcat是什么"></a>Tomcat是什么</h1><p>Tomcat是<code>Servlet</code>、<code>JSP</code>、java EL表达式、<code>WebSocket</code>的实现。</p>
+<p>Tomcat 7.0实现了<code>Servlet 3.0</code>和<code>JSP 2.2</code>。提供了更多feature来开发和部署web应用和web服务。</p>
+<h1 id="官方资源汇总"><a href="#官方资源汇总" class="headerlink" title="官方资源汇总"></a>官方资源汇总</h1><ul>
 <li><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.90/src/apache-tomcat-7.0.90-src.zip" target="_blank" rel="noopener">Tomcat源码</a></li>
 <li><a href="https://tomcat.apache.org/tomcat-7.0-doc/building.html#Introduction" target="_blank" rel="noopener">编译源码步骤</a></li>
 <li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/index.html" target="_blank" rel="noopener">架构解读</a><ul>
@@ -521,7 +523,16 @@
 </ol>
 </li>
 <li>当Tomcat（在HTTP端口）接收到一个请求时：<ol>
-<li>该请求将被一个独立的线程接收。此线程在<code>ThreadPoolExecutor</code></li>
+<li>该请求将被一个独立的线程接收。此线程在<code>ThreadPoolExecutor</code>类中。它在一个<code>ServerSocket.accpet()</code>方法中等待请求。</li>
+<li><code>ThreadPoolExecutor</code>分配一个<code>TaskThread</code>来处理此请求。</li>
+<li>处理器（<code>processor</code>）处理该请求。如果是HTTP请求，则是<code>Coyote Http11Processor</code>来处理。调用了<code>process</code>方法。此处理器将继续检查<code>socket</code>的输入流，直到连接断开，或者达到<code>keep alive point</code>。</li>
+<li>此HTTP请求将被内部的缓冲类（<code>Http11InputBuffer</code>）解析。此解析类将解析出请求行、请求头等等，将结果存储在一个<code>Coyote</code>请求中。此<code>request</code>包含所有的HTTP信息，如<code>servername</code>，<code>port</code>，<code>scheme</code>等。</li>
+<li>处理器维护着一个<code>Adapter</code>（引用），在本例中是<code>CoyoteAdapter</code>。一旦请求已经被解析，那么<code>Http11Processor</code>调用该<code>adapter</code>的<code>service()</code>方法。在此<code>service</code>方法中，<code>Request</code>包含一个<code>CoyoteRequest</code>和一个<code>CoyoteResponse</code>（第一次则为null）。<code>CoyoteRequest(Response)</code>实现了<code>HttpRequest(Response)</code>和<code>HttpServletRequest(Response)</code>。适配器通过<code>Mapper</code>来处理<code>request</code>和<code>context</code>等。</li>
+<li>当解析完成之后，<code>CoyoteAdapter</code>调用它的容器（<code>StandardEngine</code>），调用所有的<code>invoke()</code>方法。</li>
+<li><code>StandardEngine.invoke()</code>方法调用容器的<code>pipeline.invoke()</code>方法。</li>
+<li><code>StandardHostValve</code>调用与<code>request</code>相关的<code>context</code>上的<code>pipeline</code>。</li>
+<li>被<code>Context pipeline</code>调用的第一个阀门是<code>FormAuthenticator</code>阀门。接下来是<code>StandardContextValve</code>。<code>StandardContextValve</code>调用与<code>context</code>相关的所有上下文监听器。然后调用<code>Wrapper</code>组件的所有<code>pipeline</code>。</li>
+<li>编译JSP，调用实际的<code>servlet</code>。</li>
 </ol>
 </li>
 <li><code>servlet</code>类的调用</li>
