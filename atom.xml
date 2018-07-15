@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-15T10:51:37.155Z</updated>
+  <updated>2018-07-15T14:22:15.933Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,13 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Windows系统安装后的配置</title>
+    <link href="http://libinyl.github.io/2018/07/15/note-windows-config/"/>
+    <id>http://libinyl.github.io/2018/07/15/note-windows-config/</id>
+    <published>2018-07-15T14:11:37.000Z</published>
+    <updated>2018-07-15T14:22:15.933Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>电源管理配置：电池模式下的配置</li><li>网络适配器关闭节电模式</li><li>省电模式配置，在点亮80%时开启节电模式</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;电源管理配置：电池模式下的配置&lt;/li&gt;
+&lt;li&gt;网络适配器关闭节电模式&lt;/li&gt;
+&lt;li&gt;省电模式配置，在点亮80%时开启节电模式&lt;/li&gt;
+&lt;/ul&gt;
+
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="windows" scheme="http://libinyl.github.io/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
     <title>diary20180715</title>
     <link href="http://libinyl.github.io/2018/07/15/diary20180715/"/>
     <id>http://libinyl.github.io/2018/07/15/diary20180715/</id>
     <published>2018-07-15T06:01:01.000Z</published>
-    <updated>2018-07-15T10:51:37.155Z</updated>
+    <updated>2018-07-15T14:23:36.871Z</updated>
     
-    <content type="html"><![CDATA[<p><code>14:01:14</code> 来到<a href="https://map.qq.com/?type=marker&amp;isopeninfowin=1&amp;markertype=1&amp;pointx=116.337&amp;pointy=39.9921&amp;name=%E9%9B%95%E5%88%BB%E6%97%B6%E5%85%89%E5%92%96%E5%95%A1%E9%A6%86&amp;addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E6%88%90%E5%BA%9C%E8%B7%AF%E5%8D%8E%E6%B8%85%E5%98%89%E5%9B%AD12%E5%8F%B7%E6%A5%BC2%E5%8F%B72-4%E5%B1%82&amp;ref=WeChat" target="_blank" rel="noopener">五道口雕刻时光</a>。</p><p>这边物价真是高啊，是个店咖啡都38元起步。幸亏没来清华上学。</p><p><code>15:34:57</code> 咖啡店里的嘈杂，让我想起了高中下课<del>老师不在时</del>的课间。</p><p><code>18:51:05</code> 发现intellij里的uml代码浏览功能实际上那么强大而自己以前都没发现，捶胸顿足。</p>]]></content>
+    <content type="html"><![CDATA[<p><code>14:01:14</code> 来到<a href="https://map.qq.com/?type=marker&amp;isopeninfowin=1&amp;markertype=1&amp;pointx=116.337&amp;pointy=39.9921&amp;name=%E9%9B%95%E5%88%BB%E6%97%B6%E5%85%89%E5%92%96%E5%95%A1%E9%A6%86&amp;addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E6%88%90%E5%BA%9C%E8%B7%AF%E5%8D%8E%E6%B8%85%E5%98%89%E5%9B%AD12%E5%8F%B7%E6%A5%BC2%E5%8F%B72-4%E5%B1%82&amp;ref=WeChat" target="_blank" rel="noopener">五道口雕刻时光</a>。</p><p>这边物价真是高啊，是个店咖啡都38元起步。幸亏没来清华上学。</p><p><code>15:34:57</code> 咖啡店里的嘈杂，让我想起了高中下课<del>老师不在时</del>的课间。</p><p><code>18:51:05</code> 发现intellij里的uml代码浏览功能实际上那么强大而自己以前都没发现，捶胸顿足。</p><p><code>22:23:31</code> 明天入职。</p>]]></content>
     
     <summary type="html">
     
@@ -480,30 +510,6 @@
       
       
         &lt;p&gt;&lt;code&gt;23:46:08&lt;/code&gt; 今天与胡去了沃尔玛买了包腊肉，回来在天马吃了冰。还有一天就回家了。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180629</title>
-    <link href="http://libinyl.github.io/2018/06/30/diary20180629/"/>
-    <id>http://libinyl.github.io/2018/06/30/diary20180629/</id>
-    <published>2018-06-29T16:38:41.000Z</published>
-    <updated>2018-06-29T16:55:49.476Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>00:54:19</code> 与胡、浩去了金釜山吃了好吃，然而，非常不好吃。肉质都是碎的。之后9点半到潇湘看了《动物世界》，很不错的悬疑片。离开的日子越来越近了，天气却越来越热，出去逛逛都没兴致。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;00:54:19&lt;/code&gt; 与胡、浩去了金釜山吃了好吃，然而，非常不好吃。肉质都是碎的。之后9点半到潇湘看了《动物世界》，很不错的悬疑片。离开的日子越来越近了，天气却越来越热，出去逛逛都没兴致。&lt;/p&gt;
 
       
     
