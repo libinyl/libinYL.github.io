@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://libinyl.github.io/2018/07/15/diary20180715/</loc>
+    
+    <lastmod>2018-07-15T07:35:53.357Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://libinyl.github.io/2018/07/07/note-tomcat-learn/</loc>
     
-    <lastmod>2018-07-15T07:29:30.137Z</lastmod>
+    <lastmod>2018-07-15T07:34:50.416Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://libinyl.github.io/2018/07/14/diary20180714/</loc>
     
     <lastmod>2018-07-15T06:05:23.817Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/07/15/diary20180715/</loc>
-    
-    <lastmod>2018-07-15T06:05:15.300Z</lastmod>
     
   </url>
   

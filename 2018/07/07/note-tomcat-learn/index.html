@@ -97,7 +97,7 @@
 <meta property="og:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/665375/201601/665375-20160119185045031-1958903281.jpg">
-<meta property="og:updated_time" content="2018-07-15T07:29:30.137Z">
+<meta property="og:updated_time" content="2018-07-15T07:34:50.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat源码学习日志">
 <meta name="twitter:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:29:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:34:50+08:00">
                 2018-07-15
               </time>
             
@@ -516,16 +516,17 @@
 <li>配置一个错误阀门，用于将不同的HTTP错误码为HTML。</li>
 <li>设置标准主机阀门，将web应用的类加载器与线程上下文绑定，它也用来为请求找到相应的<code>session</code>。</li>
 <li>启动<code>HostConfig</code>组件。此组件部署所有web应用，即<code>webapp</code>和<code>conf/Catalina/localhost/*.xml</code></li>
-<li></li>
+<li><code>HostConfig</code>将为上下文创建一个<code>Digester</code>，它将调用<code>ContextConfig.start()</code>。这个方法将处理默认的<code>web.xml</code>即<code>conf/web.xml</code>,然后处理所有的应用<code>web.xml</code>即<code>WEB-INF/web.xml</code>。</li>
 </ol>
 </li>
 <li>在容器的生命周期中，存在一个后台线程，用来不断检查上下文（context）是否改变，即<code>war</code>文件、<code>context</code>文件、<code>web.xml</code>文件等的改变。如果改变，则重新加载。（<code>stop/remove/deploy/start</code>）</li>
 </ol>
 </li>
-<li>当Tomcat（在HTTP端口）接收到一个请求：<ol>
-<li></li>
+<li>当Tomcat（在HTTP端口）接收到一个请求时：<ol>
+<li>该请求将被一个独立的线程接收。此线程在<code>ThreadPoolExecutor</code></li>
 </ol>
 </li>
+<li><code>servlet</code>类的调用</li>
 </ol>
 <h1 id="优美代码"><a href="#优美代码" class="headerlink" title="优美代码"></a>优美代码</h1><p>观察到，一个典型的类中，可以被分成：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------------- Static Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------------- Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------- Private Methods</span></span><br><span class="line"><span class="comment">// ----------------------------------------------------------- Main Program</span></span><br></pre></td></tr></table></figure>
