@@ -97,7 +97,7 @@
 <meta property="og:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/665375/201601/665375-20160119185045031-1958903281.jpg">
-<meta property="og:updated_time" content="2018-07-11T14:45:07.173Z">
+<meta property="og:updated_time" content="2018-07-15T07:15:39.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat源码学习日志">
 <meta name="twitter:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-11T22:45:07+08:00">
-                2018-07-11
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:15:39+08:00">
+                2018-07-15
               </time>
             
           </span>
@@ -427,7 +427,7 @@
 <li>将build.xml中的<code>base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;filename=</code>替换为<code>base-apache.loc.1=https://archive.apache.org/dist</code></li>
 <li>在tomcat目录下执行<code>ant</code></li>
 </ul>
-<h1 id="源码阅读日志"><a href="#源码阅读日志" class="headerlink" title="源码阅读日志"></a>源码阅读日志</h1><ul>
+<h1 id="源码阅读日志"><a href="#源码阅读日志" class="headerlink" title="源码阅读日志"></a>源码阅读日志</h1><h2 id="整体理解"><a href="#整体理解" class="headerlink" title="整体理解"></a>整体理解</h2><ul>
 <li>主类/主方法：<code>org.apache.catalina.startup</code>包下的<code>Bootstrap</code>类。</li>
 <li>几个重要的目录（或者说环境变量）：</li>
 </ul>
@@ -486,6 +486,42 @@
 </table>
 <p>按照以上概念可以绘图：</p>
 <p><img src="https://images2015.cnblogs.com/blog/665375/201601/665375-20160119185045031-1958903281.jpg" alt=""></p>
+<h2 id="启动步骤"><a href="#启动步骤" class="headerlink" title="启动步骤"></a>启动步骤</h2><p>根据<a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/startup/serverStartup.txt" target="_blank" rel="noopener">官方文档</a>,tomcat启动序列分为两个步骤：1）从命令行启动 2）处理命令行参数</p>
+<p><strong>一、从命令行启动</strong></p>
+<p>类：<code>org.apache.catalina.startup.Bootstrap</code></p>
+<p>执行内容：</p>
+<ol>
+<li>安装一系列<code>classLoader</code>；</li>
+<li>（以反射）读取启动类；</li>
+<li>完成<code>Bootstrap.daemon.init()</code>方法。</li>
+</ol>
+<p><strong>二、处理命令行参数（start，stop）</strong></p>
+<p>类：<code>org.apache.catalina.startup.Bootstrap</code></p>
+<p>执行内容（start）：</p>
+<ol>
+<li><code>Catalina.setAwait(true)</code>；</li>
+<li><code>Catalina.load()</code>:<ol>
+<li>初始化基本文件夹：<code>initDirs()</code> -&gt; 设置诸如<code>catalina.home/case</code>等属性；</li>
+<li>初始化命名服务：` setProperty(javax.naming.Context.INITIAL_CONTEXT_FACTORY,<pre><code>org.apache.naming.java.javaURLContextFactory -&gt;default)`
+</code></pre></li>
+<li>创建xml文件转化器：<code>createStartDigester()</code></li>
+<li>读取<code>server.xml</code>并用转化器（digester）将其解析。digester是一个“XML-对象”映射器，将根据<code>server.xml</code>定义的内容创建对象。到目前为止，容器其实还没有开始初始化。</li>
+<li>把<code>System.out</code>和<code>System.err</code>分配给<code>SystemLogHandler</code>类。</li>
+<li>调用所有组件的初始化方法。此步骤将令每个对象通过<code>JMX</code>代理注册其本身。在此步骤中，<code>Connector</code>也将初始化适配器。适配器也是一种组件，用来执行请求预处理。例如HTTP1.1适配器：<code>org.apache.coyote.http11.Http11Protocol</code></li>
+</ol>
+</li>
+<li><code>Catalina.start()</code>:<ol>
+<li>启动<code>NamingContext</code>，将所有<code>JNDI</code>引用绑定其中。</li>
+<li>启动<code>Server</code>下的所有<code>service</code></li>
+<li><code>StandardHost</code></li>
+<li>在容器的生命周期中，存在一个后台线程，用来不断检查上下文（context）是否改变，即<code>war</code>文件、<code>context</code>文件、<code>web.xml</code>文件等的改变。如果改变，则重新加载。（<code>stop/remove/deploy/start</code>）</li>
+</ol>
+</li>
+<li>当Tomcat（在HTTP端口）接收到一个请求：<ol>
+<li></li>
+</ol>
+</li>
+</ol>
 <h1 id="优美代码"><a href="#优美代码" class="headerlink" title="优美代码"></a>优美代码</h1><p>观察到，一个典型的类中，可以被分成：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------------- Static Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------------- Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------- Private Methods</span></span><br><span class="line"><span class="comment">// ----------------------------------------------------------- Main Program</span></span><br></pre></td></tr></table></figure>
 <p>典型的生命周期方法有：</p>
@@ -699,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官方资源汇总"><span class="nav-number">1.</span> <span class="nav-text">官方资源汇总</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译源码"><span class="nav-number">2.</span> <span class="nav-text">编译源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读日志"><span class="nav-number">3.</span> <span class="nav-text">源码阅读日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构理解"><span class="nav-number">3.1.</span> <span class="nav-text">架构理解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优美代码"><span class="nav-number">4.</span> <span class="nav-text">优美代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官方资源汇总"><span class="nav-number">1.</span> <span class="nav-text">官方资源汇总</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编译源码"><span class="nav-number">2.</span> <span class="nav-text">编译源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码阅读日志"><span class="nav-number">3.</span> <span class="nav-text">源码阅读日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体理解"><span class="nav-number">3.1.</span> <span class="nav-text">整体理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构理解"><span class="nav-number">3.2.</span> <span class="nav-text">架构理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动步骤"><span class="nav-number">3.3.</span> <span class="nav-text">启动步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优美代码"><span class="nav-number">4.</span> <span class="nav-text">优美代码</span></a></li></ol></div>
             
 
           </div>
