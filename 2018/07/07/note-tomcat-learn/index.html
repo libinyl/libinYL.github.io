@@ -97,7 +97,7 @@
 <meta property="og:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images2015.cnblogs.com/blog/665375/201601/665375-20160119185045031-1958903281.jpg">
-<meta property="og:updated_time" content="2018-07-15T07:15:39.419Z">
+<meta property="og:updated_time" content="2018-07-15T07:29:30.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat源码学习日志">
 <meta name="twitter:description" content="官方资源汇总 Tomcat源码 编译源码步骤 架构解读 核心接口描述 文本描述 UML 请求时序    编译源码 下载Tomcat7源码 配置JDK1.6 配置1.9.x版本的Ant 将build.xml中的base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;amp;filename=替换为base-apa">
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:15:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T15:29:30+08:00">
                 2018-07-15
               </time>
             
@@ -502,8 +502,7 @@
 <li><code>Catalina.setAwait(true)</code>；</li>
 <li><code>Catalina.load()</code>:<ol>
 <li>初始化基本文件夹：<code>initDirs()</code> -&gt; 设置诸如<code>catalina.home/case</code>等属性；</li>
-<li>初始化命名服务：` setProperty(javax.naming.Context.INITIAL_CONTEXT_FACTORY,<pre><code>org.apache.naming.java.javaURLContextFactory -&gt;default)`
-</code></pre></li>
+<li>初始化命名服务：<code>setProperty(javax.naming.Context.INITIAL_CONTEXT_FACTORY,org.apache.naming.java.javaURLContextFactory -&gt;default)</code></li>
 <li>创建xml文件转化器：<code>createStartDigester()</code></li>
 <li>读取<code>server.xml</code>并用转化器（digester）将其解析。digester是一个“XML-对象”映射器，将根据<code>server.xml</code>定义的内容创建对象。到目前为止，容器其实还没有开始初始化。</li>
 <li>把<code>System.out</code>和<code>System.err</code>分配给<code>SystemLogHandler</code>类。</li>
@@ -512,8 +511,14 @@
 </li>
 <li><code>Catalina.start()</code>:<ol>
 <li>启动<code>NamingContext</code>，将所有<code>JNDI</code>引用绑定其中。</li>
-<li>启动<code>Server</code>下的所有<code>service</code></li>
-<li><code>StandardHost</code></li>
+<li>启动<code>Server</code>下的所有<code>service</code>。此步骤启动引擎（Engine）。</li>
+<li>启动主机：<code>StandardHost</code>。<ol>
+<li>配置一个错误阀门，用于将不同的HTTP错误码为HTML。</li>
+<li>设置标准主机阀门，将web应用的类加载器与线程上下文绑定，它也用来为请求找到相应的<code>session</code>。</li>
+<li>启动<code>HostConfig</code>组件。此组件部署所有web应用，即<code>webapp</code>和<code>conf/Catalina/localhost/*.xml</code></li>
+<li></li>
+</ol>
+</li>
 <li>在容器的生命周期中，存在一个后台线程，用来不断检查上下文（context）是否改变，即<code>war</code>文件、<code>context</code>文件、<code>web.xml</code>文件等的改变。如果改变，则重新加载。（<code>stop/remove/deploy/start</code>）</li>
 </ol>
 </li>
