@@ -302,6 +302,239 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/07/note-tomcat-learn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/07/note-tomcat-learn/" itemprop="url">tomcat源码学习日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T23:32:43+08:00">
+                2018-07-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-11T22:45:07+08:00">
+                2018-07-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="官方资源汇总"><a href="#官方资源汇总" class="headerlink" title="官方资源汇总"></a>官方资源汇总</h1><ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.90/src/apache-tomcat-7.0.90-src.zip" target="_blank" rel="noopener">Tomcat源码</a></li>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/building.html#Introduction" target="_blank" rel="noopener">编译源码步骤</a></li>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/index.html" target="_blank" rel="noopener">架构解读</a><ul>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/overview.html" target="_blank" rel="noopener">核心接口描述</a></li>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/startup/serverStartup.txt" target="_blank" rel="noopener">文本描述</a></li>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/startup/serverStartup.pdf" target="_blank" rel="noopener">UML</a></li>
+<li><a href="https://tomcat.apache.org/tomcat-7.0-doc/architecture/requestProcess/request-process.png" target="_blank" rel="noopener">请求时序</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h1><ul>
+<li>下载<code>Tomcat7</code><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.90/src/apache-tomcat-7.0.90-src.zip" target="_blank" rel="noopener">源码</a></li>
+<li>配置<code>JDK1.6</code></li>
+<li>配置<code>1.9.x</code>版本的Ant</li>
+<li>将build.xml中的<code>base-apache.loc.1=https://www.apache.org/dyn/closer.lua?action=download&amp;filename=</code>替换为<code>base-apache.loc.1=https://archive.apache.org/dist</code></li>
+<li>在tomcat目录下执行<code>ant</code></li>
+</ul>
+<h1 id="源码阅读日志"><a href="#源码阅读日志" class="headerlink" title="源码阅读日志"></a>源码阅读日志</h1><ul>
+<li>主类/主方法：<code>org.apache.catalina.startup</code>包下的<code>Bootstrap</code>类。</li>
+<li>几个重要的目录（或者说环境变量）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>主目录</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{ <strong>$CATALINA_HOME</strong> }</td>
+<td>Tomcat安装目录</td>
+</tr>
+<tr>
+<td>{ <strong>$CATALINA_BASE</strong> }</td>
+<td>每个实例分别的根目录（可选，默认情况等同于{ <strong>$CATALINA_HOME</strong> }）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_HOME</span><br><span class="line">    ├─bin       <span class="comment">// 诸如启动、停止等脚本。</span></span><br><span class="line">    ├─conf      <span class="comment">// 配置文件</span></span><br><span class="line">    ├─logs      <span class="comment">// 默认日志文件路径</span></span><br><span class="line">    └─webapps   <span class="comment">// web应用路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="架构理解"><a href="#架构理解" class="headerlink" title="架构理解"></a>架构理解</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Server</td>
+<td>代表整个容器。用户基本不会变动它。提供了<code>Server</code>接口。</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>作为一个生存在<code>Server</code>中的组件，将许多<code>Connector</code>与一个<code>Engine</code>连接，起媒介作用。</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td>代表某个<code>Service</code>的请求过程。一个<code>Service</code>连接着多个<code>Conntector</code>，<code>Engine</code>接收这些<code>Connector</code>的请求，处理请求，并返回。提供了<code>Engine</code>接口。</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>一个Tomcat可包含多个域名，Host则维护这些域名。t提供了<code>Host</code>接口和完善的实现。</td>
+</tr>
+<tr>
+<td>Connector</td>
+<td>用于处理与客户端的通信。如<code>Http Connector</code>。</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>代表一个Web应用。一个<code>Host</code>包含多个<code>Context</code>，分别处于唯一的路径。提供了<code>Context</code>和完善的实现。</td>
+</tr>
+</tbody>
+</table>
+<p>按照以上概念可以绘图：</p>
+<p><img src="https://images2015.cnblogs.com/blog/665375/201601/665375-20160119185045031-1958903281.jpg" alt=""></p>
+<h1 id="优美代码"><a href="#优美代码" class="headerlink" title="优美代码"></a>优美代码</h1><p>观察到，一个典型的类中，可以被分成：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------------- Static Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------------- Variables</span></span><br><span class="line"><span class="comment">// -------------------------------------------------------- Private Methods</span></span><br><span class="line"><span class="comment">// ----------------------------------------------------------- Main Program</span></span><br></pre></td></tr></table></figure>
+<p>典型的生命周期方法有：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(String[] arguments)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopServer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopServer</span><span class="params">(String[] arguments)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/06/diary20180706/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1704,172 +1937,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/06/29/note-python-tricks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/29/note-python-tricks/" itemprop="url">python常见问题记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T02:12:50+08:00">
-                2018-06-29
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-06-29T09:17:58+08:00">
-                2018-06-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安装路径问题"><a href="#安装路径问题" class="headerlink" title="安装路径问题"></a>安装路径问题</h1><p>使用 pip install 安装时：</p>
-<ul>
-<li>如果有<code>--user</code>参数时，则安装到<code>:\Users\libin\AppData\Roaming\Python\Python36\site-packages</code></li>
-<li>如果没有<code>--user</code>参数，则安装到<code>C:\Users\libin\AppData\Local\Programs\Python\Python36\Lib\site-packages</code>下。</li>
-<li>前者没有在环境变量下，且实际上并不看重用户的区分，故没有必要用<code>--user</code>参数。</li>
-</ul>
-<h1 id="jupyter"><a href="#jupyter" class="headerlink" title="jupyter"></a>jupyter</h1><ul>
-<li>两行代码，渲染出矢量图：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format = &apos;svg&apos;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>保存pdf矢量图：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.savefig(&apos;tmp.pdf&apos;, bbox_inches=&apos;tight&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1920,7 +1987,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">216</span>
+                  <span class="site-state-item-count">217</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
