@@ -302,6 +302,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/21/note-mysql-common/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/21/note-mysql-common/" itemprop="url">mysql概念汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T10:29:50+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T17:47:02+08:00">
+                2018-04-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Q：数据库事务正确执行的四个基本要素（ACID）是什么？"><a href="#Q：数据库事务正确执行的四个基本要素（ACID）是什么？" class="headerlink" title="Q：数据库事务正确执行的四个基本要素（ACID）是什么？"></a>Q：数据库事务正确执行的四个基本要素（ACID）是什么？</h1><p><strong>A：</strong> ACID对应的含义：</p>
+<p>A   Atomicity   原子性<br>C   Consistency 一致性<br>I   Isolation   隔离性<br>D   Durability  持久性</p>
+<h1 id="Q：隔离级别有什么？"><a href="#Q：隔离级别有什么？" class="headerlink" title="Q：隔离级别有什么？"></a>Q：隔离级别有什么？</h1><p>不考虑隔离级别的问题：</p>
+<p>脏读：在一个事务处理过程读取了另一个未提交的事务中的数据。</p>
+<p>不可重复读/幻读：读取了另一条已经提交的事务，前者在于update和delete，后者在于insert</p>
+<p>可重复读：</p>
+<p>四中隔离级别：</p>
+<ul>
+<li>串行化</li>
+<li>可重复读（默认）</li>
+<li>读已提交</li>
+<li>读未提交</li>
+</ul>
+<p>具体解释：</p>
+<ul>
+<li><strong>没有锁</strong>：两个事务同时写数据，其中一个被另一个覆盖，导致<strong>数据丢失</strong>。</li>
+<li><strong>读取未提交</strong>：写时加上排它锁，直到事务结束；读取时不加锁。读取到其他事务的数据，而其他事务数据回滚，则读取到<strong>脏数据</strong>。</li>
+<li><strong>读取已提交</strong>：写时加上排它锁，直到事务结束；读取读取完毕之后立刻释放共享锁。每次事务中重复读取某一数据，如果读取过程中其他事务对此数据修改了，则两次读取的数据不同，即<strong>不可重复读</strong>。</li>
+<li><strong>可重复读</strong>：写时加上排他锁，直到事务结束；读取时加上共享锁，直到事务结束。可避免重复读的问题。但是批量修改某相同值的数据时，其他事务增加了相同值的数据，则验证时发现存在未修改的数据，即<strong>幻读</strong>。</li>
+<li><strong>可串行化</strong>。串行执行事务，避免了以上问题。</li>
+</ul>
+<h1 id="Q：数据库范式？"><a href="#Q：数据库范式？" class="headerlink" title="Q：数据库范式？"></a>Q：数据库范式？</h1><p><strong>A：</strong> </p>
+<p>1NF：列不能拆分为其他几列，是基本要求。缺点：数据冗余过大。</p>
+<p>2NF：首先1NF；1. 必须有主键 2.没有包含在主键中的列必须完全依赖于主键，而不能依赖于主键的一部分。</p>
+<p>3NF：首选NF；1. 不能存在传递依赖。</p>
+<h1 id="Q：sql优化？"><a href="#Q：sql优化？" class="headerlink" title="Q：sql优化？"></a>Q：sql优化？</h1><p><strong>A：</strong> </p>
+<ul>
+<li>只返回需要的数据。<ul>
+<li>忌 SELECT * </li>
+<li>尽可能写WHERE</li>
+</ul>
+</li>
+<li>适当建立索引</li>
+<li>避免全表扫描：<ul>
+<li>左模糊查询’%…’</li>
+<li>OR使用不当，两边必须都有索引</li>
+<li>WHERE子句对字段进行表达式操作</li>
+</ul>
+</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/wmbg/p/6800354.html" target="_blank" rel="noopener">https://www.cnblogs.com/wmbg/p/6800354.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/21/diary20180321/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2025,311 +2220,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/03/18/note-java-jvm-command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/note-java-jvm-command/" itemprop="url">Java虚拟机学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T16:52:02+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-04-07T02:03:47+08:00">
-                2018-04-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="常见信息查看参数："><a href="#常见信息查看参数：" class="headerlink" title="常见信息查看参数："></a>常见信息查看参数：</h1><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-XX:+PrintGC</td>
-<td>每次GC之前的堆已用量，GC之后的堆已用量，当前可用堆空间，本次GC花费的时间</td>
-</tr>
-<tr>
-<td>-XX:+PrintGCDetails</td>
-<td>更加详细，显示每个区域的回收情况</td>
-</tr>
-<tr>
-<td>-XX:+PrintHeapAtGC</td>
-<td>更全面，在每次GC前后分别打印堆的信息。</td>
-</tr>
-<tr>
-<td>-XX:+TraceClassLoader</td>
-<td>跟踪类的加载</td>
-</tr>
-<tr>
-<td>-XX:+TraceClassUnloading</td>
-<td>跟踪类的卸载</td>
-</tr>
-<tr>
-<td>-verbose:class</td>
-<td>跟踪类加载和卸载</td>
-</tr>
-</tbody>
-</table>
-<h1 id="堆内存分布"><a href="#堆内存分布" class="headerlink" title="堆内存分布"></a>堆内存分布</h1><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/java%E5%A0%86.jpg" alt=""></p>
-<h2 id="最大堆和初始堆的配置"><a href="#最大堆和初始堆的配置" class="headerlink" title="最大堆和初始堆的配置"></a>最大堆和初始堆的配置</h2><p>当Java进程启动时，可用参数-Xms指定<strong>初始堆</strong>的大小，虚拟机会尽可能在初始堆空间内运行，扩展上线为<strong>最大堆</strong>空间，由-Xmx指定。</p>
-<p>可以直接用-Xms和-Xmx将初始堆和最大堆设置为相等，减少GC次数，提高程序性能。</p>
-<h2 id="新生代的配置"><a href="#新生代的配置" class="headerlink" title="新生代的配置"></a>新生代的配置</h2><p>可以使用-Xmn设置新生代的大小。新生代过大会减少老年代的大小，对GC有很大影响。新生代大小一般配置为整个堆空间的1/3到1/4。</p>
-<p>参数-XX：SurvivorRatio来设置新生代中eden与from/to空间的比例关系。含义为：<code>-XX:SurvivorRatio=eden/from=eden/to</code></p>
-<h2 id="堆溢出处理"><a href="#堆溢出处理" class="headerlink" title="堆溢出处理"></a>堆溢出处理</h2><p>使用参数-XX:+HeapDumpOnOutOfMemoryError,导出整个堆信息。使用-XX:HeapDumpPath 指定导出堆的存放路径。</p>
-<h1 id="常见回收算法"><a href="#常见回收算法" class="headerlink" title="常见回收算法"></a>常见回收算法</h1><h2 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h2><p>描述：为每个对象分配一个计数器，等于引用它的对象的数量。一旦为0则回收。</p>
-<p>缺点：</p>
-<ul>
-<li>无法解决循环引用</li>
-<li>计数的增加或减少，会影响性能。</li>
-</ul>
-<h2 id="标记清除法"><a href="#标记清除法" class="headerlink" title="标记清除法"></a>标记清除法</h2><p>描述：</p>
-<ol>
-<li>从根节点出发，标记所有从根节点开始的可达对象；</li>
-<li>清除所有未标记的对象。</li>
-</ol>
-<p>优点：解决循环引用</p>
-<p>缺点：回收后空间不连续，再分配时，不连续的内存工作效率降低。</p>
-<h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p>描述：</p>
-<ol>
-<li>将原有的内存空间分为两块，每次只使用其中一块</li>
-<li>垃圾回收时，将正在使用的内存空间中的存活对象复制到未使用的内存块中，清除正在使用的内存块中的所有对象。</li>
-<li>交换角色。</li>
-</ol>
-<p>开销：复制存活的对象（多）、清除垃圾对象（少）</p>
-<p>优点：没有碎片。</p>
-<p>缺点：系统内存折半。</p>
-<p>适合：在存活对象少，垃圾对象多的情况下高效。</p>
-<h2 id="标记压缩法"><a href="#标记压缩法" class="headerlink" title="标记压缩法"></a>标记压缩法</h2><p>或称 标记清楚压缩法</p>
-<p>描述：</p>
-<ol>
-<li>从根节点出发，标记所有从根节点开始的可达对象；</li>
-<li>将所有存活的对象压缩到内存的一端</li>
-<li>清理边际外所有空间</li>
-</ol>
-<p>优点：</p>
-<ul>
-<li>避免了碎片的产生</li>
-<li>不需要两块相同的空间</li>
-<li>性价比较高</li>
-</ul>
-<h2 id="分代算法"><a href="#分代算法" class="headerlink" title="分代算法"></a>分代算法</h2><p><strong>描述：</strong> 将内存区间根据对象的特点分成几块，根据每块内存的特点使用不同的算法。</p>
-<p>具体到Java堆内存：</p>
-<ul>
-<li>新建对象放入新生代，90%会很快回收，适合使用复制算法。</li>
-<li>一个对象经过几次回收后依然存活，放入老年代，是常驻内存的，可以用标记清除/压缩算法。</li>
-</ul>
-<h1 id="重要函数"><a href="#重要函数" class="headerlink" title="重要函数"></a>重要函数</h1><h2 id="finalize-方法："><a href="#finalize-方法：" class="headerlink" title="finalize()方法："></a>finalize()方法：</h2><p><strong>所属对象：</strong> 在Object类中定义，所有类都继承了它。子类可以覆盖它，以整理系统资源或进行其他清理工作。</p>
-<p><strong>调用者：</strong> 垃圾回收器</p>
-<p><strong>调用时机：</strong> 当垃圾回收器发现一个对象没有任何引用时调用它；或者说是在垃圾回收器在删除对象之前调用它的。具体来说，是在Java虚拟机发现去除那些已经被执行了finalize的对象之外，没有任何活动的线程能够引用到该对象的时候调用。</p>
-<p><strong>作用：</strong> </p>
-<ul>
-<li>Object类的finalize方法没有做任何事，只是简单的返回。Object的子类可以重写它。</li>
-<li>可以做任何事，甚至让该对象重新被其他线程引用。</li>
-<li>一般来说，此方法的目的通常是要让该对象在回收之前做一些清理工作，比如代表输入/输入链接的对象在此时中断连接。</li>
-</ul>
-<p><strong>结果：</strong> 一个对象的finalize方法被调用之后，这个对象就不可以被任何活动的线程再次引用了，这个对象也不能再进行任何的操作，包括被那些已经执行finalize方法的对象或者类，直到被Java虚拟机回收。</p>
-<p><strong>调用次数：</strong> 一个特定的对象的finalize方法绝对不会被Java虚拟机调用超过一次。</p>
-<p><strong>不推荐使用的原因：</strong></p>
-<ul>
-<li>有可能发生引用外泄，无意中复活对象</li>
-<li>此方法被系统调用，调用时间不明确，不是好的资源释放方案。</li>
-</ul>
-<p><strong>推荐的资源释放方案：</strong> 在<code>try-catch-finally</code>中进行。</p>
-<h2 id="System-gc"><a href="#System-gc" class="headerlink" title="System.gc()"></a>System.gc()</h2><p><strong>解释：</strong> 建议jvm对那些需要被清楚但尚未调用finalize方法的调用finalize方法。</p>
-<p>与<code>Runtime.getRuntime().runFinalization()</code>等价。</p>
-<h1 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h1><h2 id="串行回收器"><a href="#串行回收器" class="headerlink" title="串行回收器"></a>串行回收器</h2><h2 id="并行回收器"><a href="#并行回收器" class="headerlink" title="并行回收器"></a>并行回收器</h2><h2 id="CMS-Concurrent-Mark-Sweep，并发标记清楚-回收器"><a href="#CMS-Concurrent-Mark-Sweep，并发标记清楚-回收器" class="headerlink" title="CMS(Concurrent Mark Sweep，并发标记清楚)回收器"></a>CMS(Concurrent Mark Sweep，并发标记清楚)回收器</h2><h2 id="G1回收器"><a href="#G1回收器" class="headerlink" title="G1回收器"></a>G1回收器</h2><h1 id="优化方法汇总"><a href="#优化方法汇总" class="headerlink" title="优化方法汇总"></a>优化方法汇总</h1><h2 id="堆参数配置"><a href="#堆参数配置" class="headerlink" title="堆参数配置"></a>堆参数配置</h2><p>基本策略：尽可能将对象预留在新生代，减少老年代GC的次数。</p>
-<ul>
-<li>扩大堆内存，减少 Full GC 。参数：-Mmx</li>
-<li>使用并行回收器（ParrellOldGC）代替串行回收器:</li>
-<li>升级虚拟机版本</li>
-</ul>
-<h1 id="类加载系统"><a href="#类加载系统" class="headerlink" title="类加载系统"></a>类加载系统</h1><h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ol>
-<li>加载</li>
-<li>连接</li>
-<li>初始化</li>
-</ol>
-<p>其中连接又分为：</p>
-<ol>
-<li>验证</li>
-<li>准备</li>
-<li>解析</li>
-</ol>
-<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p><strong>作用：</strong> 通过各种方式将Class信息的二进制数据读入系统，教给Java虚拟机进行连接、初始化。</p>
-<h3 id="ClassLoader分类"><a href="#ClassLoader分类" class="headerlink" title="ClassLoader分类"></a>ClassLoader分类</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">名称</th>
-<th style="text-align:center">加载目录</th>
-<th style="text-align:center">使用权限</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">BootStrap ClassLoader</td>
-<td style="text-align:center">（启动类加载器）</td>
-<td style="text-align:center">JRE_HOME/lib如rt.jar</td>
-<td style="text-align:center">无Java实例，开发者无法使用</td>
-</tr>
-<tr>
-<td style="text-align:center">Extension ClassLoader</td>
-<td style="text-align:center">（扩展类加载器）</td>
-<td style="text-align:center">JRE_HOME/lib/ext</td>
-<td style="text-align:center">开发者可以直接使用</td>
-</tr>
-<tr>
-<td style="text-align:center">App ClassLoader</td>
-<td style="text-align:center">（应用类加载器，系统类加载器）</td>
-<td style="text-align:center">CLASSPATH 开发者可以直接使用</td>
-</tr>
-</tbody>
-</table>
-<p>启动类加载器是系统级实现，完全由C实现，没有Java实例，无法获得实例。</p>
-<h3 id="双亲委托模型"><a href="#双亲委托模型" class="headerlink" title="双亲委托模型"></a>双亲委托模型</h3><p><strong>描述：</strong> 某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</p>
-<p><strong>意义：</strong> 防止内存中出现多份同样的字节码。首选用BootStrap尝试加载。</p>
-<p><strong>弊端：</strong> 顶层的ClassLoader无法访问底层ClassLoader加载的类，即系统类访问应用类会出问题。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2380,7 +2270,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">219</span>
+                  <span class="site-state-item-count">220</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
