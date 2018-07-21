@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-19T14:26:17.888Z</updated>
+  <updated>2018-07-21T08:00:10.771Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>diary20180721</title>
+    <link href="http://libinyl.github.io/2018/07/21/diary20180721/"/>
+    <id>http://libinyl.github.io/2018/07/21/diary20180721/</id>
+    <published>2018-07-21T07:38:59.000Z</published>
+    <updated>2018-07-21T08:00:10.771Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>15:39:09</code> 心累。空调在，心情就在。</p><p>上午从安朴怡庭出发到山水居，早已大汗淋漓，进门发现空调竟然不能用！跟中介联系，又跟维修人员联系，排队竟然要排到七八天之后！实在是难受，吃教训了。以后租房一定要提前验证各种电器的可用性。</p><p>到海淀区文化馆转了转，地方是不错，然而地方早已占满。</p><p>于是终于来到一个尚峰尚水旁边的咖啡店坐下来。终于能歇一会了。。。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180721_01.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;15:39:09&lt;/code&gt; 心累。空调在，心情就在。&lt;/p&gt;
+&lt;p&gt;上午从安朴怡庭出发到山水居，早已大汗淋漓，进门发现空调竟然不能用！跟中介联系，又跟维修人员联系，排队竟然要排到七八天之后！实在是难受，吃教训了。以后租房一定要提前验证各种电器的可用性。&lt;/p
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180720</title>
+    <link href="http://libinyl.github.io/2018/07/21/diary20180720/"/>
+    <id>http://libinyl.github.io/2018/07/21/diary20180720/</id>
+    <published>2018-07-21T07:29:53.000Z</published>
+    <updated>2018-07-21T08:06:46.551Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>15:37:47</code> 当天没有写日记，这是在第二天补上的。</p><p>洗脑结束，大家开始签卖身契。</p><p><em>排队中</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_03.jpg" alt=""></p><p><em>暗中观察</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_02.jpg" alt=""></p><p><em>把自己卖了</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_04.jpg" alt=""></p><p>下午各组表演节目。也不知谁买了瓶崂山百花蛇舌草水，我们举杯饮之。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_01.jpg" alt=""></p><p><em>好玩的作品</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_09.jpg" alt=""></p><p><em>哦不我的肚子</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_10.jpg" alt=""></p><p>晚上跟秘书去找工位。工作环境棒！大方舒适。说来正巧，团队里离职的那个哥们也是中南的！晚上离职请客，请我们吃了烤肉！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_08.jpg" alt=""></p><p>晚上9点多步行回公寓，没有人没有车，只有工地冰冷的光，和遥远的叮叮当当。</p><p><em>园区一景</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_07.jpg" alt=""></p><p><em>冰冷的光</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_06.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;15:37:47&lt;/code&gt; 当天没有写日记，这是在第二天补上的。&lt;/p&gt;
+&lt;p&gt;洗脑结束，大家开始签卖身契。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;排队中&lt;/em&gt;&lt;br&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijin
+      
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>diary20180719</title>
@@ -463,56 +512,6 @@
     
     
       <category term="gradle" scheme="http://libinyl.github.io/tags/gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180705</title>
-    <link href="http://libinyl.github.io/2018/07/05/diary20180705/"/>
-    <id>http://libinyl.github.io/2018/07/05/diary20180705/</id>
-    <published>2018-07-05T02:30:46.000Z</published>
-    <updated>2018-07-05T16:51:34.849Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>10:34:45</code> 一会就要去跟武老师吃饭，有点手足无措。。</p><p><code>18:50:54</code> 看来是想多了。跟老师吃饭很愉快，一起的还有她孩子，和三个老师。老师讲了她的故事。</p><p>下午跟朱星禹去贴开锁的小广告，哈哈哈哈</p><p>晚上吃了黄焖鸡，真是我吃过最好吃的黄焖鸡了。肉又多又瘦，全是鸡腿。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180705%E9%BB%84%E7%84%96%E9%B8%A1.jpg" alt=""></p><p><code>00:48:50</code> 看到一张图，感觉非常好，收藏一下。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/%E9%98%BF%E9%87%8C%E7%BA%A7%E5%88%AB%E8%B7%AF%E7%BA%BF.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;10:34:45&lt;/code&gt; 一会就要去跟武老师吃饭，有点手足无措。。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;18:50:54&lt;/code&gt; 看来是想多了。跟老师吃饭很愉快，一起的还有她孩子，和三个老师。老师讲了她的故事。&lt;/p&gt;
-&lt;p&gt;下午跟朱星禹去贴开锁的小广告，哈哈
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180704</title>
-    <link href="http://libinyl.github.io/2018/07/04/diary20180704/"/>
-    <id>http://libinyl.github.io/2018/07/04/diary20180704/</id>
-    <published>2018-07-04T14:23:21.000Z</published>
-    <updated>2018-07-04T14:33:28.705Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>22:23:45</code> 回到家里竟然很容易就有了睡意。</p><p>前天（7月2日）回家，一路顺利而疲惫。期初空荡荡的软卧车厢，后来到了岳阳站被几个人占据，其中还有一个打着巨大的呼噜。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180702%E5%8D%A7%E9%93%BA.jpg" alt=""></p><p>昨天中午12点半左右到家。晚上10点多点就睡了，一觉睡到上午10点。</p><p>今天去奶奶家，路过二中。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180704%E4%BA%8C%E4%B8%AD.jpg" alt=""></p><p>晚上老姑带我和悦悦去吃了饺子，非常好吃。晚上与盛天放去公园逛了逛。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;22:23:45&lt;/code&gt; 回到家里竟然很容易就有了睡意。&lt;/p&gt;
-&lt;p&gt;前天（7月2日）回家，一路顺利而疲惫。期初空荡荡的软卧车厢，后来到了岳阳站被几个人占据，其中还有一个打着巨大的呼噜。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://yeliang1
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
     
   </entry>
   
