@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  SimpleDB架构SimpleDB 由以下部分组成：  代表 字段(field)，元组(tuple)，元组表(tuple schema)">
+<meta name="description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  名词解释 页 = Page = Block = Buffer Frame 行 = 记录 = Tuple = Row = Record 列">
 <meta name="keywords" content="java,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note-simpleDB">
 <meta property="og:url" content="http://libinyl.github.io/2018/07/22/note-simpleDB/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  SimpleDB架构SimpleDB 由以下部分组成：  代表 字段(field)，元组(tuple)，元组表(tuple schema)">
+<meta property="og:description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  名词解释 页 = Page = Block = Buffer Frame 行 = 记录 = Tuple = Row = Record 列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDMbkjX9IornX6RczR6cwAF8RegkHgdEmA%26q-sign-time%3D1532236563%3B1532237463%26q-key-time%3D1532236563%3B1532237463%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D86d03177a5df6a22b795ea53b5dbbcea49aeadc9">
-<meta property="og:updated_time" content="2018-07-22T05:16:11.445Z">
+<meta property="og:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png">
+<meta property="og:updated_time" content="2018-07-22T10:14:21.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="note-simpleDB">
-<meta name="twitter:description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  SimpleDB架构SimpleDB 由以下部分组成：  代表 字段(field)，元组(tuple)，元组表(tuple schema)">
-<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDMbkjX9IornX6RczR6cwAF8RegkHgdEmA%26q-sign-time%3D1532236563%3B1532237463%26q-key-time%3D1532236563%3B1532237463%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D86d03177a5df6a22b795ea53b5dbbcea49aeadc9">
+<meta name="twitter:description" content="项目资源 课程主页：https://sites.google.com/site/cs186fall2013/homeworks 初始代码：https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz  名词解释 页 = Page = Block = Buffer Frame 行 = 记录 = Tuple = Row = Record 列">
+<meta name="twitter:image" content="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png">
 
 
 
@@ -353,7 +353,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-22T13:16:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-22T18:14:21+08:00">
                 2018-07-22
               </time>
             
@@ -413,6 +413,13 @@
 <li>课程主页：<a href="https://sites.google.com/site/cs186fall2013/homeworks" target="_blank" rel="noopener">https://sites.google.com/site/cs186fall2013/homeworks</a></li>
 <li>初始代码：<a href="https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz" target="_blank" rel="noopener">https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz</a></li>
 </ul>
+<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><ul>
+<li>页 = Page = Block = Buffer Frame</li>
+<li>行 = 记录 = Tuple = Row = Record</li>
+<li><p>列 = 属性 = 字段 = Column = Attribute = Field</p>
+<p>页是最基础的磁盘存储单元。所有数据通过<code>flush</code>到磁盘（即<code>Block</code>）上，进而实现持久化。</p>
+</li>
+</ul>
 <h1 id="SimpleDB架构"><a href="#SimpleDB架构" class="headerlink" title="SimpleDB架构"></a>SimpleDB架构</h1><p>SimpleDB 由以下部分组成：</p>
 <ul>
 <li>代表 <strong>字段(field)</strong>，<strong>元组(tuple)</strong>，<strong>元组表(tuple schema)</strong>的类</li>
@@ -430,8 +437,9 @@
 <li>查询优化器</li>
 <li>索引</li>
 </ul>
+<h1 id="数据结构（传统）"><a href="#数据结构（传统）" class="headerlink" title="数据结构（传统）"></a>数据结构（传统）</h1><p>典型数据库存储使用<code>HeapFile</code>。</p>
 <h1 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h1><h2 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h2><h2 id="Field，Tuples"><a href="#Field，Tuples" class="headerlink" title="Field，Tuples"></a>Field，Tuples</h2><p>每个元组包含一组字段。字段可以有不同的类型，于是被抽象为<code>Field</code>接口。元组也有类型，被称为<code>schmea</code>，即 <strong>元组描述符</strong>，具体来讲是<code>TupleDesc</code>对象。元组描述符由一组<code>Type</code>对象组成，每个对象描述相关字段的类型。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDMbkjX9IornX6RczR6cwAF8RegkHgdEmA%26q-sign-time%3D1532236563%3B1532237463%26q-key-time%3D1532236563%3B1532237463%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D86d03177a5df6a22b795ea53b5dbbcea49aeadc9" alt=""></p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png" alt=""></p>
 <h2 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h2><h2 id="BufferPool"><a href="#BufferPool" class="headerlink" title="BufferPool"></a>BufferPool</h2><h2 id="HeapFile-acess-method"><a href="#HeapFile-acess-method" class="headerlink" title="HeapFile acess method"></a>HeapFile acess method</h2><h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2>
       
     </div>
@@ -473,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/22/note-coding-tips/" rel="prev" title="常用API参考及常见问题积累">
+                常用API参考及常见问题积累 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">229</span>
+                  <span class="site-state-item-count">230</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -576,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -638,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目资源"><span class="nav-number">1.</span> <span class="nav-text">项目资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SimpleDB架构"><span class="nav-number">2.</span> <span class="nav-text">SimpleDB架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键类"><span class="nav-number">3.</span> <span class="nav-text">关键类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Databases"><span class="nav-number">3.1.</span> <span class="nav-text">Databases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field，Tuples"><span class="nav-number">3.2.</span> <span class="nav-text">Field，Tuples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catalog"><span class="nav-number">3.3.</span> <span class="nav-text">Catalog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BufferPool"><span class="nav-number">3.4.</span> <span class="nav-text">BufferPool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HeapFile-acess-method"><span class="nav-number">3.5.</span> <span class="nav-text">HeapFile acess method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operators"><span class="nav-number">3.6.</span> <span class="nav-text">Operators</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目资源"><span class="nav-number">1.</span> <span class="nav-text">项目资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#名词解释"><span class="nav-number">2.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SimpleDB架构"><span class="nav-number">3.</span> <span class="nav-text">SimpleDB架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构（传统）"><span class="nav-number">4.</span> <span class="nav-text">数据结构（传统）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键类"><span class="nav-number">5.</span> <span class="nav-text">关键类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Databases"><span class="nav-number">5.1.</span> <span class="nav-text">Databases</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field，Tuples"><span class="nav-number">5.2.</span> <span class="nav-text">Field，Tuples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Catalog"><span class="nav-number">5.3.</span> <span class="nav-text">Catalog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BufferPool"><span class="nav-number">5.4.</span> <span class="nav-text">BufferPool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HeapFile-acess-method"><span class="nav-number">5.5.</span> <span class="nav-text">HeapFile acess method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operators"><span class="nav-number">5.6.</span> <span class="nav-text">Operators</span></a></li></ol></li></ol></div>
             
 
           </div>

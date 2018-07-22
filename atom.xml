@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-07-22T05:16:11.445Z</updated>
+  <updated>2018-07-22T11:28:43.179Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>常用API参考及常见问题积累</title>
+    <link href="http://libinyl.github.io/2018/07/22/note-coding-tips/"/>
+    <id>http://libinyl.github.io/2018/07/22/note-coding-tips/</id>
+    <published>2018-07-22T06:27:19.000Z</published>
+    <updated>2018-07-22T11:28:43.179Z</updated>
+    
+    <content type="html"><![CDATA[<p>批量初始化字符串：</p><h1 id="数据结构选择"><a href="#数据结构选择" class="headerlink" title="数据结构选择"></a>数据结构选择</h1><ol><li>用<code>List</code>还是<code>Map</code>？</li></ol><h1 id="Bug常见位置："><a href="#Bug常见位置：" class="headerlink" title="Bug常见位置："></a>Bug常见位置：</h1><ol><li><p>参数校验：</p><ol><li>参数遇到<code>String</code>，记得判定是否为空</li><li><p>参数是某种<code>Object</code>，记得判定<code>instanceof</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a.equals(<span class="string">"a"</span>)||a==<span class="keyword">null</span>)&#123;</span><br></pre></td></tr></table></figure><p>如果<code>a</code>是null，那么此处会空指针，应当交换位置</p></li></ol></li><li><p><code>equals</code>方法检查列表：</p><ul><li>null</li><li>instance of</li><li>其他</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;批量初始化字符串：&lt;/p&gt;
+&lt;h1 id=&quot;数据结构选择&quot;&gt;&lt;a href=&quot;#数据结构选择&quot; class=&quot;headerlink&quot; title=&quot;数据结构选择&quot;&gt;&lt;/a&gt;数据结构选择&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;用&lt;code&gt;List&lt;/code&gt;还是&lt;code&gt;Map&lt;/
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="http://libinyl.github.io/tags/java/"/>
+    
+      <category term="api" scheme="http://libinyl.github.io/tags/api/"/>
+    
+  </entry>
+  
+  <entry>
     <title>note-simpleDB</title>
     <link href="http://libinyl.github.io/2018/07/22/note-simpleDB/"/>
     <id>http://libinyl.github.io/2018/07/22/note-simpleDB/</id>
     <published>2018-07-22T03:39:19.000Z</published>
-    <updated>2018-07-22T05:16:11.445Z</updated>
+    <updated>2018-07-22T10:14:21.416Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="项目资源"><a href="#项目资源" class="headerlink" title="项目资源"></a>项目资源</h1><ul><li>课程主页：<a href="https://sites.google.com/site/cs186fall2013/homeworks" target="_blank" rel="noopener">https://sites.google.com/site/cs186fall2013/homeworks</a></li><li>初始代码：<a href="https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz" target="_blank" rel="noopener">https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz</a></li></ul><h1 id="SimpleDB架构"><a href="#SimpleDB架构" class="headerlink" title="SimpleDB架构"></a>SimpleDB架构</h1><p>SimpleDB 由以下部分组成：</p><ul><li>代表 <strong>字段(field)</strong>，<strong>元组(tuple)</strong>，<strong>元组表(tuple schema)</strong>的类</li><li>将 <strong>谓词(predicate)</strong> 和 <strong>条件(condition)</strong> 应用于元组的类</li><li>多个用于访问磁盘上存储着的“关系”文件（如堆文件）的方法，并且提供了一种方法来遍历这些“关系”的元组。</li><li>一组元组操作方法，如<code>select</code>，<code>join</code>等。</li><li>一个 <strong>缓冲池</strong>，用于缓存内存中活跃的 <strong>元组</strong> 和 <strong>页</strong>，以及处理 <strong>并发控制</strong> 和 <strong>事务</strong></li><li>存储着可用<code>table</code>和其<code>schema</code>的目录。</li></ul><p>Simple 不包含：</p><ul><li>SQL前端。</li><li>视图</li><li>数据类型（但包含整数和定长字符串）</li><li>查询优化器</li><li>索引</li></ul><h1 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h1><h2 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h2><h2 id="Field，Tuples"><a href="#Field，Tuples" class="headerlink" title="Field，Tuples"></a>Field，Tuples</h2><p>每个元组包含一组字段。字段可以有不同的类型，于是被抽象为<code>Field</code>接口。元组也有类型，被称为<code>schmea</code>，即 <strong>元组描述符</strong>，具体来讲是<code>TupleDesc</code>对象。元组描述符由一组<code>Type</code>对象组成，每个对象描述相关字段的类型。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDMbkjX9IornX6RczR6cwAF8RegkHgdEmA%26q-sign-time%3D1532236563%3B1532237463%26q-key-time%3D1532236563%3B1532237463%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D86d03177a5df6a22b795ea53b5dbbcea49aeadc9" alt=""></p><h2 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h2><h2 id="BufferPool"><a href="#BufferPool" class="headerlink" title="BufferPool"></a>BufferPool</h2><h2 id="HeapFile-acess-method"><a href="#HeapFile-acess-method" class="headerlink" title="HeapFile acess method"></a>HeapFile acess method</h2><h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="项目资源"><a href="#项目资源" class="headerlink" title="项目资源"></a>项目资源</h1><ul><li>课程主页：<a href="https://sites.google.com/site/cs186fall2013/homeworks" target="_blank" rel="noopener">https://sites.google.com/site/cs186fall2013/homeworks</a></li><li>初始代码：<a href="https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz" target="_blank" rel="noopener">https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz</a></li></ul><h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><ul><li>页 = Page = Block = Buffer Frame</li><li>行 = 记录 = Tuple = Row = Record</li><li><p>列 = 属性 = 字段 = Column = Attribute = Field</p><p>页是最基础的磁盘存储单元。所有数据通过<code>flush</code>到磁盘（即<code>Block</code>）上，进而实现持久化。</p></li></ul><h1 id="SimpleDB架构"><a href="#SimpleDB架构" class="headerlink" title="SimpleDB架构"></a>SimpleDB架构</h1><p>SimpleDB 由以下部分组成：</p><ul><li>代表 <strong>字段(field)</strong>，<strong>元组(tuple)</strong>，<strong>元组表(tuple schema)</strong>的类</li><li>将 <strong>谓词(predicate)</strong> 和 <strong>条件(condition)</strong> 应用于元组的类</li><li>多个用于访问磁盘上存储着的“关系”文件（如堆文件）的方法，并且提供了一种方法来遍历这些“关系”的元组。</li><li>一组元组操作方法，如<code>select</code>，<code>join</code>等。</li><li>一个 <strong>缓冲池</strong>，用于缓存内存中活跃的 <strong>元组</strong> 和 <strong>页</strong>，以及处理 <strong>并发控制</strong> 和 <strong>事务</strong></li><li>存储着可用<code>table</code>和其<code>schema</code>的目录。</li></ul><p>Simple 不包含：</p><ul><li>SQL前端。</li><li>视图</li><li>数据类型（但包含整数和定长字符串）</li><li>查询优化器</li><li>索引</li></ul><h1 id="数据结构（传统）"><a href="#数据结构（传统）" class="headerlink" title="数据结构（传统）"></a>数据结构（传统）</h1><p>典型数据库存储使用<code>HeapFile</code>。</p><h1 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h1><h2 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h2><h2 id="Field，Tuples"><a href="#Field，Tuples" class="headerlink" title="Field，Tuples"></a>Field，Tuples</h2><p>每个元组包含一组字段。字段可以有不同的类型，于是被抽象为<code>Field</code>接口。元组也有类型，被称为<code>schmea</code>，即 <strong>元组描述符</strong>，具体来讲是<code>TupleDesc</code>对象。元组描述符由一组<code>Type</code>对象组成，每个对象描述相关字段的类型。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png" alt=""></p><h2 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h2><h2 id="BufferPool"><a href="#BufferPool" class="headerlink" title="BufferPool"></a>BufferPool</h2><h2 id="HeapFile-acess-method"><a href="#HeapFile-acess-method" class="headerlink" title="HeapFile acess method"></a>HeapFile acess method</h2><h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2>]]></content>
     
     <summary type="html">
     
@@ -72,16 +101,16 @@
     <link href="http://libinyl.github.io/2018/07/22/diary20180722/"/>
     <id>http://libinyl.github.io/2018/07/22/diary20180722/</id>
     <published>2018-07-22T02:34:16.000Z</published>
-    <updated>2018-07-22T02:36:19.925Z</updated>
+    <updated>2018-07-22T12:27:30.808Z</updated>
     
-    <content type="html"><![CDATA[<p><code>10:36:06</code> 嗯 想尝试点有风险的东西。。</p>]]></content>
+    <content type="html"><![CDATA[<p><code>10:36:06</code> 嗯 想尝试点有风险的东西。。</p><p><code>16:54:53</code> 在西山悦咖啡呆到现在。本想尝试开发区块链，了解了一下发现区块链涉及的很多技术也是非常基础而实用的，与自然的学习过程没有冲突。尝试实现SimpleDB中。</p><p><code>20:27:05</code> 离开咖啡店。虽说是今天第二次来。明天第一天上班！</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;&lt;code&gt;10:36:06&lt;/code&gt; 嗯 想尝试点有风险的东西。。&lt;/p&gt;
-
+&lt;p&gt;&lt;code&gt;16:54:53&lt;/code&gt; 在西山悦咖啡呆到现在。本想尝试开发区块链，了解了一下发现区块链涉及的很多技术也是非常基础而实用的，与自然的学习过程没有冲突。尝试实现Simpl
       
     
     </summary>
@@ -460,30 +489,6 @@
       
         &lt;p&gt;&lt;code&gt;20:23:38&lt;/code&gt; 放和晖来到我家。中午去奶奶家，奶奶和老姑聊了很多。下午帮放买了垃圾。刚刚和放、晖吃了鸡公煲。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijing.myqcloud
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180709</title>
-    <link href="http://libinyl.github.io/2018/07/09/diary20180709/"/>
-    <id>http://libinyl.github.io/2018/07/09/diary20180709/</id>
-    <published>2018-07-09T13:14:11.000Z</published>
-    <updated>2018-07-09T16:37:26.349Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>21:21:38</code> 今天到盛天放家玩，得知他的一个同学之前也在华为，也是路由器部门，竟然从java转到了C。顿时感觉不太好。给放装了系统，竟然发生错误，十分懊恼。</p><p><code>00:36:54</code> 然后系统装好了。我猜在放家时根本就没下载完，当时下的太快了。或者是那个U盘有毛病了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;21:21:38&lt;/code&gt; 今天到盛天放家玩，得知他的一个同学之前也在华为，也是路由器部门，竟然从java转到了C。顿时感觉不太好。给放装了系统，竟然发生错误，十分懊恼。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;00:36:54&lt;/code&gt; 然后系统装好了。我猜在放家时
       
     
     </summary>

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://libinyl.github.io/2018/07/22/diary20180722/</loc>
+    
+    <lastmod>2018-07-22T12:27:30.808Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://libinyl.github.io/2018/07/22/note-coding-tips/</loc>
+    
+    <lastmod>2018-07-22T11:28:43.179Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://libinyl.github.io/2018/07/22/note-simpleDB/</loc>
     
-    <lastmod>2018-07-22T05:16:11.445Z</lastmod>
+    <lastmod>2018-07-22T10:14:21.416Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://libinyl.github.io/2018/07/22/note-blockchain/</loc>
     
     <lastmod>2018-07-22T03:15:55.774Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://libinyl.github.io/2018/07/22/diary20180722/</loc>
-    
-    <lastmod>2018-07-22T02:36:19.925Z</lastmod>
     
   </url>
   
