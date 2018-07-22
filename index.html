@@ -302,6 +302,739 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/22/note-simpleDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/note-simpleDB/" itemprop="url">note-simpleDB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T11:39:19+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-22T13:16:11+08:00">
+                2018-07-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技·术/" itemprop="url" rel="index">
+                    <span itemprop="name">技·术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="项目资源"><a href="#项目资源" class="headerlink" title="项目资源"></a>项目资源</h1><ul>
+<li>课程主页：<a href="https://sites.google.com/site/cs186fall2013/homeworks" target="_blank" rel="noopener">https://sites.google.com/site/cs186fall2013/homeworks</a></li>
+<li>初始代码：<a href="https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz" target="_blank" rel="noopener">https://www.dropbox.com/s/qs4uxgwvsc2m7bj/CS186-proj1.tar.gz</a></li>
+</ul>
+<h1 id="SimpleDB架构"><a href="#SimpleDB架构" class="headerlink" title="SimpleDB架构"></a>SimpleDB架构</h1><p>SimpleDB 由以下部分组成：</p>
+<ul>
+<li>代表 <strong>字段(field)</strong>，<strong>元组(tuple)</strong>，<strong>元组表(tuple schema)</strong>的类</li>
+<li>将 <strong>谓词(predicate)</strong> 和 <strong>条件(condition)</strong> 应用于元组的类</li>
+<li>多个用于访问磁盘上存储着的“关系”文件（如堆文件）的方法，并且提供了一种方法来遍历这些“关系”的元组。</li>
+<li>一组元组操作方法，如<code>select</code>，<code>join</code>等。</li>
+<li>一个 <strong>缓冲池</strong>，用于缓存内存中活跃的 <strong>元组</strong> 和 <strong>页</strong>，以及处理 <strong>并发控制</strong> 和 <strong>事务</strong></li>
+<li>存储着可用<code>table</code>和其<code>schema</code>的目录。</li>
+</ul>
+<p>Simple 不包含：</p>
+<ul>
+<li>SQL前端。</li>
+<li>视图</li>
+<li>数据类型（但包含整数和定长字符串）</li>
+<li>查询优化器</li>
+<li>索引</li>
+</ul>
+<h1 id="关键类"><a href="#关键类" class="headerlink" title="关键类"></a>关键类</h1><h2 id="Databases"><a href="#Databases" class="headerlink" title="Databases"></a>Databases</h2><h2 id="Field，Tuples"><a href="#Field，Tuples" class="headerlink" title="Field，Tuples"></a>Field，Tuples</h2><p>每个元组包含一组字段。字段可以有不同的类型，于是被抽象为<code>Field</code>接口。元组也有类型，被称为<code>schmea</code>，即 <strong>元组描述符</strong>，具体来讲是<code>TupleDesc</code>对象。元组描述符由一组<code>Type</code>对象组成，每个对象描述相关字段的类型。</p>
+<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/SimpleDB_tuple.png?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDMbkjX9IornX6RczR6cwAF8RegkHgdEmA%26q-sign-time%3D1532236563%3B1532237463%26q-key-time%3D1532236563%3B1532237463%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D86d03177a5df6a22b795ea53b5dbbcea49aeadc9" alt=""></p>
+<h2 id="Catalog"><a href="#Catalog" class="headerlink" title="Catalog"></a>Catalog</h2><h2 id="BufferPool"><a href="#BufferPool" class="headerlink" title="BufferPool"></a>BufferPool</h2><h2 id="HeapFile-acess-method"><a href="#HeapFile-acess-method" class="headerlink" title="HeapFile acess method"></a>HeapFile acess method</h2><h2 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/22/note-blockchain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/note-blockchain/" itemprop="url">区块链开发学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T10:50:34+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-22T11:15:55+08:00">
+                2018-07-22
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>根据招聘信息，得到技能列表：</p>
+<ul>
+<li>共识算法：<strong><code>Pow</code></strong>，<code>PoS</code>，<code>DPoS</code>，<code>PBFT</code>，<code>Paxos</code>，<code>Raft</code></li>
+<li>开源项目：<code>HyperLedger fabric</code>，<code>Ethereum</code>，<code>bitcoin</code>，<code>Corda</code></li>
+<li>编程语言：<code>Golang</code>，<code>Java</code></li>
+<li>密码学组件：<code>ECC</code>，<code>RSA</code>，<code>国密算法</code>，<code>AES</code>，<code>Hash</code></li>
+<li>算法：<code>Merkel Tree</code>，<code>Grossip</code>，<code>X25519</code>，<code>Ed25519</code></li>
+<li>架构：<code>分布式系统</code>，<code>P2P</code>，<code>Docker</code>，<code>LCX</code></li>
+<li>数据库：<code>NoSQL</code>，KV型数据库如<code>LevelDB</code>，<code>RocksDB</code></li>
+</ul>
+<h1 id="Paxos"><a href="#Paxos" class="headerlink" title="Paxos"></a>Paxos</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/22/diary20180722/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/22/diary20180722/" itemprop="url">diary20180722</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T10:34:16+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-22T10:36:19+08:00">
+                2018-07-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>10:36:06</code> 嗯 想尝试点有风险的东西。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/21/note-network-common/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/note-network-common/" itemprop="url">note-network-common</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T21:07:02+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-21T21:07:02+08:00">
+                2018-07-21
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/21/interview-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/21/interview-list/" itemprop="url">interview-list</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T21:04:40+08:00">
+                2018-07-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-21T21:04:40+08:00">
+                2018-07-21
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/21/diary20180721/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1101,960 +1834,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/16/diary20180716/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/16/diary20180716/" itemprop="url">diary20180716</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T21:32:55+08:00">
-                2018-07-16
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-16T21:42:46+08:00">
-                2018-07-16
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>21:33:06</code> 疲惫的原因不是肌肉酸痛，而是坐车。今天入职，到环保园员工中心培训，坐了一天。明天还要早起。。。</p>
-<p><em>刚到华为</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary2018071604.jpg" alt=""></p>
-<p><em>活动里写个字</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary2018071601.jpg" alt=""></p>
-<p><em>发了工卡</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary2018071602.jpg" alt=""></p>
-<p><em>培训中…</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary2018071605.jpg" alt=""></p>
-<p><em>每天都有一点夜宵</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary2018071603.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/15/note-windows-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/note-windows-config/" itemprop="url">Windows系统安装后的配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T22:11:37+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T22:22:15+08:00">
-                2018-07-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>电源管理配置：电池模式下的配置</li>
-<li>网络适配器关闭节电模式</li>
-<li>省电模式配置，在点亮80%时开启节电模式</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/15/diary20180715/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/15/diary20180715/" itemprop="url">diary20180715</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T14:01:01+08:00">
-                2018-07-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T22:23:36+08:00">
-                2018-07-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>14:01:14</code> 来到<a href="https://map.qq.com/?type=marker&amp;isopeninfowin=1&amp;markertype=1&amp;pointx=116.337&amp;pointy=39.9921&amp;name=%E9%9B%95%E5%88%BB%E6%97%B6%E5%85%89%E5%92%96%E5%95%A1%E9%A6%86&amp;addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E6%88%90%E5%BA%9C%E8%B7%AF%E5%8D%8E%E6%B8%85%E5%98%89%E5%9B%AD12%E5%8F%B7%E6%A5%BC2%E5%8F%B72-4%E5%B1%82&amp;ref=WeChat" target="_blank" rel="noopener">五道口雕刻时光</a>。</p>
-<p>这边物价真是高啊，是个店咖啡都38元起步。幸亏没来清华上学。</p>
-<p><code>15:34:57</code> 咖啡店里的嘈杂，让我想起了高中下课<del>老师不在时</del>的课间。</p>
-<p><code>18:51:05</code> 发现intellij里的uml代码浏览功能实际上那么强大而自己以前都没发现，捶胸顿足。</p>
-<p><code>22:23:31</code> 明天入职。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/14/note-cs-common/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/14/note-cs-common/" itemprop="url">操作系统（posix）核心知识及拓展</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T16:40:53+08:00">
-                2018-07-14
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-14T20:08:45+08:00">
-                2018-07-14
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技·术/" itemprop="url" rel="index">
-                    <span itemprop="name">技·术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:</p>
-<ul>
-<li>登录<ol>
-<li>登录名</li>
-<li>shell</li>
-</ol>
-</li>
-<li>文件和目录<ol>
-<li>文件系统</li>
-<li>文件名</li>
-<li>路径名</li>
-<li>工作目录</li>
-<li>起始目录</li>
-</ol>
-</li>
-<li>输入和输出<ol>
-<li>文件描述符</li>
-<li>标准输入、标准输出、标准错误</li>
-<li>不带缓冲的I/O</li>
-<li>标准I/O</li>
-</ol>
-</li>
-<li>程序和进程<ol>
-<li>程序</li>
-<li>进程和进程id</li>
-<li>进程控制</li>
-<li>线程和线程id</li>
-</ol>
-</li>
-<li>出错处理</li>
-<li>用户标识<ol>
-<li>用户id</li>
-<li>组id</li>
-<li>附属组id</li>
-</ol>
-</li>
-<li>信号</li>
-<li>时间值</li>
-<li>系统调用和库函数</li>
-</ul>
-<p><em>操作系统（posix）要点示意图：</em></p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png" alt=""></p>
-<h1 id="概览（部分）"><a href="#概览（部分）" class="headerlink" title="概览（部分）"></a>概览（部分）</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>系统在<code>/etc/passwd</code>的口令文件中保存账户信息。<code>cat</code>其可得：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>按字段美化为：</p>
-<table>
-<thead>
-<tr>
-<th>登录名</th>
-<th>加密口令</th>
-<th>数字ID</th>
-<th>数字组ID</th>
-<th>注释字段</th>
-<th>起始目录</th>
-<th>shell程序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>root</td>
-<td>x</td>
-<td>0</td>
-<td>0</td>
-<td>root</td>
-<td>/root</td>
-<td>/bin/bash</td>
-</tr>
-<tr>
-<td>daemon</td>
-<td>x</td>
-<td>1</td>
-<td>1</td>
-<td>daemon</td>
-<td>/usr/sbin</td>
-<td>/usr/sbin/nologin</td>
-</tr>
-<tr>
-<td>bin</td>
-<td>x</td>
-<td>2</td>
-<td>2</td>
-<td>bin</td>
-<td>/bin</td>
-<td>/usr/sbin/nologin</td>
-</tr>
-<tr>
-<td>sys</td>
-<td>x</td>
-<td>3</td>
-<td>3</td>
-<td>sys</td>
-<td>/dev</td>
-<td>/usr/sbin/nologin</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>x</td>
-<td>4</td>
-<td>65534</td>
-<td>sync</td>
-<td>/bin</td>
-<td>/bin/sync</td>
-</tr>
-<tr>
-<td>games</td>
-<td>x</td>
-<td>5</td>
-<td>60</td>
-<td>games</td>
-<td>/usr/games</td>
-<td>/usr/sbin/nologin</td>
-</tr>
-<tr>
-<td>man</td>
-<td>x</td>
-<td>6</td>
-<td>12</td>
-<td>man</td>
-<td>/var/cache/man</td>
-<td>/usr/sbin/nologin</td>
-</tr>
-</tbody>
-</table>
-<h2 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h2><ul>
-<li><strong>文件描述符</strong>：本质上是一个非负整数，用来标识一个特定进程访问的文件（引用）。当内核打开一个文件或创建一个新文件时都返回一个文件描述符。</li>
-<li><strong>标准输入输出错误</strong>：按照惯例，每当运行一个新程序时，所有的shell都为其打开3个文件描述符——<em>标准输入</em>、<em>标准输出</em>、<em>标准错误</em>。<ul>
-<li>不做特殊处理则都指向终端。</li>
-<li>大多数shell都可以通过<code>&gt;</code>将描述符重定向到某个文件。</li>
-</ul>
-</li>
-<li><strong>不带缓冲的I/O</strong>：都使用文件描述符。<br><code>open()</code>、<code>read()</code>、<code>write()</code>、<code>lseek()</code>、<code>close()</code>函数。</li>
-<li><strong>标准I/O</strong>：为不带缓冲的I/O函数提供带缓冲的接口。</li>
-</ul>
-<h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2><ul>
-<li>内核使用<code>exec</code>（系列）函数将程序读入内存，并执行<strong>程序（program）</strong>。</li>
-<li><strong>程序的执行实例称为进程（process）。</strong>每个进程都用一个唯一的非负整数作为数字标识符，称为进程ID。（process ID）</li>
-<li>通常一个进程只有一个<strong>线程（thread）</strong>。一个进程内所有线程共享同一地址空间、文件描述符、栈和进程相关属性。由于它们访问同一存储区，故需要采取同步措施避免不一致性。<strong>线程ID</strong>只在所属进程内起作用。</li>
-</ul>
-<h2 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h2><ul>
-<li>例如在对某一文件执行<code>open</code>函数时发生诸如文件不存在、权限问题等，则返回负值，如-1，而非正常情况下的非负文件描述符。在文件<code>&lt;errno.h&gt;</code>中对错误进行定义。</li>
-</ul>
-<h2 id="用户标识"><a href="#用户标识" class="headerlink" title="用户标识"></a>用户标识</h2><ul>
-<li><strong>用户ID（user ID）</strong>：用于标识不同用户。每个用户通常有唯一ID。用户不能更改其用户ID。</li>
-<li><strong>权限鉴定：</strong>：内核使用用户ID来检验用户是否有执行某些操作的权限。</li>
-<li><strong>组ID</strong>：组文件将组名映射为数值形式的组ID。组文件为<code>/etc/group</code>。</li>
-</ul>
-<p>文件系统存储着磁盘上每个文件的用户ID和组ID。</p>
-<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p><strong>信号（signal）</strong>：用于通知进程发生了某种情况。例如除数为0，则将名为<code>SIGFPE</code>（浮点异常）的信号发送给进程。进程有3种处理信号的方式：</p>
-<ul>
-<li>忽略</li>
-<li>按系统默认方式处理</li>
-<li>提供一个函数，信号发生时调用该函数。被称为捕捉该信号。</li>
-</ul>
-<p>例如，</p>
-<ul>
-<li>可以从键盘上使用<strong>中断键（interrupt key）</strong> 即 <code>Ctrl+C</code>、<code>Delete</code>或 <strong>退出键（quit key）</strong> 即<code>Ctrl+\</code>，用于中断当前运行的程序。</li>
-<li>调用<code>kill</code>函数。</li>
-</ul>
-<h2 id="时间值"><a href="#时间值" class="headerlink" title="时间值"></a>时间值</h2><p>系统为一个进程维护了3个进程时间值：</p>
-<ul>
-<li><strong>时钟时间</strong>：又称墙上时钟时间（wall clock time），是进程运行的时间总量，与系统中同时运行的进程数有关。</li>
-<li><strong>用户CPU时间</strong>：执行用户指令所用的时间量。</li>
-<li><strong>系统CPU时间</strong>：为该进程执行内核程序经历的时间。</li>
-</ul>
-<p><em>CPU时间 = 用户CPU时间 + 系统CPU时间</em></p>
-<p>使用<code>time</code>命令来获取各类时间。</p>
-<h2 id="系统调用和库函数"><a href="#系统调用和库函数" class="headerlink" title="系统调用和库函数"></a>系统调用和库函数</h2><p><strong>UNIX为每个系统调用在标准C库中设置一个同样名字的函数。</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/14/diary20180714/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/14/diary20180714/" itemprop="url">diary20180714</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T09:52:35+08:00">
-                2018-07-14
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-15T14:05:23+08:00">
-                2018-07-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>09:52:54</code> 在软件园门口望着一个比一个想去的公司大楼，让我想起小时候扑在商店门口的玻璃上，看着心仪的玩具。都是渴望的眼神。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180714软件园.jpg" alt=""></p>
-<p><code>20:34:49</code> 上午看了《邪不压正》，非常好看。姜文就是有品味，把“浪漫”诠释得很美妙。</p>
-<p>看完电影回到酒店，诚哥在睡觉，我就又出来了。逛到一家java咖啡，人太多没进去。</p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180714java咖啡.jpg" alt=""></p>
-<p>大概是下午两点的时候来到<a href="https://map.qq.com/?type=marker&amp;isopeninfowin=1&amp;markertype=1&amp;pointx=116.361&amp;pointy=40.0813&amp;name=%E4%B8%8A%E5%B2%9B%E5%92%96%E5%95%A1&amp;addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%98%8C%E5%B9%B3%E5%8C%BA%E4%B8%9C%E5%A4%A7%E8%A1%97%E5%92%8C%E8%B0%90%E5%AE%B6%E5%9B%AD2%E5%8C%BA1%E5%8F%B7%E6%A5%BC2%E5%B1%82" target="_blank" rel="noopener">上岛咖啡</a>，点了一杯美式，直到现在。该回去了。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2105,7 +1884,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">229</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2127,7 +1906,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
