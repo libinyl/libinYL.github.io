@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-08-01T15:47:09.160Z</updated>
+  <updated>2018-08-04T10:59:12.845Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,19 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>interview-list-java</title>
+    <link href="http://libinyl.github.io/2018/08/04/interview-list-java/"/>
+    <id>http://libinyl.github.io/2018/08/04/interview-list-java/</id>
+    <published>2018-08-04T10:59:12.000Z</published>
+    <updated>2018-08-04T10:59:12.845Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>diary201808</title>
     <link href="http://libinyl.github.io/2018/08/01/diary201808/"/>
     <id>http://libinyl.github.io/2018/08/01/diary201808/</id>
     <published>2018-08-01T15:16:50.000Z</published>
-    <updated>2018-08-01T15:47:09.160Z</updated>
+    <updated>2018-08-05T07:44:55.172Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="2018年8月1日"><a href="#2018年8月1日" class="headerlink" title="2018年8月1日"></a>2018年8月1日</h2><p><code>23:17:02</code> 从今天开始，尝试着把一个月的东西都写在一个文件里。这样节省了很多文件，读写时不至于太慢。</p><hr><p>大概是最近一个星期，我开始认识到自己性格的真相。之前了解过一些，每个人的性格成因多多少少都跟儿时的经历有关。今天公司上了一节心理课，我终于有了恍然大悟的感觉。</p><p>从高中起，甚至到大学二年级及其之前，我的那些言行不是简单的“刷存在”，而是因为儿时母爱的缺失。</p><p>她曾连续三次抛弃了我，在十七年前。</p><p>第一次发生在一个普通的晚上，我照例在平房玩耍，突然接到电话，说要找我。我兴冲冲去了老姑那屋，也就是有电话的那间屋子，拿起电话，只听见妈说，“李斌，我不要你了行吗”。我没听清，还让她重复了一遍。待我确定后，头也不回的跑出屋子，直接坐在沙发上嚎啕大哭。那个6岁的小男孩是什么心境呢？我忘的很干净，只记得是实实在在的哭了，撕心裂肺的哭。</p><p>第二次大概是类似的时间。我忘记了这几次“抛弃”之间我们是怎样生活的，也许我就那么原谅她了？我可能以为她是在开玩笑。那个晚上爷爷驮我回到楼上，一进门看到妈背着身子往脸上擦着什么，对爷爷说，“我不要李斌了，你把他带回去吧。”爷爷瞪大了眼睛，二话不说把我带回平房。嗯，爷爷奶奶住在小院子里，我跟着大人的习惯，用平房和楼房来区分两个地方。那天的我是什么感受，我也忘了。</p><p>第三次是一次放学。爷爷从三小把我接回来，她站在岔路与马路的交界处，直截了当的说，我不要你了。除了那个眼神，我什么都不记得了。</p><p>再往后，就是持续几年的官司，关于我的抚养权，关于谁赔谁钱。</p><p>我竟然是个这么健忘的人……尽管我清楚地记得那三次“抛弃”，我还是会接收她一次一次的看望我，一年又一年，从小学，到初中，到高中…她嫁了人，又离了婚，又嫁了人。直到现在，直到上个月，我们还在一起吃饭，我仍然是个“懂事的孩子”，握着她的手，好像一点都不陌生。</p><p><strong>没有母爱是可怕的，我到现在才明白，才明白。我所有的一切，我的努力，我的乱闯和自卑，都是想拾起那份近似母爱的关注。那短短的感情也是，我不求你多爱我，就算你恨我、骂我、讨厌我，只要你关注着我，记着我，提起我，我的潜意识都会把它折射成亲情的映像，就像在腐蚀了十多年的心灵漏洞上涂上一层药膏。</strong></p><p>呵，听起来像SM。应该还不至于。只是就算我能认清这点，知道自己性格的成因，这份烙印也根深蒂固，无法磨灭。</p><p>安全感，安全感，安全感…</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="2018年8月5日"><a href="#2018年8月5日" class="headerlink" title="2018年8月5日"></a>2018年8月5日</h2><p>今天胡伟治说要做游戏引擎，我来统计他改变心意所需的时间。即坚持初心的时间。我赌一星期！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture%2Fdiary%2Fdiary20180805_%E8%83%A1%E4%BC%9F%E6%B2%BB%E5%81%9A%E6%B8%B8%E6%88%8F.png" alt=""></p><h2 id="2018年8月4日"><a href="#2018年8月4日" class="headerlink" title="2018年8月4日"></a>2018年8月4日</h2><p><code>19:49:46</code> 今天来到一个很不容易发现的小咖啡店，环境很好。</p><p>果不其然，一如我自己的预言，我再次陷入焦虑。</p><h2 id="2018年8月1日"><a href="#2018年8月1日" class="headerlink" title="2018年8月1日"></a>2018年8月1日</h2><p><code>23:17:02</code> 从今天开始，尝试着把一个月的东西都写在一个文件里。这样节省了很多文件，读写时不至于太慢。</p><hr><p>大概是最近一个星期，我开始认识到自己性格的真相。之前了解过一些，每个人的性格成因多多少少都跟儿时的经历有关。今天公司上了一节心理课，我终于有了恍然大悟的感觉。</p><p>从高中起，甚至到大学二年级及其之前，我的那些言行不是简单的“刷存在”，而是因为儿时母爱的缺失。</p><p>她曾连续三次抛弃了我，在十七年前。</p><p>第一次发生在一个普通的晚上，我照例在平房玩耍，突然接到电话，说要找我。我兴冲冲去了老姑那屋，也就是有电话的那间屋子，拿起电话，只听见妈说，“李斌，我不要你了行吗”。我没听清，还让她重复了一遍。待我确定后，头也不回的跑出屋子，直接坐在沙发上嚎啕大哭。那个6岁的小男孩是什么心境呢？我忘的很干净，只记得是实实在在的哭了，撕心裂肺的哭。</p><p>第二次大概是类似的时间。我忘记了这几次“抛弃”之间我们是怎样生活的，也许我就那么原谅她了？我可能以为她是在开玩笑。那个晚上爷爷驮我回到楼上，一进门看到妈背着身子往脸上擦着什么，对爷爷说，“我不要李斌了，你把他带回去吧。”爷爷瞪大了眼睛，二话不说把我带回平房。嗯，爷爷奶奶住在小院子里，我跟着大人的习惯，用平房和楼房来区分两个地方。那天的我是什么感受，我也忘了。</p><p>第三次是一次放学。爷爷从三小把我接回来，她站在岔路与马路的交界处，直截了当的说，我不要你了。除了那个眼神，我什么都不记得了。</p><p>再往后，就是持续几年的官司，关于我的抚养权，关于谁赔谁钱。</p><p>我竟然是个这么健忘的人……尽管我清楚地记得那三次“抛弃”，我还是会接受她一次一次的看望我，一年又一年，从小学，到初中，到高中…她嫁了人，又离了婚，又嫁了人。直到现在，直到上个月，我们还在一起吃饭，我仍然是个“懂事的孩子”，握着她的手，好像一点都不陌生。</p><p><strong>没有母爱是可怕的，我到现在才明白，才明白。我所有的一切，我的努力，我的乱闯和自卑，都是想拾起那份近似母爱的关注。那短短的感情也是，我不求你多爱我，就算你恨我、骂我、讨厌我，只要你关注着我，记着我，提起我，我的潜意识都会把它折射成亲情的映像，就像在腐蚀了十多年的心灵漏洞上涂上一层药膏。</strong></p><p>呵，听起来像SM。应该还不至于。只是就算我能认清这点，知道自己性格的成因，这份烙印也根深蒂固，无法磨灭。</p><p>安全感，安全感，安全感…</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;2018年8月1日&quot;&gt;&lt;a href=&quot;#2018年8月1日&quot; class=&quot;headerlink&quot; title=&quot;2018年8月1日&quot;&gt;&lt;/a&gt;2018年8月1日&lt;/h2&gt;&lt;p&gt;&lt;code&gt;23:17:02&lt;/code&gt; 从今天开始，尝试着把一个月的东西都写在一
+        &lt;h2 id=&quot;2018年8月5日&quot;&gt;&lt;a href=&quot;#2018年8月5日&quot; class=&quot;headerlink&quot; title=&quot;2018年8月5日&quot;&gt;&lt;/a&gt;2018年8月5日&lt;/h2&gt;&lt;p&gt;今天胡伟治说要做游戏引擎，我来统计他改变心意所需的时间。即坚持初心的时间。我赌一星期
       
     
     </summary>
@@ -467,35 +481,6 @@
     
       <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统（posix）核心知识及拓展</title>
-    <link href="http://libinyl.github.io/2018/07/14/note-cs-common/"/>
-    <id>http://libinyl.github.io/2018/07/14/note-cs-common/</id>
-    <published>2018-07-14T08:40:53.000Z</published>
-    <updated>2018-07-14T12:08:45.719Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h1><p>将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:</p><ul><li>登录<ol><li>登录名</li><li>shell</li></ol></li><li>文件和目录<ol><li>文件系统</li><li>文件名</li><li>路径名</li><li>工作目录</li><li>起始目录</li></ol></li><li>输入和输出<ol><li>文件描述符</li><li>标准输入、标准输出、标准错误</li><li>不带缓冲的I/O</li><li>标准I/O</li></ol></li><li>程序和进程<ol><li>程序</li><li>进程和进程id</li><li>进程控制</li><li>线程和线程id</li></ol></li><li>出错处理</li><li>用户标识<ol><li>用户id</li><li>组id</li><li>附属组id</li></ol></li><li>信号</li><li>时间值</li><li>系统调用和库函数</li></ul><p><em>操作系统（posix）要点示意图：</em></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/tech/操作系统posix.png" alt=""></p><h1 id="概览（部分）"><a href="#概览（部分）" class="headerlink" title="概览（部分）"></a>概览（部分）</h1><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p>系统在<code>/etc/passwd</code>的口令文件中保存账户信息。<code>cat</code>其可得：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin</span><br><span class="line">bin:x:2:2:bin:/bin:/usr/sbin/nologin</span><br><span class="line">sys:x:3:3:sys:/dev:/usr/sbin/nologin</span><br><span class="line">sync:x:4:65534:sync:/bin:/bin/sync</span><br><span class="line">games:x:5:60:games:/usr/games:/usr/sbin/nologin</span><br><span class="line">man:x:6:12:man:/var/cache/man:/usr/sbin/nologin</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>按字段美化为：</p><table><thead><tr><th>登录名</th><th>加密口令</th><th>数字ID</th><th>数字组ID</th><th>注释字段</th><th>起始目录</th><th>shell程序</th></tr></thead><tbody><tr><td>root</td><td>x</td><td>0</td><td>0</td><td>root</td><td>/root</td><td>/bin/bash</td></tr><tr><td>daemon</td><td>x</td><td>1</td><td>1</td><td>daemon</td><td>/usr/sbin</td><td>/usr/sbin/nologin</td></tr><tr><td>bin</td><td>x</td><td>2</td><td>2</td><td>bin</td><td>/bin</td><td>/usr/sbin/nologin</td></tr><tr><td>sys</td><td>x</td><td>3</td><td>3</td><td>sys</td><td>/dev</td><td>/usr/sbin/nologin</td></tr><tr><td>sync</td><td>x</td><td>4</td><td>65534</td><td>sync</td><td>/bin</td><td>/bin/sync</td></tr><tr><td>games</td><td>x</td><td>5</td><td>60</td><td>games</td><td>/usr/games</td><td>/usr/sbin/nologin</td></tr><tr><td>man</td><td>x</td><td>6</td><td>12</td><td>man</td><td>/var/cache/man</td><td>/usr/sbin/nologin</td></tr></tbody></table><h2 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h2><ul><li><strong>文件描述符</strong>：本质上是一个非负整数，用来标识一个特定进程访问的文件（引用）。当内核打开一个文件或创建一个新文件时都返回一个文件描述符。</li><li><strong>标准输入输出错误</strong>：按照惯例，每当运行一个新程序时，所有的shell都为其打开3个文件描述符——<em>标准输入</em>、<em>标准输出</em>、<em>标准错误</em>。<ul><li>不做特殊处理则都指向终端。</li><li>大多数shell都可以通过<code>&gt;</code>将描述符重定向到某个文件。</li></ul></li><li><strong>不带缓冲的I/O</strong>：都使用文件描述符。<br><code>open()</code>、<code>read()</code>、<code>write()</code>、<code>lseek()</code>、<code>close()</code>函数。</li><li><strong>标准I/O</strong>：为不带缓冲的I/O函数提供带缓冲的接口。</li></ul><h2 id="程序和进程"><a href="#程序和进程" class="headerlink" title="程序和进程"></a>程序和进程</h2><ul><li>内核使用<code>exec</code>（系列）函数将程序读入内存，并执行<strong>程序（program）</strong>。</li><li><strong>程序的执行实例称为进程（process）。</strong>每个进程都用一个唯一的非负整数作为数字标识符，称为进程ID。（process ID）</li><li>通常一个进程只有一个<strong>线程（thread）</strong>。一个进程内所有线程共享同一地址空间、文件描述符、栈和进程相关属性。由于它们访问同一存储区，故需要采取同步措施避免不一致性。<strong>线程ID</strong>只在所属进程内起作用。</li></ul><h2 id="出错处理"><a href="#出错处理" class="headerlink" title="出错处理"></a>出错处理</h2><ul><li>例如在对某一文件执行<code>open</code>函数时发生诸如文件不存在、权限问题等，则返回负值，如-1，而非正常情况下的非负文件描述符。在文件<code>&lt;errno.h&gt;</code>中对错误进行定义。</li></ul><h2 id="用户标识"><a href="#用户标识" class="headerlink" title="用户标识"></a>用户标识</h2><ul><li><strong>用户ID（user ID）</strong>：用于标识不同用户。每个用户通常有唯一ID。用户不能更改其用户ID。</li><li><strong>权限鉴定：</strong>：内核使用用户ID来检验用户是否有执行某些操作的权限。</li><li><strong>组ID</strong>：组文件将组名映射为数值形式的组ID。组文件为<code>/etc/group</code>。</li></ul><p>文件系统存储着磁盘上每个文件的用户ID和组ID。</p><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p><strong>信号（signal）</strong>：用于通知进程发生了某种情况。例如除数为0，则将名为<code>SIGFPE</code>（浮点异常）的信号发送给进程。进程有3种处理信号的方式：</p><ul><li>忽略</li><li>按系统默认方式处理</li><li>提供一个函数，信号发生时调用该函数。被称为捕捉该信号。</li></ul><p>例如，</p><ul><li>可以从键盘上使用<strong>中断键（interrupt key）</strong> 即 <code>Ctrl+C</code>、<code>Delete</code>或 <strong>退出键（quit key）</strong> 即<code>Ctrl+\</code>，用于中断当前运行的程序。</li><li>调用<code>kill</code>函数。</li></ul><h2 id="时间值"><a href="#时间值" class="headerlink" title="时间值"></a>时间值</h2><p>系统为一个进程维护了3个进程时间值：</p><ul><li><strong>时钟时间</strong>：又称墙上时钟时间（wall clock time），是进程运行的时间总量，与系统中同时运行的进程数有关。</li><li><strong>用户CPU时间</strong>：执行用户指令所用的时间量。</li><li><strong>系统CPU时间</strong>：为该进程执行内核程序经历的时间。</li></ul><p><em>CPU时间 = 用户CPU时间 + 系统CPU时间</em></p><p>使用<code>time</code>命令来获取各类时间。</p><h2 id="系统调用和库函数"><a href="#系统调用和库函数" class="headerlink" title="系统调用和库函数"></a>系统调用和库函数</h2><p><strong>UNIX为每个系统调用在标准C库中设置一个同样名字的函数。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;关键词&quot;&gt;&lt;a href=&quot;#关键词&quot; class=&quot;headerlink&quot; title=&quot;关键词&quot;&gt;&lt;/a&gt;关键词&lt;/h1&gt;&lt;p&gt;将操作系统抽象来看，以UNIX为典型，涉及的方面无非以下:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;登录&lt;ol&gt;
-&lt;li&gt;登录名&lt;/li&gt;
-&lt;li
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="操作系统" scheme="http://libinyl.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
