@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-08-04T10:59:12.845Z</updated>
+  <updated>2018-08-17T19:07:57.667Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>与爷爷有关的记忆</title>
+    <link href="http://libinyl.github.io/2018/08/18/diary20180818/"/>
+    <id>http://libinyl.github.io/2018/08/18/diary20180818/</id>
+    <published>2018-08-17T17:43:43.000Z</published>
+    <updated>2018-08-17T19:07:57.667Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>此文仅作记忆承载。</strong></p><a id="more"></a><p>2018年8月12日，农历七月初二，上午8点05分，爷爷停止了呼吸。</p><p>11日是周六。11点时，我刚刚从懒觉中醒来不久，错过了爸的第一个电话。待11点，爸又打来电话，说爷爷快不行了。我最怕的事情还是来了。三十分钟后，我从家里出发，打的到北宫门站，再地铁到北京站，路上买了火车票。火车一点多出发，大概三点四十左右到达廊坊北，之后是大概一小时，到中医院。</p><p>直到到医院前，我都没有意识到爷爷已经到了这么严重的情况，后来奶奶、爸、老姑也这么说。见到爷爷时，爷爷的脑门已经烧的烫手——奶奶说他中午烧到42度！我给他量了体温，38度8，奶奶松了一口气，毕竟低了一些。</p><p>爷爷的呼吸频率已经低的可怕，心跳的却极快。有好几次，我看着爷爷短促地吸气，又短促地呼出，接着就是可怕的停顿，时间长的我瞪大眼镜想着赶紧呼吸啊爷爷！然后又是短促的吸、呼……</p><p>我真的没有想到，我们都没有想到。爸说，爷爷已经在医院住了二十多天的院，是五年以来最久的一次；医生不愿再给他输退烧药，因为已经到达了时间上限。</p><p>我像往常一样贴近爷爷的脸，跟他说着话，告诉他我回来了。爷爷沉默了五年。。。。五年啊。往常爷爷还能用眼球转过来看着我，现在眼睛都没有睁开。他的口腔上沿已经溃烂的不成样子，身体皮包着骨头。气管连接着铁管，鼻孔里的管道是唯一的进食方式；后来医生把管子抽出，末端是不忍心看的黑色。</p><p>好在医院还有空地。十一点多，我去哄悦悦睡觉，老姑，爸轮流照顾爷爷。奶奶也没有睡。第二天五点多起床，爷爷的情况没有好转。</p><p>八点整，死神已经默默站在我身旁。</p><p>八点四分 爸看爷爷痰多，把他侧过身来拍背。当拍完转过身来，痰从气管流出来，是我无法想象的、呆着血丝的灰色粘液  爷爷脸憋得通红，眼睛没有睁开，身体无法动弹   窒息  那是窒息</p><p>// 我回想着那个情景，手指几乎打不出字</p><p>医生们赶了过来，竭力地抢救……</p><p>最终，爷爷没能再次呼吸。奶奶和爸表现的都算镇定。</p><p>奶奶早就想到了这一天。五年来，奶奶日复一日地守在爷爷床头，爸</p><hr><p>我几乎没有付出努力。</p><p>五年零两个月前，我和爷爷在还未拆迁的老平房里，聊着我手里捧着的《特别关注》，我随口问了爷爷一句什么，爷爷只是躺着笑，却不说话。我渐渐发现不对，一遍遍逼问，爷爷还是不说话。我叫来奶奶，爷爷好像很努力地要表达什么，但就是说不出话来。爷爷为了证明自己没事，提起院子里的垃圾桶去倒垃圾，我在旁边护着。不一会爷爷就走不稳。奶奶说让我先回家。晚上奶奶来了电话，说爷爷不太对劲。我急忙赶过去，爷爷坐在椅子上，看起来没有大碍，我和</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;此文仅作记忆承载。&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java语言规范学习（java8）</title>
+    <link href="http://libinyl.github.io/2018/08/05/note-java8-sp/"/>
+    <id>http://libinyl.github.io/2018/08/05/note-java8-sp/</id>
+    <published>2018-08-05T08:37:42.000Z</published>
+    <updated>2018-08-05T12:27:20.858Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文法表示法"><a href="#文法表示法" class="headerlink" title="文法表示法"></a>文法表示法</h2><ul><li>产生式右部的句法{x}表示0或多个x。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArgumentList:</span><br><span class="line">    Argument &#123;,Argument&#125;    // 一个ArgumentList可以包含任意正整数个Argument</span><br></pre></td></tr></table></figure><ul><li>产生式右部的句法[x]表示0或1个x，即可选。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BreakStatement:</span><br><span class="line">    break [Identifier]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;文法表示法&quot;&gt;&lt;a href=&quot;#文法表示法&quot; class=&quot;headerlink&quot; title=&quot;文法表示法&quot;&gt;&lt;/a&gt;文法表示法&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;产生式右部的句法{x}表示0或多个x。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highli
+      
+    
+    </summary>
+    
+      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
+    
+    
+      <category term="java" scheme="http://libinyl.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>interview-list-java</title>
@@ -422,59 +470,6 @@
       
         &lt;p&gt;&lt;code&gt;21:33:06&lt;/code&gt; 疲惫的原因不是肌肉酸痛，而是坐车。今天入职，到环保园员工中心培训，坐了一天。明天还要早起。。。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;刚到华为&lt;/em&gt;&lt;br&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.a
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Windows系统安装后的配置</title>
-    <link href="http://libinyl.github.io/2018/07/15/note-windows-config/"/>
-    <id>http://libinyl.github.io/2018/07/15/note-windows-config/</id>
-    <published>2018-07-15T14:11:37.000Z</published>
-    <updated>2018-07-15T14:22:15.933Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>电源管理配置：电池模式下的配置</li><li>网络适配器关闭节电模式</li><li>省电模式配置，在点亮80%时开启节电模式</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;电源管理配置：电池模式下的配置&lt;/li&gt;
-&lt;li&gt;网络适配器关闭节电模式&lt;/li&gt;
-&lt;li&gt;省电模式配置，在点亮80%时开启节电模式&lt;/li&gt;
-&lt;/ul&gt;
-
-      
-    
-    </summary>
-    
-      <category term="技·术" scheme="http://libinyl.github.io/categories/%E6%8A%80%C2%B7%E6%9C%AF/"/>
-    
-    
-      <category term="windows" scheme="http://libinyl.github.io/tags/windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180715</title>
-    <link href="http://libinyl.github.io/2018/07/15/diary20180715/"/>
-    <id>http://libinyl.github.io/2018/07/15/diary20180715/</id>
-    <published>2018-07-15T06:01:01.000Z</published>
-    <updated>2018-07-15T14:23:36.871Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>14:01:14</code> 来到<a href="https://map.qq.com/?type=marker&amp;isopeninfowin=1&amp;markertype=1&amp;pointx=116.337&amp;pointy=39.9921&amp;name=%E9%9B%95%E5%88%BB%E6%97%B6%E5%85%89%E5%92%96%E5%95%A1%E9%A6%86&amp;addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E6%88%90%E5%BA%9C%E8%B7%AF%E5%8D%8E%E6%B8%85%E5%98%89%E5%9B%AD12%E5%8F%B7%E6%A5%BC2%E5%8F%B72-4%E5%B1%82&amp;ref=WeChat" target="_blank" rel="noopener">五道口雕刻时光</a>。</p><p>这边物价真是高啊，是个店咖啡都38元起步。幸亏没来清华上学。</p><p><code>15:34:57</code> 咖啡店里的嘈杂，让我想起了高中下课<del>老师不在时</del>的课间。</p><p><code>18:51:05</code> 发现intellij里的uml代码浏览功能实际上那么强大而自己以前都没发现，捶胸顿足。</p><p><code>22:23:31</code> 明天入职。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;14:01:14&lt;/code&gt; 来到&lt;a href=&quot;https://map.qq.com/?type=marker&amp;amp;isopeninfowin=1&amp;amp;markertype=1&amp;amp;pointx=116.337&amp;amp;pointy=39.99
       
     
     </summary>
