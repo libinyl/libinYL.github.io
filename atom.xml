@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://libinyl.github.io/"/>
-  <updated>2018-08-22T16:02:40.028Z</updated>
+  <updated>2018-09-12T15:27:40.379Z</updated>
   <id>http://libinyl.github.io/</id>
   
   <author>
@@ -17,21 +17,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>note-cpp</title>
-    <link href="http://libinyl.github.io/2018/08/22/note-cpp/"/>
-    <id>http://libinyl.github.io/2018/08/22/note-cpp/</id>
-    <published>2018-08-22T15:49:59.000Z</published>
-    <updated>2018-08-22T16:02:40.028Z</updated>
+    <title>mysql压缩包安装笔记</title>
+    <link href="http://libinyl.github.io/2018/09/12/note-mysql-install/"/>
+    <id>http://libinyl.github.io/2018/09/12/note-mysql-install/</id>
+    <published>2018-09-12T14:53:59.000Z</published>
+    <updated>2018-09-12T15:27:40.379Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h1><ul><li>C++要求以<code>int main()</code>开头。</li><li><code>int main()</code>&lt;=&gt;<code>int main(void)</code></li><li>避免使用<code>void main()</code></li><li>如果到达<code>main()</code>函数末尾没有遇到返回语句，默认认为以<code>return 0;</code>结尾</li></ul><h1 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h1><ul><li>C语言头文件：扩展名为<code>.h</code></li><li>C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过<code>namespace std</code>使用 3）有些C头文件被转换为C++头文件，加上前缀c，如<code>math.h</code>-&gt;<code>cmath</code>，可能包含新的特性</li></ul>]]></content>
+    <content type="html"><![CDATA[<ol><li><p><a href="https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.12-winx64.zip" target="_blank" rel="noopener">下载zip</a>并解压。</p></li><li><p>根目录添加<code>my.ini</code>文件。</p> <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8 </span><br><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment">#设置3306端口</span></span><br><span class="line"><span class="attr">port</span> = <span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录</span></span><br><span class="line"><span class="attr">basedir</span>=C:\mysql-<span class="number">8.0</span>.<span class="number">12</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录</span></span><br><span class="line"><span class="attr">datadir</span>=C:\mysql-<span class="number">8.0</span>.<span class="number">12</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为8比特编码的latin1字符集</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br></pre></td></tr></table></figure></li><li><p>配置环境变量，加入到path中。</p></li><li>执行<code>mysqld --initialize</code>，生成数据文件夹data。</li><li><p>执行<code>mysqld --console</code>即启动mysql服务。（不推荐，可跳过）</p> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\libin&gt;mysqld --console</span><br><span class="line">2018-09-12T15:10:51.530742Z 0 [System] [MY-010116] [Server] C:\mysql-8.0.12-winx64\bin\mysqld.exe (mysqld 8.0.12) starting as process 19960</span><br><span class="line">2018-09-12T15:10:52.137606Z 0 [System] [MY-010229] [Server] Starting crash recovery...</span><br><span class="line">2018-09-12T15:10:52.139374Z 0 [System] [MY-010232] [Server] Crash recovery finished.</span><br><span class="line">2018-09-12T15:10:53.196506Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.</span><br><span class="line">2018-09-12T15:10:53.229268Z 0 [System] [MY-010931] [Server] C:\mysql-8.0.12-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.12'  socket: ''  port: 3306  MySQL Community Server - GPL.</span><br></pre></td></tr></table></figure></li><li><p>管理员执行<code>mysqld --install</code>，将mysql安装为windows服务。</p></li><li>管理员执行<code>net start mysql</code>。</li><li>初始密码可查看data文件夹下以<code>.err</code>结尾的文件。</li><li>登录：<code>mysql -uroot -p</code>。</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;main函数&quot;&gt;&lt;a href=&quot;#main函数&quot; class=&quot;headerlink&quot; title=&quot;main函数&quot;&gt;&lt;/a&gt;main函数&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;C++要求以&lt;code&gt;int main()&lt;/code&gt;开头。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.12-winx64.zip&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载zip&lt;/a&gt;并解压。&lt;/p&gt;
+&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>diary20180902_与常总相处的一周</title>
+    <link href="http://libinyl.github.io/2018/09/02/diary20180902-changjiangeng/"/>
+    <id>http://libinyl.github.io/2018/09/02/diary20180902-changjiangeng/</id>
+    <published>2018-09-02T09:14:42.000Z</published>
+    <updated>2018-09-02T09:18:25.021Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>note-cpp</title>
+    <link href="http://libinyl.github.io/2018/08/22/note-cpp/"/>
+    <id>http://libinyl.github.io/2018/08/22/note-cpp/</id>
+    <published>2018-08-22T15:49:59.000Z</published>
+    <updated>2018-08-22T17:51:52.424Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-概览"><a href="#C-概览" class="headerlink" title="C++概览"></a>C++概览</h1><h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><ul><li>C++要求以<code>int main()</code>开头。</li><li><code>int main()</code>&lt;=&gt;<code>int main(void)</code></li><li>避免使用<code>void main()</code></li><li>如果到达<code>main()</code>函数末尾没有遇到返回语句，默认认为以<code>return 0;</code>结尾</li></ul><h2 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h2><ul><li>C语言头文件：扩展名为<code>.h</code></li><li>C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过<code>namespace std</code>使用 3）有些C头文件被转换为C++头文件，加上前缀c，如<code>math.h</code>-&gt;<code>cmath</code>，可能包含新的特性</li></ul><h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><ul><li>偷懒做法：<code>using naespace std</code> 大型项目会有潜在问题</li><li>推荐做法：只使所需名称可用。<code>using std::cout</code>。</li></ul><h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>语句的特点：以分号结尾。</p><h3 id="声明语句-defining-declaration-和变量"><a href="#声明语句-defining-declaration-和变量" class="headerlink" title="声明语句 defining declaration 和变量"></a>声明语句 defining declaration 和变量</h3><ul><li>（通常）指出要存储的<strong>数据类型</strong>和对应数据的<strong>名称</strong>，即<strong>变量</strong>，变量=值可修改，如<code>int carrots;</code>。</li><li>（复杂）引用声明，reference declaration。</li></ul><h3 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h3><ul><li>赋值语句将值赋给存储单元。<code>carrots=2;</code></li></ul><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul><li>被调用的函数：called function</li><li>包含函数调用的函数：calling function</li></ul><p><strong>函数原型语句</strong>：<code>返回值类型 函数名（参数类型）</code> 如<code>double sqrt(double)</code>，一般定义在头文件中。</p><p>在创建变量的同时赋值——初始化 <code>initialization</code> 如：</p><p>``</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-概览&quot;&gt;&lt;a href=&quot;#C-概览&quot; class=&quot;headerlink&quot; title=&quot;C++概览&quot;&gt;&lt;/a&gt;C++概览&lt;/h1&gt;&lt;h2 id=&quot;main函数&quot;&gt;&lt;a href=&quot;#main函数&quot; class=&quot;headerlink&quot; title=&quot;mai
       
     
     </summary>
@@ -426,55 +463,6 @@
       
         &lt;p&gt;&lt;code&gt;15:39:09&lt;/code&gt; 心累。空调在，心情就在。&lt;/p&gt;
 &lt;p&gt;上午从安朴怡庭出发到山水居，早已大汗淋漓，进门发现空调竟然不能用！跟中介联系，又跟维修人员联系，排队竟然要排到七八天之后！实在是难受，吃教训了。以后租房一定要提前验证各种电器的可用性。&lt;/p
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180720</title>
-    <link href="http://libinyl.github.io/2018/07/21/diary20180720/"/>
-    <id>http://libinyl.github.io/2018/07/21/diary20180720/</id>
-    <published>2018-07-21T07:29:53.000Z</published>
-    <updated>2018-07-21T08:06:46.551Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>15:37:47</code> 当天没有写日记，这是在第二天补上的。</p><p>洗脑结束，大家开始签卖身契。</p><p><em>排队中</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_03.jpg" alt=""></p><p><em>暗中观察</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_02.jpg" alt=""></p><p><em>把自己卖了</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_04.jpg" alt=""></p><p>下午各组表演节目。也不知谁买了瓶崂山百花蛇舌草水，我们举杯饮之。</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_01.jpg" alt=""></p><p><em>好玩的作品</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_09.jpg" alt=""></p><p><em>哦不我的肚子</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_10.jpg" alt=""></p><p>晚上跟秘书去找工位。工作环境棒！大方舒适。说来正巧，团队里离职的那个哥们也是中南的！晚上离职请客，请我们吃了烤肉！</p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_08.jpg" alt=""></p><p>晚上9点多步行回公寓，没有人没有车，只有工地冰冷的光，和遥远的叮叮当当。</p><p><em>园区一景</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_07.jpg" alt=""></p><p><em>冰冷的光</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180720_06.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;15:37:47&lt;/code&gt; 当天没有写日记，这是在第二天补上的。&lt;/p&gt;
-&lt;p&gt;洗脑结束，大家开始签卖身契。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;排队中&lt;/em&gt;&lt;br&gt;&lt;img src=&quot;https://yeliang1-1252528682.cos.ap-beijin
-      
-    
-    </summary>
-    
-      <category term="日·记" scheme="http://libinyl.github.io/categories/%E6%97%A5%C2%B7%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>diary20180719</title>
-    <link href="http://libinyl.github.io/2018/07/19/diary20180719/"/>
-    <id>http://libinyl.github.io/2018/07/19/diary20180719/</id>
-    <published>2018-07-19T13:59:28.000Z</published>
-    <updated>2018-07-19T14:26:17.888Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>22:13:08</code> 今天冒着大雨搬到了新公寓。公寓房间很小，很整洁，但是感觉不太一样。可能是又回到了独居的情境，好像有一点“进入下一个阶段”的意思。只会住两天，然后到搬到租的房子。</p><p><em>华为是真大。这还只是北京这边</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_01.jpg" alt=""></p><p><em>坐等硬<del>核</del>装实习</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_06.jpg" alt=""></p><p><em>辩论赛一触即发！</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_07.jpg" alt=""></p><p><em>国王与天使游戏结束，入职培训也告一段落</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_02.jpg" alt=""></p><p><em>今天的夜宵</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_03.jpg" alt=""></p><p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_04.jpg" alt=""></p><p><em>只住两天的公寓小房间</em><br><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180719_05.jpg" alt=""></p><p><code>22:24:20</code> 总体感觉，华为并没有那么恐怖。回想起去衡中之前，之后，感觉是相似的。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;22:13:08&lt;/code&gt; 今天冒着大雨搬到了新公寓。公寓房间很小，很整洁，但是感觉不太一样。可能是又回到了独居的情境，好像有一点“进入下一个阶段”的意思。只会住两天，然后到搬到租的房子。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;华为是真大。这还只是北京这边&lt;/em&gt;&lt;br&gt;
       
     
     </summary>

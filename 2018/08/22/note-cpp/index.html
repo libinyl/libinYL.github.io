@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被转换为C+">
+<meta name="description" content="C++概览main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="note-cpp">
 <meta property="og:url" content="http://libinyl.github.io/2018/08/22/note-cpp/index.html">
 <meta property="og:site_name" content="李斌 - LBYL">
-<meta property="og:description" content="main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被转换为C+">
+<meta property="og:description" content="C++概览main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T16:02:40.028Z">
+<meta property="og:updated_time" content="2018-08-22T17:51:52.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="note-cpp">
-<meta name="twitter:description" content="main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被转换为C+">
+<meta name="twitter:description" content="C++概览main函数 C++要求以int main()开头。 int main()&amp;lt;=&amp;gt;int main(void) 避免使用void main() 如果到达main()函数末尾没有遇到返回语句，默认认为以return 0;结尾  头文件名 C语言头文件：扩展名为.h C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过namespace std使用 3）有些C头文件被">
 
 
 
@@ -351,7 +351,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-23T00:02:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-23T01:51:52+08:00">
                 2018-08-23
               </time>
             
@@ -407,16 +407,35 @@
       
 
       
-        <h1 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h1><ul>
+        <h1 id="C-概览"><a href="#C-概览" class="headerlink" title="C++概览"></a>C++概览</h1><h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><ul>
 <li>C++要求以<code>int main()</code>开头。</li>
 <li><code>int main()</code>&lt;=&gt;<code>int main(void)</code></li>
 <li>避免使用<code>void main()</code></li>
 <li>如果到达<code>main()</code>函数末尾没有遇到返回语句，默认认为以<code>return 0;</code>结尾</li>
 </ul>
-<h1 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h1><ul>
+<h2 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h2><ul>
 <li>C语言头文件：扩展名为<code>.h</code></li>
 <li>C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过<code>namespace std</code>使用 3）有些C头文件被转换为C++头文件，加上前缀c，如<code>math.h</code>-&gt;<code>cmath</code>，可能包含新的特性</li>
 </ul>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><ul>
+<li>偷懒做法：<code>using naespace std</code> 大型项目会有潜在问题</li>
+<li>推荐做法：只使所需名称可用。<code>using std::cout</code>。</li>
+</ul>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>语句的特点：以分号结尾。</p>
+<h3 id="声明语句-defining-declaration-和变量"><a href="#声明语句-defining-declaration-和变量" class="headerlink" title="声明语句 defining declaration 和变量"></a>声明语句 defining declaration 和变量</h3><ul>
+<li>（通常）指出要存储的<strong>数据类型</strong>和对应数据的<strong>名称</strong>，即<strong>变量</strong>，变量=值可修改，如<code>int carrots;</code>。</li>
+<li>（复杂）引用声明，reference declaration。</li>
+</ul>
+<h3 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h3><ul>
+<li>赋值语句将值赋给存储单元。<code>carrots=2;</code></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>被调用的函数：called function</li>
+<li>包含函数调用的函数：calling function</li>
+</ul>
+<p><strong>函数原型语句</strong>：<code>返回值类型 函数名（参数类型）</code> 如<code>double sqrt(double)</code>，一般定义在头文件中。</p>
+<p>在创建变量的同时赋值——初始化 <code>initialization</code> 如：</p>
+<p>``</p>
 
       
     </div>
@@ -456,6 +475,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/02/diary20180902-changjiangeng/" rel="prev" title="diary20180902_与常总相处的一周">
+                diary20180902_与常总相处的一周 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">241</span>
+                  <span class="site-state-item-count">243</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -621,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#main函数"><span class="nav-number">1.</span> <span class="nav-text">main函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件名"><span class="nav-number">2.</span> <span class="nav-text">头文件名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-概览"><span class="nav-number">1.</span> <span class="nav-text">C++概览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#main函数"><span class="nav-number">1.1.</span> <span class="nav-text">main函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#头文件名"><span class="nav-number">1.2.</span> <span class="nav-text">头文件名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名空间"><span class="nav-number">1.3.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">1.4.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明语句-defining-declaration-和变量"><span class="nav-number">1.4.1.</span> <span class="nav-text">声明语句 defining declaration 和变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值语句"><span class="nav-number">1.4.2.</span> <span class="nav-text">赋值语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.5.</span> <span class="nav-text">函数</span></a></li></ol></li></ol></div>
             
 
           </div>

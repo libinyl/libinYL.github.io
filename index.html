@@ -302,6 +302,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/09/12/note-mysql-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/12/note-mysql-install/" itemprop="url">mysql压缩包安装笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-12T22:53:59+08:00">
+                2018-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-12T23:27:40+08:00">
+                2018-09-12
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p><a href="https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.12-winx64.zip" target="_blank" rel="noopener">下载zip</a>并解压。</p>
+</li>
+<li><p>根目录添加<code>my.ini</code>文件。</p>
+ <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysql]</span></span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attr">default-character-set</span>=utf8 </span><br><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment">#设置3306端口</span></span><br><span class="line"><span class="attr">port</span> = <span class="number">3306</span></span><br><span class="line"><span class="comment"># 设置mysql的安装目录</span></span><br><span class="line"><span class="attr">basedir</span>=C:\mysql-<span class="number">8.0</span>.<span class="number">12</span>-winx64</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放目录</span></span><br><span class="line"><span class="attr">datadir</span>=C:\mysql-<span class="number">8.0</span>.<span class="number">12</span>-winx64\data</span><br><span class="line"><span class="comment"># 允许最大连接数</span></span><br><span class="line"><span class="attr">max_connections</span>=<span class="number">200</span></span><br><span class="line"><span class="comment"># 服务端使用的字符集默认为8比特编码的latin1字符集</span></span><br><span class="line"><span class="attr">character-set-server</span>=utf8</span><br><span class="line"><span class="comment"># 创建新表时将使用的默认存储引擎</span></span><br><span class="line"><span class="attr">default-storage-engine</span>=INNODB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量，加入到path中。</p>
+</li>
+<li>执行<code>mysqld --initialize</code>，生成数据文件夹data。</li>
+<li><p>执行<code>mysqld --console</code>即启动mysql服务。（不推荐，可跳过）</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\libin&gt;mysqld --console</span><br><span class="line">2018-09-12T15:10:51.530742Z 0 [System] [MY-010116] [Server] C:\mysql-8.0.12-winx64\bin\mysqld.exe (mysqld 8.0.12) starting as process 19960</span><br><span class="line">2018-09-12T15:10:52.137606Z 0 [System] [MY-010229] [Server] Starting crash recovery...</span><br><span class="line">2018-09-12T15:10:52.139374Z 0 [System] [MY-010232] [Server] Crash recovery finished.</span><br><span class="line">2018-09-12T15:10:53.196506Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.</span><br><span class="line">2018-09-12T15:10:53.229268Z 0 [System] [MY-010931] [Server] C:\mysql-8.0.12-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.12'  socket: ''  port: 3306  MySQL Community Server - GPL.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>管理员执行<code>mysqld --install</code>，将mysql安装为windows服务。</p>
+</li>
+<li>管理员执行<code>net start mysql</code>。</li>
+<li>初始密码可查看data文件夹下以<code>.err</code>结尾的文件。</li>
+<li>登录：<code>mysql -uroot -p</code>。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/09/02/diary20180902-changjiangeng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李斌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李斌 - LBYL">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/02/diary20180902-changjiangeng/" itemprop="url">diary20180902_与常总相处的一周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-02T17:14:42+08:00">
+                2018-09-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-02T17:18:25+08:00">
+                2018-09-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日·记/" itemprop="url" rel="index">
+                    <span itemprop="name">日·记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/08/22/note-cpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -349,7 +651,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-23T00:02:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-23T01:51:52+08:00">
                 2018-08-23
               </time>
             
@@ -407,16 +709,35 @@
       
         
           
-            <h1 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h1><ul>
+            <h1 id="C-概览"><a href="#C-概览" class="headerlink" title="C++概览"></a>C++概览</h1><h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><ul>
 <li>C++要求以<code>int main()</code>开头。</li>
 <li><code>int main()</code>&lt;=&gt;<code>int main(void)</code></li>
 <li>避免使用<code>void main()</code></li>
 <li>如果到达<code>main()</code>函数末尾没有遇到返回语句，默认认为以<code>return 0;</code>结尾</li>
 </ul>
-<h1 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h1><ul>
+<h2 id="头文件名"><a href="#头文件名" class="headerlink" title="头文件名"></a>头文件名</h2><ul>
 <li>C语言头文件：扩展名为<code>.h</code></li>
 <li>C++头文件：1）保留C头文件 2）纯C++头文件没有扩展名，通过<code>namespace std</code>使用 3）有些C头文件被转换为C++头文件，加上前缀c，如<code>math.h</code>-&gt;<code>cmath</code>，可能包含新的特性</li>
 </ul>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><ul>
+<li>偷懒做法：<code>using naespace std</code> 大型项目会有潜在问题</li>
+<li>推荐做法：只使所需名称可用。<code>using std::cout</code>。</li>
+</ul>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>语句的特点：以分号结尾。</p>
+<h3 id="声明语句-defining-declaration-和变量"><a href="#声明语句-defining-declaration-和变量" class="headerlink" title="声明语句 defining declaration 和变量"></a>声明语句 defining declaration 和变量</h3><ul>
+<li>（通常）指出要存储的<strong>数据类型</strong>和对应数据的<strong>名称</strong>，即<strong>变量</strong>，变量=值可修改，如<code>int carrots;</code>。</li>
+<li>（复杂）引用声明，reference declaration。</li>
+</ul>
+<h3 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h3><ul>
+<li>赋值语句将值赋给存储单元。<code>carrots=2;</code></li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>被调用的函数：called function</li>
+<li>包含函数调用的函数：calling function</li>
+</ul>
+<p><strong>函数原型语句</strong>：<code>返回值类型 函数名（参数类型）</code> 如<code>double sqrt(double)</code>，一般定义在头文件中。</p>
+<p>在创建变量的同时赋值——初始化 <code>initialization</code> 如：</p>
+<p>``</p>
 
           
         
@@ -1556,341 +1877,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/29/diary20180729/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/29/diary20180729/" itemprop="url">diary20180729</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T12:13:07+08:00">
-                2018-07-29
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-29T12:50:33+08:00">
-                2018-07-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>12:13:29</code> 刚刚发生一件有趣的事。</p>
-<p>在沙县小吃吃中饭，角落里没人，我便坐下。正等饭，旁边一穿着蓝色上衣、平头的哥们端着吃了几口的饭坐在我斜对面，大概是从中间座位换过来的。他一边吃，一遍用右手拿着手机，用底部靠近耳朵，听着什么。声音像电视台主播，一会儿是男声，一会是女声。我的饭上来了，伸手去够他身旁的筷子盒，他瞅见了，身子一躲。我抽出筷子，开始吃饭。</p>
-<p>手机是华为的中端机，包着套。皮肤较黑，平头，瘦高。听的是“得到”的音频，而且是快放的。</p>
-<p>“你听的是‘得到’吗？” 我犹豫了几分钟，问到。</p>
-<p>他一惊，抬头看了我一眼，“嗯，嗯，你也听吗？”</p>
-<p>“以前听。”</p>
-<p>“嗯，我听的是‘李翔商业内参’”。</p>
-<p>我微笑回应一下，然后继续吃。</p>
-<p>“你是大学生吗？” 过了两分钟，我又问了一句。</p>
-<p>“对” 他抬头看着我。</p>
-<p>“你是不是想找个好工作？”</p>
-<p>“可以这么说吧。” 他调小了音量，尴尬而不失礼貌地笑了。</p>
-<p>“你…大二？”</p>
-<p>“大三。”</p>
-<p>“你是不是…还没有目标的工作？”</p>
-<p>“是…还没想好干什么。”</p>
-<p>“你在哪个大学？”</p>
-<p>“北京科技大学。”</p>
-<p>……</p>
-<p>“加个微信吧。” 我掏出手机。</p>
-<p><code>12:32:06</code> 现在在旁边的西山悦咖啡。</p>
-<p>字正腔圆的声音，特定的两种音色，是‘得到’音频的特点。小哥偶尔会躲避目光，避免肢体接触，有一点怯意；吃东西吃的很干净，用筷子把盘子清理的一点不剩，是节俭的生活习惯所致。李翔商业内参，是免费的得到音频，相对比较划算。边吃饭边听，还快放1.5x。他急切地想充实心理，因为当前还没有工作，或者还不知道做什么。他说的不是地道普通话，挂着谦卑的笑容。</p>
-<p>他大概是其他城市或者农村的优秀的孩子，家境一般或稍差，平日生活节俭朴素。考上了北京科技大学，上了两年学之后发现与社会相差甚远，学习受到阻力，但却不甘平庸，偶然发现‘得到’里的东西蛮有道理；保持了努力的习惯，而前途的不确定一点点积累压力，以致走路或吃饭时都要快放着听，试图获取一些指点。</p>
-<p>那是我三年前的样子，是努力而自卑的人的挣扎。我相信他终会找到方向，用努力换取心态的平和。希望我也是。</p>
-<p><em>你努力的样子，我帮你留着</em></p>
-<p><img src="https://yeliang1-1252528682.cos.ap-beijing.myqcloud.com/picture/diary/diary20180729_01.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libinyl.github.io/2018/07/27/diary20180727/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李斌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李斌 - LBYL">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/27/diary20180727/" itemprop="url">diary20180727</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-27T21:46:40+08:00">
-                2018-07-27
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T21:53:25+08:00">
-                2018-07-27
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日·记/" itemprop="url" rel="index">
-                    <span itemprop="name">日·记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>21:47:16</code> 果然工作之后写日记的时间越来越少了。从下周开始一周合并成一个文件。</p>
-<p>今天领的J套餐夜宵，一盒奥利奥+一盒金典+一个香蕉+一个苹果。</p>
-<p>明天开始，小电驴上班！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1941,7 +1927,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">241</span>
+                  <span class="site-state-item-count">243</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
