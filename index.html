@@ -349,7 +349,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-12T23:27:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-12T23:52:46+08:00">
                 2018-09-12
               </time>
             
@@ -403,6 +403,14 @@
 <li>初始密码可查看data文件夹下以<code>.err</code>结尾的文件。</li>
 <li>登录：<code>mysql -uroot -p</code>。</li>
 </ol>
+<h2 id="其他问题："><a href="#其他问题：" class="headerlink" title="其他问题："></a>其他问题：</h2><ul>
+<li><p>如果提示密码过期：</p>
+<p>  <code>ALTER USER</code>root<code>@</code>localhost<code>IDENTIFIED BY &#39;1234&#39;,</code>root<code>@</code>localhost<code>PASSWORD EXPIRE NEVER;</code></p>
+</li>
+<li><p>常见url示例：</p>
+<p>  <code>jdbc:mysql://localhost/studentsys?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true;</code></p>
+</li>
+</ul>
 
           
         
